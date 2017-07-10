@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		64326AB51F1398AA007673E3 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64326AB41F1398AA007673E3 /* GameViewController.swift */; };
+		64326AB61F1398AA007673E3 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64326AB41F1398AA007673E3 /* GameViewController.swift */; };
+		64326AB91F1398E1007673E3 /* Melisse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 648DD0961F116F8E002A7398 /* Melisse.framework */; };
+		64326ABA1F1398E5007673E3 /* Melisse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 648DD0941F116F8E002A7398 /* Melisse.framework */; };
 		648DD06A1F116EB9002A7398 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648DD0691F116EB9002A7398 /* AppDelegate.swift */; };
-		648DD06C1F116EB9002A7398 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648DD06B1F116EB9002A7398 /* ViewController.swift */; };
 		648DD06F1F116EB9002A7398 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 648DD06D1F116EB9002A7398 /* Main.storyboard */; };
 		648DD0711F116EB9002A7398 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 648DD0701F116EB9002A7398 /* Assets.xcassets */; };
 		648DD0741F116EB9002A7398 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 648DD0721F116EB9002A7398 /* LaunchScreen.storyboard */; };
 		648DD0821F116F62002A7398 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648DD0811F116F62002A7398 /* AppDelegate.swift */; };
-		648DD0841F116F62002A7398 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648DD0831F116F62002A7398 /* ViewController.swift */; };
 		648DD0861F116F62002A7398 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 648DD0851F116F62002A7398 /* Assets.xcassets */; };
 		648DD0891F116F62002A7398 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 648DD0871F116F62002A7398 /* Main.storyboard */; };
 /* End PBXBuildFile section */
@@ -36,16 +38,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		64326AB41F1398AA007673E3 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		648DD0661F116EB9002A7398 /* Yamato.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yamato.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		648DD0691F116EB9002A7398 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		648DD06B1F116EB9002A7398 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		648DD06E1F116EB9002A7398 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		648DD0701F116EB9002A7398 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		648DD0731F116EB9002A7398 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		648DD0751F116EB9002A7398 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		648DD07F1F116F62002A7398 /* Yamato OSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yamato OSX.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		648DD0811F116F62002A7398 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		648DD0831F116F62002A7398 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		648DD0851F116F62002A7398 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		648DD0881F116F62002A7398 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		648DD08A1F116F62002A7398 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -57,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64326ABA1F1398E5007673E3 /* Melisse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64326AB91F1398E1007673E3 /* Melisse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,7 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				648DD0691F116EB9002A7398 /* AppDelegate.swift */,
-				648DD06B1F116EB9002A7398 /* ViewController.swift */,
+				64326AB41F1398AA007673E3 /* GameViewController.swift */,
 				648DD06D1F116EB9002A7398 /* Main.storyboard */,
 				648DD0701F116EB9002A7398 /* Assets.xcassets */,
 				648DD0721F116EB9002A7398 /* LaunchScreen.storyboard */,
@@ -106,7 +109,6 @@
 			isa = PBXGroup;
 			children = (
 				648DD0811F116F62002A7398 /* AppDelegate.swift */,
-				648DD0831F116F62002A7398 /* ViewController.swift */,
 				648DD0851F116F62002A7398 /* Assets.xcassets */,
 				648DD0871F116F62002A7398 /* Main.storyboard */,
 				648DD08A1F116F62002A7398 /* Info.plist */,
@@ -251,7 +253,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				648DD06C1F116EB9002A7398 /* ViewController.swift in Sources */,
+				64326AB51F1398AA007673E3 /* GameViewController.swift in Sources */,
 				648DD06A1F116EB9002A7398 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -260,7 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				648DD0841F116F62002A7398 /* ViewController.swift in Sources */,
+				64326AB61F1398AA007673E3 /* GameViewController.swift in Sources */,
 				648DD0821F116F62002A7398 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -469,6 +471,7 @@
 				648DD07A1F116EB9002A7398 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		648DD08B1F116F62002A7398 /* Build configuration list for PBXNativeTarget "Yamato OSX" */ = {
 			isa = XCConfigurationList;
@@ -477,6 +480,7 @@
 				648DD08D1F116F62002A7398 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
