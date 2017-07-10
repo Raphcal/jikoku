@@ -10,4 +10,8 @@ import Melisse
 
 class GameViewController : MelisseViewController {
     
+    override func initialScene() -> Scene {
+        return GameScene()
+    }
+    
 }
