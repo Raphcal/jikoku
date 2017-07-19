@@ -1,0 +1,10 @@
+framework module Melisse {
+  umbrella header "Melisse.h"
+
+  export *
+  module * { export * }
+}
+
+module Melisse.Swift {
+    header "Melisse-Swift.h"
+}

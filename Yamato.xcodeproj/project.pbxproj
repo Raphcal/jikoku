@@ -9,11 +9,10 @@
 /* Begin PBXBuildFile section */
 		64326AB51F1398AA007673E3 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64326AB41F1398AA007673E3 /* GameViewController.swift */; };
 		64326AB61F1398AA007673E3 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64326AB41F1398AA007673E3 /* GameViewController.swift */; };
-		64326AB91F1398E1007673E3 /* Melisse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 648DD0961F116F8E002A7398 /* Melisse.framework */; };
-		64326ABA1F1398E5007673E3 /* Melisse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 648DD0941F116F8E002A7398 /* Melisse.framework */; };
 		64326ABD1F139E55007673E3 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64326ABC1F139E55007673E3 /* GameScene.swift */; };
 		64326ABE1F139E55007673E3 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64326ABC1F139E55007673E3 /* GameScene.swift */; };
 		64846A331F1F3BF60053A926 /* Textures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64846A321F1F3BF60053A926 /* Textures.swift */; };
+		64846A391F1F69780053A926 /* Melisse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64846A381F1F69780053A926 /* Melisse.framework */; };
 		648DD06A1F116EB9002A7398 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648DD0691F116EB9002A7398 /* AppDelegate.swift */; };
 		648DD06F1F116EB9002A7398 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 648DD06D1F116EB9002A7398 /* Main.storyboard */; };
 		648DD0711F116EB9002A7398 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 648DD0701F116EB9002A7398 /* Assets.xcassets */; };
@@ -23,27 +22,11 @@
 		648DD0891F116F62002A7398 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 648DD0871F116F62002A7398 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		648DD0931F116F8E002A7398 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 648DD08E1F116F8D002A7398 /* Melisse.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 643817D81CE7A194002C68F8;
-			remoteInfo = "Melisse-iOS";
-		};
-		648DD0951F116F8E002A7398 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 648DD08E1F116F8D002A7398 /* Melisse.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 6429FED01CE879000052ED4D;
-			remoteInfo = "Melisse-Mac";
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		64326AB41F1398AA007673E3 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameViewController.swift; path = Yamato/GameViewController.swift; sourceTree = "<group>"; };
 		64326ABC1F139E55007673E3 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		64846A321F1F3BF60053A926 /* Textures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Textures.swift; sourceTree = "<group>"; };
+		64846A381F1F69780053A926 /* Melisse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Melisse.framework; sourceTree = "<group>"; };
 		648DD0661F116EB9002A7398 /* Yamato.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yamato.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		648DD0691F116EB9002A7398 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		648DD06E1F116EB9002A7398 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -55,7 +38,6 @@
 		648DD0851F116F62002A7398 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		648DD0881F116F62002A7398 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		648DD08A1F116F62002A7398 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		648DD08E1F116F8D002A7398 /* Melisse.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Melisse.xcodeproj; path = ../../../Documents/Swift/melisse/Melisse.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64326ABA1F1398E5007673E3 /* Melisse.framework in Frameworks */,
+				64846A391F1F69780053A926 /* Melisse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,7 +53,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64326AB91F1398E1007673E3 /* Melisse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,7 +76,7 @@
 				648DD0681F116EB9002A7398 /* iOS */,
 				648DD0801F116F62002A7398 /* OSX */,
 				648DD0671F116EB9002A7398 /* Products */,
-				648DD08E1F116F8D002A7398 /* Melisse.xcodeproj */,
+				64846A381F1F69780053A926 /* Melisse.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -131,15 +112,6 @@
 			);
 			name = OSX;
 			path = "Yamato OSX";
-			sourceTree = "<group>";
-		};
-		648DD08F1F116F8D002A7398 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				648DD0941F116F8E002A7398 /* Melisse.framework */,
-				648DD0961F116F8E002A7398 /* Melisse.framework */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,12 +184,6 @@
 			mainGroup = 648DD05D1F116EB9002A7398;
 			productRefGroup = 648DD0671F116EB9002A7398 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 648DD08F1F116F8D002A7398 /* Products */;
-					ProjectRef = 648DD08E1F116F8D002A7398 /* Melisse.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				648DD0651F116EB9002A7398 /* Yamato */,
@@ -225,23 +191,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		648DD0941F116F8E002A7398 /* Melisse.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Melisse.framework;
-			remoteRef = 648DD0931F116F8E002A7398 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		648DD0961F116F8E002A7398 /* Melisse.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Melisse.framework;
-			remoteRef = 648DD0951F116F8E002A7398 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		648DD0641F116EB9002A7398 /* Resources */ = {
@@ -417,6 +366,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = E6H8T594R7;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Yamato/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fr.rca.Yamato;
@@ -430,6 +383,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = E6H8T594R7;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Yamato/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fr.rca.Yamato;
