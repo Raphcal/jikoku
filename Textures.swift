@@ -17,6 +17,7 @@ extension GLKTextureLoader {
 
     static func texture(with string: String, size: Int = 48) throws -> GLKTextureInfo {
         let width = Int(ceil(sqrt(Double(string.characters.count)))) * size
+        let font = UIFont.systemFont(ofSize: CGFloat(size * 3/4))
         
         UIGraphicsBeginImageContext(CGSize(width: width, height: width))
         if let context = UIGraphicsGetCurrentContext() {
@@ -24,12 +25,12 @@ extension GLKTextureLoader {
             
             var x = 0, y = 0
             for character in string.characters {
-                let rect = CGRect(x: size, y: size, width: width, height: width)
+                let rect = CGRect(x: x, y: y, width: size, height: size)
                 context.setFillColor(UIColor.red.cgColor)
                 context.fillEllipse(in: rect)
                 
                 context.setFillColor(UIColor.white.cgColor)
-                context.fill(character: character, font: UIFont.systemFont(ofSize: 12), in: rect)
+                context.fill(character: character, font: font, in: rect)
                 
                 x += size
                 if x >= width {
@@ -60,6 +61,8 @@ extension CGContext {
         lineText.addAttribute(kCTForegroundColorFromContextAttributeName as String, value: true, range: NSRange(location: 0, length: lineText.length))
         
         let lineToDraw = CTLineCreateWithAttributedString(lineText)
+        
+        textPosition = CGPoint()
         let bounds = CTLineGetImageBounds(lineToDraw, self)
         
         setTextDrawingMode(.fill)
