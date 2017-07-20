@@ -14,6 +14,8 @@ fileprivate let spriteSize: GLfloat = 48
 
 class GameScene : Scene {
 
+    static var current: GameScene?
+    
     let backgroundColor = Color<GLfloat>(hex: 0xE4C9A0)
     
     let atlas: SpriteAtlas
@@ -41,6 +43,10 @@ class GameScene : Scene {
         
         _ = spriteFactory.sprite(1, topLeft: Point(x: 64, y: 96))
         _ = spriteFactory.sprite(2, topLeft: Point(x: 256, y: 128))
+    }
+    
+    func load() {
+        GameScene.current = self
     }
     
     func updateWith(_ timeSinceLastUpdate: TimeInterval) {
