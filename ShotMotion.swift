@@ -15,6 +15,7 @@ struct ShotMotion : Motion {
     
     func updateWith(_ timeSinceLastUpdate: TimeInterval, sprite: Sprite) {
         sprite.frame.center += speed * GLfloat(timeSinceLastUpdate)
+        GameScene.current!.camera.removeSpriteIfOutOfView(sprite)
     }
     
 }
