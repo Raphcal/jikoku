@@ -12,13 +12,28 @@
 		643FC8C01F1F6C9600EA7727 /* SpriteAtlas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643FC8BF1F1F6C9600EA7727 /* SpriteAtlas.swift */; };
 		643FC8C21F1F6CEF00EA7727 /* SpriteType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643FC8C11F1F6CEF00EA7727 /* SpriteType.swift */; };
 		64846A331F1F3BF60053A926 /* Textures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64846A321F1F3BF60053A926 /* Textures.swift */; };
-		64846A391F1F69780053A926 /* Melisse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64846A381F1F69780053A926 /* Melisse.framework */; };
 		648DD06A1F116EB9002A7398 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648DD0691F116EB9002A7398 /* AppDelegate.swift */; };
 		648DD06F1F116EB9002A7398 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 648DD06D1F116EB9002A7398 /* Main.storyboard */; };
 		648DD0711F116EB9002A7398 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 648DD0701F116EB9002A7398 /* Assets.xcassets */; };
 		648DD0741F116EB9002A7398 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 648DD0721F116EB9002A7398 /* LaunchScreen.storyboard */; };
-		64DD862C1F1F988F000C2CA3 /* Melisse.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 64846A381F1F69780053A926 /* Melisse.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		647D7E8A1F20970700721F76 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 647D7E851F20970700721F76 /* Melisse.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 643817D81CE7A194002C68F8;
+			remoteInfo = "Melisse-iOS";
+		};
+		647D7E8C1F20970700721F76 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 647D7E851F20970700721F76 /* Melisse.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6429FED01CE879000052ED4D;
+			remoteInfo = "Melisse-Mac";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		64DD862B1F1F9888000C2CA3 /* CopyFiles */ = {
@@ -27,7 +42,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				64DD862C1F1F988F000C2CA3 /* Melisse.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,8 +52,8 @@
 		64326ABC1F139E55007673E3 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		643FC8BF1F1F6C9600EA7727 /* SpriteAtlas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpriteAtlas.swift; sourceTree = "<group>"; };
 		643FC8C11F1F6CEF00EA7727 /* SpriteType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpriteType.swift; sourceTree = "<group>"; };
+		647D7E851F20970700721F76 /* Melisse.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Melisse.xcodeproj; path = ../../../Documents/Swift/melisse/Melisse.xcodeproj; sourceTree = "<group>"; };
 		64846A321F1F3BF60053A926 /* Textures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Textures.swift; sourceTree = "<group>"; };
-		64846A381F1F69780053A926 /* Melisse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Melisse.framework; sourceTree = "<group>"; };
 		648DD0661F116EB9002A7398 /* Yamato.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yamato.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		648DD0691F116EB9002A7398 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		648DD06E1F116EB9002A7398 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -53,7 +67,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64846A391F1F69780053A926 /* Melisse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +91,15 @@
 			name = Sprites;
 			sourceTree = "<group>";
 		};
+		647D7E861F20970700721F76 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				647D7E8B1F20970700721F76 /* Melisse.framework */,
+				647D7E8D1F20970700721F76 /* Melisse.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		648DD05D1F116EB9002A7398 = {
 			isa = PBXGroup;
 			children = (
@@ -86,7 +108,7 @@
 				64326AB41F1398AA007673E3 /* GameViewController.swift */,
 				648DD0681F116EB9002A7398 /* iOS */,
 				648DD0671F116EB9002A7398 /* Products */,
-				64846A381F1F69780053A926 /* Melisse.framework */,
+				647D7E851F20970700721F76 /* Melisse.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -160,12 +182,35 @@
 			mainGroup = 648DD05D1F116EB9002A7398;
 			productRefGroup = 648DD0671F116EB9002A7398 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 647D7E861F20970700721F76 /* Products */;
+					ProjectRef = 647D7E851F20970700721F76 /* Melisse.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				648DD0651F116EB9002A7398 /* Yamato */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		647D7E8B1F20970700721F76 /* Melisse.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Melisse.framework;
+			remoteRef = 647D7E8A1F20970700721F76 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		647D7E8D1F20970700721F76 /* Melisse.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Melisse.framework;
+			remoteRef = 647D7E8C1F20970700721F76 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		648DD0641F116EB9002A7398 /* Resources */ = {
