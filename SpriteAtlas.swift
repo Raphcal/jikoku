@@ -21,7 +21,7 @@ extension SpriteAtlas {
             
             var index = 0
             var x = 0, y = 0
-            let textureSize = size * Int(UIScreen.main.nativeScale)
+            let textureSize = size * Int(UIScreen.main.scale)
 
             for character in string.characters {
                 var definition = SpriteDefinition()

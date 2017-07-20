@@ -19,7 +19,7 @@ extension GLKTextureLoader {
         let width = Int(ceil(sqrt(Double(string.characters.count)))) * size
         let font = UIFont.systemFont(ofSize: CGFloat(size * 3/4))
         
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: width, height: width), false, UIScreen.main.nativeScale)
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: width, height: width), false, UIScreen.main.scale)
         if let context = UIGraphicsGetCurrentContext() {
             context.textMatrix = CGAffineTransform(scaleX: 1.0, y: -1.0)
             
