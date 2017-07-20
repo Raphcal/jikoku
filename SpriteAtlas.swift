@@ -21,6 +21,7 @@ extension SpriteAtlas {
             
             var index = 0
             var x = 0, y = 0
+            let textureSize = size * Int(UIScreen.main.nativeScale)
 
             for character in string.characters {
                 var definition = SpriteDefinition()
@@ -29,16 +30,16 @@ extension SpriteAtlas {
                 definition.type = index == 0 ? SpriteType.player : SpriteType.enemy
                 definition.distance = .behind
                 definition.animations = [
-                    DefaultAnimationName.normal.name: AnimationDefinition(frames: [AnimationFrame(x: x, y: y, width: size, height: size)], looping: false)
+                    DefaultAnimationName.normal.name: AnimationDefinition(frames: [AnimationFrame(frame: Rectangle(x: x, y: y, width: textureSize, height: textureSize), size: Size(width: GLfloat(size), height: GLfloat(size)))], looping: false)
                 ]
                 
                 definitions.append(definition)
                 
                 index += 1
-                x += size
+                x += textureSize
                 if x >= Int(texture.width) {
                     x = 0
-                    y += size
+                    y += textureSize
                 }
             }
             
