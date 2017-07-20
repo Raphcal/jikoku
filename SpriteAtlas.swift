@@ -27,6 +27,7 @@ extension SpriteAtlas {
                 definition.index = index
                 definition.name = String(character)
                 definition.type = index == 0 ? SpriteType.player : SpriteType.enemy
+                definition.distance = .behind
                 definition.animations = [
                     DefaultAnimationName.normal.name: AnimationDefinition(frames: [AnimationFrame(x: x, y: y, width: size, height: size)], looping: false)
                 ]
