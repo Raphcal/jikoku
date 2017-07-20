@@ -20,14 +20,21 @@
                     <glkView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" enableSetNeedsDisplay="NO" id="VAr-Oe-W9q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <gestureRecognizers/>
                         <connections>
                             <outlet property="delegate" destination="n5K-Be-NDr" id="Phx-w7-FYl"/>
+                            <outletCollection property="gestureRecognizers" destination="fg1-dA-cuo" appends="YES" id="2tj-hN-1Av"/>
                         </connections>
                     </glkView>
                 </glkViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l0U-yc-Wgk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="fg1-dA-cuo">
+                    <connections>
+                        <action selector="handlePanFrom:" destination="n5K-Be-NDr" id="ZIh-oh-ZhE"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="97" y="135"/>
+            <point key="canvasLocation" x="-170" y="102"/>
         </scene>
     </scenes>
 </document>
