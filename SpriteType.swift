@@ -13,7 +13,7 @@ enum SpriteType : Melisse.SpriteType {
     case decoration, player, enemy, friendlyShot, enemyShot
 
     var isCollidable: Bool {
-        return self != .decoration
+        return self == .enemy || self == .enemyShot
     }
     
 }

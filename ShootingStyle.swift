@@ -35,7 +35,7 @@ class ShootingStyle {
         } else {
             shootInterval += definition.shootInterval
             
-            _ = shots(from: origin.point(of: sprite.frame))
+            _ = shots(from: origin.point(of: sprite.frame), type: sprite === GameScene.current?.player ? .friendlyShot : .enemyShot)
             
             shotAmount += shotAmountVariation
             
@@ -50,7 +50,7 @@ class ShootingStyle {
         }
     }
     
-    func shots(from point: Point<GLfloat>) -> [Sprite] {
+    func shots(from point: Point<GLfloat>, type: SpriteType) -> [Sprite] {
         return []
     }
     
@@ -68,7 +68,7 @@ class StraightShootingStyle : ShootingStyle {
         return self.definition as! StraightShootingStyleDefinition
     }
     
-    override func shots(from point: Point<GLfloat>) -> [Sprite] {
+    override func shots(from point: Point<GLfloat>, type: SpriteType) -> [Sprite] {
         var shots = [Sprite]()
         
         var left = point.x - (GLfloat(shotAmount - 1) * straightDefinition.space) / 2
@@ -78,6 +78,7 @@ class StraightShootingStyle : ShootingStyle {
             let shot = spriteFactory.sprite(definition.spriteDefinition)
             shot.frame.center = Point(x: left, y: point.y)
             shot.motion = ShotMotion(speed: speed)
+            shot.type = type
             
             shots.append(shot)
             

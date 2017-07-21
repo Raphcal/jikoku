@@ -26,6 +26,12 @@ class GameScene : Scene {
     /// Test de tir
     let style1: ShootingStyle
     
+    var isPaning = false
+    
+    private var isRunning: Bool {
+        return isPaning || TouchController.instance.touches.count > 0
+    }
+    
     init(panGestureRecognizer: UIPanGestureRecognizer) {
         if let atlas = SpriteAtlas(string: "私一二三四五六七八九十日本元気白", size: Int(spriteSize)) {
             self.atlas = atlas
@@ -58,6 +64,8 @@ class GameScene : Scene {
             inversionInterval: 0,
             spriteDefinition: 5,
             space: 32), spriteFactory: spriteFactory)
+        
+        panGestureRecognizer.addTarget(self, action: #selector(GameScene.panGestureRecognized(by:)))
     }
     
     func load() {
@@ -65,12 +73,25 @@ class GameScene : Scene {
     }
     
     func updateWith(_ timeSinceLastUpdate: TimeInterval) {
-        spriteFactory.updateWith(timeSinceLastUpdate)
-        style1.shoot(from: player, origin: .up, since: timeSinceLastUpdate)
+        let delta = isRunning ? timeSinceLastUpdate : 0
+        
+        spriteFactory.updateWith(delta)
+        style1.shoot(from: player, origin: .up, since: delta)
     }
     
     func draw() {
         spriteFactory.draw(at: camera.frame.topLeft)
+    }
+    
+    @objc func panGestureRecognized(by sender: UIPanGestureRecognizer) {
+        switch sender.state {
+        case .began:
+            isPaning = true
+        case .ended:
+            isPaning = false
+        default:
+            break
+        }
     }
 
 }
