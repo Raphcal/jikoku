@@ -26,13 +26,12 @@
                             <outletCollection property="gestureRecognizers" destination="fg1-dA-cuo" appends="YES" id="2tj-hN-1Av"/>
                         </connections>
                     </glkView>
+                    <connections>
+                        <outlet property="panGesture" destination="fg1-dA-cuo" id="RbG-pe-fqT"/>
+                    </connections>
                 </glkViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l0U-yc-Wgk" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="fg1-dA-cuo">
-                    <connections>
-                        <action selector="handlePanFrom:" destination="n5K-Be-NDr" id="ZIh-oh-ZhE"/>
-                    </connections>
-                </panGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="fg1-dA-cuo"/>
             </objects>
             <point key="canvasLocation" x="-170" y="102"/>
         </scene>

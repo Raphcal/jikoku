@@ -23,11 +23,10 @@ class GameScene : Scene {
     let player: Sprite
     var camera: Camera
     
-    
     /// Test de tir
     let style1: ShootingStyle
     
-    init() {
+    init(panGestureRecognizer: UIPanGestureRecognizer) {
         if let atlas = SpriteAtlas(string: "私一二三四五六七八九十日本元気白", size: Int(spriteSize)) {
             self.atlas = atlas
             spriteFactory = SpriteFactory(capacity: 1024, spriteAtlas: atlas)
@@ -44,6 +43,7 @@ class GameScene : Scene {
         
         player = spriteFactory.sprite(0, topLeft: Point(x: camera.frame.width / 2 - spriteSize, y: camera.frame.height - spriteSize - 128))
         player.setAnimation(DefaultAnimationName.normal, force: true)
+        player.motion = PlayerMotion(panGestureRecognizer: panGestureRecognizer)
         
         _ = spriteFactory.sprite(1, topLeft: Point(x: 64, y: 96))
         _ = spriteFactory.sprite(2, topLeft: Point(x: 256, y: 128))
