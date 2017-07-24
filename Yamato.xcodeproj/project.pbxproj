@@ -12,8 +12,6 @@
 		64326ABD1F139E55007673E3 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64326ABC1F139E55007673E3 /* GameScene.swift */; };
 		643FC8C01F1F6C9600EA7727 /* SpriteAtlas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643FC8BF1F1F6C9600EA7727 /* SpriteAtlas.swift */; };
 		643FC8C21F1F6CEF00EA7727 /* SpriteType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643FC8C11F1F6CEF00EA7727 /* SpriteType.swift */; };
-		647D7E971F20A62800721F76 /* Melisse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 647D7E8B1F20970700721F76 /* Melisse.framework */; };
-		647D7E9A1F20A64F00721F76 /* Melisse.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 647D7E8B1F20970700721F76 /* Melisse.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		647D7EA01F20C8A600721F76 /* ShootingStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647D7E9F1F20C8A600721F76 /* ShootingStyle.swift */; };
 		647D7EA41F20CE6000721F76 /* ShootingStyleDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647D7EA31F20CE6000721F76 /* ShootingStyleDefinition.swift */; };
 		647D7EA61F20D78A00721F76 /* ShotMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647D7EA51F20D78A00721F76 /* ShotMotion.swift */; };
@@ -22,30 +20,24 @@
 		648DD06F1F116EB9002A7398 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 648DD06D1F116EB9002A7398 /* Main.storyboard */; };
 		648DD0711F116EB9002A7398 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 648DD0701F116EB9002A7398 /* Assets.xcassets */; };
 		648DD0741F116EB9002A7398 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 648DD0721F116EB9002A7398 /* LaunchScreen.storyboard */; };
+		64EB3CCE1F26502B002596BB /* LevelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EB3CCD1F26502B002596BB /* LevelManager.swift */; };
 		64FCBCA61F25D39700536C57 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FCBCA51F25D39700536C57 /* Level.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		647D7E8A1F20970700721F76 /* PBXContainerItemProxy */ = {
+		64EB3CC81F264FF4002596BB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 647D7E851F20970700721F76 /* Melisse.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 643817D81CE7A194002C68F8;
 			remoteInfo = "Melisse-iOS";
 		};
-		647D7E8C1F20970700721F76 /* PBXContainerItemProxy */ = {
+		64EB3CCA1F264FF4002596BB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 647D7E851F20970700721F76 /* Melisse.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 6429FED01CE879000052ED4D;
 			remoteInfo = "Melisse-Mac";
-		};
-		647D7E981F20A63D00721F76 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 647D7E851F20970700721F76 /* Melisse.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 643817D71CE7A194002C68F8;
-			remoteInfo = "Melisse-iOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -56,7 +48,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				647D7E9A1F20A64F00721F76 /* Melisse.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,7 +59,7 @@
 		64326ABC1F139E55007673E3 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		643FC8BF1F1F6C9600EA7727 /* SpriteAtlas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpriteAtlas.swift; sourceTree = "<group>"; };
 		643FC8C11F1F6CEF00EA7727 /* SpriteType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpriteType.swift; sourceTree = "<group>"; };
-		647D7E851F20970700721F76 /* Melisse.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Melisse.xcodeproj; path = ../../../Documents/Swift/melisse/Melisse.xcodeproj; sourceTree = "<group>"; };
+		647D7E851F20970700721F76 /* Melisse.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Melisse.xcodeproj; path = ../melisse/Melisse.xcodeproj; sourceTree = "<group>"; };
 		647D7E9F1F20C8A600721F76 /* ShootingStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShootingStyle.swift; sourceTree = "<group>"; };
 		647D7EA31F20CE6000721F76 /* ShootingStyleDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShootingStyleDefinition.swift; sourceTree = "<group>"; };
 		647D7EA51F20D78A00721F76 /* ShotMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShotMotion.swift; sourceTree = "<group>"; };
@@ -79,6 +70,7 @@
 		648DD0701F116EB9002A7398 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		648DD0731F116EB9002A7398 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		648DD0751F116EB9002A7398 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		64EB3CCD1F26502B002596BB /* LevelManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelManager.swift; sourceTree = "<group>"; };
 		64FCBCA51F25D39700536C57 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,7 +79,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				647D7E971F20A62800721F76 /* Melisse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,15 +102,6 @@
 				643FC8C11F1F6CEF00EA7727 /* SpriteType.swift */,
 			);
 			name = Sprites;
-			sourceTree = "<group>";
-		};
-		647D7E861F20970700721F76 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				647D7E8B1F20970700721F76 /* Melisse.framework */,
-				647D7E8D1F20970700721F76 /* Melisse.framework */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		647D7E9D1F20C83B00721F76 /* Shots */ = {
@@ -167,10 +149,20 @@
 			path = Yamato;
 			sourceTree = "<group>";
 		};
+		64EB3CC41F264FF4002596BB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				64EB3CC91F264FF4002596BB /* Melisse.framework */,
+				64EB3CCB1F264FF4002596BB /* Melisse.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		64FCBCA31F25D38800536C57 /* Level */ = {
 			isa = PBXGroup;
 			children = (
 				64FCBCA51F25D39700536C57 /* Level.swift */,
+				64EB3CCD1F26502B002596BB /* LevelManager.swift */,
 			);
 			name = Level;
 			sourceTree = "<group>";
@@ -190,7 +182,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				647D7E991F20A63D00721F76 /* PBXTargetDependency */,
 			);
 			name = Yamato;
 			productName = Yamato;
@@ -227,7 +218,7 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 647D7E861F20970700721F76 /* Products */;
+					ProductGroup = 64EB3CC41F264FF4002596BB /* Products */;
 					ProjectRef = 647D7E851F20970700721F76 /* Melisse.xcodeproj */;
 				},
 			);
@@ -239,18 +230,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		647D7E8B1F20970700721F76 /* Melisse.framework */ = {
+		64EB3CC91F264FF4002596BB /* Melisse.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Melisse.framework;
-			remoteRef = 647D7E8A1F20970700721F76 /* PBXContainerItemProxy */;
+			remoteRef = 64EB3CC81F264FF4002596BB /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		647D7E8D1F20970700721F76 /* Melisse.framework */ = {
+		64EB3CCB1F264FF4002596BB /* Melisse.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Melisse.framework;
-			remoteRef = 647D7E8C1F20970700721F76 /* PBXContainerItemProxy */;
+			remoteRef = 64EB3CCA1F264FF4002596BB /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -277,6 +268,7 @@
 				64FCBCA61F25D39700536C57 /* Level.swift in Sources */,
 				64326ABD1F139E55007673E3 /* GameScene.swift in Sources */,
 				647D7EA01F20C8A600721F76 /* ShootingStyle.swift in Sources */,
+				64EB3CCE1F26502B002596BB /* LevelManager.swift in Sources */,
 				64846A331F1F3BF60053A926 /* Textures.swift in Sources */,
 				6410F9A01F21D69E005C2DDC /* PlayerMotion.swift in Sources */,
 				64326AB51F1398AA007673E3 /* GameViewController.swift in Sources */,
@@ -288,14 +280,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		647D7E991F20A63D00721F76 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Melisse-iOS";
-			targetProxy = 647D7E981F20A63D00721F76 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		648DD06D1F116EB9002A7398 /* Main.storyboard */ = {
