@@ -13,7 +13,7 @@ class ShootingStyle {
     let definition: ShootingStyleDefinition
     let spriteFactory: SpriteFactory
     
-    var shootInterval: TimeInterval = 0
+    var shootInterval: TimeInterval
     var shotAmount: Int
     var shotAmountVariation: Int
     
@@ -23,6 +23,7 @@ class ShootingStyle {
         self.definition = definition
         self.spriteFactory = spriteFactory
 
+        self.shootInterval = definition.shootInterval
         self.shotAmount = definition.shotAmount
         self.shotAmountVariation = definition.shotAmountVariation
         self.inversionInterval = definition.inversionInterval
