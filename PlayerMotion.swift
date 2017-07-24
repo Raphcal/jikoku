@@ -20,9 +20,27 @@ class PlayerMotion : Motion {
     var oldTranslation = Point<GLfloat>()
     var translation = Point<GLfloat>()
     
-    init(panGestureRecognizer: UIPanGestureRecognizer) {
+    var shootingStyles: [ShootingStyle]
+    var currentShootingStyle = 0
+    var shootingStyle: ShootingStyle {
+        return shootingStyles[currentShootingStyle]
+    }
+    
+    init(panGestureRecognizer: UIPanGestureRecognizer, spriteFactory: SpriteFactory) {
         self.panGestureRecognizer = panGestureRecognizer
         self.view = Director.instance?.viewController?.view
+        self.shootingStyles = [
+            StraightShootingStyle(definition: StraightShootingStyleDefinition(
+                shotAmount: 2,
+                shotAmountVariation: 0,
+                shotSpeed: 500,
+                shootInterval: 0.1,
+                baseAngle: toRadian(-90),
+                inversions: [],
+                inversionInterval: 0,
+                spriteDefinition: 5,
+                space: 32), spriteFactory: spriteFactory)
+        ]
         
         panGestureRecognizer.addTarget(self, action: #selector(PlayerMotion.panGestureRecognized(by:)))
     }
@@ -36,6 +54,8 @@ class PlayerMotion : Motion {
         move.y = move.y == 0 ? 0 : move.y / abs(move.y) * min(abs(move.y), delta * maxSpeed)
         
         sprite.frame.center += move
+        
+        shootingStyle.shoot(from: sprite, origin: .up, since: timeSinceLastUpdate)
     }
     
     @objc func panGestureRecognized(by sender: UIPanGestureRecognizer) {

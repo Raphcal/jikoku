@@ -23,9 +23,6 @@ class GameScene : Scene {
     let player: Sprite
     var camera: Camera
     
-    /// Test de tir
-    let style1: ShootingStyle
-    
     var isPaning = false
     
     private var isRunning: Bool {
@@ -49,21 +46,10 @@ class GameScene : Scene {
         
         player = spriteFactory.sprite(0, topLeft: Point(x: camera.frame.width / 2 - spriteSize, y: camera.frame.height - spriteSize - 128))
         player.setAnimation(DefaultAnimationName.normal, force: true)
-        player.motion = PlayerMotion(panGestureRecognizer: panGestureRecognizer)
+        player.motion = PlayerMotion(panGestureRecognizer: panGestureRecognizer, spriteFactory: spriteFactory)
         
         _ = spriteFactory.sprite(1, topLeft: Point(x: 64, y: 96))
         _ = spriteFactory.sprite(2, topLeft: Point(x: 256, y: 128))
-        
-        style1 = StraightShootingStyle(definition: StraightShootingStyleDefinition(
-            shotAmount: 2,
-            shotAmountVariation: 0,
-            shotSpeed: 500,
-            shootInterval: 0.1,
-            baseAngle: toRadian(-90),
-            inversions: [],
-            inversionInterval: 0,
-            spriteDefinition: 5,
-            space: 32), spriteFactory: spriteFactory)
         
         panGestureRecognizer.addTarget(self, action: #selector(GameScene.panGestureRecognized(by:)))
     }
@@ -74,9 +60,7 @@ class GameScene : Scene {
     
     func updateWith(_ timeSinceLastUpdate: TimeInterval) {
         let delta = isRunning ? timeSinceLastUpdate : 0
-        
         spriteFactory.updateWith(delta)
-        style1.shoot(from: player, origin: .up, since: delta)
     }
     
     func draw() {
