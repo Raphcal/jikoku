@@ -21,6 +21,7 @@
 		648DD0711F116EB9002A7398 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 648DD0701F116EB9002A7398 /* Assets.xcassets */; };
 		648DD0741F116EB9002A7398 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 648DD0721F116EB9002A7398 /* LaunchScreen.storyboard */; };
 		64EB3CCE1F26502B002596BB /* LevelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EB3CCD1F26502B002596BB /* LevelManager.swift */; };
+		64EB3CD31F265FA9002596BB /* EnemyMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EB3CD21F265FA9002596BB /* EnemyMotion.swift */; };
 		64FCBCA61F25D39700536C57 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FCBCA51F25D39700536C57 /* Level.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +72,7 @@
 		648DD0731F116EB9002A7398 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		648DD0751F116EB9002A7398 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64EB3CCD1F26502B002596BB /* LevelManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelManager.swift; sourceTree = "<group>"; };
+		64EB3CD21F265FA9002596BB /* EnemyMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyMotion.swift; sourceTree = "<group>"; };
 		64FCBCA51F25D39700536C57 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -96,7 +98,6 @@
 		643FC8BE1F1F6C8900EA7727 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
-				6410F99F1F21D69E005C2DDC /* PlayerMotion.swift */,
 				64846A321F1F3BF60053A926 /* Textures.swift */,
 				643FC8BF1F1F6C9600EA7727 /* SpriteAtlas.swift */,
 				643FC8C11F1F6CEF00EA7727 /* SpriteType.swift */,
@@ -117,6 +118,7 @@
 		648DD05D1F116EB9002A7398 = {
 			isa = PBXGroup;
 			children = (
+				64EB3CD11F265F53002596BB /* Motion */,
 				64FCBCA31F25D38800536C57 /* Level */,
 				64326ABB1F139E40007673E3 /* Scenes */,
 				647D7E9D1F20C83B00721F76 /* Shots */,
@@ -156,6 +158,15 @@
 				64EB3CCB1F264FF4002596BB /* Melisse.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		64EB3CD11F265F53002596BB /* Motion */ = {
+			isa = PBXGroup;
+			children = (
+				6410F99F1F21D69E005C2DDC /* PlayerMotion.swift */,
+				64EB3CD21F265FA9002596BB /* EnemyMotion.swift */,
+			);
+			name = Motion;
 			sourceTree = "<group>";
 		};
 		64FCBCA31F25D38800536C57 /* Level */ = {
@@ -276,6 +287,7 @@
 				647D7EA41F20CE6000721F76 /* ShootingStyleDefinition.swift in Sources */,
 				643FC8C01F1F6C9600EA7727 /* SpriteAtlas.swift in Sources */,
 				648DD06A1F116EB9002A7398 /* AppDelegate.swift in Sources */,
+				64EB3CD31F265FA9002596BB /* EnemyMotion.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
