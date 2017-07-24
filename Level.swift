@@ -37,6 +37,7 @@ enum Formation {
     case stationary
     
     /// Arrive doucement du haut de l'écran puis accélère d'un coup en tombant.
+    /// TODO: Créer les ennemis à quelques secondes d'interval et décaler verticalement l'emplacement de création pour éviter qu'ils se superposent.
     case fall
     
     /// Descend en faisant une courbe en forme de S.
