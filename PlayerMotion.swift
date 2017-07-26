@@ -17,6 +17,8 @@ class PlayerMotion : Motion {
     let panGestureRecognizer: UIPanGestureRecognizer
     let view: UIView?
     
+    let spriteFactory: SpriteFactory
+    
     var oldTranslation = Point<GLfloat>()
     var translation = Point<GLfloat>()
     
@@ -29,6 +31,7 @@ class PlayerMotion : Motion {
     init(panGestureRecognizer: UIPanGestureRecognizer, spriteFactory: SpriteFactory) {
         self.panGestureRecognizer = panGestureRecognizer
         self.view = Director.instance?.viewController?.view
+        self.spriteFactory = spriteFactory
         self.shootingStyles = [
             StraightShootingStyle(definition: StraightShootingStyleDefinition(
                 shotAmount: 2,
@@ -45,6 +48,10 @@ class PlayerMotion : Motion {
         panGestureRecognizer.addTarget(self, action: #selector(PlayerMotion.panGestureRecognized(by:)))
     }
     
+    func load(_ sprite: Sprite) {
+        sprite.hitbox = PlayerHitbox(sprite: sprite, size: Size(width: 8, height: 8))
+    }
+    
     func updateWith(_ timeSinceLastUpdate: TimeInterval, sprite: Sprite) {
         var move = translation - oldTranslation
         oldTranslation = translation
@@ -56,6 +63,12 @@ class PlayerMotion : Motion {
         sprite.frame.center += move
         
         shootingStyle.shoot(from: sprite, origin: .up, since: timeSinceLastUpdate)
+        
+        for other in spriteFactory.groups["enemy"] ?? [] {
+            if sprite.hitbox.collides(with: other.hitbox) {
+                sprite.destroy()
+            }
+        }
     }
     
     @objc func panGestureRecognized(by sender: UIPanGestureRecognizer) {
