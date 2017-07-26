@@ -21,13 +21,14 @@
 		648DD0711F116EB9002A7398 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 648DD0701F116EB9002A7398 /* Assets.xcassets */; };
 		648DD0741F116EB9002A7398 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 648DD0721F116EB9002A7398 /* LaunchScreen.storyboard */; };
 		64D03B251F289119009A0212 /* Melisse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64EB3CC91F264FF4002596BB /* Melisse.framework */; };
+		64D03B281F2897BD009A0212 /* Melisse.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 64EB3CC91F264FF4002596BB /* Melisse.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		64EB3CCE1F26502B002596BB /* LevelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EB3CCD1F26502B002596BB /* LevelManager.swift */; };
 		64EB3CD31F265FA9002596BB /* EnemyMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EB3CD21F265FA9002596BB /* EnemyMotion.swift */; };
 		64FCBCA61F25D39700536C57 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FCBCA51F25D39700536C57 /* Level.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		6439EE6E1F288BCA00BAB051 /* PBXContainerItemProxy */ = {
+		64D03B261F2897B0009A0212 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 647D7E851F20970700721F76 /* Melisse.xcodeproj */;
 			proxyType = 1;
@@ -57,6 +58,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				64D03B281F2897BD009A0212 /* Melisse.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,7 +214,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				6439EE6F1F288BCA00BAB051 /* PBXTargetDependency */,
+				64D03B271F2897B0009A0212 /* PBXTargetDependency */,
 			);
 			name = Yamato;
 			productName = Yamato;
@@ -314,10 +316,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		6439EE6F1F288BCA00BAB051 /* PBXTargetDependency */ = {
+		64D03B271F2897B0009A0212 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Melisse-iOS";
-			targetProxy = 6439EE6E1F288BCA00BAB051 /* PBXContainerItemProxy */;
+			targetProxy = 64D03B261F2897B0009A0212 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
