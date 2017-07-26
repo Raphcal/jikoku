@@ -47,7 +47,9 @@ class GameScene : Scene {
         
         player = spriteFactory.sprite(0, topLeft: Point(x: camera.frame.width / 2 - spriteSize, y: camera.frame.height - spriteSize - 128))
         player.setAnimation(DefaultAnimationName.normal, force: true)
-        player.motion = PlayerMotion(panGestureRecognizer: panGestureRecognizer, spriteFactory: spriteFactory)
+        let playerMotion = PlayerMotion(panGestureRecognizer: panGestureRecognizer, spriteFactory: spriteFactory)
+        player.motion = playerMotion
+        playerMotion.load(player)
         
         levelManager = LevelManager(level: Level(waves: [], boss: .antonym), spriteFactory: spriteFactory)
         levelManager.gameScene = self
