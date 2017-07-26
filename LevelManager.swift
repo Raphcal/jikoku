@@ -15,8 +15,6 @@ class LevelManager {
     let spriteFactory: SpriteFactory
     var gameScene: GameScene?
     
-    let random = Random()
-    
     var interval: TimeInterval = 0
     
     init(level: Level, spriteFactory: SpriteFactory) {
@@ -30,7 +28,7 @@ class LevelManager {
         while interval > 2 {
             interval -= 2
             
-            let enemy = spriteFactory.sprite(random.next(spriteFactory.definitions.count - 1) + 1)
+            let enemy = spriteFactory.sprite(random(from: 1, to: spriteFactory.definitions.count - 1))
             let motion = StationaryEnemyMotion(lifePoints: 10, gameScene: gameScene!)
             enemy.motion = motion
             motion.load(enemy)

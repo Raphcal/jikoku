@@ -7,10 +7,23 @@
 //
 
 import Foundation
+import Melisse
 
 struct Level {
     var waves: [Wave]
     var boss: Boss
+    
+    static func random(with kanjis: [Character]) -> Level {
+        var waves = [Wave]()
+        for _ in 0 ..< 10 {
+            var groups = [Group]()
+            for _ in 0 ..< Melisse.random(from: 1, to: 4) {
+                groups.append(Group(kanji: Melisse.random(itemFrom: kanjis), shape: .round, formation: .vertical, shootingStyleDefinition: nil))
+            }
+            waves.append(Wave(groups: groups))
+        }
+        return Level(waves: waves, boss: Boss.all[Melisse.random(Boss.all.count)])
+    }
 }
 
 struct Wave {
@@ -18,9 +31,16 @@ struct Wave {
 }
 
 struct Group {
-    var formation: Formation
     var kanji: Character
-    var shootingStyle: ShootingStyle
+    var shape: Shape
+    var formation: Formation
+    var shootingStyleDefinition: ShootingStyleDefinition?
+}
+
+enum Shape {
+    case round
+    case triangular
+    case losange
 }
 
 enum Formation {
@@ -54,6 +74,8 @@ enum Formation {
     
     /// Apparaît depuis l'arrière plan et reste stationnaire.
     case rise
+    
+    static let all = [Formation.vertical, .horizontal, .stationary, .fall, .curve, .quarterCircle, .circle, .swarm, .rise]
 }
 
 enum Boss {
@@ -68,4 +90,6 @@ enum Boss {
     
     /// Un ennemi central avec un sens regroupant le sens de plusieurs autres petits kanjis qui tournent autour (par exemple : 虹 + 赤黄緑青紫 ou 百 + 一二三四五). L'ennemi central ne tire pas tant qu'il reste des satellites. Les satellites tournent en cercle. Le cercle s'élargit et rétrécie. Les satellites tirent l'un à l'extérieur, l'autre à l'extérieur quand le cercle s'agrandit.
     case rainbow
+    
+    static let all = [Boss.irregularReading, .antonym, .bigSmall, .rainbow]
 }

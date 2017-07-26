@@ -49,12 +49,11 @@ class StationaryEnemyMotion : EnemyMotion {
     var shootingStyle: ShootingStyle!
     
     func load(_ sprite: Sprite) {
-        let random = Random()
         var frame = sprite.frame
         frame.bottom = gameScene.camera.frame.top - 1
-        frame.x = random.next(View.instance.width - sprite.frame.width) + sprite.frame.width / 2
+        frame.left = random(from: 0, to: View.instance.width - sprite.frame.width)
         sprite.frame = frame
-        acceleration = random.next(500) + 200
+        acceleration = random(from: 200, to: 700)
         
         shootingStyle = StraightShootingStyle(definition: StraightShootingStyleDefinition(shotAmount: 1, shotAmountVariation: 0, shotSpeed: 500, shootInterval: 0.25, baseAngle: .pi / 2, inversions: [], inversionInterval: 0, spriteDefinition: 1, space: 0), spriteFactory: gameScene.spriteFactory)
     }
