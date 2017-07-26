@@ -12,6 +12,8 @@ import Melisse
 
 fileprivate let spriteSize: GLfloat = 48
 
+let PlayerDiedNotification = Notification.Name(rawValue: "playerDiedNotification")
+
 class GameScene : Scene {
 
     static var current: GameScene?
@@ -22,7 +24,9 @@ class GameScene : Scene {
     let spriteFactory: SpriteFactory
     let levelManager: LevelManager
     let player: Sprite
-    var camera: Camera
+    var camera = Camera()
+    
+    var lives = 3
     
     var isPaning = false
     
@@ -40,12 +44,9 @@ class GameScene : Scene {
             atlas = SpriteAtlas()
         }
         
-        let screenBounds = UIScreen.main.bounds
+        camera.center(View.instance.width, height: View.instance.height)
         
-        camera = Camera()
-        camera.center(GLfloat(screenBounds.width), height: GLfloat(screenBounds.height))
-        
-        player = spriteFactory.sprite(0, topLeft: Point(x: camera.frame.width / 2 - spriteSize, y: camera.frame.height - spriteSize - 128))
+        player = spriteFactory.sprite(0, topLeft: Point(x: camera.frame.width / 2 - spriteSize / 2, y: camera.frame.height - spriteSize - 128))
         player.setAnimation(DefaultAnimationName.normal, force: true)
         let playerMotion = PlayerMotion(panGestureRecognizer: panGestureRecognizer, spriteFactory: spriteFactory)
         player.motion = playerMotion

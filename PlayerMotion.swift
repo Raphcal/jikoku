@@ -67,6 +67,7 @@ class PlayerMotion : Motion {
         for other in spriteFactory.groups["enemy"] ?? [] {
             if sprite.hitbox.collides(with: other.hitbox) {
                 sprite.destroy()
+                NotificationCenter.default.post(name: PlayerDiedNotification, object: nil)
             }
         }
     }
