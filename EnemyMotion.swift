@@ -43,8 +43,8 @@ class StationaryEnemyMotion : EnemyMotion {
     
     var speed: GLfloat = 0
     var acceleration: GLfloat = 0
-    let deceleration: GLfloat = 800
-    var targetY: GLfloat = 96
+    let deceleration: GLfloat = 1000
+    var targetY: GLfloat = 32
     
     var shootingStyle: ShootingStyle!
     
