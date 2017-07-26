@@ -10,7 +10,7 @@
 		6410F9A01F21D69E005C2DDC /* PlayerMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6410F99F1F21D69E005C2DDC /* PlayerMotion.swift */; };
 		64326AB51F1398AA007673E3 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64326AB41F1398AA007673E3 /* GameViewController.swift */; };
 		64326ABD1F139E55007673E3 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64326ABC1F139E55007673E3 /* GameScene.swift */; };
-		643CEA001F28A58700A2D4C6 /* PlayerHitbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643CE9FF1F28A58700A2D4C6 /* PlayerHitbox.swift */; };
+		643CEA001F28A58700A2D4C6 /* CenteredSpriteHitbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643CE9FF1F28A58700A2D4C6 /* CenteredSpriteHitbox.swift */; };
 		643FC8C01F1F6C9600EA7727 /* SpriteAtlas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643FC8BF1F1F6C9600EA7727 /* SpriteAtlas.swift */; };
 		643FC8C21F1F6CEF00EA7727 /* SpriteType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643FC8C11F1F6CEF00EA7727 /* SpriteType.swift */; };
 		647D7EA01F20C8A600721F76 /* ShootingStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647D7E9F1F20C8A600721F76 /* ShootingStyle.swift */; };
@@ -69,7 +69,7 @@
 		6410F99F1F21D69E005C2DDC /* PlayerMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerMotion.swift; sourceTree = "<group>"; };
 		64326AB41F1398AA007673E3 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameViewController.swift; path = Yamato/GameViewController.swift; sourceTree = "<group>"; };
 		64326ABC1F139E55007673E3 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		643CE9FF1F28A58700A2D4C6 /* PlayerHitbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerHitbox.swift; sourceTree = "<group>"; };
+		643CE9FF1F28A58700A2D4C6 /* CenteredSpriteHitbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenteredSpriteHitbox.swift; sourceTree = "<group>"; };
 		643FC8BF1F1F6C9600EA7727 /* SpriteAtlas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpriteAtlas.swift; sourceTree = "<group>"; };
 		643FC8C11F1F6CEF00EA7727 /* SpriteType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpriteType.swift; sourceTree = "<group>"; };
 		647D7E851F20970700721F76 /* Melisse.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Melisse.xcodeproj; path = ../melisse/Melisse.xcodeproj; sourceTree = "<group>"; };
@@ -115,7 +115,7 @@
 				64846A321F1F3BF60053A926 /* Textures.swift */,
 				643FC8BF1F1F6C9600EA7727 /* SpriteAtlas.swift */,
 				643FC8C11F1F6CEF00EA7727 /* SpriteType.swift */,
-				643CE9FF1F28A58700A2D4C6 /* PlayerHitbox.swift */,
+				643CE9FF1F28A58700A2D4C6 /* CenteredSpriteHitbox.swift */,
 			);
 			name = Sprites;
 			sourceTree = "<group>";
@@ -300,7 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				643CEA001F28A58700A2D4C6 /* PlayerHitbox.swift in Sources */,
+				643CEA001F28A58700A2D4C6 /* CenteredSpriteHitbox.swift in Sources */,
 				643FC8C21F1F6CEF00EA7727 /* SpriteType.swift in Sources */,
 				64FCBCA61F25D39700536C57 /* Level.swift in Sources */,
 				64326ABD1F139E55007673E3 /* GameScene.swift in Sources */,

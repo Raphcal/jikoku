@@ -49,7 +49,7 @@ class PlayerMotion : Motion {
     }
     
     func load(_ sprite: Sprite) {
-        sprite.hitbox = PlayerHitbox(sprite: sprite, size: Size(width: 8, height: 8))
+        sprite.hitbox = CenteredSpriteHitbox(sprite: sprite, size: Size(width: 8, height: 8))
     }
     
     func updateWith(_ timeSinceLastUpdate: TimeInterval, sprite: Sprite) {

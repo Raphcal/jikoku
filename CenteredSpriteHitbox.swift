@@ -1,5 +1,5 @@
 //
-//  PlayerHitbox.swift
+//  CenteredSpriteHitbox.swift
 //  Yamato
 //
 //  Created by Raphaël Calabro on 26/07/2017.
@@ -8,7 +8,7 @@
 
 import Melisse
 
-struct PlayerHitbox : Hitbox {
+struct CenteredSpriteHitbox : Hitbox {
     
     var sprite: Sprite
     var size: Size<GLfloat>
