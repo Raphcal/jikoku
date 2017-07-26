@@ -86,9 +86,9 @@ class GameScene : Scene {
     
     private static func playerSprite(spriteFactory: SpriteFactory, panGestureRecognizer: UIPanGestureRecognizer, cameraFrame: Rectangle<GLfloat>) -> Sprite {
         let player = spriteFactory.sprite(0, topLeft: Point(x: cameraFrame.width / 2 - spriteSize / 2, y: cameraFrame.height - spriteSize - 128))
-        player.setAnimation(DefaultAnimationName.normal, force: true)
         let playerMotion = PlayerMotion(panGestureRecognizer: panGestureRecognizer, spriteFactory: spriteFactory)
         player.motion = playerMotion
+        playerMotion.load(player)
         return player
     }
 
