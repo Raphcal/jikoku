@@ -46,11 +46,7 @@ class GameScene : Scene {
         
         camera.center(View.instance.width, height: View.instance.height)
         
-        player = spriteFactory.sprite(0, topLeft: Point(x: camera.frame.width / 2 - spriteSize / 2, y: camera.frame.height - spriteSize - 128))
-        player.setAnimation(DefaultAnimationName.normal, force: true)
-        let playerMotion = PlayerMotion(panGestureRecognizer: panGestureRecognizer, spriteFactory: spriteFactory)
-        player.motion = playerMotion
-        playerMotion.load(player)
+        player = GameScene.playerSprite(spriteFactory: spriteFactory, panGestureRecognizer: panGestureRecognizer, cameraFrame: camera.frame)
         
         levelManager = LevelManager(level: Level(waves: [], boss: .antonym), spriteFactory: spriteFactory)
         levelManager.gameScene = self
@@ -60,6 +56,10 @@ class GameScene : Scene {
     
     func load() {
         GameScene.current = self
+
+        NotificationCenter.default.addObserver(forName: PlayerDiedNotification, object: nil, queue: nil) { _ in
+            self.lives -= 1
+        }
     }
     
     func updateWith(_ timeSinceLastUpdate: TimeInterval) {
@@ -82,6 +82,14 @@ class GameScene : Scene {
         default:
             break
         }
+    }
+    
+    private static func playerSprite(spriteFactory: SpriteFactory, panGestureRecognizer: UIPanGestureRecognizer, cameraFrame: Rectangle<GLfloat>) -> Sprite {
+        let player = spriteFactory.sprite(0, topLeft: Point(x: cameraFrame.width / 2 - spriteSize / 2, y: cameraFrame.height - spriteSize - 128))
+        player.setAnimation(DefaultAnimationName.normal, force: true)
+        let playerMotion = PlayerMotion(panGestureRecognizer: panGestureRecognizer, spriteFactory: spriteFactory)
+        player.motion = playerMotion
+        return player
     }
 
 }
