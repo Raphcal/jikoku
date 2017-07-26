@@ -20,6 +20,7 @@ class GameScene : Scene {
     
     let atlas: SpriteAtlas
     let spriteFactory: SpriteFactory
+    let levelManager: LevelManager
     let player: Sprite
     var camera: Camera
     
@@ -48,8 +49,8 @@ class GameScene : Scene {
         player.setAnimation(DefaultAnimationName.normal, force: true)
         player.motion = PlayerMotion(panGestureRecognizer: panGestureRecognizer, spriteFactory: spriteFactory)
         
-        _ = spriteFactory.sprite(1, topLeft: Point(x: 64, y: 96))
-        _ = spriteFactory.sprite(2, topLeft: Point(x: 256, y: 128))
+        levelManager = LevelManager(level: Level(waves: [], boss: .antonym), spriteFactory: spriteFactory)
+        levelManager.gameScene = self
         
         panGestureRecognizer.addTarget(self, action: #selector(GameScene.panGestureRecognized(by:)))
     }
@@ -60,6 +61,8 @@ class GameScene : Scene {
     
     func updateWith(_ timeSinceLastUpdate: TimeInterval) {
         let delta = isRunning ? timeSinceLastUpdate : 0
+        
+        levelManager.update(with: delta)
         spriteFactory.updateWith(delta)
     }
     

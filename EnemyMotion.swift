@@ -13,11 +13,13 @@ import GLKit
 class EnemyMotion : Motion {
     
     var lifePoints: Int
-    var spriteFactory: SpriteFactory
+    let gameScene: GameScene
+    let spriteFactory: SpriteFactory
     
-    init(lifePoints: Int, spriteFactory: SpriteFactory) {
+    init(lifePoints: Int, gameScene: GameScene) {
         self.lifePoints = lifePoints
-        self.spriteFactory = spriteFactory
+        self.gameScene = gameScene
+        self.spriteFactory = gameScene.spriteFactory
     }
     
     func updateWith(_ timeSinceLastUpdate: TimeInterval, sprite: Sprite) {
@@ -28,7 +30,6 @@ class EnemyMotion : Motion {
                 lifePoints -= 1
                 if lifePoints <= 0 {
                     sprite.destroy()
-                    return
                 }
             }
         }
@@ -40,19 +41,55 @@ class StationaryEnemyMotion : EnemyMotion {
     
     var state = State.entering
     
+    var speed: GLfloat = 0
+    var acceleration: GLfloat = 0
+    let deceleration: GLfloat = 800
+    var targetY: GLfloat = 96
+    
+    var shootingStyle: ShootingStyle!
+    
+    func load(_ sprite: Sprite) {
+        let random = Random()
+        var frame = sprite.frame
+        frame.bottom = gameScene.camera.frame.top - 1
+        frame.x = random.next(View.instance.width - sprite.frame.width) + sprite.frame.width / 2
+        sprite.frame = frame
+        acceleration = random.next(500) + 200
+        
+        shootingStyle = StraightShootingStyle(definition: StraightShootingStyleDefinition(shotAmount: 1, shotAmountVariation: 0, shotSpeed: 500, shootInterval: 0.25, baseAngle: .pi / 2, inversions: [], inversionInterval: 0, spriteDefinition: 1, space: 0), spriteFactory: gameScene.spriteFactory)
+    }
+    
     override func updateWith(_ timeSinceLastUpdate: TimeInterval, sprite: Sprite) {
         super.updateWith(timeSinceLastUpdate, sprite: sprite)
+        let delta = GLfloat(timeSinceLastUpdate)
         
         switch state {
         case .entering:
+            speed += acceleration * delta
+            var frame = sprite.frame
+            frame.y += speed * delta
+            if frame.y >= targetY {
+                frame.y = targetY
+                state = .decelerating
+            }
+            sprite.frame = frame
             break
+        case .decelerating:
+            speed -= deceleration * delta
+            var frame = sprite.frame
+            frame.y += speed * delta
+            sprite.frame = frame
+            if speed < 0 {
+                state = .stationary
+            }
         case .stationary:
+            shootingStyle.shoot(from: sprite, origin: .down, since: timeSinceLastUpdate)
             break
         }
     }
     
     enum State {
-        case entering, stationary
+        case entering, decelerating, stationary
     }
     
 }
