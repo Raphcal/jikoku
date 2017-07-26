@@ -8,6 +8,7 @@
 
 import Melisse
 
+/// Classe de base des styles de tir.
 class ShootingStyle {
     
     let definition: ShootingStyleDefinition
@@ -29,6 +30,7 @@ class ShootingStyle {
         self.inversionInterval = definition.inversionInterval
     }
     
+    /// Fait tirer le sprite donné.
     func shoot(from sprite: Sprite, origin: Direction, since lastUpdate: TimeInterval) {
         if shootInterval > 0 {
             shootInterval -= lastUpdate
@@ -51,10 +53,12 @@ class ShootingStyle {
         }
     }
     
+    /// Créé les sprites des tirs.
     func shots(from point: Point<GLfloat>, type: SpriteType) -> [Sprite] {
         return []
     }
     
+    /// Exécute les inversions propres au style de tir.
     func invert() {
         if definition.inversions.contains(.amount) {
             shotAmountVariation = -shotAmountVariation
@@ -72,14 +76,16 @@ class StraightShootingStyle : ShootingStyle {
     override func shots(from point: Point<GLfloat>, type: SpriteType) -> [Sprite] {
         var shots = [Sprite]()
         
+        var spriteDefinition = spriteFactory.definitions[definition.spriteDefinition]
+        spriteDefinition.type = type
+        
         var left = point.x - (GLfloat(shotAmount - 1) * straightDefinition.space) / 2
         for _ in 0 ..< shotAmount {
             let speed = Point<GLfloat>(x: cosf(definition.baseAngle) * definition.shotSpeed,
                                        y: sinf(definition.baseAngle) * definition.shotSpeed)
-            let shot = spriteFactory.sprite(definition.spriteDefinition)
+            let shot = spriteFactory.sprite(spriteDefinition)
             shot.frame.center = Point(x: left, y: point.y)
             shot.motion = ShotMotion(speed: speed)
-            shot.type = type
             
             shots.append(shot)
             
