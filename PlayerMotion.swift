@@ -28,6 +28,8 @@ class PlayerMotion : Motion {
         return shootingStyles[currentShootingStyle]
     }
     
+    var invicibility: TimeInterval?
+    
     init(panGestureRecognizer: UIPanGestureRecognizer, spriteFactory: SpriteFactory) {
         self.panGestureRecognizer = panGestureRecognizer
         self.view = Director.instance?.viewController?.view
@@ -64,12 +66,22 @@ class PlayerMotion : Motion {
         
         shootingStyle.shoot(from: sprite, origin: .up, since: timeSinceLastUpdate)
         
-        for other in spriteFactory.groups["enemy"] ?? [] {
-            if sprite.hitbox.collides(with: other.hitbox) {
-                sprite.destroy()
-                NotificationCenter.default.post(name: PlayerDiedNotification, object: nil)
+        if var invicibility = invicibility {
+            invicibility -= timeSinceLastUpdate
+            self.invicibility = invicibility > 0 ? invicibility : nil
+        } else {
+            for other in spriteFactory.groups["enemy"] ?? [] {
+                if sprite.hitbox.collides(with: other.hitbox) {
+                    sprite.destroy()
+                    NotificationCenter.default.post(name: PlayerDiedNotification, object: nil)
+                }
             }
         }
+    }
+    
+    func makeInvicible(sprite: Sprite, during interval: TimeInterval = 3) {
+        invicibility = interval
+        sprite.setBlinkingWith(duration: interval)
     }
     
     @objc func panGestureRecognized(by sender: UIPanGestureRecognizer) {

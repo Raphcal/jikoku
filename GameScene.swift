@@ -69,7 +69,7 @@ class GameScene : Scene {
     
     func reload() {
         player = GameScene.playerSprite(spriteFactory: spriteFactory, panGestureRecognizer: panGestureRecognizer, cameraFrame: camera.frame)
-        player.setBlinkingWith(duration: 3)
+        (player.motion as! PlayerMotion).makeInvicible(sprite: player)
     }
     
     func updateWith(_ timeSinceLastUpdate: TimeInterval) {
