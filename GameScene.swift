@@ -23,11 +23,13 @@ class GameScene : Scene {
     let atlas: SpriteAtlas
     let spriteFactory: SpriteFactory
     let levelManager: LevelManager
-    let player: Sprite
+    var player: Sprite
     var camera = Camera()
     
     var lives = 3
+    var reloadTimer: TimeInterval?
     
+    let panGestureRecognizer: UIPanGestureRecognizer
     var isPaning = false
     
     private var isRunning: Bool {
@@ -35,7 +37,9 @@ class GameScene : Scene {
     }
     
     init(panGestureRecognizer: UIPanGestureRecognizer) {
-        if let atlas = SpriteAtlas(string: "私一二三四五六七八九十日本元気白", size: Int(spriteSize)) {
+        self.panGestureRecognizer = panGestureRecognizer
+
+        if let atlas = SpriteAtlas(string: "私一二三四五六七八九十百千万年月火水木金土曜日本元気白黒西北南東国小大人子男女母父中長高出入時行見午先後前生間上下今学校円外来山話読語書名川水雨半電聞食車何毎天右左友休早", size: Int(spriteSize)) {
             self.atlas = atlas
             spriteFactory = SpriteFactory(capacity: 1024, spriteAtlas: atlas)
         } else {
@@ -59,7 +63,13 @@ class GameScene : Scene {
 
         NotificationCenter.default.addObserver(forName: PlayerDiedNotification, object: nil, queue: nil) { _ in
             self.lives -= 1
+            self.reloadTimer = 1
         }
+    }
+    
+    func reload() {
+        player = GameScene.playerSprite(spriteFactory: spriteFactory, panGestureRecognizer: panGestureRecognizer, cameraFrame: camera.frame)
+        player.setBlinkingWith(duration: 3)
     }
     
     func updateWith(_ timeSinceLastUpdate: TimeInterval) {
@@ -67,6 +77,16 @@ class GameScene : Scene {
         
         levelManager.update(with: delta)
         spriteFactory.updateWith(delta)
+        
+        if var reloadTimer = reloadTimer {
+            reloadTimer -= timeSinceLastUpdate
+            if reloadTimer <= 0 {
+                self.reloadTimer = nil
+                Director.instance!.restart()
+            } else {
+                self.reloadTimer = reloadTimer
+            }
+        }
     }
     
     func draw() {
