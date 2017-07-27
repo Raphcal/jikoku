@@ -13,15 +13,17 @@ struct Level {
     var waves: [Wave]
     var boss: Boss
     
-    static func random(with kanjis: [Character]) -> Level {
+    static func random(with kanjis: [Kanji]) -> Level {
         var waves = [Wave]()
         for _ in 0 ..< 10 {
             var groups = [Group]()
             for _ in 0 ..< Melisse.random(from: 1, to: 4) {
+                let size = ShapeSize.random
                 groups.append(Group(
-                    kanji: Kanji(character: Melisse.random(itemFrom: kanjis), meanings: [], kunyomis: [], onyomis: []),
+                    kanji: Melisse.random(itemFrom: kanjis),
+                    count: size.randomCount,
                     shape: .round,
-                    size: ShapeSize.random,
+                    size: size,
                     formation: .vertical,
                     shootingStyleDefinition: nil))
             }
@@ -37,6 +39,7 @@ struct Wave {
 
 struct Group {
     var kanji: Kanji
+    var count: Int
     var shape: Shape
     var size: ShapeSize
     var formation: Formation
@@ -75,6 +78,21 @@ enum ShapeSize {
             return 64
         case .bigger:
             return 96
+        }
+    }
+    
+    var randomCount: Int {
+        switch self {
+        case .smaller:
+            return Melisse.random(from: 5, to: 15)
+        case .small:
+            return Melisse.random(from: 3, to: 10)
+        case .medium:
+            return Melisse.random(from: 3, to: 5)
+        case .big:
+            return Melisse.random(from: 1, to: 3)
+        case .bigger:
+            return 1
         }
     }
     
