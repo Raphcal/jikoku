@@ -44,6 +44,9 @@ protocol ShootingStyleDefinition {
     /// Numéro du sprite dans l'atlas
     var spriteDefinition: Int { get }
     
+    /// Créé une instance de ShootingStyle à partir de cette définition.
+    /// - Parameter spriteFactory: Fabrique de sprites.
+    /// - Returns: Une nouvelle instance de ShootingStyle basée sur cette définition.
     func shootingStyle(spriteFactory: SpriteFactory) -> ShootingStyle
 
 }
