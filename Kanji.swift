@@ -29,5 +29,6 @@ struct Kanji {
         Kanji(character: "百", meanings: ["hundred"], kunyomis: ["もも"], onyomis: ["ヒャク", "ビャク"]),
         Kanji(character: "千", meanings: ["thousand"], kunyomis: ["ち"], onyomis: ["セン"]),
         Kanji(character: "万", meanings: ["ten thousand"], kunyomis: ["よろず"], onyomis: ["マン", "バン"]),
+        Kanji(character: "月", meanings: ["moon", "month"], kunyomis: ["つき"], onyomis: ["ゲツ", "ガツ"]),
     ]
 }

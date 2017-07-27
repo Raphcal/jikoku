@@ -52,7 +52,7 @@ class GameScene : Scene {
         
         player = GameScene.playerSprite(spriteFactory: spriteFactory, panGestureRecognizer: panGestureRecognizer, cameraFrame: camera.frame)
         
-        levelManager = LevelManager(level: Level(waves: [], boss: .antonym), spriteFactory: spriteFactory)
+        levelManager = LevelManager(level: Level.random(with: Kanji.jlptN5), spriteFactory: spriteFactory)
         levelManager.gameScene = self
         
         panGestureRecognizer.addTarget(self, action: #selector(GameScene.panGestureRecognized(by:)))

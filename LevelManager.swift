@@ -17,6 +17,8 @@ class LevelManager {
     
     var interval: TimeInterval = 0
     
+    var wave = 0
+    
     init(level: Level, spriteFactory: SpriteFactory) {
         self.level = level
         self.spriteFactory = spriteFactory
