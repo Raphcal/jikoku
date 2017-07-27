@@ -18,7 +18,12 @@ struct Level {
         for _ in 0 ..< 10 {
             var groups = [Group]()
             for _ in 0 ..< Melisse.random(from: 1, to: 4) {
-                groups.append(Group(kanji: Melisse.random(itemFrom: kanjis), shape: .round, formation: .vertical, shootingStyleDefinition: nil))
+                groups.append(Group(
+                    kanji: Kanji(character: Melisse.random(itemFrom: kanjis), meanings: [], kunyomis: [], onyomis: []),
+                    shape: .round,
+                    size: ShapeSize.random,
+                    formation: .vertical,
+                    shootingStyleDefinition: nil))
             }
             waves.append(Wave(groups: groups))
         }
@@ -31,8 +36,9 @@ struct Wave {
 }
 
 struct Group {
-    var kanji: Character
+    var kanji: Kanji
     var shape: Shape
+    var size: ShapeSize
     var formation: Formation
     var shootingStyleDefinition: ShootingStyleDefinition?
 }
@@ -41,6 +47,40 @@ enum Shape {
     case round
     case triangular
     case losange
+}
+
+fileprivate let sizeDistribution = Distribution(itemsWithProbabilities: [
+    ShapeSize.smaller: 5,
+    .small: 10,
+    .medium: 50,
+    .big: 10,
+    .bigger: 5])
+
+enum ShapeSize {
+    case smaller
+    case small
+    case medium
+    case big
+    case bigger
+    
+    var pixelSize: GLfloat {
+        switch self {
+        case .smaller:
+            return 16
+        case .small:
+            return 32
+        case .medium:
+            return 48
+        case .big:
+            return 64
+        case .bigger:
+            return 96
+        }
+    }
+    
+    static var random: ShapeSize {
+        return sizeDistribution.randomItem
+    }
 }
 
 enum Formation {

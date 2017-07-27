@@ -35,7 +35,7 @@ class PlayerMotion : Motion {
         self.view = Director.instance?.viewController?.view
         self.spriteFactory = spriteFactory
         self.shootingStyles = [
-            StraightShootingStyle(definition: StraightShootingStyleDefinition(
+            StraightShootingStyleDefinition(
                 shotAmount: 2,
                 shotAmountVariation: 0,
                 shotSpeed: 500,
@@ -44,7 +44,7 @@ class PlayerMotion : Motion {
                 inversions: [],
                 inversionInterval: 0,
                 spriteDefinition: 5,
-                space: 32), spriteFactory: spriteFactory)
+                space: 32).shootingStyle(spriteFactory: spriteFactory)
         ]
         
         panGestureRecognizer.addTarget(self, action: #selector(PlayerMotion.panGestureRecognized(by:)))

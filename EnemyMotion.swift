@@ -55,7 +55,7 @@ class StationaryEnemyMotion : EnemyMotion {
         sprite.frame = frame
         acceleration = random(from: 200, to: 700)
         
-        shootingStyle = StraightShootingStyle(definition: StraightShootingStyleDefinition(shotAmount: 1, shotAmountVariation: 0, shotSpeed: 500, shootInterval: 0.25, baseAngle: .pi / 2, inversions: [], inversionInterval: 0, spriteDefinition: 1, space: 0), spriteFactory: gameScene.spriteFactory)
+        shootingStyle = StraightShootingStyleDefinition(shotAmount: 1, shotAmountVariation: 0, shotSpeed: 500, shootInterval: 0.25, baseAngle: .pi / 2, inversions: [], inversionInterval: 0, spriteDefinition: 1, space: 0).shootingStyle(spriteFactory: spriteFactory)
     }
     
     override func updateWith(_ timeSinceLastUpdate: TimeInterval, sprite: Sprite) {

@@ -8,6 +8,7 @@
 
 import Foundation
 import GLKit
+import Melisse
 
 struct ShootingStyleInversion : OptionSet {
     let rawValue: UInt8
@@ -42,6 +43,8 @@ protocol ShootingStyleDefinition {
     
     /// Numéro du sprite dans l'atlas
     var spriteDefinition: Int { get }
+    
+    func shootingStyle(spriteFactory: SpriteFactory) -> ShootingStyle
 
 }
 
@@ -62,5 +65,9 @@ struct StraightShootingStyleDefinition : ShootingStyleDefinition {
     
     /// Espace entre chaque tir.
     var space: GLfloat
+    
+    func shootingStyle(spriteFactory: SpriteFactory) -> ShootingStyle {
+        return StraightShootingStyle(definition: self, spriteFactory: spriteFactory)
+    }
     
 }
