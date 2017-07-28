@@ -23,6 +23,13 @@
 		648DD0741F116EB9002A7398 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 648DD0721F116EB9002A7398 /* LaunchScreen.storyboard */; };
 		64BB386F1F29C91300CAB9FC /* Kanji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB386E1F29C91300CAB9FC /* Kanji.swift */; };
 		64BB38831F2A089C00CAB9FC /* TranslucentSpriteFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB38821F2A089C00CAB9FC /* TranslucentSpriteFactory.swift */; };
+		64BB38A11F2B4A7000CAB9FC /* Enumerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB38A01F2B4A7000CAB9FC /* Enumerable.swift */; };
+		64BB38A31F2B4A9A00CAB9FC /* Wave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB38A21F2B4A9A00CAB9FC /* Wave.swift */; };
+		64BB38A51F2B4ACF00CAB9FC /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB38A41F2B4ACF00CAB9FC /* Group.swift */; };
+		64BB38A71F2B4AEB00CAB9FC /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB38A61F2B4AEB00CAB9FC /* Shape.swift */; };
+		64BB38A91F2B4AFA00CAB9FC /* ShapeSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB38A81F2B4AFA00CAB9FC /* ShapeSize.swift */; };
+		64BB38AB1F2B4BB700CAB9FC /* Formation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB38AA1F2B4BB700CAB9FC /* Formation.swift */; };
+		64BB38AD1F2B4BCE00CAB9FC /* Boss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB38AC1F2B4BCE00CAB9FC /* Boss.swift */; };
 		64D03B251F289119009A0212 /* Melisse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64EB3CC91F264FF4002596BB /* Melisse.framework */; };
 		64D03B281F2897BD009A0212 /* Melisse.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 64EB3CC91F264FF4002596BB /* Melisse.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		64EB3CCE1F26502B002596BB /* LevelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EB3CCD1F26502B002596BB /* LevelManager.swift */; };
@@ -87,6 +94,13 @@
 		648DD0751F116EB9002A7398 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64BB386E1F29C91300CAB9FC /* Kanji.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Kanji.swift; sourceTree = "<group>"; };
 		64BB38821F2A089C00CAB9FC /* TranslucentSpriteFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslucentSpriteFactory.swift; sourceTree = "<group>"; };
+		64BB38A01F2B4A7000CAB9FC /* Enumerable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enumerable.swift; sourceTree = "<group>"; };
+		64BB38A21F2B4A9A00CAB9FC /* Wave.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wave.swift; sourceTree = "<group>"; };
+		64BB38A41F2B4ACF00CAB9FC /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		64BB38A61F2B4AEB00CAB9FC /* Shape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
+		64BB38A81F2B4AFA00CAB9FC /* ShapeSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeSize.swift; sourceTree = "<group>"; };
+		64BB38AA1F2B4BB700CAB9FC /* Formation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formation.swift; sourceTree = "<group>"; };
+		64BB38AC1F2B4BCE00CAB9FC /* Boss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Boss.swift; sourceTree = "<group>"; };
 		64D03B231F289114009A0212 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		64EB3CCD1F26502B002596BB /* LevelManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelManager.swift; sourceTree = "<group>"; };
 		64EB3CD21F265FA9002596BB /* EnemyMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyMotion.swift; sourceTree = "<group>"; };
@@ -144,6 +158,7 @@
 				647D7E9D1F20C83B00721F76 /* Shots */,
 				643FC8BE1F1F6C8900EA7727 /* Sprites */,
 				64326AB41F1398AA007673E3 /* GameViewController.swift */,
+				64BB38A01F2B4A7000CAB9FC /* Enumerable.swift */,
 				648DD0681F116EB9002A7398 /* iOS */,
 				648DD0671F116EB9002A7398 /* Products */,
 				647D7E851F20970700721F76 /* Melisse.xcodeproj */,
@@ -201,9 +216,15 @@
 		64FCBCA31F25D38800536C57 /* Level */ = {
 			isa = PBXGroup;
 			children = (
+				64BB38A41F2B4ACF00CAB9FC /* Group.swift */,
+				64BB386E1F29C91300CAB9FC /* Kanji.swift */,
 				64FCBCA51F25D39700536C57 /* Level.swift */,
 				64EB3CCD1F26502B002596BB /* LevelManager.swift */,
-				64BB386E1F29C91300CAB9FC /* Kanji.swift */,
+				64BB38A21F2B4A9A00CAB9FC /* Wave.swift */,
+				64BB38A61F2B4AEB00CAB9FC /* Shape.swift */,
+				64BB38A81F2B4AFA00CAB9FC /* ShapeSize.swift */,
+				64BB38AA1F2B4BB700CAB9FC /* Formation.swift */,
+				64BB38AC1F2B4BCE00CAB9FC /* Boss.swift */,
 			);
 			name = Level;
 			sourceTree = "<group>";
@@ -308,20 +329,27 @@
 			files = (
 				643CEA001F28A58700A2D4C6 /* CenteredSpriteHitbox.swift in Sources */,
 				643FC8C21F1F6CEF00EA7727 /* SpriteType.swift in Sources */,
+				64BB38A11F2B4A7000CAB9FC /* Enumerable.swift in Sources */,
+				64BB38AB1F2B4BB700CAB9FC /* Formation.swift in Sources */,
 				64FCBCA61F25D39700536C57 /* Level.swift in Sources */,
 				64326ABD1F139E55007673E3 /* GameScene.swift in Sources */,
 				647D7EA01F20C8A600721F76 /* ShootingStyle.swift in Sources */,
+				64BB38A51F2B4ACF00CAB9FC /* Group.swift in Sources */,
 				64BB386F1F29C91300CAB9FC /* Kanji.swift in Sources */,
 				64EB3CCE1F26502B002596BB /* LevelManager.swift in Sources */,
 				64846A331F1F3BF60053A926 /* Textures.swift in Sources */,
 				6410F9A01F21D69E005C2DDC /* PlayerMotion.swift in Sources */,
 				64326AB51F1398AA007673E3 /* GameViewController.swift in Sources */,
 				647D7EA61F20D78A00721F76 /* ShotMotion.swift in Sources */,
+				64BB38A91F2B4AFA00CAB9FC /* ShapeSize.swift in Sources */,
+				64BB38A31F2B4A9A00CAB9FC /* Wave.swift in Sources */,
 				64BB38831F2A089C00CAB9FC /* TranslucentSpriteFactory.swift in Sources */,
+				64BB38A71F2B4AEB00CAB9FC /* Shape.swift in Sources */,
 				647D7EA41F20CE6000721F76 /* ShootingStyleDefinition.swift in Sources */,
 				643FC8C01F1F6C9600EA7727 /* SpriteAtlas.swift in Sources */,
 				648DD06A1F116EB9002A7398 /* AppDelegate.swift in Sources */,
 				64EB3CD31F265FA9002596BB /* EnemyMotion.swift in Sources */,
+				64BB38AD1F2B4BCE00CAB9FC /* Boss.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

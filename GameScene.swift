@@ -14,6 +14,8 @@ fileprivate let spriteSize: GLfloat = 48
 
 let PlayerDiedNotification = Notification.Name(rawValue: "playerDiedNotification")
 
+let kanjis = "私一二三四五六七八九十百千万年月火水木金土曜日本元気白黒西北南東国小大人子男女母父中長高出入時行見午先後前生間上下今学校円外来山話読語書名川水雨半電聞食車何毎天右左友休早"
+
 class GameScene : Scene {
 
     static var current: GameScene?
@@ -39,7 +41,7 @@ class GameScene : Scene {
     init(panGestureRecognizer: UIPanGestureRecognizer) {
         self.panGestureRecognizer = panGestureRecognizer
 
-        if let atlas = SpriteAtlas(string: "私一二三四五六七八九十百千万年月火水木金土曜日本元気白黒西北南東国小大人子男女母父中長高出入時行見午先後前生間上下今学校円外来山話読語書名川水雨半電聞食車何毎天右左友休早", size: Int(spriteSize)) {
+        if let atlas = SpriteAtlas(string: kanjis, size: Int(spriteSize)) {
             self.atlas = atlas
             spriteFactory = SpriteFactory(capacity: 1024, spriteAtlas: atlas)
         } else {
@@ -52,7 +54,7 @@ class GameScene : Scene {
         
         player = GameScene.playerSprite(spriteFactory: spriteFactory, panGestureRecognizer: panGestureRecognizer, cameraFrame: camera.frame)
         
-        levelManager = LevelManager(level: Level.random(with: Kanji.jlptN5), spriteFactory: spriteFactory)
+        levelManager = LevelManager(level: Level.random(with: [Character](kanjis.characters)), spriteFactory: spriteFactory)
         levelManager.gameScene = self
         
         panGestureRecognizer.addTarget(self, action: #selector(GameScene.panGestureRecognized(by:)))
