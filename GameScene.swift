@@ -23,7 +23,7 @@ class GameScene : Scene {
     let backgroundColor = Color<GLfloat>(hex: 0xE4C9A0)
     
     let atlas: SpriteAtlas
-    let spriteFactory: SpriteFactory
+    let spriteFactory: TranslucentSpriteFactory
     let levelManager: LevelManager
     var player: Sprite
     var camera = Camera()
@@ -43,10 +43,10 @@ class GameScene : Scene {
 
         if let atlas = SpriteAtlas(string: kanjis, size: Int(spriteSize)) {
             self.atlas = atlas
-            spriteFactory = SpriteFactory(capacity: 1024, spriteAtlas: atlas)
+            spriteFactory = TranslucentSpriteFactory(capacity: 1024, spriteAtlas: atlas)
         } else {
             print("Atlas creation error")
-            spriteFactory = SpriteFactory()
+            spriteFactory = TranslucentSpriteFactory()
             atlas = SpriteAtlas()
         }
         

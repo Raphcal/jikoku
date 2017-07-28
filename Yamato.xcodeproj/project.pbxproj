@@ -22,7 +22,6 @@
 		648DD0711F116EB9002A7398 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 648DD0701F116EB9002A7398 /* Assets.xcassets */; };
 		648DD0741F116EB9002A7398 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 648DD0721F116EB9002A7398 /* LaunchScreen.storyboard */; };
 		64BB386F1F29C91300CAB9FC /* Kanji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB386E1F29C91300CAB9FC /* Kanji.swift */; };
-		64BB38831F2A089C00CAB9FC /* TranslucentSpriteFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB38821F2A089C00CAB9FC /* TranslucentSpriteFactory.swift */; };
 		64BB38A11F2B4A7000CAB9FC /* Enumerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB38A01F2B4A7000CAB9FC /* Enumerable.swift */; };
 		64BB38A31F2B4A9A00CAB9FC /* Wave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB38A21F2B4A9A00CAB9FC /* Wave.swift */; };
 		64BB38A51F2B4ACF00CAB9FC /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB38A41F2B4ACF00CAB9FC /* Group.swift */; };
@@ -93,7 +92,6 @@
 		648DD0731F116EB9002A7398 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		648DD0751F116EB9002A7398 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64BB386E1F29C91300CAB9FC /* Kanji.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Kanji.swift; sourceTree = "<group>"; };
-		64BB38821F2A089C00CAB9FC /* TranslucentSpriteFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslucentSpriteFactory.swift; sourceTree = "<group>"; };
 		64BB38A01F2B4A7000CAB9FC /* Enumerable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enumerable.swift; sourceTree = "<group>"; };
 		64BB38A21F2B4A9A00CAB9FC /* Wave.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wave.swift; sourceTree = "<group>"; };
 		64BB38A41F2B4ACF00CAB9FC /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
@@ -134,7 +132,6 @@
 				643FC8BF1F1F6C9600EA7727 /* SpriteAtlas.swift */,
 				643FC8C11F1F6CEF00EA7727 /* SpriteType.swift */,
 				64846A321F1F3BF60053A926 /* Textures.swift */,
-				64BB38821F2A089C00CAB9FC /* TranslucentSpriteFactory.swift */,
 			);
 			name = Sprites;
 			sourceTree = "<group>";
@@ -343,7 +340,6 @@
 				647D7EA61F20D78A00721F76 /* ShotMotion.swift in Sources */,
 				64BB38A91F2B4AFA00CAB9FC /* ShapeSize.swift in Sources */,
 				64BB38A31F2B4A9A00CAB9FC /* Wave.swift in Sources */,
-				64BB38831F2A089C00CAB9FC /* TranslucentSpriteFactory.swift in Sources */,
 				64BB38A71F2B4AEB00CAB9FC /* Shape.swift in Sources */,
 				647D7EA41F20CE6000721F76 /* ShootingStyleDefinition.swift in Sources */,
 				643FC8C01F1F6C9600EA7727 /* SpriteAtlas.swift in Sources */,

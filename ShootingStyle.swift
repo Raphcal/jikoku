@@ -88,6 +88,8 @@ class StraightShootingStyle : ShootingStyle {
             shot.motion = ShotMotion(speed: speed)
             shot.hitbox = CenteredSpriteHitbox(sprite: shot, size: Size(width: shot.frame.width * 0.6666, height: shot.frame.height * 0.6666))
             
+            (spriteFactory as? TranslucentSpriteFactory)?.setAlpha(128, of: shot)
+            
             shots.append(shot)
             
             left += straightDefinition.space
