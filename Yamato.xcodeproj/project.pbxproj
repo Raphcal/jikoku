@@ -130,10 +130,10 @@
 		643FC8BE1F1F6C8900EA7727 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
-				64846A321F1F3BF60053A926 /* Textures.swift */,
+				643CE9FF1F28A58700A2D4C6 /* CenteredSpriteHitbox.swift */,
 				643FC8BF1F1F6C9600EA7727 /* SpriteAtlas.swift */,
 				643FC8C11F1F6CEF00EA7727 /* SpriteType.swift */,
-				643CE9FF1F28A58700A2D4C6 /* CenteredSpriteHitbox.swift */,
+				64846A321F1F3BF60053A926 /* Textures.swift */,
 				64BB38821F2A089C00CAB9FC /* TranslucentSpriteFactory.swift */,
 			);
 			name = Sprites;
@@ -143,8 +143,8 @@
 			isa = PBXGroup;
 			children = (
 				647D7E9F1F20C8A600721F76 /* ShootingStyle.swift */,
-				647D7EA51F20D78A00721F76 /* ShotMotion.swift */,
 				647D7EA31F20CE6000721F76 /* ShootingStyleDefinition.swift */,
+				647D7EA51F20D78A00721F76 /* ShotMotion.swift */,
 			);
 			name = Shots;
 			sourceTree = "<group>";
@@ -157,8 +157,8 @@
 				64326ABB1F139E40007673E3 /* Scenes */,
 				647D7E9D1F20C83B00721F76 /* Shots */,
 				643FC8BE1F1F6C8900EA7727 /* Sprites */,
-				64326AB41F1398AA007673E3 /* GameViewController.swift */,
 				64BB38A01F2B4A7000CAB9FC /* Enumerable.swift */,
+				64326AB41F1398AA007673E3 /* GameViewController.swift */,
 				648DD0681F116EB9002A7398 /* iOS */,
 				648DD0671F116EB9002A7398 /* Products */,
 				647D7E851F20970700721F76 /* Melisse.xcodeproj */,
@@ -207,8 +207,8 @@
 		64EB3CD11F265F53002596BB /* Motion */ = {
 			isa = PBXGroup;
 			children = (
-				6410F99F1F21D69E005C2DDC /* PlayerMotion.swift */,
 				64EB3CD21F265FA9002596BB /* EnemyMotion.swift */,
+				6410F99F1F21D69E005C2DDC /* PlayerMotion.swift */,
 			);
 			name = Motion;
 			sourceTree = "<group>";
@@ -216,15 +216,15 @@
 		64FCBCA31F25D38800536C57 /* Level */ = {
 			isa = PBXGroup;
 			children = (
+				64BB38AC1F2B4BCE00CAB9FC /* Boss.swift */,
+				64BB38AA1F2B4BB700CAB9FC /* Formation.swift */,
 				64BB38A41F2B4ACF00CAB9FC /* Group.swift */,
 				64BB386E1F29C91300CAB9FC /* Kanji.swift */,
 				64FCBCA51F25D39700536C57 /* Level.swift */,
 				64EB3CCD1F26502B002596BB /* LevelManager.swift */,
-				64BB38A21F2B4A9A00CAB9FC /* Wave.swift */,
 				64BB38A61F2B4AEB00CAB9FC /* Shape.swift */,
 				64BB38A81F2B4AFA00CAB9FC /* ShapeSize.swift */,
-				64BB38AA1F2B4BB700CAB9FC /* Formation.swift */,
-				64BB38AC1F2B4BCE00CAB9FC /* Boss.swift */,
+				64BB38A21F2B4A9A00CAB9FC /* Wave.swift */,
 			);
 			name = Level;
 			sourceTree = "<group>";
