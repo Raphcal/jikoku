@@ -13,10 +13,11 @@
 		643CEA001F28A58700A2D4C6 /* CenteredSpriteHitbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643CE9FF1F28A58700A2D4C6 /* CenteredSpriteHitbox.swift */; };
 		643FC8C01F1F6C9600EA7727 /* SpriteAtlas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643FC8BF1F1F6C9600EA7727 /* SpriteAtlas.swift */; };
 		643FC8C21F1F6CEF00EA7727 /* SpriteType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643FC8C11F1F6CEF00EA7727 /* SpriteType.swift */; };
+		647C61E31F2B7C9100702AE5 /* ShotStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647C61E21F2B7C9100702AE5 /* ShotStyle.swift */; };
 		647D7EA01F20C8A600721F76 /* ShootingStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647D7E9F1F20C8A600721F76 /* ShootingStyle.swift */; };
 		647D7EA41F20CE6000721F76 /* ShootingStyleDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647D7EA31F20CE6000721F76 /* ShootingStyleDefinition.swift */; };
 		647D7EA61F20D78A00721F76 /* ShotMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647D7EA51F20D78A00721F76 /* ShotMotion.swift */; };
-		64846A331F1F3BF60053A926 /* Textures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64846A321F1F3BF60053A926 /* Textures.swift */; };
+		64846A331F1F3BF60053A926 /* GLKTextureLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64846A321F1F3BF60053A926 /* GLKTextureLoader.swift */; };
 		648DD06A1F116EB9002A7398 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648DD0691F116EB9002A7398 /* AppDelegate.swift */; };
 		648DD06F1F116EB9002A7398 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 648DD06D1F116EB9002A7398 /* Main.storyboard */; };
 		648DD0711F116EB9002A7398 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 648DD0701F116EB9002A7398 /* Assets.xcassets */; };
@@ -80,11 +81,12 @@
 		643CE9FF1F28A58700A2D4C6 /* CenteredSpriteHitbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenteredSpriteHitbox.swift; sourceTree = "<group>"; };
 		643FC8BF1F1F6C9600EA7727 /* SpriteAtlas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpriteAtlas.swift; sourceTree = "<group>"; };
 		643FC8C11F1F6CEF00EA7727 /* SpriteType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpriteType.swift; sourceTree = "<group>"; };
+		647C61E21F2B7C9100702AE5 /* ShotStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShotStyle.swift; sourceTree = "<group>"; };
 		647D7E851F20970700721F76 /* Melisse.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Melisse.xcodeproj; path = ../melisse/Melisse.xcodeproj; sourceTree = "<group>"; };
 		647D7E9F1F20C8A600721F76 /* ShootingStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShootingStyle.swift; sourceTree = "<group>"; };
 		647D7EA31F20CE6000721F76 /* ShootingStyleDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShootingStyleDefinition.swift; sourceTree = "<group>"; };
 		647D7EA51F20D78A00721F76 /* ShotMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShotMotion.swift; sourceTree = "<group>"; };
-		64846A321F1F3BF60053A926 /* Textures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Textures.swift; sourceTree = "<group>"; };
+		64846A321F1F3BF60053A926 /* GLKTextureLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GLKTextureLoader.swift; sourceTree = "<group>"; };
 		648DD0661F116EB9002A7398 /* Yamato.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yamato.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		648DD0691F116EB9002A7398 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		648DD06E1F116EB9002A7398 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -129,9 +131,9 @@
 			isa = PBXGroup;
 			children = (
 				643CE9FF1F28A58700A2D4C6 /* CenteredSpriteHitbox.swift */,
+				64846A321F1F3BF60053A926 /* GLKTextureLoader.swift */,
 				643FC8BF1F1F6C9600EA7727 /* SpriteAtlas.swift */,
 				643FC8C11F1F6CEF00EA7727 /* SpriteType.swift */,
-				64846A321F1F3BF60053A926 /* Textures.swift */,
 			);
 			name = Sprites;
 			sourceTree = "<group>";
@@ -142,6 +144,7 @@
 				647D7E9F1F20C8A600721F76 /* ShootingStyle.swift */,
 				647D7EA31F20CE6000721F76 /* ShootingStyleDefinition.swift */,
 				647D7EA51F20D78A00721F76 /* ShotMotion.swift */,
+				647C61E21F2B7C9100702AE5 /* ShotStyle.swift */,
 			);
 			name = Shots;
 			sourceTree = "<group>";
@@ -334,9 +337,10 @@
 				64BB38A51F2B4ACF00CAB9FC /* Group.swift in Sources */,
 				64BB386F1F29C91300CAB9FC /* Kanji.swift in Sources */,
 				64EB3CCE1F26502B002596BB /* LevelManager.swift in Sources */,
-				64846A331F1F3BF60053A926 /* Textures.swift in Sources */,
+				64846A331F1F3BF60053A926 /* GLKTextureLoader.swift in Sources */,
 				6410F9A01F21D69E005C2DDC /* PlayerMotion.swift in Sources */,
 				64326AB51F1398AA007673E3 /* GameViewController.swift in Sources */,
+				647C61E31F2B7C9100702AE5 /* ShotStyle.swift in Sources */,
 				647D7EA61F20D78A00721F76 /* ShotMotion.swift in Sources */,
 				64BB38A91F2B4AFA00CAB9FC /* ShapeSize.swift in Sources */,
 				64BB38A31F2B4A9A00CAB9FC /* Wave.swift in Sources */,

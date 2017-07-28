@@ -49,5 +49,10 @@ extension SpriteAtlas {
             return nil
         }
     }
+    
+    convenience init?(level: Level) {
+        // TODO: Implémenter la méthode
+        return nil
+    }
 
 }
