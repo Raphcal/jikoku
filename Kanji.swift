@@ -8,27 +8,29 @@
 
 import Foundation
 
-struct Kanji {
+struct Kanji : Enumerable {
     var character: Character
-    var meanings: [String]
+    var meanings: [String: [String]]
     var kunyomis: [String]
     var onyomis: [String]
+    var tags: [String]
     
     // 私一二三四五六七八九十百千万年月火水木金土曜日本元気白黒西北南東国小大人子男女母父中長高出入時行見午先後前生間上下今学校円外来山話読語書名川水雨半電聞食車何毎天右左友休早
-    static let jlptN5 = [
-        Kanji(character: "一", meanings: ["one"], kunyomis: ["ひと"], onyomis: ["イチ"]),
-        Kanji(character: "二", meanings: ["two"], kunyomis: ["ふた"], onyomis: ["ニ", "ジ"]),
-        Kanji(character: "三", meanings: ["three"], kunyomis: ["み", "みっ"], onyomis: ["サン", "ゾウ"]),
-        Kanji(character: "四", meanings: ["four"], kunyomis: ["よ", "よん", "よっ"], onyomis: ["シ"]),
-        Kanji(character: "五", meanings: ["five"], kunyomis: ["いつ"], onyomis: ["ゴ"]),
-        Kanji(character: "六", meanings: ["six"], kunyomis: ["む", "むい", "むっ"], onyomis: ["ロク"]),
-        Kanji(character: "七", meanings: ["seven"], kunyomis: ["なな", "なの"], onyomis: ["シチ"]),
-        Kanji(character: "八", meanings: ["eight"], kunyomis: ["や", "やっ", "よう"], onyomis: ["ハチ"]),
-        Kanji(character: "九", meanings: ["nine"], kunyomis: ["ここの"], onyomis: ["キュウ", "ク"]),
-        Kanji(character: "十", meanings: ["ten"], kunyomis: ["とお", "と"], onyomis: ["ジュウ", "ジッ", "ジュッ"]),
-        Kanji(character: "百", meanings: ["hundred"], kunyomis: ["もも"], onyomis: ["ヒャク", "ビャク"]),
-        Kanji(character: "千", meanings: ["thousand"], kunyomis: ["ち"], onyomis: ["セン"]),
-        Kanji(character: "万", meanings: ["ten thousand"], kunyomis: ["よろず"], onyomis: ["マン", "バン"]),
-        Kanji(character: "月", meanings: ["moon", "month"], kunyomis: ["つき"], onyomis: ["ゲツ", "ガツ"]),
+    static let all = [
+        Kanji(character: "一", meanings: ["en": ["one"], "fr": ["un"]], kunyomis: ["ひと"], onyomis: ["イチ"], tags: ["jtlp-n5", "number"]),
+        Kanji(character: "二", meanings: ["en": ["two"], "fr": ["deux"]], kunyomis: ["ふた"], onyomis: ["ニ", "ジ"], tags: ["jtlp-n5", "number"]),
+        Kanji(character: "三", meanings: ["en": ["three"], "fr":["trois"]], kunyomis: ["み", "みっ"], onyomis: ["サン", "ゾウ"], tags: ["jtlp-n5", "number"]),
+        Kanji(character: "四", meanings: ["en": ["four"], "fr":["quatre"]], kunyomis: ["よ", "よん", "よっ"], onyomis: ["シ"], tags: ["jtlp-n5", "number"]),
+        Kanji(character: "五", meanings: ["en": ["five"], "fr":["cinq"]], kunyomis: ["いつ"], onyomis: ["ゴ"], tags: ["jtlp-n5", "number"]),
+        Kanji(character: "六", meanings: ["en": ["six"], "fr":["six"]], kunyomis: ["む", "むい", "むっ"], onyomis: ["ロク"], tags: ["jtlp-n5", "number"]),
+        Kanji(character: "七", meanings: ["en": ["seven"], "fr":["sept"]], kunyomis: ["なな", "なの"], onyomis: ["シチ"], tags: ["jtlp-n5", "number"]),
+        Kanji(character: "八", meanings: ["en": ["eight"], "fr":["huit"]], kunyomis: ["や", "やっ", "よう"], onyomis: ["ハチ"], tags: ["jtlp-n5", "number"]),
+        Kanji(character: "九", meanings: ["en": ["nine"], "fr":["neuf"]], kunyomis: ["ここの"], onyomis: ["キュウ", "ク"], tags: ["jtlp-n5", "number"]),
+        Kanji(character: "十", meanings: ["en": ["ten"], "fr":["dix"]], kunyomis: ["とお", "と"], onyomis: ["ジュウ", "ジッ", "ジュッ"], tags: ["jtlp-n5", "number"]),
+        Kanji(character: "百", meanings: ["en": ["hundred"], "fr":["cent"]], kunyomis: ["もも"], onyomis: ["ヒャク", "ビャク"], tags: ["jtlp-n5", "number"]),
+        Kanji(character: "千", meanings: ["en": ["thousand"], "fr":["mille"]], kunyomis: ["ち"], onyomis: ["セン"], tags: ["jtlp-n5", "number"]),
+        Kanji(character: "万", meanings: ["en": ["ten thousand"], "fr":["dix milles"]], kunyomis: ["よろず"], onyomis: ["マン", "バン"], tags: ["jtlp-n5", "number"]),
+        Kanji(character: "年", meanings: ["en": ["year"], "fr":["année"]], kunyomis: ["とし"], onyomis: ["ネン"], tags: ["jtlp-n5", "date"]),
+        Kanji(character: "月", meanings: ["en": ["moon", "month", "monday"], "fr":["lune", "mois", "lundi"]], kunyomis: ["つき"], onyomis: ["ゲツ", "ガツ"], tags: ["jtlp-n5", "date", "weekday"]),
     ]
 }
