@@ -58,7 +58,7 @@ class StationaryEnemyMotion : EnemyMotion {
         shootingStyle = StraightShootingStyleDefinition(
             shotAmount: 1,
             shotAmountVariation: 0,
-            shotSpeed: 500,
+            shotSpeed: 250,
             shootInterval: 0.5,
             baseAngle: .pi / 2,
             inversions: [],
