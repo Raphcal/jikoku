@@ -18,6 +18,7 @@ class LevelManager {
     var interval: TimeInterval = 0
     
     var wave = 0
+    var state = State.beforeWave
     
     init(level: Level, spriteFactory: SpriteFactory) {
         self.level = level
@@ -35,6 +36,10 @@ class LevelManager {
             enemy.motion = motion
             motion.load(enemy)
         }
+    }
+    
+    enum State {
+        case beforeWave, wave
     }
     
 }
