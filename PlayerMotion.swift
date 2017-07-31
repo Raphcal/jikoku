@@ -62,7 +62,21 @@ class PlayerMotion : Motion {
         move.x = move.x == 0 ? 0 : move.x / abs(move.x) * min(abs(move.x), delta * maxSpeed)
         move.y = move.y == 0 ? 0 : move.y / abs(move.y) * min(abs(move.y), delta * maxSpeed)
         
-        sprite.frame.center += move
+        var frame = sprite.frame
+        frame.center += move
+        if frame.left < 0 {
+            frame.left = 0
+        }
+        else if frame.right > View.instance.width {
+            frame.right = View.instance.width
+        }
+        if frame.top < 0 {
+            frame.top = 0
+        }
+        else if frame.bottom > View.instance.height {
+            frame.bottom = View.instance.height
+        }
+        sprite.frame = frame
         
         shootingStyle.shoot(from: sprite, origin: .up, since: timeSinceLastUpdate)
         
