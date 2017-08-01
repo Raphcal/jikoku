@@ -33,9 +33,6 @@ protocol ShootingStyleDefinition {
     /// Interval de temps entre chaque tir
     var shootInterval: TimeInterval { get }
     
-    /// Angle initial du tir
-    var baseAngle: GLfloat { get }
-    
     /// Nombre d'inversions
     var inversions: ShootingStyleInversion { get }
     /// Nombre de tirs avant l'inversion
@@ -58,8 +55,6 @@ struct StraightShootingStyleDefinition : ShootingStyleDefinition {
     
     var shotSpeed: GLfloat
     var shootInterval: TimeInterval
-    
-    var baseAngle: GLfloat
     
     var inversions: ShootingStyleInversion
     var inversionInterval: Int

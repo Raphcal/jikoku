@@ -44,7 +44,7 @@ class ShootingStyle {
         } else {
             shootInterval += definition.shootInterval
             
-            _ = shots(from: sprite.frame.point(at: angle), type: sprite === GameScene.current?.player ? .friendlyShot : .enemyShot)
+            _ = shots(from: sprite.frame.point(at: angle), angle: angle, type: sprite === GameScene.current?.player ? .friendlyShot : .enemyShot)
             
             shotAmount += shotAmountVariation
             
@@ -60,7 +60,7 @@ class ShootingStyle {
     }
     
     /// Créé les sprites des tirs.
-    func shots(from point: Point<GLfloat>, type: SpriteType) -> [Sprite] {
+    func shots(from point: Point<GLfloat>, angle: GLfloat, type: SpriteType) -> [Sprite] {
         return []
     }
     
@@ -79,7 +79,7 @@ class StraightShootingStyle : ShootingStyle {
         return self.definition as! StraightShootingStyleDefinition
     }
     
-    override func shots(from point: Point<GLfloat>, type: SpriteType) -> [Sprite] {
+    override func shots(from point: Point<GLfloat>, angle: GLfloat, type: SpriteType) -> [Sprite] {
         var shots = [Sprite]()
         
         var spriteDefinition = spriteFactory.definitions[definition.spriteDefinition]
@@ -87,8 +87,8 @@ class StraightShootingStyle : ShootingStyle {
         
         var left = point.x - (GLfloat(shotAmount - 1) * straightDefinition.space) / 2
         for _ in 0 ..< shotAmount {
-            let speed = Point<GLfloat>(x: cosf(definition.baseAngle) * definition.shotSpeed,
-                                       y: sinf(definition.baseAngle) * definition.shotSpeed)
+            let speed = Point<GLfloat>(x: cosf(angle) * definition.shotSpeed,
+                                       y: sinf(angle) * definition.shotSpeed)
             let shot = spriteFactory.sprite(spriteDefinition)
             shot.frame = Rectangle(x: left, y: point.y, width: 16, height: 16)
             shot.motion = ShotMotion(speed: speed)

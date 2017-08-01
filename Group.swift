@@ -30,7 +30,6 @@ struct Group {
                 shotAmountVariation: 0,
                 shotSpeed: 500,
                 shootInterval: 0.25,
-                baseAngle: .pi / 2,
                 inversions: [],
                 inversionInterval: 0,
                 spriteDefinition: 1,

@@ -38,7 +38,6 @@ class PlayerMotion : BaseMotion {
                 shotAmountVariation: 0,
                 shotSpeed: 500,
                 shootInterval: 0.1,
-                baseAngle: toRadian(-90),
                 inversions: [],
                 inversionInterval: 0,
                 spriteDefinition: 5,

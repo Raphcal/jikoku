@@ -26,6 +26,10 @@ class EnemyMotion : BaseMotion {
         self.spriteFactory = gameScene.spriteFactory
     }
     
+    func load(_ sprite: Sprite) {
+        // Rien à charger. Présent pour permettre aux sous classes de pouvoir l'implémenter.
+    }
+    
     func updateWith(_ timeSinceLastUpdate: TimeInterval, sprite: Sprite) {
         for other in spriteFactory.sprites {
             if let type = other.type as? SpriteType, type == SpriteType.friendlyShot && other.collides(with: sprite) {
@@ -50,7 +54,7 @@ class StationaryEnemyMotion : EnemyMotion {
     let deceleration: GLfloat = 1000
     var targetY: GLfloat = 32
     
-    func load(_ sprite: Sprite) {
+    override func load(_ sprite: Sprite) {
         var frame = sprite.frame
         frame.bottom = gameScene.camera.frame.top - 1
         frame.left = random(from: 0, to: View.instance.width - sprite.frame.width)
@@ -62,7 +66,6 @@ class StationaryEnemyMotion : EnemyMotion {
             shotAmountVariation: 0,
             shotSpeed: 250,
             shootInterval: 0.5,
-            baseAngle: .pi / 2,
             inversions: [],
             inversionInterval: 0,
             spriteDefinition: 1,
@@ -100,6 +103,35 @@ class StationaryEnemyMotion : EnemyMotion {
     
     enum State {
         case entering, decelerating, stationary
+    }
+    
+}
+
+class QuarterCircleEnemyMotion : EnemyMotion {
+    
+    let direction: Direction
+    let center: Point<GLfloat>
+    
+    var progress: GLfloat = -0.1
+    var speed = GLfloat.pi / 4
+    
+    init(lifePoints: Int, gameScene: GameScene, center: Point<GLfloat>) {
+        self.center = center
+        self.direction = center.x == 0 ? .right : .left
+        super.init(lifePoints: lifePoints, gameScene: gameScene)
+    }
+    
+    override func updateWith(_ timeSinceLastUpdate: TimeInterval, sprite: Sprite) {
+        super.updateWith(timeSinceLastUpdate, sprite: sprite)
+        
+        progress += speed * direction.value * GLfloat(timeSinceLastUpdate)
+        sprite.frame.center = center + Point(x: cos(progress), y: sin(progress)) * (View.instance.width - sprite.frame.width)
+        
+        shoot(from: sprite, since: timeSinceLastUpdate)
+        
+        if progress > .pi / 2 + 0.1 {
+            sprite.destroy()
+        }
     }
     
 }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Melisse
 
 enum Formation : Enumerable {
     /// Descend en ligne droite à vitesse constante.
@@ -29,7 +30,8 @@ enum Formation : Enumerable {
     case curve
     
     /// Descend en faisant un demi cercle depuis un des bords supérieur de l'écran.
-    case quarterCircle
+    case topLeftQuarterCircle
+    case topRightQuarterCircle
     
     /// Tourne en faisant un cercle avec 1 trou. Destructible uniquement en tuant un kanji désigné.
     case circle
@@ -40,5 +42,18 @@ enum Formation : Enumerable {
     /// Apparaît depuis l'arrière plan et reste stationnaire.
     case rise
     
-    static let all = [Formation.vertical, .horizontal, .stationary, .fall, .curve, .quarterCircle, .circle, .swarm, .rise]
+    func motion(lifePoints: Int, gameScene: GameScene) -> Motion {
+        switch self {
+        case .stationary:
+            return StationaryEnemyMotion(lifePoints: lifePoints, gameScene: gameScene)
+        case .topLeftQuarterCircle:
+            return QuarterCircleEnemyMotion(lifePoints: lifePoints, gameScene: gameScene, center: Point(x: View.instance.width, y: 0))
+        case .topRightQuarterCircle:
+            return QuarterCircleEnemyMotion(lifePoints: lifePoints, gameScene: gameScene, center: Point(x: View.instance.width, y: 0))
+        default:
+            return NoMotion()
+        }
+    }
+    
+    static let all = [Formation.vertical, .horizontal, .stationary, .fall, .curve, .topLeftQuarterCircle, .topRightQuarterCircle, .circle, .swarm, .rise]
 }
