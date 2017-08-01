@@ -10,9 +10,13 @@ import Foundation
 import Melisse
 import GLKit
 
-class EnemyMotion : Motion {
+class EnemyMotion : BaseMotion {
     
     var lifePoints: Int
+    var angle = GLfloat.pi / 2
+    
+    var shootingStyles = [ShootingStyle]()
+
     let gameScene: GameScene
     let spriteFactory: SpriteFactory
     
@@ -46,8 +50,6 @@ class StationaryEnemyMotion : EnemyMotion {
     let deceleration: GLfloat = 1000
     var targetY: GLfloat = 32
     
-    var shootingStyle: ShootingStyle!
-    
     func load(_ sprite: Sprite) {
         var frame = sprite.frame
         frame.bottom = gameScene.camera.frame.top - 1
@@ -55,7 +57,7 @@ class StationaryEnemyMotion : EnemyMotion {
         sprite.frame = frame
         acceleration = random(from: 200, to: 700)
         
-        shootingStyle = StraightShootingStyleDefinition(
+        shootingStyles = [StraightShootingStyleDefinition(
             shotAmount: 1,
             shotAmountVariation: 0,
             shotSpeed: 250,
@@ -64,7 +66,7 @@ class StationaryEnemyMotion : EnemyMotion {
             inversions: [],
             inversionInterval: 0,
             spriteDefinition: 1,
-            space: 0).shootingStyle(spriteFactory: spriteFactory)
+            space: 0).shootingStyle(spriteFactory: spriteFactory)]
     }
     
     override func updateWith(_ timeSinceLastUpdate: TimeInterval, sprite: Sprite) {
@@ -91,7 +93,7 @@ class StationaryEnemyMotion : EnemyMotion {
                 state = .stationary
             }
         case .stationary:
-            shootingStyle.shoot(from: sprite, origin: .down, since: timeSinceLastUpdate)
+            shoot(from: sprite, since: timeSinceLastUpdate)
             break
         }
     }

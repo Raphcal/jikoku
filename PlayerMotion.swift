@@ -12,7 +12,7 @@ import UIKit
 
 fileprivate let maxSpeed: GLfloat = 500
 
-class PlayerMotion : Motion {
+class PlayerMotion : BaseMotion {
     
     let panGestureRecognizer: UIPanGestureRecognizer
     let view: UIView?
@@ -23,10 +23,8 @@ class PlayerMotion : Motion {
     var translation = Point<GLfloat>()
     
     var shootingStyles: [ShootingStyle]
-    var currentShootingStyle = 0
-    var shootingStyle: ShootingStyle {
-        return shootingStyles[currentShootingStyle]
-    }
+    
+    let angle = -GLfloat.pi / 2
     
     var invicibility: TimeInterval?
     
@@ -78,7 +76,7 @@ class PlayerMotion : Motion {
         }
         sprite.frame = frame
         
-        shootingStyle.shoot(from: sprite, origin: .up, since: timeSinceLastUpdate)
+        shoot(from: sprite, since: timeSinceLastUpdate)
         
         if var invicibility = invicibility {
             invicibility -= timeSinceLastUpdate

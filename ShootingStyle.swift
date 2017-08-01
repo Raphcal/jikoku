@@ -8,6 +8,12 @@
 
 import Melisse
 
+extension Rectangle where Coordinate == GLfloat {
+    func point(at angle: GLfloat) -> Point<GLfloat> {
+        return Point(x: center.x + size.width / 2 * cos(angle), y: center.y + size.height / 2 * sin(angle))
+    }
+}
+
 /// Classe de base des styles de tir.
 class ShootingStyle {
     
@@ -31,14 +37,14 @@ class ShootingStyle {
     }
     
     /// Fait tirer le sprite donné.
-    func shoot(from sprite: Sprite, origin: Direction, since lastUpdate: TimeInterval) {
+    func shoot(from sprite: Sprite, angle: GLfloat, since lastUpdate: TimeInterval) {
         if shootInterval > 0 {
             shootInterval -= lastUpdate
             return
         } else {
             shootInterval += definition.shootInterval
             
-            _ = shots(from: origin.point(of: sprite.frame), type: sprite === GameScene.current?.player ? .friendlyShot : .enemyShot)
+            _ = shots(from: sprite.frame.point(at: angle), type: sprite === GameScene.current?.player ? .friendlyShot : .enemyShot)
             
             shotAmount += shotAmountVariation
             
