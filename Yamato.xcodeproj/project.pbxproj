@@ -37,6 +37,8 @@
 		64EEA17E1F3063E00085DFD4 /* BaseMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EEA17D1F3063E00085DFD4 /* BaseMotion.swift */; };
 		64EEA1951F31AC760085DFD4 /* StationaryEnemyMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EEA1941F31AC760085DFD4 /* StationaryEnemyMotion.swift */; };
 		64EEA1971F31AC9C0085DFD4 /* QuarterCircleEnemyMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EEA1961F31AC9C0085DFD4 /* QuarterCircleEnemyMotion.swift */; };
+		64EEA19A1F31AD680085DFD4 /* FormationDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EEA1991F31AD680085DFD4 /* FormationDefinition.swift */; };
+		64EEA1A01F321E480085DFD4 /* FormationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EEA19F1F321E480085DFD4 /* FormationManager.swift */; };
 		64FCBCA61F25D39700536C57 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FCBCA51F25D39700536C57 /* Level.swift */; };
 /* End PBXBuildFile section */
 
@@ -110,6 +112,8 @@
 		64EEA17D1F3063E00085DFD4 /* BaseMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMotion.swift; sourceTree = "<group>"; };
 		64EEA1941F31AC760085DFD4 /* StationaryEnemyMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationaryEnemyMotion.swift; sourceTree = "<group>"; };
 		64EEA1961F31AC9C0085DFD4 /* QuarterCircleEnemyMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuarterCircleEnemyMotion.swift; sourceTree = "<group>"; };
+		64EEA1991F31AD680085DFD4 /* FormationDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormationDefinition.swift; sourceTree = "<group>"; };
+		64EEA19F1F321E480085DFD4 /* FormationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormationManager.swift; sourceTree = "<group>"; };
 		64FCBCA51F25D39700536C57 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -235,6 +239,8 @@
 			children = (
 				64BB38AC1F2B4BCE00CAB9FC /* Boss.swift */,
 				64BB38AA1F2B4BB700CAB9FC /* Formation.swift */,
+				64EEA1991F31AD680085DFD4 /* FormationDefinition.swift */,
+				64EEA19F1F321E480085DFD4 /* FormationManager.swift */,
 				64BB38A41F2B4ACF00CAB9FC /* Group.swift */,
 				64BB386E1F29C91300CAB9FC /* Kanji.swift */,
 				64FCBCA51F25D39700536C57 /* Level.swift */,
@@ -366,10 +372,12 @@
 				64BB38A31F2B4A9A00CAB9FC /* Wave.swift in Sources */,
 				64BB38A71F2B4AEB00CAB9FC /* Shape.swift in Sources */,
 				647D7EA41F20CE6000721F76 /* ShootingStyleDefinition.swift in Sources */,
+				64EEA19A1F31AD680085DFD4 /* FormationDefinition.swift in Sources */,
 				643FC8C01F1F6C9600EA7727 /* SpriteAtlas.swift in Sources */,
 				648DD06A1F116EB9002A7398 /* AppDelegate.swift in Sources */,
 				64EB3CD31F265FA9002596BB /* EnemyMotion.swift in Sources */,
 				64BB38AD1F2B4BCE00CAB9FC /* Boss.swift in Sources */,
+				64EEA1A01F321E480085DFD4 /* FormationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
