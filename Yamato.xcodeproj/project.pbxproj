@@ -35,6 +35,8 @@
 		64EB3CCE1F26502B002596BB /* LevelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EB3CCD1F26502B002596BB /* LevelManager.swift */; };
 		64EB3CD31F265FA9002596BB /* EnemyMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EB3CD21F265FA9002596BB /* EnemyMotion.swift */; };
 		64EEA17E1F3063E00085DFD4 /* BaseMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EEA17D1F3063E00085DFD4 /* BaseMotion.swift */; };
+		64EEA1951F31AC760085DFD4 /* StationaryEnemyMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EEA1941F31AC760085DFD4 /* StationaryEnemyMotion.swift */; };
+		64EEA1971F31AC9C0085DFD4 /* QuarterCircleEnemyMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EEA1961F31AC9C0085DFD4 /* QuarterCircleEnemyMotion.swift */; };
 		64FCBCA61F25D39700536C57 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FCBCA51F25D39700536C57 /* Level.swift */; };
 /* End PBXBuildFile section */
 
@@ -106,6 +108,8 @@
 		64EB3CCD1F26502B002596BB /* LevelManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelManager.swift; sourceTree = "<group>"; };
 		64EB3CD21F265FA9002596BB /* EnemyMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyMotion.swift; sourceTree = "<group>"; };
 		64EEA17D1F3063E00085DFD4 /* BaseMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMotion.swift; sourceTree = "<group>"; };
+		64EEA1941F31AC760085DFD4 /* StationaryEnemyMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationaryEnemyMotion.swift; sourceTree = "<group>"; };
+		64EEA1961F31AC9C0085DFD4 /* QuarterCircleEnemyMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuarterCircleEnemyMotion.swift; sourceTree = "<group>"; };
 		64FCBCA51F25D39700536C57 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -209,11 +213,21 @@
 		64EB3CD11F265F53002596BB /* Motion */ = {
 			isa = PBXGroup;
 			children = (
+				64EEA1981F31ACB50085DFD4 /* Enemy Motions */,
 				64EEA17D1F3063E00085DFD4 /* BaseMotion.swift */,
 				64EB3CD21F265FA9002596BB /* EnemyMotion.swift */,
 				6410F99F1F21D69E005C2DDC /* PlayerMotion.swift */,
 			);
 			name = Motion;
+			sourceTree = "<group>";
+		};
+		64EEA1981F31ACB50085DFD4 /* Enemy Motions */ = {
+			isa = PBXGroup;
+			children = (
+				64EEA1941F31AC760085DFD4 /* StationaryEnemyMotion.swift */,
+				64EEA1961F31AC9C0085DFD4 /* QuarterCircleEnemyMotion.swift */,
+			);
+			name = "Enemy Motions";
 			sourceTree = "<group>";
 		};
 		64FCBCA31F25D38800536C57 /* Level */ = {
@@ -330,6 +344,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64EEA1951F31AC760085DFD4 /* StationaryEnemyMotion.swift in Sources */,
+				64EEA1971F31AC9C0085DFD4 /* QuarterCircleEnemyMotion.swift in Sources */,
 				643CEA001F28A58700A2D4C6 /* CenteredSpriteHitbox.swift in Sources */,
 				643FC8C21F1F6CEF00EA7727 /* SpriteType.swift in Sources */,
 				64BB38A11F2B4A7000CAB9FC /* Enumerable.swift in Sources */,
