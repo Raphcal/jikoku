@@ -224,8 +224,8 @@
 		64EEA1981F31ACB50085DFD4 /* Enemy Motions */ = {
 			isa = PBXGroup;
 			children = (
-				64EEA1941F31AC760085DFD4 /* StationaryEnemyMotion.swift */,
 				64EEA1961F31AC9C0085DFD4 /* QuarterCircleEnemyMotion.swift */,
+				64EEA1941F31AC760085DFD4 /* StationaryEnemyMotion.swift */,
 			);
 			name = "Enemy Motions";
 			sourceTree = "<group>";
