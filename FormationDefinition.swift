@@ -15,7 +15,9 @@ protocol FormationDefinition {
     var creationPoints: [Point<GLfloat>] { get }
 }
 
-class StationaryFormationDefinition {
+class StationaryFormationDefinition : FormationDefinition {
+    
+    var width: GLfloat = 48
     
     var interval: TimeInterval {
         return 0.3
@@ -23,7 +25,7 @@ class StationaryFormationDefinition {
     
     var creationPoints: [Point<GLfloat>] {
         if points.isEmpty {
-            points = stride(from: 16, to: View.instance.width - 16, by: 32).map { Point(x: $0, y: -32) }
+            points = stride(from: width / 2, to: View.instance.width - width / 2, by: width).map { Point(x: $0, y: -32) }
         }
         return [points.removeAtRandom()]
     }
@@ -32,7 +34,7 @@ class StationaryFormationDefinition {
     
 }
 
-class QuarterCircleFormationDefinition {
+class QuarterCircleFormationDefinition : FormationDefinition {
 
     var length = 3
     

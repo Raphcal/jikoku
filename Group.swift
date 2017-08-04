@@ -17,6 +17,20 @@ struct Group {
     var formation: Formation
     var shootingStyleDefinition: ShootingStyleDefinition?
     
+    var formationDefinition: FormationDefinition {
+        switch formation {
+        case .topLeftQuarterCircle:
+            fallthrough
+        case .topRightQuarterCircle:
+            return QuarterCircleFormationDefinition()
+        case .stationary:
+            return StationaryFormationDefinition()
+        default:
+            // TODO: Implémenter
+            return StationaryFormationDefinition()
+        }
+    }
+    
     static func random(with kanjis: [Character]) -> Group {
         let size = ShapeSize.random
         return Group(

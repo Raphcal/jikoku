@@ -20,10 +20,6 @@ class StationaryEnemyMotion : EnemyMotion {
     var targetY: GLfloat = 32
     
     override func load(_ sprite: Sprite) {
-        var frame = sprite.frame
-        frame.bottom = gameScene.camera.frame.top - 1
-        frame.left = random(from: 0, to: View.instance.width - sprite.frame.width)
-        sprite.frame = frame
         acceleration = random(from: 200, to: 700)
         
         shootingStyles = [StraightShootingStyleDefinition(

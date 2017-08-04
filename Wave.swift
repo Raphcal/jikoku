@@ -13,6 +13,11 @@ struct Wave {
     var groups: [Group]
     
     static func random(with kanjis: [Character]) -> Wave {
-        return Wave(groups: (0 ..< Melisse.random(from: 1, to: 4)).map { _ in Group.random(with: kanjis) })
+        var formations = [Formation.stationary, .topLeftQuarterCircle, .topRightQuarterCircle]
+        return Wave(groups: (0 ..< Melisse.random(from: 1, to: 3)).map { _ in
+            var group = Group.random(with: kanjis)
+            group.formation = formations.removeAtRandom()
+            return group
+        })
     }
 }

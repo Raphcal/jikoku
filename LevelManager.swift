@@ -15,7 +15,15 @@ class LevelManager {
     
     let level: Level
     let spriteFactory: SpriteFactory
-    var gameScene: GameScene?
+    var gameScene: GameScene? {
+        didSet {
+            if let gameScene = gameScene {
+                formationManager = FormationManager(gameScene: gameScene)
+            }
+        }
+    }
+    
+    var formationManager: FormationManager?
     
     var interval: TimeInterval = 0
     
@@ -23,6 +31,11 @@ class LevelManager {
     var wave = 0
     
     var sprites = [Sprite]()
+    var breathInterval: TimeInterval = 0
+    
+    var enemyCount: Int {
+        return sprites.reduce(sprites.count, { $1.isRemoved ? $0 - 1 : $0 })
+    }
     
     init(level: Level, spriteFactory: SpriteFactory) {
         self.level = level
@@ -30,24 +43,27 @@ class LevelManager {
     }
     
     func update(with timeSinceLastUpdate: TimeInterval) {
-        // TODO: Gérer le niveau
-        interval += timeSinceLastUpdate
-        while interval > creationInterval {
-            interval -= creationInterval
+        guard let formationManager = formationManager else {
+            return
+        }
+        let noMoreEnemy = self.enemyCount == 0
+        if noMoreEnemy && breathInterval > 0 {
+            breathInterval -= timeSinceLastUpdate
+        }
+        else if noMoreEnemy && self.wave < level.waves.count {
+            let wave = level.waves[self.wave]
+            self.wave += 1
+            print("Vague n°\(self.wave)")
             
-            let enemy = spriteFactory.sprite(random(from: 1, to: spriteFactory.definitions.count - 1))
+            formationManager.groups = wave.groups
             
-            let motion: EnemyMotion
-            switch random(3) {
-            case 0:
-                motion = StationaryEnemyMotion(lifePoints: 10, gameScene: gameScene!)
-            case 1:
-                motion = QuarterCircleEnemyMotion(lifePoints: 5, gameScene: gameScene!, center: Point())
-            default:
-                motion = QuarterCircleEnemyMotion(lifePoints: 5, gameScene: gameScene!, center: Point(x: View.instance.width, y: 0))
-            }
-            enemy.motion = motion
-            motion.load(enemy)
+            self.breathInterval = 1
+        }
+        
+        let sprites = formationManager.update(since: timeSinceLastUpdate)
+        if !sprites.isEmpty {
+            self.sprites.append(contentsOf: sprites)
+            print("\(sprites.count) nouveaux ennemis")
         }
     }
     

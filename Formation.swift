@@ -42,7 +42,7 @@ enum Formation : Enumerable {
     /// Apparaît depuis l'arrière plan et reste stationnaire.
     case rise
     
-    func motion(lifePoints: Int, gameScene: GameScene) -> Motion {
+    func motion(lifePoints: Int, gameScene: GameScene) -> EnemyMotion {
         switch self {
         case .stationary:
             return StationaryEnemyMotion(lifePoints: lifePoints, gameScene: gameScene)
@@ -51,7 +51,7 @@ enum Formation : Enumerable {
         case .topRightQuarterCircle:
             return QuarterCircleEnemyMotion(lifePoints: lifePoints, gameScene: gameScene, center: Point(x: View.instance.width, y: 0))
         default:
-            return NoMotion()
+            return EnemyMotion(lifePoints: lifePoints, gameScene: gameScene)
         }
     }
     
