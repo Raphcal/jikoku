@@ -49,7 +49,7 @@ enum Formation : Enumerable {
         case .topLeftQuarterCircle:
             return QuarterCircleEnemyMotion(lifePoints: lifePoints, gameScene: gameScene, center: Point(x: View.instance.width, y: 0))
         case .topRightQuarterCircle:
-            return QuarterCircleEnemyMotion(lifePoints: lifePoints, gameScene: gameScene, center: Point(x: View.instance.width, y: 0))
+            return QuarterCircleEnemyMotion(lifePoints: lifePoints, gameScene: gameScene, center: Point(x: 0, y: 0))
         default:
             return EnemyMotion(lifePoints: lifePoints, gameScene: gameScene)
         }
