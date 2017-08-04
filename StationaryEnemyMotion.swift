@@ -19,6 +19,8 @@ class StationaryEnemyMotion : EnemyMotion {
     let deceleration: GLfloat = 1000
     var targetY: GLfloat = 32
     
+    var stationaryInterval: TimeInterval = 3
+    
     override func load(_ sprite: Sprite) {
         acceleration = random(from: 200, to: 700)
         
@@ -47,7 +49,6 @@ class StationaryEnemyMotion : EnemyMotion {
                 state = .decelerating
             }
             sprite.frame = frame
-            break
         case .decelerating:
             speed -= deceleration * delta
             var frame = sprite.frame
@@ -55,15 +56,27 @@ class StationaryEnemyMotion : EnemyMotion {
             sprite.frame = frame
             if speed < 0 {
                 state = .stationary
+                speed = 0
             }
         case .stationary:
             shoot(from: sprite, since: timeSinceLastUpdate)
-            break
+            stationaryInterval -= timeSinceLastUpdate
+            if stationaryInterval < 0 {
+                state = .exiting
+            }
+        case .exiting:
+            speed += acceleration * delta
+            var frame = sprite.frame
+            frame.y -= speed * delta
+            if frame.bottom < 0 {
+                sprite.destroy()
+            }
+            sprite.frame = frame
         }
     }
     
     enum State {
-        case entering, decelerating, stationary
+        case entering, decelerating, stationary, exiting
     }
     
 }
