@@ -10,6 +10,8 @@ import Foundation
 import Melisse
 import GLKit
 
+fileprivate let maximumSpeed: GLfloat = 800
+
 class StationaryEnemyMotion : EnemyMotion {
     
     var state = State.entering
@@ -23,6 +25,7 @@ class StationaryEnemyMotion : EnemyMotion {
     
     override func load(_ sprite: Sprite) {
         acceleration = random(from: 200, to: 700)
+        targetY = -sprite.frame.y
         
         shootingStyles = [StraightShootingStyleDefinition(
             shotAmount: 1,
@@ -41,7 +44,7 @@ class StationaryEnemyMotion : EnemyMotion {
         
         switch state {
         case .entering:
-            speed += acceleration * delta
+            speed = min(speed + acceleration * delta, maximumSpeed)
             var frame = sprite.frame
             frame.y += speed * delta
             if frame.y >= targetY {
@@ -65,7 +68,7 @@ class StationaryEnemyMotion : EnemyMotion {
                 state = .exiting
             }
         case .exiting:
-            speed += acceleration * delta
+            speed = min(speed + acceleration * delta, maximumSpeed)
             var frame = sprite.frame
             frame.y -= speed * delta
             if frame.bottom < 0 {

@@ -13,7 +13,7 @@ fileprivate let creationInterval: TimeInterval = 0.5
 
 class LevelManager {
     
-    let level: Level
+    var level: Level
     let spriteFactory: SpriteFactory
     var gameScene: GameScene? {
         didSet {
@@ -58,6 +58,13 @@ class LevelManager {
             formationManager.groups = wave.groups
             
             self.breathInterval = 1
+        }
+        else if self.wave == level.waves.count {
+            // TODO: À supprimer, juste pour tester.
+            self.level = Level.random(with: [Character](kanjis.characters))
+            self.wave = 0
+            
+            formationManager.groups = level.waves[self.wave].groups
         }
         
         let sprites = formationManager.update(since: timeSinceLastUpdate)

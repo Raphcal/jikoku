@@ -10,6 +10,8 @@ import Foundation
 import Melisse
 import GLKit
 
+fileprivate let spacing: GLfloat = 8
+
 protocol FormationDefinition {
     var interval: TimeInterval { get }
     var creationPoints: [Point<GLfloat>] { get }
@@ -28,7 +30,11 @@ class StationaryFormationDefinition : FormationDefinition {
     
     var creationPoints: [Point<GLfloat>] {
         if points.isEmpty {
-            points = stride(from: width / 2 + 8, to: View.instance.width - width / 2 - 8, by: width).map { Point(x: $0, y: -width / 2) }
+            let left = width / 2 + spacing
+            let right = View.instance.width - width / 2
+            points = stride(from: left, to: right, by: width + spacing).flatMap {
+                [Point(x: $0, y: -width / 2), Point(x: $0, y: -width / 2 - 20), Point(x: $0, y: -width / 2 - 40)]
+            }
         }
         return [points.removeAtRandom()]
     }
@@ -43,11 +49,11 @@ class StationaryFormationDefinition : FormationDefinition {
 
 struct QuarterCircleFormationDefinition : FormationDefinition {
     
-    let interval: TimeInterval = 0.4
+    let interval: TimeInterval = 0.2
     let creationPoints: [Point<GLfloat>]
     
     init(group: Group) {
-        let margin = -group.size.pixelSize - 8
+        let margin = -group.size.pixelSize - spacing
         self.creationPoints = (0 ..< group.count / 6).map { index in Point<GLfloat>(x: 0, y: GLfloat(index) * margin) }
     }
     
