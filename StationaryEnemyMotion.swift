@@ -17,25 +17,14 @@ class StationaryEnemyMotion : EnemyMotion {
     var state = State.entering
     
     var speed: GLfloat = 0
-    var acceleration: GLfloat = 0
+    var acceleration: GLfloat = 400
     let deceleration: GLfloat = 1000
     var targetY: GLfloat = 32
     
-    var stationaryInterval: TimeInterval = 3
+    var stationaryInterval: TimeInterval = 10
     
     override func load(_ sprite: Sprite) {
-        acceleration = random(from: 200, to: 700)
         targetY = -sprite.frame.y
-        
-        shootingStyles = [StraightShootingStyleDefinition(
-            shotAmount: 1,
-            shotAmountVariation: 0,
-            shotSpeed: 250,
-            shootInterval: 0.5,
-            inversions: [],
-            inversionInterval: 0,
-            spriteDefinition: 1,
-            space: 0).shootingStyle(spriteFactory: spriteFactory)]
     }
     
     override func updateWith(_ timeSinceLastUpdate: TimeInterval, sprite: Sprite) {

@@ -41,8 +41,8 @@ struct Group {
             shootingStyleDefinition: StraightShootingStyleDefinition(
                 shotAmount: 1,
                 shotAmountVariation: 0,
-                shotSpeed: 500,
-                shootInterval: 0.25,
+                shotSpeed: 200,
+                shootInterval: 1,
                 inversions: [],
                 inversionInterval: 0,
                 spriteDefinition: 1,

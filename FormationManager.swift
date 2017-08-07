@@ -58,6 +58,11 @@ class FormationManager {
                     sprite.frame = frame
                     
                     let motion = group.formation.motion(lifePoints: lifePoints, gameScene: gameScene)
+                    
+                    if let shootingStyle = group.shootingStyleDefinition?.shootingStyle(spriteFactory: spriteFactory) {
+                        motion.shootingStyles = [shootingStyle]
+                    }
+                    
                     sprite.motion = motion
                     motion.load(sprite)
                     

@@ -11,9 +11,9 @@ import Melisse
 import GLKit
 
 fileprivate let sizeDistribution = Distribution(itemsWithProbabilities: [
-    ShapeSize.smaller: 5,
-    .small: 10,
-    .medium: 50,
+    ShapeSize.smaller: 20,
+    .small: 20,
+    .medium: 20,
     .big: 10,
     .bigger: 5])
 
@@ -33,9 +33,9 @@ enum ShapeSize : Enumerable {
         case .medium:
             return 48
         case .big:
-            return 64
-        case .bigger:
             return 96
+        case .bigger:
+            return 192
         }
     }
     
@@ -67,9 +67,9 @@ enum ShapeSize : Enumerable {
         case .medium:
             return 5
         case .big:
-            return 10
+            return 50
         case .bigger:
-            return 20
+            return 200
         }
     }
     
