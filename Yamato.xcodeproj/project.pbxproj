@@ -39,6 +39,7 @@
 		64EEA1971F31AC9C0085DFD4 /* QuarterCircleEnemyMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EEA1961F31AC9C0085DFD4 /* QuarterCircleEnemyMotion.swift */; };
 		64EEA19A1F31AD680085DFD4 /* FormationDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EEA1991F31AD680085DFD4 /* FormationDefinition.swift */; };
 		64EEA1A01F321E480085DFD4 /* FormationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EEA19F1F321E480085DFD4 /* FormationManager.swift */; };
+		64F4BE271F38ABD6006BFD60 /* StraightShootingStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F4BE261F38ABD6006BFD60 /* StraightShootingStyle.swift */; };
 		64FCBCA61F25D39700536C57 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FCBCA51F25D39700536C57 /* Level.swift */; };
 /* End PBXBuildFile section */
 
@@ -114,6 +115,7 @@
 		64EEA1961F31AC9C0085DFD4 /* QuarterCircleEnemyMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuarterCircleEnemyMotion.swift; sourceTree = "<group>"; };
 		64EEA1991F31AD680085DFD4 /* FormationDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormationDefinition.swift; sourceTree = "<group>"; };
 		64EEA19F1F321E480085DFD4 /* FormationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormationManager.swift; sourceTree = "<group>"; };
+		64F4BE261F38ABD6006BFD60 /* StraightShootingStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StraightShootingStyle.swift; sourceTree = "<group>"; };
 		64FCBCA51F25D39700536C57 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -151,6 +153,7 @@
 		647D7E9D1F20C83B00721F76 /* Shots */ = {
 			isa = PBXGroup;
 			children = (
+				64F4BE241F38ABC2006BFD60 /* Styles */,
 				647D7E9F1F20C8A600721F76 /* ShootingStyle.swift */,
 				647D7EA31F20CE6000721F76 /* ShootingStyleDefinition.swift */,
 				647D7EA51F20D78A00721F76 /* ShotMotion.swift */,
@@ -232,6 +235,14 @@
 				64EEA1941F31AC760085DFD4 /* StationaryEnemyMotion.swift */,
 			);
 			name = "Enemy Motions";
+			sourceTree = "<group>";
+		};
+		64F4BE241F38ABC2006BFD60 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				64F4BE261F38ABD6006BFD60 /* StraightShootingStyle.swift */,
+			);
+			name = Styles;
 			sourceTree = "<group>";
 		};
 		64FCBCA31F25D38800536C57 /* Level */ = {
@@ -362,6 +373,7 @@
 				64BB38A51F2B4ACF00CAB9FC /* Group.swift in Sources */,
 				64BB386F1F29C91300CAB9FC /* Kanji.swift in Sources */,
 				64EB3CCE1F26502B002596BB /* LevelManager.swift in Sources */,
+				64F4BE271F38ABD6006BFD60 /* StraightShootingStyle.swift in Sources */,
 				64846A331F1F3BF60053A926 /* GLKTextureLoader.swift in Sources */,
 				6410F9A01F21D69E005C2DDC /* PlayerMotion.swift in Sources */,
 				64326AB51F1398AA007673E3 /* GameViewController.swift in Sources */,

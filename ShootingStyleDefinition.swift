@@ -47,25 +47,3 @@ protocol ShootingStyleDefinition {
     func shootingStyle(spriteFactory: SpriteFactory) -> ShootingStyle
 
 }
-
-struct StraightShootingStyleDefinition : ShootingStyleDefinition {
-
-    var shotAmount: Int
-    var shotAmountVariation: Int
-    
-    var shotSpeed: GLfloat
-    var shootInterval: TimeInterval
-    
-    var inversions: ShootingStyleInversion
-    var inversionInterval: Int
-    
-    var spriteDefinition: Int
-    
-    /// Espace entre chaque tir.
-    var space: GLfloat
-    
-    func shootingStyle(spriteFactory: SpriteFactory) -> ShootingStyle {
-        return StraightShootingStyle(definition: self, spriteFactory: spriteFactory)
-    }
-    
-}
