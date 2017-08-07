@@ -22,36 +22,33 @@ struct NoFormationDefinition : FormationDefinition {
 
 class StationaryFormationDefinition : FormationDefinition {
     
-    var width: GLfloat = 48
+    let width: GLfloat
     
-    var interval: TimeInterval {
-        return 0.3
-    }
+    let interval: TimeInterval = 0.3
     
     var creationPoints: [Point<GLfloat>] {
         if points.isEmpty {
-            points = stride(from: width / 2, to: View.instance.width - width / 2, by: width).map { Point(x: $0, y: -32) }
+            points = stride(from: width / 2 + 8, to: View.instance.width - width / 2 - 8, by: width).map { Point(x: $0, y: -width / 2) }
         }
         return [points.removeAtRandom()]
     }
     
     fileprivate var points = [Point<GLfloat>]()
     
+    init(group: Group) {
+        self.width = group.size.pixelSize
+    }
+    
 }
 
 struct QuarterCircleFormationDefinition : FormationDefinition {
     
-    let count: Int
     let interval: TimeInterval = 0.4
     let creationPoints: [Point<GLfloat>]
     
-    init(count: Int) {
-        self.count = count
-        if count <= 6 {
-            self.creationPoints = [Point<GLfloat>(x: 0, y: -128)]
-        } else {
-            self.creationPoints = [Point<GLfloat>(x: 0, y: -128), Point<GLfloat>(x: 0, y: -128)]
-        }
+    init(group: Group) {
+        let margin = -group.size.pixelSize - 8
+        self.creationPoints = (0 ..< group.count / 6).map { index in Point<GLfloat>(x: 0, y: GLfloat(index) * margin) }
     }
     
 }

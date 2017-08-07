@@ -31,6 +31,10 @@ class QuarterCircleEnemyMotion : EnemyMotion {
         super.init(lifePoints: lifePoints, gameScene: gameScene)
     }
     
+    override func load(_ sprite: Sprite) {
+        self.center.y = sprite.frame.y
+    }
+    
     override func updateWith(_ timeSinceLastUpdate: TimeInterval, sprite: Sprite) {
         super.updateWith(timeSinceLastUpdate, sprite: sprite)
         

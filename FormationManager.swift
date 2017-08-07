@@ -58,9 +58,6 @@ class FormationManager {
                     sprite.frame = frame
                     
                     let motion = group.formation.motion(lifePoints: lifePoints, gameScene: gameScene)
-                    if let quarterCircleMotion = motion as? QuarterCircleEnemyMotion {
-                        quarterCircleMotion.center.y = GLfloat(i) * (-size.height - 8)
-                    }
                     sprite.motion = motion
                     motion.load(sprite)
                     
