@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import Melisse
+import GLKit
 
 struct StraightShootingStyleDefinition : ShootingStyleDefinition {
     
