@@ -50,8 +50,11 @@ class FormationManager {
                 let size = group.size.melisseSize
                 let lifePoints = group.size.lifePoints
                 
+                // TODO: À remplacer par le spriteDefinition du groupe
+                let kanjiIndex = [Character](kanjis.characters).index(of: group.kanji) ?? 1
+                
                 for i in 0 ..< max {
-                    let sprite = spriteFactory.sprite(random(from: 1, to: kanjis.characters.count - 1))
+                    let sprite = spriteFactory.sprite(kanjiIndex)
                     var frame = sprite.frame
                     frame.center = points[i]
                     frame.size = size
