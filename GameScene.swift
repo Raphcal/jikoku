@@ -75,7 +75,7 @@ class GameScene : Scene {
     }
     
     func updateWith(_ timeSinceLastUpdate: TimeInterval) {
-        let delta = isRunning ? timeSinceLastUpdate : 0
+        let delta = isRunning ? timeSinceLastUpdate : timeSinceLastUpdate / 20
         
         levelManager.update(with: delta)
         spriteFactory.updateWith(delta)

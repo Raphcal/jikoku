@@ -13,7 +13,7 @@ import GLKit
 class QuarterCircleEnemyMotion : EnemyMotion {
     
     let direction: Direction
-    let center: Point<GLfloat>
+    var center: Point<GLfloat>
     
     let initialAngle: GLfloat
     var progress: GLfloat = 0

@@ -47,11 +47,20 @@ class FormationManager {
                 let count = counts[index]
                 let max = min(points.count, group.count - count)
                 
+                let size = group.size.melisseSize
+                let lifePoints = group.size.lifePoints
+                
                 for i in 0 ..< max {
                     let sprite = spriteFactory.sprite(random(from: 1, to: kanjis.characters.count - 1))
-                    sprite.frame.center = points[i]
+                    var frame = sprite.frame
+                    frame.center = points[i]
+                    frame.size = size
+                    sprite.frame = frame
                     
-                    let motion = group.formation.motion(lifePoints: 5, gameScene: gameScene)
+                    let motion = group.formation.motion(lifePoints: lifePoints, gameScene: gameScene)
+                    if let quarterCircleMotion = motion as? QuarterCircleEnemyMotion {
+                        quarterCircleMotion.center.y = GLfloat(i) * (-size.height - 8)
+                    }
                     sprite.motion = motion
                     motion.load(sprite)
                     

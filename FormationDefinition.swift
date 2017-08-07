@@ -15,6 +15,11 @@ protocol FormationDefinition {
     var creationPoints: [Point<GLfloat>] { get }
 }
 
+struct NoFormationDefinition : FormationDefinition {
+    var interval: TimeInterval = 0.5
+    var creationPoints = [Point<GLfloat>(x: View.instance.width / 2, y: 0)]
+}
+
 class StationaryFormationDefinition : FormationDefinition {
     
     var width: GLfloat = 48
@@ -34,22 +39,19 @@ class StationaryFormationDefinition : FormationDefinition {
     
 }
 
-class QuarterCircleFormationDefinition : FormationDefinition {
-
-    var length = 3
+struct QuarterCircleFormationDefinition : FormationDefinition {
     
-    var interval: TimeInterval {
-        if count > 0 && count % length == 0 {
-            return 1.5
+    let count: Int
+    let interval: TimeInterval = 0.4
+    let creationPoints: [Point<GLfloat>]
+    
+    init(count: Int) {
+        self.count = count
+        if count <= 6 {
+            self.creationPoints = [Point<GLfloat>(x: 0, y: -128)]
+        } else {
+            self.creationPoints = [Point<GLfloat>(x: 0, y: -128), Point<GLfloat>(x: 0, y: -128)]
         }
-        return 0.4
     }
-    
-    var creationPoints: [Point<GLfloat>] {
-        count += 1
-        return [Point(x: 0, y: -128)]
-    }
-
-    fileprivate var count = 0
     
 }

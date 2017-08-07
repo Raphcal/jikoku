@@ -8,6 +8,7 @@
 
 import Foundation
 import Melisse
+import GLKit
 
 fileprivate let sizeDistribution = Distribution(itemsWithProbabilities: [
     ShapeSize.smaller: 5,
@@ -26,7 +27,7 @@ enum ShapeSize : Enumerable {
     var pixelSize: GLfloat {
         switch self {
         case .smaller:
-            return 16
+            return 24
         case .small:
             return 32
         case .medium:
@@ -36,6 +37,10 @@ enum ShapeSize : Enumerable {
         case .bigger:
             return 96
         }
+    }
+    
+    var melisseSize: Melisse.Size<GLfloat> {
+        return Size(width: GLfloat(pixelSize), height: GLfloat(pixelSize))
     }
     
     var randomCount: Int {
@@ -50,6 +55,21 @@ enum ShapeSize : Enumerable {
             return Melisse.random(from: 1, to: 2)
         case .bigger:
             return 1
+        }
+    }
+    
+    var lifePoints: Int {
+        switch self {
+        case .smaller:
+            return 1
+        case .small:
+            return 2
+        case .medium:
+            return 5
+        case .big:
+            return 10
+        case .bigger:
+            return 20
         }
     }
     

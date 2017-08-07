@@ -22,12 +22,11 @@ struct Group {
         case .topLeftQuarterCircle:
             fallthrough
         case .topRightQuarterCircle:
-            return QuarterCircleFormationDefinition()
+            return QuarterCircleFormationDefinition(count: count)
         case .stationary:
             return StationaryFormationDefinition()
         default:
-            // TODO: Implémenter
-            return StationaryFormationDefinition()
+            return NoFormationDefinition()
         }
     }
     
