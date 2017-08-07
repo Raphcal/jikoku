@@ -44,7 +44,15 @@ class ShootingStyle {
         } else {
             shootInterval += definition.shootInterval
             
-            _ = shots(from: sprite.frame.point(at: angle), angle: angle, type: sprite === GameScene.current?.player ? .friendlyShot : .enemyShot)
+            let origin: Point<GLfloat>
+            switch definition.origin {
+            case .center:
+                origin = sprite.frame.center
+            case .front:
+                origin = sprite.frame.point(at: angle)
+            }
+            
+            _ = shots(from: origin, angle: angle, type: sprite === GameScene.current?.player ? .friendlyShot : .enemyShot)
             
             shotAmount += shotAmountVariation
             

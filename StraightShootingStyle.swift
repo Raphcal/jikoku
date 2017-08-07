@@ -12,6 +12,8 @@ import GLKit
 
 struct StraightShootingStyleDefinition : ShootingStyleDefinition {
     
+    let origin = ShotOrigin.front
+    
     var shotAmount: Int
     var shotAmountVariation: Int
     
@@ -32,6 +34,7 @@ struct StraightShootingStyleDefinition : ShootingStyleDefinition {
     
 }
 
+/// Tir une rangé de tirs alignés horizontalement.
 class StraightShootingStyle : ShootingStyle {
     
     var straightDefinition: StraightShootingStyleDefinition {

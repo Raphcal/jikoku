@@ -40,6 +40,7 @@
 		64EEA19A1F31AD680085DFD4 /* FormationDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EEA1991F31AD680085DFD4 /* FormationDefinition.swift */; };
 		64EEA1A01F321E480085DFD4 /* FormationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EEA19F1F321E480085DFD4 /* FormationManager.swift */; };
 		64F4BE271F38ABD6006BFD60 /* StraightShootingStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F4BE261F38ABD6006BFD60 /* StraightShootingStyle.swift */; };
+		64F4BE291F38AD0A006BFD60 /* CircularShootingStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F4BE281F38AD0A006BFD60 /* CircularShootingStyle.swift */; };
 		64FCBCA61F25D39700536C57 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FCBCA51F25D39700536C57 /* Level.swift */; };
 /* End PBXBuildFile section */
 
@@ -116,6 +117,7 @@
 		64EEA1991F31AD680085DFD4 /* FormationDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormationDefinition.swift; sourceTree = "<group>"; };
 		64EEA19F1F321E480085DFD4 /* FormationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormationManager.swift; sourceTree = "<group>"; };
 		64F4BE261F38ABD6006BFD60 /* StraightShootingStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StraightShootingStyle.swift; sourceTree = "<group>"; };
+		64F4BE281F38AD0A006BFD60 /* CircularShootingStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularShootingStyle.swift; sourceTree = "<group>"; };
 		64FCBCA51F25D39700536C57 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -240,6 +242,7 @@
 		64F4BE241F38ABC2006BFD60 /* Styles */ = {
 			isa = PBXGroup;
 			children = (
+				64F4BE281F38AD0A006BFD60 /* CircularShootingStyle.swift */,
 				64F4BE261F38ABD6006BFD60 /* StraightShootingStyle.swift */,
 			);
 			name = Styles;
@@ -380,6 +383,7 @@
 				64EEA17E1F3063E00085DFD4 /* BaseMotion.swift in Sources */,
 				647C61E31F2B7C9100702AE5 /* ShotStyle.swift in Sources */,
 				647D7EA61F20D78A00721F76 /* ShotMotion.swift in Sources */,
+				64F4BE291F38AD0A006BFD60 /* CircularShootingStyle.swift in Sources */,
 				64BB38A91F2B4AFA00CAB9FC /* ShapeSize.swift in Sources */,
 				64BB38A31F2B4A9A00CAB9FC /* Wave.swift in Sources */,
 				64BB38A71F2B4AEB00CAB9FC /* Shape.swift in Sources */,

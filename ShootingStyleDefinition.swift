@@ -21,8 +21,15 @@ struct ShootingStyleInversion : OptionSet {
 
 }
 
+enum ShotOrigin {
+    case center, front
+}
+
 protocol ShootingStyleDefinition {
 
+    /// Point d'origine des tirs
+    var origin: ShotOrigin { get }
+    
     /// Nombre de tirs
     var shotAmount: Int { get }
     /// Augmentation ou diminution du nombre de tirs
