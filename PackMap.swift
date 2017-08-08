@@ -13,7 +13,15 @@ protocol Packable: Equatable {
     var packSize: Size<Int> { get }
 }
 
-class SimplePackMap<Element> where Element : Packable {
+protocol PackMap {
+    associatedtype Element : Packable
+    
+    func add(_ element: Element)
+    func add(contentsOf elements: [Element])
+    func point(for element: Element) -> Point<Int>?
+}
+
+class SimplePackMap<Element> : PackMap where Element : Packable {
 
     var size: Size<Int> = Size(width: 32, height: 32)
     var elements = [Element]()
