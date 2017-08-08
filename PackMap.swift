@@ -11,6 +11,7 @@ import Melisse
 
 protocol Packable {
     var packSize: Size<Int> { get }
+    static func ===(lhs: Self, rhs: Self) -> Bool
 }
 
 struct SimplePackMap<Element> where Element : Packable {
@@ -19,18 +20,48 @@ struct SimplePackMap<Element> where Element : Packable {
     var elements = [Element]()
     
     fileprivate var rows = [Row<Element>]()
+    fileprivate var takenHeight = 0
+    fileprivate var remainingHeight: Int {
+        return size.height - takenHeight
+    }
     
-    mutating func add(element: Element) {
+    mutating func add(_ element: Element) {
+        elements.append(element)
+
         let elementSize = element.packSize
         while true {
-            for var row in rows {
+            for index in 0 ..< rows.count {
+                var row = rows[index]
                 if row.size.height >= elementSize.height && row.remainingWidth >= elementSize.width {
                     row.add(element: element)
+                    rows[index] = row
                     return
                 }
             }
-            grow()
+            if remainingHeight >= elementSize.height {
+                rows.append(Row(parent: self, first: element, y: takenHeight))
+                takenHeight += elementSize.height
+            } else {
+                grow()
+            }
         }
+    }
+    
+    mutating func add(contentsOf elements: [Element]) {
+        for element in elements {
+            add(element)
+        }
+    }
+    
+    func point(for element: Element) -> Point<Int>? {
+        for row in rows {
+            for cell in row.cells {
+                if cell.element === element {
+                    return Point(x: cell.x, y: row.y)
+                }
+            }
+        }
+        return nil
     }
     
     mutating func grow() {
@@ -43,84 +74,28 @@ fileprivate struct Row<Element> where Element : Packable {
 
     var parent: SimplePackMap<Element>
     var size: Size<Int>
-    var elements = [Element]()
+    var y: Int
+    var cells = [Cell<Element>]()
+    
+    init(parent: SimplePackMap<Element>, first: Element, y: Int) {
+        self.parent = parent
+        self.size = first.packSize
+        self.cells = [Cell(x: 0, element: first)]
+        self.y = y
+    }
     
     var remainingWidth: Int {
         return parent.size.width - size.width
     }
     
     mutating func add(element: Element) {
+        cells.append(Cell(x: size.width, element: element))
         size.width += element.packSize.width
-        elements.append(element)
     }
 
 }
 
-// MARK: - PackMap (à finir d'implémenter)
-
-fileprivate class PackMap<Element> where Element : Packable {
-    fileprivate let topLeftCell: Cell<Element>
-    
-    init(size: Size<Int>) {
-        self.topLeftCell = Cell(size: size)
-    }
-    
-    func put(element: Element) {
-        var row: Cell<Element>? = nil
-        while row == nil {
-            row = topLeftCell
-            while row != nil && !didFit(in: row!) {
-                row = row!.bottomCell
-            }
-            if row == nil {
-                // TODO: Élargir la map
-                return
-            }
-        }
-    }
-    
-    private func didFit(in row: Cell<Element>) -> Bool {
-        return false
-    }
-}
-
-fileprivate class Cell<Element> where Element : Packable {
-
-    var content: Element?
-    
-    var size: Size<Int>
-    
-    var rightCell: Cell<Element>?
-    var bottomCell: Cell<Element>?
-    
-    var isEmpty: Bool {
-        return content == nil
-    }
-    
-    init(size: Size<Int>, rightCell: Cell<Element>? = nil, bottomCell: Cell<Element>? = nil) {
-        self.size = size
-        self.rightCell = rightCell
-        self.bottomCell = bottomCell
-    }
-    
-    func put(element: Element) {
-        let oldSize = size
-        self.size = element.packSize
-        
-        if oldSize.width > size.width {
-            if let rightCell = rightCell, rightCell.size.height == size.height {
-                rightCell.size.width += oldSize.width - size.width
-            } else {
-                self.rightCell = Cell(size: Size(width: oldSize.width - size.width, height: size.height), rightCell: self.rightCell)
-            }
-        }
-        if oldSize.height > size.height {
-            if let bottomCell = bottomCell, bottomCell.size.width == oldSize.width {
-                bottomCell.size.height += oldSize.height - size.height
-            } else {
-                self.bottomCell = Cell(size: Size(width: oldSize.width, height: oldSize.height - size.height), bottomCell: self.bottomCell)
-            }
-        }
-    }
-
+fileprivate struct Cell<Element> where Element : Packable {
+    var x: Int
+    var element: Element
 }
