@@ -50,6 +50,11 @@ extension GLKTextureLoader {
         
         throw TextureError.imageNotGenerated
     }
+    
+    static func texture(with blueprints: [SpriteBlueprint]) throws -> GLKTextureInfo {
+        // TODO: Implémenter la méthode.
+        throw TextureError.imageNotGenerated
+    }
 
 }
 
@@ -72,3 +77,4 @@ extension CGContext {
     }
 
 }
+

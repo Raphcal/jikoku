@@ -19,18 +19,31 @@ struct Level {
         self.boss = boss
         
         var blueprints = [SpriteBlueprint]()
+        // TODO: Ajouter le joueur
         for wave in waves {
             for group in wave.groups {
+                // Sprite
                 blueprints.append(SpriteBlueprint(
+                    id: blueprints.count,
                     shape: group.shape,
                     shapePaint: Color<GLubyte>(red: 255, green: 0, blue: 0, alpha: 255),
                     text: String(group.kanji),
                     textColor: Color<GLubyte>(red: 255, green: 255, blue: 255, alpha: 255),
                     size: Size(width: group.size.pixelSize, height: group.size.pixelSize))
                 )
-                // TODO: Ajouter les tirs
+                // Tir
+                blueprints.append(SpriteBlueprint(
+                    id: blueprints.count,
+                    shape: .round,
+                    shapePaint: Color<GLubyte>(red: 255, green: 255, blue: 255, alpha: 255),
+                    text: nil,
+                    textColor: nil,
+                    size: Size(width: 16, height: 16))
+                )
+                // TODO: Sauvegarder quelque part les blueprints pour le groupe actuel
             }
         }
+        // TODO: Ajouter les hiragana et katakana
     }
     
     static func random(with kanjis: [Character]) -> Level {
@@ -40,12 +53,17 @@ struct Level {
     }
 }
 
-struct SpriteBlueprint {
+struct SpriteBlueprint : Equatable {
+    var id: Int
     var shape: Shape?
     var shapePaint: Paint?
     var text: String?
     var textColor: Color<GLubyte>?
     var size: Size<GLfloat>
+    
+    static func ==(lhs: SpriteBlueprint, rhs: SpriteBlueprint) -> Bool {
+        return lhs.id == rhs.id
+    }
 }
 
 protocol Paint {

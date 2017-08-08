@@ -41,6 +41,7 @@
 		64EEA1A01F321E480085DFD4 /* FormationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EEA19F1F321E480085DFD4 /* FormationManager.swift */; };
 		64F4BE271F38ABD6006BFD60 /* StraightShootingStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F4BE261F38ABD6006BFD60 /* StraightShootingStyle.swift */; };
 		64F4BE291F38AD0A006BFD60 /* CircularShootingStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F4BE281F38AD0A006BFD60 /* CircularShootingStyle.swift */; };
+		64F4BE2B1F39A1AE006BFD60 /* PackMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F4BE2A1F39A1AE006BFD60 /* PackMap.swift */; };
 		64FCBCA61F25D39700536C57 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FCBCA51F25D39700536C57 /* Level.swift */; };
 /* End PBXBuildFile section */
 
@@ -118,6 +119,7 @@
 		64EEA19F1F321E480085DFD4 /* FormationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormationManager.swift; sourceTree = "<group>"; };
 		64F4BE261F38ABD6006BFD60 /* StraightShootingStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StraightShootingStyle.swift; sourceTree = "<group>"; };
 		64F4BE281F38AD0A006BFD60 /* CircularShootingStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularShootingStyle.swift; sourceTree = "<group>"; };
+		64F4BE2A1F39A1AE006BFD60 /* PackMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackMap.swift; sourceTree = "<group>"; };
 		64FCBCA51F25D39700536C57 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -148,6 +150,7 @@
 				64846A321F1F3BF60053A926 /* GLKTextureLoader.swift */,
 				643FC8BF1F1F6C9600EA7727 /* SpriteAtlas.swift */,
 				643FC8C11F1F6CEF00EA7727 /* SpriteType.swift */,
+				64F4BE2A1F39A1AE006BFD60 /* PackMap.swift */,
 			);
 			name = Sprites;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				64326ABD1F139E55007673E3 /* GameScene.swift in Sources */,
 				647D7EA01F20C8A600721F76 /* ShootingStyle.swift in Sources */,
 				64BB38A51F2B4ACF00CAB9FC /* Group.swift in Sources */,
+				64F4BE2B1F39A1AE006BFD60 /* PackMap.swift in Sources */,
 				64BB386F1F29C91300CAB9FC /* Kanji.swift in Sources */,
 				64EB3CCE1F26502B002596BB /* LevelManager.swift in Sources */,
 				64F4BE271F38ABD6006BFD60 /* StraightShootingStyle.swift in Sources */,

@@ -11,6 +11,9 @@ import Melisse
 
 protocol Packable {
     var packSize: Size<Int> { get }
+}
+
+protocol PackableObject : Packable {
     static func ===(lhs: Self, rhs: Self) -> Bool
 }
 
@@ -53,6 +56,26 @@ struct SimplePackMap<Element> where Element : Packable {
         }
     }
     
+    mutating func grow() {
+        self.size = size * 2
+    }
+
+}
+
+extension SimplePackMap where Element : Equatable {
+    func point(for element: Element) -> Point<Int>? {
+        for row in rows {
+            for cell in row.cells {
+                if cell.element == element {
+                    return Point(x: cell.x, y: row.y)
+                }
+            }
+        }
+        return nil
+    }
+}
+
+extension SimplePackMap where Element : PackableObject {
     func point(for element: Element) -> Point<Int>? {
         for row in rows {
             for cell in row.cells {
@@ -63,11 +86,6 @@ struct SimplePackMap<Element> where Element : Packable {
         }
         return nil
     }
-    
-    mutating func grow() {
-        self.size = size * 2
-    }
-
 }
 
 fileprivate struct Row<Element> where Element : Packable {
