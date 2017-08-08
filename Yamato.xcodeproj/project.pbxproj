@@ -42,6 +42,8 @@
 		64F4BE271F38ABD6006BFD60 /* StraightShootingStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F4BE261F38ABD6006BFD60 /* StraightShootingStyle.swift */; };
 		64F4BE291F38AD0A006BFD60 /* CircularShootingStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F4BE281F38AD0A006BFD60 /* CircularShootingStyle.swift */; };
 		64F4BE2B1F39A1AE006BFD60 /* PackMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F4BE2A1F39A1AE006BFD60 /* PackMap.swift */; };
+		64F4BE2F1F39DBD2006BFD60 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F4BE2E1F39DBD2006BFD60 /* Font.swift */; };
+		64F4BE321F39E94D006BFD60 /* SpriteBlueprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F4BE311F39E94D006BFD60 /* SpriteBlueprint.swift */; };
 		64FCBCA61F25D39700536C57 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FCBCA51F25D39700536C57 /* Level.swift */; };
 /* End PBXBuildFile section */
 
@@ -120,6 +122,8 @@
 		64F4BE261F38ABD6006BFD60 /* StraightShootingStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StraightShootingStyle.swift; sourceTree = "<group>"; };
 		64F4BE281F38AD0A006BFD60 /* CircularShootingStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularShootingStyle.swift; sourceTree = "<group>"; };
 		64F4BE2A1F39A1AE006BFD60 /* PackMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackMap.swift; sourceTree = "<group>"; };
+		64F4BE2E1F39DBD2006BFD60 /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		64F4BE311F39E94D006BFD60 /* SpriteBlueprint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpriteBlueprint.swift; sourceTree = "<group>"; };
 		64FCBCA51F25D39700536C57 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -149,8 +153,10 @@
 				643CE9FF1F28A58700A2D4C6 /* CenteredSpriteHitbox.swift */,
 				64846A321F1F3BF60053A926 /* GLKTextureLoader.swift */,
 				643FC8BF1F1F6C9600EA7727 /* SpriteAtlas.swift */,
+				64F4BE311F39E94D006BFD60 /* SpriteBlueprint.swift */,
 				643FC8C11F1F6CEF00EA7727 /* SpriteType.swift */,
 				64F4BE2A1F39A1AE006BFD60 /* PackMap.swift */,
+				64F4BE2E1F39DBD2006BFD60 /* Font.swift */,
 			);
 			name = Sprites;
 			sourceTree = "<group>";
@@ -369,6 +375,7 @@
 			files = (
 				64EEA1951F31AC760085DFD4 /* StationaryEnemyMotion.swift in Sources */,
 				64EEA1971F31AC9C0085DFD4 /* QuarterCircleEnemyMotion.swift in Sources */,
+				64F4BE321F39E94D006BFD60 /* SpriteBlueprint.swift in Sources */,
 				643CEA001F28A58700A2D4C6 /* CenteredSpriteHitbox.swift in Sources */,
 				643FC8C21F1F6CEF00EA7727 /* SpriteType.swift in Sources */,
 				64BB38A11F2B4A7000CAB9FC /* Enumerable.swift in Sources */,
@@ -395,6 +402,7 @@
 				64EEA19A1F31AD680085DFD4 /* FormationDefinition.swift in Sources */,
 				643FC8C01F1F6C9600EA7727 /* SpriteAtlas.swift in Sources */,
 				648DD06A1F116EB9002A7398 /* AppDelegate.swift in Sources */,
+				64F4BE2F1F39DBD2006BFD60 /* Font.swift in Sources */,
 				64EB3CD31F265FA9002596BB /* EnemyMotion.swift in Sources */,
 				64BB38AD1F2B4BCE00CAB9FC /* Boss.swift in Sources */,
 				64EEA1A01F321E480085DFD4 /* FormationManager.swift in Sources */,

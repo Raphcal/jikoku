@@ -17,10 +17,9 @@ protocol PackableObject : Packable {
     static func ===(lhs: Self, rhs: Self) -> Bool
 }
 
-struct SimplePackMap<Element> where Element : Packable {
+class SimplePackMap<Element> where Element : Packable {
 
     var size: Size<Int> = Size(width: 32, height: 32)
-    var elements = [Element]()
     
     fileprivate var rows = [Row<Element>]()
     fileprivate var takenHeight = 0
@@ -28,35 +27,33 @@ struct SimplePackMap<Element> where Element : Packable {
         return size.height - takenHeight
     }
     
-    mutating func add(_ element: Element) {
-        elements.append(element)
-
+    func add(_ element: Element) {
         let elementSize = element.packSize
         while true {
             for index in 0 ..< rows.count {
-                var row = rows[index]
+                let row = rows[index]
                 if row.size.height >= elementSize.height && row.remainingWidth >= elementSize.width {
-                    row.add(element: element)
-                    rows[index] = row
+                    rows[index].add(element: element)
                     return
                 }
             }
             if remainingHeight >= elementSize.height {
                 rows.append(Row(parent: self, first: element, y: takenHeight))
                 takenHeight += elementSize.height
+                return
             } else {
                 grow()
             }
         }
     }
     
-    mutating func add(contentsOf elements: [Element]) {
-        for element in elements {
+    func add(contentsOf elements: [Element]) {
+        for element in elements.sorted(by: { $0.packSize.height > $1.packSize.height }) {
             add(element)
         }
     }
     
-    mutating func grow() {
+    func grow() {
         self.size = size * 2
     }
 

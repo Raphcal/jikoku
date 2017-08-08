@@ -52,7 +52,78 @@ extension SpriteAtlas {
     
     convenience init?(level: Level) {
         // TODO: Implémenter la méthode
+        
+        var blueprints = [SpriteBlueprint]()
+        
+        blueprints.append(SpriteBlueprint(
+            id: blueprints.count,
+            shape: .triangular,
+            shapePaint: Color<GLfloat>.black,
+            text: "私",
+            textColor: .white,
+            size: Size(width: 48, height: 48)
+        ))
+        
+        for wave in level.waves {
+            for group in wave.groups {
+                // Sprite
+                blueprints.append(SpriteBlueprint(
+                    id: blueprints.count,
+                    shape: group.shape,
+                    shapePaint: Color<GLfloat>(red: 1, green: 0, blue: 0, alpha: 1),
+                    text: String(group.kanji),
+                    textColor: .white,
+                    size: Size(width: group.size.pixelSize, height: group.size.pixelSize))
+                )
+                // Tir
+                blueprints.append(SpriteBlueprint(
+                    id: blueprints.count,
+                    shape: .round,
+                    shapePaint: Color<GLfloat>.white,
+                    text: nil,
+                    textColor: nil,
+                    size: Size(width: 16, height: 16))
+                )
+                // TODO: Sauvegarder quelque part les blueprints pour le groupe actuel
+            }
+        }
+        
+        for hiragana in "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわゐゑをんゔがぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽぁぃぅぇぉゕゖっゃゅょゎゔか゚き゚く゚け゚こ゚ゝゞゟ".characters {
+            blueprints.append(SpriteBlueprint(
+                id: blueprints.count,
+                shape: nil,
+                shapePaint: nil,
+                text: String(hiragana),
+                textColor: .black,
+                size: Size(width: 16, height: 16))
+            )
+        }
+        
+        for katakana in "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヰヱヲンガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポァィゥェォヵヶッャュョヮヴヷヸヹヺカ゚キ゚ク゚ケ゚コ゚セ゚ツ゚ト゚ㇰㇱㇲㇳㇴㇵㇶㇷㇷ゚ㇸㇹㇺㇻㇼㇽㇾㇿヽヾヿ".characters {
+            blueprints.append(SpriteBlueprint(
+                id: blueprints.count,
+                shape: nil,
+                shapePaint: nil,
+                text: String(katakana),
+                textColor: .black,
+                size: Size(width: 16, height: 16))
+            )
+        }
+        
+        let texture = try? GLKTextureLoader.texture(with: blueprints)
+        
         return nil
+    }
+    
+    fileprivate func font() -> SpriteDefinition {
+        var definition = SpriteDefinition()
+        definition.type = SpriteType.decoration
+        definition.distance = .behind
+        definition.animations = [
+            KanaFontAnimationName.hiragana.name: AnimationDefinition(),
+            KanaFontAnimationName.katakana.name: AnimationDefinition()
+        ]
+        return definition
     }
 
 }
