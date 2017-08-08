@@ -56,7 +56,6 @@ extension SpriteAtlas {
         var blueprints = [SpriteBlueprint]()
         
         blueprints.append(SpriteBlueprint(
-            id: blueprints.count,
             shape: .triangular,
             shapePaint: Color<GLfloat>.black,
             text: "私",
@@ -68,7 +67,6 @@ extension SpriteAtlas {
             for group in wave.groups {
                 // Sprite
                 blueprints.append(SpriteBlueprint(
-                    id: blueprints.count,
                     shape: group.shape,
                     shapePaint: Color<GLfloat>(red: 1, green: 0, blue: 0, alpha: 1),
                     text: String(group.kanji),
@@ -77,7 +75,6 @@ extension SpriteAtlas {
                 )
                 // Tir
                 blueprints.append(SpriteBlueprint(
-                    id: blueprints.count,
                     shape: .round,
                     shapePaint: Color<GLfloat>.white,
                     text: nil,
@@ -90,7 +87,6 @@ extension SpriteAtlas {
         
         for hiragana in "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわゐゑをんゔがぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽぁぃぅぇぉゕゖっゃゅょゎゔか゚き゚く゚け゚こ゚ゝゞゟ".characters {
             blueprints.append(SpriteBlueprint(
-                id: blueprints.count,
                 shape: nil,
                 shapePaint: nil,
                 text: String(hiragana),
@@ -101,7 +97,6 @@ extension SpriteAtlas {
         
         for katakana in "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヰヱヲンガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポァィゥェォヵヶッャュョヮヴヷヸヹヺカ゚キ゚ク゚ケ゚コ゚セ゚ツ゚ト゚ㇰㇱㇲㇳㇴㇵㇶㇷㇷ゚ㇸㇹㇺㇻㇼㇽㇾㇿヽヾヿ".characters {
             blueprints.append(SpriteBlueprint(
-                id: blueprints.count,
                 shape: nil,
                 shapePaint: nil,
                 text: String(katakana),

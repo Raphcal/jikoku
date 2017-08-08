@@ -11,7 +11,6 @@ import Melisse
 import GLKit
 
 struct SpriteBlueprint : Equatable, Packable {
-    var id: Int
     var shape: Shape?
     var shapePaint: Paint?
     var text: String?
@@ -23,16 +22,41 @@ struct SpriteBlueprint : Equatable, Packable {
     }
     
     static func ==(lhs: SpriteBlueprint, rhs: SpriteBlueprint) -> Bool {
-        return lhs.id == rhs.id
+        return lhs.shape == rhs.shape
+            && isPaint(lhs.shapePaint, equalTo: rhs.shapePaint)
+            && lhs.text == rhs.text
+            && lhs.textColor == rhs.textColor
+            && lhs.size == rhs.size
     }
+}
+
+func isPaint(_ lhs: Paint?, equalTo rhs: Paint?) -> Bool {
+    if lhs == nil {
+        return rhs == nil
+    }
+    if let leftColor = lhs as? Color<GLfloat>, let rightColor = rhs as? Color<GLfloat> {
+        return leftColor == rightColor
+    }
+    else if let leftColor = lhs as? Color<GLubyte>, let rightColor = rhs as? Color<GLubyte> {
+        return leftColor == rightColor
+    }
+    else if let leftGradient = lhs as? RadialGradient, let rightGradient = rhs as? RadialGradient {
+        return leftGradient == rightGradient
+    }
+    return false
 }
 
 protocol Paint {
 }
 
-struct RadialGradient : Paint {
+struct RadialGradient : Paint, Equatable {
     var innerColor: Color<GLfloat>
     var outerColor: Color<GLfloat>
+    
+    static func ==(lhs: RadialGradient, rhs: RadialGradient) -> Bool {
+        return lhs.innerColor == rhs.innerColor
+            && lhs.outerColor == rhs.outerColor
+    }
 }
 
 extension Color : Paint {
