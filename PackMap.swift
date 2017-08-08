@@ -9,17 +9,14 @@
 import Foundation
 import Melisse
 
-protocol Packable {
+protocol Packable: Equatable {
     var packSize: Size<Int> { get }
-}
-
-protocol PackableObject : Packable {
-    static func ===(lhs: Self, rhs: Self) -> Bool
 }
 
 class SimplePackMap<Element> where Element : Packable {
 
     var size: Size<Int> = Size(width: 32, height: 32)
+    var elements = [Element]()
     
     fileprivate var rows = [Row<Element>]()
     fileprivate var takenHeight = 0
@@ -28,6 +25,11 @@ class SimplePackMap<Element> where Element : Packable {
     }
     
     func add(_ element: Element) {
+        if elements.contains(element) {
+            return
+        }
+        elements.append(element)
+        
         let elementSize = element.packSize
         while true {
             for index in 0 ..< rows.count {
@@ -53,13 +55,6 @@ class SimplePackMap<Element> where Element : Packable {
         }
     }
     
-    func grow() {
-        self.size = size * 2
-    }
-
-}
-
-extension SimplePackMap where Element : Equatable {
     func point(for element: Element) -> Point<Int>? {
         for row in rows {
             for cell in row.cells {
@@ -70,19 +65,11 @@ extension SimplePackMap where Element : Equatable {
         }
         return nil
     }
-}
-
-extension SimplePackMap where Element : PackableObject {
-    func point(for element: Element) -> Point<Int>? {
-        for row in rows {
-            for cell in row.cells {
-                if cell.element === element {
-                    return Point(x: cell.x, y: row.y)
-                }
-            }
-        }
-        return nil
+    
+    func grow() {
+        self.size = size * 2
     }
+
 }
 
 fileprivate struct Row<Element> where Element : Packable {
