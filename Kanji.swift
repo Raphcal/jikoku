@@ -8,12 +8,16 @@
 
 import Foundation
 
-struct Kanji : Enumerable {
+struct Kanji : Enumerable, Hashable {
     var character: Character
     var meanings: [String: [String]]
     var kunyomis: [String]
     var onyomis: [String]
     var tags: [String]
+    
+    var hashValue: Int {
+        return character.hashValue
+    }
     
     // 私一二三四五六七八九十百千万年月火水木金土曜日本元気白黒西北南東国小大人子男女母父中長高出入時行見午先後前生間上下今学校円外来山話読語書名川水雨半電聞食車何毎天右左友休早
     static let all = [
@@ -33,4 +37,8 @@ struct Kanji : Enumerable {
         Kanji(character: "年", meanings: ["en": ["year"], "fr":["année"]], kunyomis: ["とし"], onyomis: ["ネン"], tags: ["jtlp-n5", "date"]),
         Kanji(character: "月", meanings: ["en": ["moon", "month", "monday"], "fr":["lune", "mois", "lundi"]], kunyomis: ["つき"], onyomis: ["ゲツ", "ガツ"], tags: ["jtlp-n5", "date", "weekday"]),
     ]
+    
+    static func ==(lhs: Kanji, rhs: Kanji) -> Bool {
+        return lhs.character == rhs.character
+    }
 }

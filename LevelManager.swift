@@ -72,19 +72,6 @@ class LevelManager {
         }
     }
     
-    private func updateBeforeWave(since lastUpdate: TimeInterval) {
-        let wave = level.waves[0]
-        for group in wave.groups {
-            sprites = (0 ..< group.count).map { _ in
-                let sprite = spriteFactory.sprite(random(from: 1, to: kanjis.characters.count - 1))
-                
-                return sprite
-            }
-        }
-        
-        state = .wave
-    }
-    
     enum State {
         case beforeWave, wave
     }

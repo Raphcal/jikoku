@@ -11,7 +11,7 @@ import Melisse
 
 struct Group : Hashable {
     
-    var kanji: Character
+    var kanji: Kanji
     var count: Int
     var shape: Shape
     var size: ShapeSize
@@ -19,7 +19,7 @@ struct Group : Hashable {
     var spriteDefinition: Int?
     var shootingStyleDefinition: ShootingStyleDefinition?
     
-    init(kanji: Character, count: Int, shape: Shape, size: ShapeSize, formation: Formation, spriteDefinition: Int? = nil, shootingStyleDefinition: ShootingStyleDefinition? = nil) {
+    init(kanji: Kanji, count: Int, shape: Shape, size: ShapeSize, formation: Formation, spriteDefinition: Int? = nil, shootingStyleDefinition: ShootingStyleDefinition? = nil) {
         self.kanji = kanji
         self.count = count
         self.shape = shape
@@ -50,7 +50,7 @@ struct Group : Hashable {
         }
     }
     
-    static func random(with kanjis: [Character]) -> Group {
+    static func random(with kanjis: [Kanji]) -> Group {
         let size = ShapeSize.random
         let shootingStyleDefinition: ShootingStyleDefinition
         

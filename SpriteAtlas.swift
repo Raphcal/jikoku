@@ -34,7 +34,7 @@ extension SpriteAtlas {
                     SpriteBlueprint(
                         shape: group.shape,
                         shapePaint: Color<GLfloat>(red: 1, green: 0, blue: 0, alpha: 1),
-                        text: String(group.kanji),
+                        text: String(group.kanji.character),
                         textColor: .white,
                         size: Size(width: group.size.pixelSize, height: group.size.pixelSize)),
                     // Tir
@@ -75,7 +75,7 @@ extension SpriteAtlas {
                 
                 var sprite = SpriteDefinition()
                 sprite.index = definitions.count
-                sprite.name = String(group.kanji)
+                sprite.name = String(group.kanji.character)
                 sprite.type = SpriteType.enemy
                 sprite.distance = .behind
                 sprite.animations = [

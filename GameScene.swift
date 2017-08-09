@@ -14,8 +14,6 @@ fileprivate let spriteSize: GLfloat = 48
 
 let PlayerDiedNotification = Notification.Name(rawValue: "playerDiedNotification")
 
-let kanjis = "私一二三四五六七八九十百千万年月火水木金土曜日本元気白黒西北南東国小大人子男女母父中長高出入時行見午先後前生間上下今学校円外来山話読語書名川水雨半電聞食車何毎天右左友休早"
-
 class GameScene : Scene {
 
     static var current: GameScene?
@@ -41,7 +39,7 @@ class GameScene : Scene {
     init(panGestureRecognizer: UIPanGestureRecognizer) {
         self.panGestureRecognizer = panGestureRecognizer
 
-        var level = Level.random(with: [Character](kanjis.characters))
+        var level = Level.random(with: Kanji.all)
         if let atlas = SpriteAtlas(level: &level) {
             self.atlas = atlas
             spriteFactory = TranslucentSpriteFactory(capacity: 1024, spriteAtlas: atlas)

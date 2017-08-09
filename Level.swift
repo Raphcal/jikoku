@@ -14,7 +14,7 @@ struct Level {
     var waves: [Wave]
     var boss: Boss
     
-    static func random(with kanjis: [Character]) -> Level {
+    static func random(with kanjis: [Kanji]) -> Level {
         return Level(
             waves: (0 ..< 10).map {_ in Wave.random(with: kanjis) },
             boss: Boss.random)
