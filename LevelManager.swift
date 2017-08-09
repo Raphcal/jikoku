@@ -61,9 +61,7 @@ class LevelManager {
         }
         else if self.wave == level.waves.count {
             // TODO: À supprimer, juste pour tester.
-            self.level = Level.random(with: [Character](kanjis.characters))
             self.wave = 0
-            
             formationManager.groups = level.waves[self.wave].groups
         }
         

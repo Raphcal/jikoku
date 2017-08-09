@@ -40,7 +40,7 @@ class PlayerMotion : BaseMotion {
                 shootInterval: 0.1,
                 inversions: [],
                 inversionInterval: 0,
-                spriteDefinition: 5,
+                spriteDefinition: 1,
                 space: 32).shootingStyle(spriteFactory: spriteFactory)
         ]
         

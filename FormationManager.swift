@@ -47,18 +47,11 @@ class FormationManager {
                 let count = counts[index]
                 let max = min(points.count, group.count - count)
                 
-                let size = group.size.melisseSize
                 let lifePoints = group.size.lifePoints
                 
-                // TODO: À remplacer par le spriteDefinition du groupe
-                let kanjiIndex = [Character](kanjis.characters).index(of: group.kanji) ?? 1
-                
                 for i in 0 ..< max {
-                    let sprite = spriteFactory.sprite(kanjiIndex)
-                    var frame = sprite.frame
-                    frame.center = points[i]
-                    frame.size = size
-                    sprite.frame = frame
+                    let sprite = spriteFactory.sprite(group.spriteDefinition!)
+                    sprite.frame.center = points[i]
                     
                     let motion = group.formation.motion(lifePoints: lifePoints, gameScene: gameScene)
                     

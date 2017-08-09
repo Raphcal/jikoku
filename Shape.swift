@@ -11,7 +11,7 @@ import Foundation
 enum Shape : Enumerable {
     case round
     case triangular
-    case losange
+    case diamond
     
-    static let all = [Shape.round, .triangular, .losange]
+    static let all = [Shape.round, .triangular, .diamond]
 }

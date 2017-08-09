@@ -16,53 +16,13 @@ enum TextureError : Error {
 
 extension GLKTextureLoader {
 
-    static func texture(with string: String, size: Int = 48) throws -> GLKTextureInfo {
-        let width = Int(ceil(sqrt(Double(string.characters.count)))) * size
-        let font = UIFont.systemFont(ofSize: CGFloat(size * 3/4))
-        
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: width, height: width), false, UIScreen.main.scale)
-        if let context = UIGraphicsGetCurrentContext() {
-            context.textMatrix = CGAffineTransform(scaleX: 1.0, y: -1.0)
-            
-            var x = 0, y = 0
-            for character in string.characters {
-                let rect = CGRect(x: x, y: y, width: size, height: size)
-                context.setFillColor(UIColor.red.cgColor)
-                context.fillEllipse(in: rect)
-                
-                context.setFillColor(UIColor.white.cgColor)
-                context.fill(character: character, font: font, in: rect)
-                
-                x += size
-                if x >= width {
-                    x = 0
-                    y += size
-                }
-            }
-        }
-        
-        
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        if let image = image?.cgImage {
-            return try GLKTextureLoader.texture(with: image, options: [GLKTextureLoaderOriginBottomLeft: false])
-        }
-        
-        throw TextureError.imageNotGenerated
-    }
-    
-    static func texture(with blueprints: [SpriteBlueprint]) throws -> GLKTextureInfo {
-        // TODO: Implémenter la méthode.
-        let packMap = SimplePackMap<SpriteBlueprint>()
-        packMap.add(contentsOf: blueprints)
-        
+    static func texture<T : PackMap>(with packMap: T) throws -> GLKTextureInfo where T.Element == SpriteBlueprint {
         UIGraphicsBeginImageContextWithOptions(CGSize(width: packMap.size.width, height: packMap.size.height), false, UIScreen.main.scale)
         
         if let context = UIGraphicsGetCurrentContext() {
             context.textMatrix = CGAffineTransform(scaleX: 1.0, y: -1.0)
         
-            for blueprint in blueprints {
+            for blueprint in packMap.elements {
                 let origin = packMap.point(for: blueprint)!
                 let size = blueprint.size
                 
@@ -70,6 +30,7 @@ extension GLKTextureLoader {
                 let rect = CGRect(x: origin.x, y: origin.y, width: Int(size.width), height: Int(size.height))
                 
                 if let shape = blueprint.shape {
+                    print("shape : \(shape)")
                     if let color = blueprint.shapePaint as? Color<GLfloat> {
                         context.setFillColor(color.cgColor)
                     } else {

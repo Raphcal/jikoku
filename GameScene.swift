@@ -41,7 +41,8 @@ class GameScene : Scene {
     init(panGestureRecognizer: UIPanGestureRecognizer) {
         self.panGestureRecognizer = panGestureRecognizer
 
-        if let atlas = SpriteAtlas(string: kanjis, size: Int(spriteSize)) {
+        var level = Level.random(with: [Character](kanjis.characters))
+        if let atlas = SpriteAtlas(level: &level) {
             self.atlas = atlas
             spriteFactory = TranslucentSpriteFactory(capacity: 1024, spriteAtlas: atlas)
         } else {
@@ -54,7 +55,7 @@ class GameScene : Scene {
         
         player = GameScene.playerSprite(spriteFactory: spriteFactory, panGestureRecognizer: panGestureRecognizer, cameraFrame: camera.frame)
         
-        levelManager = LevelManager(level: Level.random(with: [Character](kanjis.characters)), spriteFactory: spriteFactory)
+        levelManager = LevelManager(level: level, spriteFactory: spriteFactory)
         levelManager.gameScene = self
         
         panGestureRecognizer.addTarget(self, action: #selector(GameScene.panGestureRecognized(by:)))

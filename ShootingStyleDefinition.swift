@@ -46,7 +46,7 @@ protocol ShootingStyleDefinition {
     var inversionInterval: Int { get }
     
     /// Numéro du sprite dans l'atlas
-    var spriteDefinition: Int { get }
+    var spriteDefinition: Int { get set }
     
     /// Créé une instance de ShootingStyle à partir de cette définition.
     /// - Parameter spriteFactory: Fabrique de sprites.
