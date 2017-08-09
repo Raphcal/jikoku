@@ -10,15 +10,30 @@ import Foundation
 import Melisse
 import GLKit
 
-struct SpriteBlueprint : Equatable, Packable {
+struct SpriteBlueprint : Hashable, Equatable, Packable {
     var shape: Shape?
     var shapePaint: Paint?
     var text: String?
     var textColor: Color<GLfloat>?
     var size: Size<GLfloat>
     
+    init(shape: Shape? = nil, shapePaint: Paint? = nil, text: String? = nil, textColor: Color<GLfloat>? = nil, size: Size<GLfloat>) {
+        self.shape = shape
+        self.shapePaint = shapePaint
+        self.text = text
+        self.textColor = textColor
+        self.size = size
+    }
+    
     var packSize: Size<Int> {
         return Size(width: Int(size.width), height: Int(size.height))
+    }
+    
+    var hashValue: Int {
+        return (shape?.hashValue ?? 0) &* 37
+            &+ (text?.hashValue ?? 0) &* 79
+            &+ (textColor?.hashValue ?? 0) &* 131
+            &+ size.hashValue &* 181
     }
     
     static func ==(lhs: SpriteBlueprint, rhs: SpriteBlueprint) -> Bool {

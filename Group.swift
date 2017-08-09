@@ -9,13 +9,33 @@
 import Foundation
 import Melisse
 
-struct Group {
+struct Group : Hashable {
+    
     var kanji: Character
     var count: Int
     var shape: Shape
     var size: ShapeSize
     var formation: Formation
+    var spriteDefinition: Int?
     var shootingStyleDefinition: ShootingStyleDefinition?
+    
+    init(kanji: Character, count: Int, shape: Shape, size: ShapeSize, formation: Formation, spriteDefinition: Int? = nil, shootingStyleDefinition: ShootingStyleDefinition? = nil) {
+        self.kanji = kanji
+        self.count = count
+        self.shape = shape
+        self.size = size
+        self.formation = formation
+        self.spriteDefinition = spriteDefinition
+        self.shootingStyleDefinition = shootingStyleDefinition
+    }
+    
+    var hashValue: Int {
+        return kanji.hashValue &* 3
+            &+ count.hashValue &* 7
+            &+ shape.hashValue &* 11
+            &+ size.hashValue &* 13
+            &+ formation.hashValue &* 17
+    }
     
     var formationDefinition: FormationDefinition {
         switch formation {
@@ -64,5 +84,13 @@ struct Group {
             size: size,
             formation: .stationary,
             shootingStyleDefinition: shootingStyleDefinition)
+    }
+    
+    static func ==(lhs: Group, rhs: Group) -> Bool {
+        return lhs.kanji == rhs.kanji
+            && lhs.count == rhs.count
+            && lhs.shape == rhs.shape
+            && lhs.size == rhs.size
+            && lhs.formation == rhs.formation
     }
 }
