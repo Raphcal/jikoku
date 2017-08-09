@@ -38,6 +38,12 @@ class EnemyMotion : BaseMotion {
                 lifePoints -= 1
                 if lifePoints <= 0 {
                     sprite.destroy()
+                    
+                    if let group = sprite.objects["group"] as? Group {
+                        let text = Text(text: random(itemFrom: group.kanji.kunyomis), font: KanaFont.default, factory: spriteFactory, point: sprite.frame.center)
+                        text.alignment = .center
+                        // TODO: Détruire le texte après un moment (faire un mouvement ?)
+                    }
                 }
             }
         }
