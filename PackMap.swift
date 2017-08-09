@@ -9,12 +9,15 @@
 import Foundation
 import Melisse
 
-protocol Packable: Equatable {
+protocol Packable: Hashable {
     var packSize: Size<Int> { get }
 }
 
 protocol PackMap {
     associatedtype Element : Packable
+    
+    var size: Size<Int> { get }
+    var elements: Set<Element> { get }
     
     func add(_ element: Element)
     func add(contentsOf elements: [Element])
@@ -24,7 +27,7 @@ protocol PackMap {
 class SimplePackMap<Element> : PackMap where Element : Packable {
 
     var size: Size<Int> = Size(width: 32, height: 32)
-    var elements = [Element]()
+    var elements = Set<Element>()
     
     fileprivate var rows = [Row<Element>]()
     fileprivate var takenHeight = 0
@@ -36,7 +39,7 @@ class SimplePackMap<Element> : PackMap where Element : Packable {
         if elements.contains(element) {
             return
         }
-        elements.append(element)
+        elements.insert(element)
         
         let elementSize = element.packSize
         while true {
