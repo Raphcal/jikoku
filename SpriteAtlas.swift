@@ -48,13 +48,15 @@ extension SpriteAtlas {
             }
         }
         
-        let hiraganas = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわゐゑをんゔがぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽぁぃぅぇぉゕゖっゃゅょゎゔか゚き゚く゚け゚こ゚ゝゞゟ".characters.map {
-            SpriteBlueprint(text: String($0), textColor: .black, size: Size(width: 16, height: 16))
+        let hiraganas = stride(from: "あ".utf16.first!, to: "ゟ".utf16.first! + 1, by: 1).map { (hiragana: UInt16) -> SpriteBlueprint in
+            let character = Character(UnicodeScalar(hiragana)!)
+            return SpriteBlueprint(text: String(character), textColor: .black, size: Size(width: 16, height: 16))
         }
         blueprints.append(contentsOf: hiraganas)
         
-        let katakanas = "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヰヱヲンガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポァィゥェォヵヶッャュョヮヴヷヸヹヺカ゚キ゚ク゚ケ゚コ゚セ゚ツ゚ト゚ㇰㇱㇲㇳㇴㇵㇶㇷㇷ゚ㇸㇹㇺㇻㇼㇽㇾㇿヽヾヿ".characters.map {
-            SpriteBlueprint(text: String($0), textColor: .black, size: Size(width: 16, height: 16))
+        let katakanas = stride(from: "ア".utf16.first!, to: "ヿ".utf16.first! + 1, by: 1).map { (katakana: UInt16) -> SpriteBlueprint in
+            let character = Character(UnicodeScalar(katakana)!)
+            return SpriteBlueprint(text: String(character), textColor: .black, size: Size(width: 16, height: 16))
         }
         blueprints.append(contentsOf: katakanas)
         
