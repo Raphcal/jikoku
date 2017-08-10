@@ -41,12 +41,12 @@ class EnemyMotion : BaseMotion {
                 other.destroy()
                 // TODO: Gérer le cas où le tir fait parti de la lecture du kanji
                 lifePoints -= 1
-                if lifePoints <= 0 {
+                if lifePoints <= 0 && !sprite.isRemoved {
                     sprite.destroy()
                     
                     let oldCenter = sprite.frame.center
                     self.updateWith(0.1, sprite: sprite)
-                    let speed = (sprite.frame.center - oldCenter) * 10
+                    let speed = (sprite.frame.center - oldCenter) * 5
                     
                     if let group = sprite.objects["group"] as? Group {
                         let text = Text(text: random(itemFrom: group.kanji.readings), font: KanaFont.default, factory: spriteFactory, point: Point(x: sprite.frame.x, y: sprite.frame.top))
