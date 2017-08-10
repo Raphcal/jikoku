@@ -25,7 +25,6 @@ extension GLKTextureLoader {
             for (blueprint, origin) in packMap.locations {
                 let size = blueprint.size
                 
-                let font = UIFont.systemFont(ofSize: CGFloat(min(size.width, size.height) * 3/4))
                 let rect = CGRect(x: origin.x, y: origin.y, width: Int(size.width), height: Int(size.height))
                 
                 if let shape = blueprint.shape {
@@ -39,6 +38,8 @@ extension GLKTextureLoader {
                 }
                 
                 if let text = blueprint.text {
+                    let font = UIFont.systemFont(ofSize: blueprint.shape != nil ? CGFloat(min(size.width, size.height) * 3/4) : CGFloat(min(size.width, size.height)))
+                    
                     context.setFillColor(blueprint.textColor!.cgColor)
                     context.fill(string: text, font: font, in: rect)
                 }
