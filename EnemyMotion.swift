@@ -20,6 +20,8 @@ class EnemyMotion : BaseMotion {
     let gameScene: GameScene
     let spriteFactory: SpriteFactory
     
+    var isDead = false
+    
     init(lifePoints: Int, gameScene: GameScene) {
         self.lifePoints = lifePoints
         self.gameScene = gameScene
@@ -31,6 +33,9 @@ class EnemyMotion : BaseMotion {
     }
     
     func updateWith(_ timeSinceLastUpdate: TimeInterval, sprite: Sprite) {
+        if sprite.isRemoved {
+            return
+        }
         for other in spriteFactory.sprites {
             if let type = other.type as? SpriteType, type == SpriteType.friendlyShot && other.collides(with: sprite) {
                 other.destroy()
@@ -39,11 +44,16 @@ class EnemyMotion : BaseMotion {
                 if lifePoints <= 0 {
                     sprite.destroy()
                     
+                    let oldCenter = sprite.frame.center
+                    self.updateWith(0.1, sprite: sprite)
+                    let speed = (sprite.frame.center - oldCenter) * 10
+                    
                     if let group = sprite.objects["group"] as? Group {
                         let text = Text(text: random(itemFrom: group.kanji.readings), font: KanaFont.default, factory: spriteFactory, point: Point(x: sprite.frame.x, y: sprite.frame.top))
                         text.alignment = .center
+                        
                         for sprite in text.sprites {
-                            sprite.motion = KanjiMotion(spriteFactory: spriteFactory)
+                            sprite.motion = DriftingMotion(speed: speed)
                         }
                     }
                 }
