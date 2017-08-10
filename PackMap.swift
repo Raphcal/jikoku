@@ -43,7 +43,8 @@ class PackMap<Element> where Element : Packable {
                     let origin = Point(x: row.origin.x + rows[index].cells.last!.x, y: row.origin.y)
                     locations[element] = origin
                     
-                    if (row.cells.isEmpty && row.size.height > elementSize.height) || (row.cells.last != nil && row.cells.last!.element.packSize.height > elementSize.height) {
+                    if row.isLastElementLargerThan(elementSize.height) {
+                        rows[index].size.height = elementSize.height
                         rows.insert(Row<Element>(parent: self, origin: Point(x: origin.x, y: origin.y + elementSize.height), height: row.size.height - elementSize.height), at: index + 1)
                     }
                     return
@@ -102,6 +103,11 @@ fileprivate struct Row<Element> where Element : Packable {
     mutating func add(element: Element) {
         cells.append(Cell(x: size.width, element: element))
         size.width += element.packSize.width
+    }
+    
+    func isLastElementLargerThan(_ height: Int) -> Bool {
+        return (cells.isEmpty && size.height > height)
+            || (!cells.isEmpty && cells.last!.element.packSize.height > height)
     }
 
 }
