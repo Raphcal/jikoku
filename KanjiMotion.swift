@@ -22,6 +22,9 @@ class KanjiMotion : Motion {
     func updateWith(_ timeSinceLastUpdate: TimeInterval, sprite: Sprite) {
         alpha = max(alpha - GLfloat(timeSinceLastUpdate), 0)
         spriteFactory.setAlpha(GLubyte(alpha * 255), of: sprite)
+        
+        sprite.frame.center.y -= 100 * GLfloat(timeSinceLastUpdate)
+        
         if alpha == 0 {
             sprite.destroy()
         }

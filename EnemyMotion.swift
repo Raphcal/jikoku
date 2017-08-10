@@ -40,7 +40,7 @@ class EnemyMotion : BaseMotion {
                     sprite.destroy()
                     
                     if let group = sprite.objects["group"] as? Group {
-                        let text = Text(text: random(itemFrom: group.kanji.readings), font: KanaFont.default, factory: spriteFactory, point: sprite.frame.center)
+                        let text = Text(text: random(itemFrom: group.kanji.readings), font: KanaFont.default, factory: spriteFactory, point: Point(x: sprite.frame.x, y: sprite.frame.top))
                         text.alignment = .center
                         for sprite in text.sprites {
                             sprite.motion = KanjiMotion(spriteFactory: spriteFactory)
