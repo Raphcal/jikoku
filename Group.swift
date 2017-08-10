@@ -19,6 +19,10 @@ struct Group : Hashable {
     var spriteDefinition: Int?
     var shootingStyleDefinition: ShootingStyleDefinition?
     
+    var isPersistent: Bool {
+        return size == .bigger
+    }
+    
     init(kanji: Kanji, count: Int, shape: Shape, size: ShapeSize, formation: Formation, spriteDefinition: Int? = nil, shootingStyleDefinition: ShootingStyleDefinition? = nil) {
         self.kanji = kanji
         self.count = count

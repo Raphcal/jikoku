@@ -65,8 +65,11 @@ class LevelManager {
             formationManager.groups = level.waves[self.wave].groups
         }
         
-        let sprites = formationManager.update(since: timeSinceLastUpdate)
+        var sprites = formationManager.update(since: timeSinceLastUpdate)
         if !sprites.isEmpty {
+            if wave < level.waves.count {
+                sprites = sprites.filter { !($0.objects["group"] as! Group).isPersistent }
+            }
             self.sprites.append(contentsOf: sprites)
             print("\(sprites.count) nouveaux ennemis")
         }
