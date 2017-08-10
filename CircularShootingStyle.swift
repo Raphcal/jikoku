@@ -65,6 +65,7 @@ class CircularShootingStyle : ShootingStyle {
                                        y: sinf(currentAngle) * definition.shotSpeed)
             
             let shot = spriteFactory.sprite(spriteDefinition)
+            shot.frame.center = point
             shot.motion = ShotMotion(speed: speed)
             shot.hitbox = CenteredSpriteHitbox(sprite: shot, size: Size(width: shot.frame.width * 0.6666, height: shot.frame.height * 0.6666))
             
