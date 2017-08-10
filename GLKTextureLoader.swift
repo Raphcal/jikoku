@@ -48,8 +48,6 @@ extension GLKTextureLoader {
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        try UIImagePNGRepresentation(image!)?.write(to: URL(fileURLWithPath: "/Users/raphael/Downloads/out.png"))
-        
         if let image = image?.cgImage {
             return try GLKTextureLoader.texture(with: image, options: [GLKTextureLoaderOriginBottomLeft: false])
         }
