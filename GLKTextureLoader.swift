@@ -16,14 +16,13 @@ enum TextureError : Error {
 
 extension GLKTextureLoader {
 
-    static func texture<T : PackMap>(with packMap: T) throws -> GLKTextureInfo where T.Element == SpriteBlueprint {
+    static func texture(with packMap: PackMap<SpriteBlueprint>) throws -> GLKTextureInfo {
         UIGraphicsBeginImageContextWithOptions(CGSize(width: packMap.size.width, height: packMap.size.height), false, UIScreen.main.scale)
         
         if let context = UIGraphicsGetCurrentContext() {
             context.textMatrix = CGAffineTransform(scaleX: 1.0, y: -1.0)
         
-            for blueprint in packMap.elements {
-                let origin = packMap.point(for: blueprint)!
+            for (blueprint, origin) in packMap.locations {
                 let size = blueprint.size
                 
                 let font = UIFont.systemFont(ofSize: CGFloat(min(size.width, size.height) * 3/4))
@@ -48,6 +47,8 @@ extension GLKTextureLoader {
         
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
+        
+        try UIImagePNGRepresentation(image!)?.write(to: URL(fileURLWithPath: "/Users/raphael/Downloads/out.png"))
         
         if let image = image?.cgImage {
             return try GLKTextureLoader.texture(with: image, options: [GLKTextureLoaderOriginBottomLeft: false])

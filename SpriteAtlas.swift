@@ -60,7 +60,7 @@ extension SpriteAtlas {
         }
         blueprints.append(contentsOf: katakanas)
         
-        let packMap = SimplePackMap<SpriteBlueprint>()
+        let packMap = PackMap<SpriteBlueprint>()
         packMap.add(contentsOf: blueprints)
         
         var definitions: [SpriteDefinition] = [
@@ -113,19 +113,19 @@ extension SpriteAtlas {
 }
 
 extension AnimationFrame {
-    init<T : PackMap>(blueprint: SpriteBlueprint, packMap: T) where T.Element == SpriteBlueprint {
+    init(blueprint: SpriteBlueprint, packMap: PackMap<SpriteBlueprint>) {
         let scale = Int(UIScreen.main.scale)
-        self.init(frame: Rectangle(center: packMap.point(for: blueprint)! * scale, size: blueprint.packSize * scale), size: blueprint.size)
+        self.init(frame: Rectangle(center: packMap.locations[blueprint]! * scale, size: blueprint.packSize * scale), size: blueprint.size)
     }
 }
 
 extension AnimationDefinition {
-    init<T : PackMap>(blueprint: SpriteBlueprint, packMap: T) where T.Element == SpriteBlueprint {
+    init(blueprint: SpriteBlueprint, packMap: PackMap<SpriteBlueprint>) {
         self.init(frames: [AnimationFrame(blueprint: blueprint, packMap: packMap)])
     }
 }
 
-fileprivate func playerDefinition<T : PackMap>(blueprint: SpriteBlueprint, packMap: T) -> SpriteDefinition where T.Element == SpriteBlueprint {
+fileprivate func playerDefinition(blueprint: SpriteBlueprint, packMap: PackMap<SpriteBlueprint>) -> SpriteDefinition {
     var definition = SpriteDefinition()
     definition.index = 0
     definition.name = "player"
@@ -137,7 +137,7 @@ fileprivate func playerDefinition<T : PackMap>(blueprint: SpriteBlueprint, packM
     return definition
 }
 
-fileprivate func shotDefinition<T : PackMap>(index: Int, isFriendly: Bool, blueprint: SpriteBlueprint, packMap: T) -> SpriteDefinition where T.Element == SpriteBlueprint {
+fileprivate func shotDefinition(index: Int, isFriendly: Bool, blueprint: SpriteBlueprint, packMap: PackMap<SpriteBlueprint>) -> SpriteDefinition {
     var definition = SpriteDefinition()
     definition.index = index
     definition.name = "shot"
@@ -149,7 +149,7 @@ fileprivate func shotDefinition<T : PackMap>(index: Int, isFriendly: Bool, bluep
     return definition
 }
 
-fileprivate func font<T : PackMap>(hiraganas: [SpriteBlueprint], katakanas: [SpriteBlueprint], packMap: T) -> SpriteDefinition where T.Element == SpriteBlueprint {
+fileprivate func font(hiraganas: [SpriteBlueprint], katakanas: [SpriteBlueprint], packMap: PackMap<SpriteBlueprint>) -> SpriteDefinition {
     var definition = SpriteDefinition()
     definition.type = SpriteType.decoration
     definition.distance = .behind

@@ -13,21 +13,10 @@ protocol Packable: Hashable {
     var packSize: Size<Int> { get }
 }
 
-protocol PackMap {
-    associatedtype Element : Packable
-    
-    var size: Size<Int> { get }
-    var elements: Set<Element> { get }
-    
-    func add(_ element: Element)
-    func add(contentsOf elements: [Element])
-    func point(for element: Element) -> Point<Int>?
-}
-
-class SimplePackMap<Element> : PackMap where Element : Packable {
+class PackMap<Element> where Element : Packable {
 
     var size: Size<Int> = Size(width: 32, height: 32)
-    var elements = Set<Element>()
+    var locations = [Element : Point<Int>]()
     
     fileprivate var rows = [Row<Element>]()
     fileprivate var takenHeight = 0
@@ -35,11 +24,14 @@ class SimplePackMap<Element> : PackMap where Element : Packable {
         return size.height - takenHeight
     }
     
-    func add(_ element: Element) {
-        if elements.contains(element) {
+    init(elements: [Element] = []) {
+        add(contentsOf: elements)
+    }
+    
+    fileprivate func add(_ element: Element) {
+        if locations[element] != nil {
             return
         }
-        elements.insert(element)
         
         let elementSize = element.packSize
         while true {
@@ -47,12 +39,22 @@ class SimplePackMap<Element> : PackMap where Element : Packable {
                 let row = rows[index]
                 if row.size.height >= elementSize.height && row.remainingWidth >= elementSize.width {
                     rows[index].add(element: element)
+                    
+                    let origin = Point(x: row.origin.x + rows[index].cells.last!.x, y: row.origin.y)
+                    locations[element] = origin
+                    
+                    if (row.cells.isEmpty && row.size.height > elementSize.height) || (row.cells.last != nil && row.cells.last!.element.packSize.height > elementSize.height) {
+                        rows.insert(Row<Element>(parent: self, origin: Point(x: origin.x, y: origin.y + elementSize.height), height: row.size.height - elementSize.height), at: index + 1)
+                    }
                     return
                 }
             }
             if remainingHeight >= elementSize.height {
-                rows.append(Row(parent: self, first: element, y: takenHeight))
+                let origin = Point(x: 0, y: takenHeight)
+                rows.append(Row(parent: self, first: element, origin: origin))
                 takenHeight += elementSize.height
+                
+                locations[element] = origin
                 return
             } else {
                 grow()
@@ -66,17 +68,6 @@ class SimplePackMap<Element> : PackMap where Element : Packable {
         }
     }
     
-    func point(for element: Element) -> Point<Int>? {
-        for row in rows {
-            for cell in row.cells {
-                if cell.element == element {
-                    return Point(x: cell.x, y: row.y)
-                }
-            }
-        }
-        return nil
-    }
-    
     func grow() {
         self.size = size * 2
     }
@@ -85,20 +76,27 @@ class SimplePackMap<Element> : PackMap where Element : Packable {
 
 fileprivate struct Row<Element> where Element : Packable {
 
-    var parent: SimplePackMap<Element>
+    var parent: PackMap<Element>
     var size: Size<Int>
-    var y: Int
+    var origin: Point<Int>
     var cells = [Cell<Element>]()
     
-    init(parent: SimplePackMap<Element>, first: Element, y: Int) {
+    init(parent: PackMap<Element>, origin: Point<Int>, height: Int) {
+        self.parent = parent
+        self.size = Size(width: 0, height: height)
+        self.cells = []
+        self.origin = origin
+    }
+    
+    init(parent: PackMap<Element>, first: Element, origin: Point<Int>) {
         self.parent = parent
         self.size = first.packSize
         self.cells = [Cell(x: 0, element: first)]
-        self.y = y
+        self.origin = origin
     }
     
     var remainingWidth: Int {
-        return parent.size.width - size.width
+        return parent.size.width - size.width - origin.x
     }
     
     mutating func add(element: Element) {
