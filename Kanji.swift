@@ -15,6 +15,12 @@ struct Kanji : Enumerable, Hashable {
     var onyomis: [String]
     var tags: [String]
     
+    var readings: [String] {
+        var readings = kunyomis
+        readings.append(contentsOf: onyomis)
+        return readings
+    }
+    
     var hashValue: Int {
         return character.hashValue
     }
