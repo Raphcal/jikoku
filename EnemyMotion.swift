@@ -29,7 +29,7 @@ class EnemyMotion : BaseMotion {
     }
     
     func load(_ sprite: Sprite) {
-        // Rien à charger. Présent pour permettre aux sous classes de pouvoir l'implémenter.
+        // Rien à charger. Existe pour permettre aux sous classes de l'implémenter.
     }
     
     func updateWith(_ timeSinceLastUpdate: TimeInterval, sprite: Sprite) {
@@ -44,11 +44,13 @@ class EnemyMotion : BaseMotion {
                 if lifePoints <= 0 && !sprite.isRemoved {
                     sprite.destroy()
                     
-                    let oldCenter = sprite.frame.center
-                    self.updateWith(0.1, sprite: sprite)
-                    let speed = (sprite.frame.center - oldCenter) * 5
-                    
                     if let group = sprite.objects["group"] as? Group {
+                        // Calcul de la vitesse du texte
+                        let oldCenter = sprite.frame.center
+                        self.updateWith(0.1, sprite: sprite)
+                        let speed = (sprite.frame.center - oldCenter) * 10
+                        
+                        // Lecture du kanji
                         let text = Text(text: random(itemFrom: group.kanji.readings), font: KanaFont.default, factory: spriteFactory, point: Point(x: sprite.frame.x, y: sprite.frame.top))
                         text.alignment = .center
                         

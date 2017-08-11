@@ -52,6 +52,7 @@ class ShootingStyle {
                 origin = sprite.frame.point(at: angle)
             }
             
+            // Salve de tir
             _ = shots(from: origin, angle: angle, type: sprite === GameScene.current?.player ? .friendlyShot : .enemyShot)
             
             shotAmount += shotAmountVariation
