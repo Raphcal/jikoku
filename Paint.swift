@@ -61,7 +61,7 @@ struct RadialGradient : Paint, Hashable {
             context.drawRadialGradient(
                 gradient,
                 startCenter: rectangle.center, startRadius: 0,
-                endCenter: rectangle.center, endRadius: min(rectangle.size.width, rectangle.size.height),
+                endCenter: rectangle.center, endRadius: min(rectangle.size.width, rectangle.size.height) / 2,
                 options: [.drawsBeforeStartLocation, .drawsAfterEndLocation])
         }
     }
