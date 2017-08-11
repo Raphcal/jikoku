@@ -63,6 +63,11 @@ class FormationManager {
                     sprite.motion = motion
                     motion.load(sprite)
                     
+                    if let shadowDefinition = group.shadowDefinition {
+                        let shadow = spriteFactory.sprite(shadowDefinition)
+                        shadow.motion = ShadowMotion(reference: sprite)
+                    }
+                    
                     sprites.append(sprite)
                 }
                 

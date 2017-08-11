@@ -42,7 +42,7 @@ class GameScene : Scene {
         var level = Level.random(with: Kanji.all)
         if let atlas = SpriteAtlas(level: &level) {
             self.atlas = atlas
-            spriteFactory = TranslucentSpriteFactory(capacity: 1024, spriteAtlas: atlas)
+            spriteFactory = TranslucentSpriteFactory(spriteAtlas: atlas, pools: [ReferencePool(from: 0, to: 256), ReferencePool(from: 256, to: 512), ReferencePool(from: 512, to: 768)])
         } else {
             print("Atlas creation error")
             spriteFactory = TranslucentSpriteFactory()
@@ -106,10 +106,14 @@ class GameScene : Scene {
     }
     
     private static func playerSprite(spriteFactory: SpriteFactory, panGestureRecognizer: UIPanGestureRecognizer, cameraFrame: Rectangle<GLfloat>) -> Sprite {
-        let player = spriteFactory.sprite(0, topLeft: Point(x: cameraFrame.width / 2 - spriteSize / 2, y: cameraFrame.height - spriteSize - 128))
+        let player = spriteFactory.sprite(playerDefinition, topLeft: Point(x: cameraFrame.width / 2 - spriteSize / 2, y: cameraFrame.height - spriteSize - 128))
         let playerMotion = PlayerMotion(panGestureRecognizer: panGestureRecognizer, spriteFactory: spriteFactory)
         player.motion = playerMotion
         playerMotion.load(player)
+        
+        let playerShadow = spriteFactory.sprite(playerShadowDefinition)
+        playerShadow.motion = ShadowMotion(reference: player)
+        
         return player
     }
 

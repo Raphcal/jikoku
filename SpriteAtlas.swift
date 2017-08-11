@@ -10,6 +10,11 @@ import Foundation
 import Melisse
 import GLKit
 
+let playerDefinition = 0
+let playerShadowDefinition = 1
+let playerShotDefinition = 2
+let fontDefinition = 3
+
 extension SpriteAtlas {
     
     convenience init?(level: inout Level) {
@@ -24,26 +29,33 @@ extension SpriteAtlas {
             shapePaint: RadialGradient(innerColor: .white, outerColor: Color(red: 0, green: 0.88, blue:1, alpha: 1)),
             size: Size(width: 16, height: 24))
         
-        var blueprints = [player, playerShots]
+        var blueprints = [player, player.shadow, playerShots]
         var groups = [Group : (sprite: SpriteBlueprint, shot: SpriteBlueprint)]()
         
         for wave in level.waves {
             for group in wave.groups {
-                let groupBlueprints = [
-                    // Sprite
-                    SpriteBlueprint(
-                        shape: group.shape,
-                        shapePaint: Color<GLfloat>(red: 1, green: 0, blue: 0, alpha: 1),
-                        text: String(group.kanji.character),
-                        textColor: .white,
-                        size: Size(width: group.size.pixelSize, height: group.size.pixelSize)),
-                    // Tir
-                    SpriteBlueprint(
-                        shape: .round,
-                        shapePaint: RadialGradient(innerColor: .white, outerColor: Color(red: 0.98, green: 0, blue: 1, alpha: 1)),
-                        size: Size(width: 16, height: 16))
-                ]
-                groups[group] = (sprite: groupBlueprints[0], shot: groupBlueprints[1])
+                var groupBlueprints = [SpriteBlueprint]()
+                
+                // Sprite
+                let sprite = SpriteBlueprint(
+                    shape: group.shape,
+                    shapePaint: Color<GLfloat>(red: 1, green: 0, blue: 0, alpha: 1),
+                    text: String(group.kanji.character),
+                    textColor: .white,
+                    size: Size(width: group.size.pixelSize, height: group.size.pixelSize))
+                groupBlueprints.append(sprite)
+                
+                // Ombre
+                if group.isFlying {
+                    groupBlueprints.append(sprite.shadow)
+                }
+                
+                // Tir
+                groupBlueprints.append(SpriteBlueprint(
+                    shape: .round,
+                    shapePaint: RadialGradient(innerColor: .white, outerColor: Color(red: 0.98, green: 0, blue: 1, alpha: 1)),
+                    size: Size(width: 16, height: 16)))
+                groups[group] = (sprite: sprite, shot: groupBlueprints.last!)
                 blueprints.append(contentsOf: groupBlueprints)
             }
         }
@@ -64,8 +76,9 @@ extension SpriteAtlas {
         packMap.add(contentsOf: blueprints)
         
         var definitions: [SpriteDefinition] = [
-            playerDefinition(blueprint: player, packMap: packMap),
-            shotDefinition(index: 1, isFriendly: true, blueprint: playerShots, packMap: packMap),
+            SpriteDefinition(index: playerDefinition, type: .player, distance: .middle, blueprint: player, packMap: packMap),
+            SpriteDefinition(index: playerShadowDefinition, blueprint: player.shadow, packMap: packMap),
+            SpriteDefinition(index: playerShotDefinition, type: .friendlyShot, blueprint: playerShots, packMap: packMap),
             font(hiraganas: hiraganas, katakanas: katakanas, packMap: packMap)
         ]
         
@@ -75,26 +88,17 @@ extension SpriteAtlas {
                 var group = wave.groups[j]
                 let blueprints = groups[group]!
                 
-                var sprite = SpriteDefinition()
-                sprite.index = definitions.count
-                sprite.name = String(group.kanji.character)
-                sprite.type = SpriteType.enemy
-                sprite.distance = .behind
-                sprite.animations = [
-                    DefaultAnimationName.normal.name: AnimationDefinition(blueprint: blueprints.sprite, packMap: packMap)
-                ]
-                definitions.append(sprite)
-                group.spriteDefinition = sprite.index
+                group.spriteDefinition = definitions.count
+                definitions.append(SpriteDefinition(index: definitions.count, type: .enemy, distance: .middle, blueprint: blueprints.sprite, packMap: packMap))
+                
+                if group.isFlying {
+                    group.shadowDefinition = definitions.count
+                    definitions.append(SpriteDefinition(index: definitions.count, blueprint: blueprints.sprite.shadow, packMap: packMap))
+                }
                 
                 if var shootingStyleDefinition = group.shootingStyleDefinition {
-                    var shot = sprite
-                    shot.index += 1
-                    shot.type = SpriteType.enemyShot
-                    shot.animations = [
-                        DefaultAnimationName.normal.name: AnimationDefinition(blueprint: blueprints.shot, packMap: packMap)
-                    ]
-                    definitions.append(shot)
-                    shootingStyleDefinition.spriteDefinition = shot.index
+                    shootingStyleDefinition.spriteDefinition = definitions.count
+                    definitions.append(SpriteDefinition(index: definitions.count, type: .enemyShot, blueprint: blueprints.shot, packMap: packMap))
                     group.shootingStyleDefinition = shootingStyleDefinition
                 }
                 wave.groups[j] = group
@@ -112,6 +116,19 @@ extension SpriteAtlas {
 
 }
 
+extension SpriteDefinition {
+    init(index: Int, type: SpriteType = SpriteType.decoration, distance: Distance = .behind, blueprint: SpriteBlueprint, packMap: PackMap<SpriteBlueprint>) {
+        self.index = index
+        self.name = nil
+        self.type = type
+        self.distance = distance
+        self.animations = [
+            DefaultAnimationName.normal.name: AnimationDefinition(blueprint: blueprint, packMap: packMap)
+        ]
+        self.motionName = nil
+    }
+}
+
 extension AnimationFrame {
     init(blueprint: SpriteBlueprint, packMap: PackMap<SpriteBlueprint>) {
         let scale = Int(UIScreen.main.scale)
@@ -125,34 +142,8 @@ extension AnimationDefinition {
     }
 }
 
-fileprivate func playerDefinition(blueprint: SpriteBlueprint, packMap: PackMap<SpriteBlueprint>) -> SpriteDefinition {
-    var definition = SpriteDefinition()
-    definition.index = 0
-    definition.name = "player"
-    definition.type = SpriteType.player
-    definition.distance = .middle
-    definition.animations = [
-        DefaultAnimationName.normal.name: AnimationDefinition(blueprint: blueprint, packMap: packMap)
-    ]
-    return definition
-}
-
-fileprivate func shotDefinition(index: Int, isFriendly: Bool, blueprint: SpriteBlueprint, packMap: PackMap<SpriteBlueprint>) -> SpriteDefinition {
-    var definition = SpriteDefinition()
-    definition.index = index
-    definition.name = "shot"
-    definition.type = isFriendly ? SpriteType.friendlyShot : SpriteType.enemyShot
-    definition.distance = .behind
-    definition.animations = [
-        DefaultAnimationName.normal.name: AnimationDefinition(blueprint: blueprint, packMap: packMap)
-    ]
-    return definition
-}
-
 fileprivate func font(hiraganas: [SpriteBlueprint], katakanas: [SpriteBlueprint], packMap: PackMap<SpriteBlueprint>) -> SpriteDefinition {
     var definition = SpriteDefinition()
-    definition.type = SpriteType.decoration
-    definition.distance = .behind
     definition.animations = [
         KanaFontAnimationName.hiragana.name: AnimationDefinition(frames: hiraganas.map {
             AnimationFrame(blueprint: $0, packMap: packMap)

@@ -16,20 +16,24 @@ struct Group : Hashable {
     var shape: Shape
     var size: ShapeSize
     var formation: Formation
+    var isFlying: Bool
     var spriteDefinition: Int?
+    var shadowDefinition: Int?
     var shootingStyleDefinition: ShootingStyleDefinition?
     
     var isPersistent: Bool {
         return size == .bigger
     }
     
-    init(kanji: Kanji, count: Int, shape: Shape, size: ShapeSize, formation: Formation, spriteDefinition: Int? = nil, shootingStyleDefinition: ShootingStyleDefinition? = nil) {
+    init(kanji: Kanji, count: Int, shape: Shape, size: ShapeSize, formation: Formation, isFlying: Bool = true, spriteDefinition: Int? = nil, shadowDefinition: Int? = nil, shootingStyleDefinition: ShootingStyleDefinition? = nil) {
         self.kanji = kanji
         self.count = count
         self.shape = shape
         self.size = size
         self.formation = formation
+        self.isFlying = isFlying
         self.spriteDefinition = spriteDefinition
+        self.shadowDefinition = shadowDefinition
         self.shootingStyleDefinition = shootingStyleDefinition
     }
     

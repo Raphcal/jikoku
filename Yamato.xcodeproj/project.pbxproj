@@ -20,6 +20,7 @@
 		647D7EA01F20C8A600721F76 /* ShootingStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647D7E9F1F20C8A600721F76 /* ShootingStyle.swift */; };
 		647D7EA41F20CE6000721F76 /* ShootingStyleDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647D7EA31F20CE6000721F76 /* ShootingStyleDefinition.swift */; };
 		647D7EA61F20D78A00721F76 /* ShotMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647D7EA51F20D78A00721F76 /* ShotMotion.swift */; };
+		647EFFD11F3DD40F006066E4 /* ShadowMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647EFFD01F3DD40F006066E4 /* ShadowMotion.swift */; };
 		64846A331F1F3BF60053A926 /* GLKTextureLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64846A321F1F3BF60053A926 /* GLKTextureLoader.swift */; };
 		648DD06A1F116EB9002A7398 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648DD0691F116EB9002A7398 /* AppDelegate.swift */; };
 		648DD06F1F116EB9002A7398 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 648DD06D1F116EB9002A7398 /* Main.storyboard */; };
@@ -102,6 +103,7 @@
 		647D7E9F1F20C8A600721F76 /* ShootingStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShootingStyle.swift; sourceTree = "<group>"; };
 		647D7EA31F20CE6000721F76 /* ShootingStyleDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShootingStyleDefinition.swift; sourceTree = "<group>"; };
 		647D7EA51F20D78A00721F76 /* ShotMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShotMotion.swift; sourceTree = "<group>"; };
+		647EFFD01F3DD40F006066E4 /* ShadowMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowMotion.swift; sourceTree = "<group>"; };
 		64846A321F1F3BF60053A926 /* GLKTextureLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GLKTextureLoader.swift; sourceTree = "<group>"; };
 		648DD0661F116EB9002A7398 /* Yamato.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yamato.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		648DD0691F116EB9002A7398 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				64EB3CD21F265FA9002596BB /* EnemyMotion.swift */,
 				6410F99F1F21D69E005C2DDC /* PlayerMotion.swift */,
 				641CA8171F3D06D000EFA833 /* DriftingMotion.swift */,
+				647EFFD01F3DD40F006066E4 /* ShadowMotion.swift */,
 			);
 			name = Motion;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				64846A331F1F3BF60053A926 /* GLKTextureLoader.swift in Sources */,
 				6410F9A01F21D69E005C2DDC /* PlayerMotion.swift in Sources */,
 				64326AB51F1398AA007673E3 /* GameViewController.swift in Sources */,
+				647EFFD11F3DD40F006066E4 /* ShadowMotion.swift in Sources */,
 				64EEA17E1F3063E00085DFD4 /* BaseMotion.swift in Sources */,
 				647C61E31F2B7C9100702AE5 /* ShotStyle.swift in Sources */,
 				647D7EA61F20D78A00721F76 /* ShotMotion.swift in Sources */,

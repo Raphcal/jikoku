@@ -17,7 +17,7 @@ struct KanaFontAnimationName : AnimationName {
 
 struct KanaFont : Font {
     static let `default` = KanaFont()
-    let definition = 2
+    let definition = fontDefinition
     let hiraganaAnimation: AnimationName = KanaFontAnimationName.hiragana
     let katakanaAnimation: AnimationName = KanaFontAnimationName.katakana
 }
