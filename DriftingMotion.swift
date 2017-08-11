@@ -12,7 +12,7 @@ import GLKit
 
 class DriftingMotion : Motion {
     
-    let speed: Point<GLfloat>
+    var speed: Point<GLfloat>
     var alpha: GLfloat = 1
     
     init(speed: Point<GLfloat>) {
@@ -24,7 +24,10 @@ class DriftingMotion : Motion {
         sprite.alpha = GLubyte(alpha * 255)
         sprite.frame.center += speed * GLfloat(timeSinceLastUpdate)
         
-        if alpha == 0 {
+        if alpha < 0.5 {
+            speed = speed * 0.9
+        }
+        else if alpha == 0 {
             sprite.destroy()
         }
     }
