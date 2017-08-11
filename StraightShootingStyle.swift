@@ -52,7 +52,7 @@ class StraightShootingStyle : ShootingStyle {
             let speed = Point<GLfloat>(x: cosf(angle) * definition.shotSpeed,
                                        y: sinf(angle) * definition.shotSpeed)
             let shot = spriteFactory.sprite(spriteDefinition)
-            shot.frame = Rectangle(x: left, y: point.y, width: 16, height: 16)
+            shot.frame.center = Point(x: left, y: point.y)
             shot.motion = ShotMotion(speed: speed)
             shot.hitbox = CenteredSpriteHitbox(sprite: shot, size: Size(width: shot.frame.width * 0.6666, height: shot.frame.height * 0.6666))
             
