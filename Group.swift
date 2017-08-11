@@ -84,7 +84,7 @@ struct Group : Hashable {
         return Group(
             kanji: Melisse.random(itemFrom: kanjis),
             count: size.randomCount,
-            shape: .random,
+            shape: .round,
             size: size,
             formation: .stationary,
             shootingStyleDefinition: shootingStyleDefinition)

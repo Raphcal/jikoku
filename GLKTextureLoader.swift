@@ -27,14 +27,11 @@ extension GLKTextureLoader {
                 
                 let rect = CGRect(x: origin.x, y: origin.y, width: Int(size.width), height: Int(size.height))
                 
-                if let shape = blueprint.shape {
-                    print("shape : \(shape)")
-                    if let color = blueprint.shapePaint as? Color<GLfloat> {
-                        context.setFillColor(color.cgColor)
-                    } else {
-                        context.setFillColor(UIColor.red.cgColor)
-                    }
-                    context.fillEllipse(in: rect)
+                if let shape = blueprint.shape, let paint = blueprint.shapePaint {
+                    context.saveGState()
+                    shape.clip(rectangle: rect, in: context)
+                    paint.paint(rectangle: rect, in: context)
+                    context.restoreGState()
                 }
                 
                 if let text = blueprint.text {

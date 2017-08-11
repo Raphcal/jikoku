@@ -57,10 +57,13 @@ struct RadialGradient : Paint, Hashable {
     }
     
     func paint(rectangle: CGRect, in context: CGContext) {
-        let gradient = CGGradient(colorsSpace: nil, colors: [] as CFArray, locations: [0, 1])!
-        context.drawRadialGradient(gradient, startCenter: CGPoint(x: rectangle.origin.x + rectangle.size.width / 2, y: rectangle.origin.y + rectangle.size.height / 2), startRadius: 5.11,
-                                   endCenter: CGPoint(x: 120, y: 45), endRadius: 17.45,
-                                   options: [.drawsBeforeStartLocation, .drawsAfterEndLocation])
+        if let gradient = CGGradient(colorsSpace: nil, colors: [innerColor.cgColor, outerColor.cgColor] as CFArray, locations: [0, 1]) {
+            context.drawRadialGradient(
+                gradient,
+                startCenter: rectangle.center, startRadius: 0,
+                endCenter: rectangle.center, endRadius: min(rectangle.size.width, rectangle.size.height),
+                options: [.drawsBeforeStartLocation, .drawsAfterEndLocation])
+        }
     }
     
     static func ==(lhs: RadialGradient, rhs: RadialGradient) -> Bool {
@@ -70,14 +73,28 @@ struct RadialGradient : Paint, Hashable {
 }
 
 extension Color : Paint {
+
+    var cgColor: CGColor {
+        if red is GLfloat {
+            return UIColor(red: CGFloat(red as! GLfloat), green: CGFloat(green as! GLfloat), blue: CGFloat(blue as! GLfloat), alpha: CGFloat(alpha as! GLfloat)).cgColor
+        }
+        else if red is GLubyte {
+            return UIColor(red: CGFloat(red as! GLubyte) / 255, green: CGFloat(green as! GLubyte) / 255, blue: CGFloat(blue as! GLubyte) / 255, alpha: CGFloat(alpha as! GLubyte) / 255).cgColor
+        }
+        else {
+            return UIColor.white.cgColor
+        }
+    }
+
     func paint(rectangle: CGRect, in context: CGContext) {
-        // TODO
+        context.setFillColor(self.cgColor)
+        context.fill(rectangle)
     }
 
 }
 
-extension Color where Component == GLfloat {
-    var cgColor: CGColor {
-        return UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: CGFloat(alpha)).cgColor
+extension CGRect {
+    var center: CGPoint {
+        return CGPoint(x: origin.x + size.width / 2, y: origin.y + size.height / 2)
     }
 }

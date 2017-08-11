@@ -21,7 +21,7 @@ extension SpriteAtlas {
             size: Size(width: 48, height: 48))
         let playerShots = SpriteBlueprint(
             shape: .diamond,
-            shapePaint: Color<GLfloat>(red: 0.7, green: 0.5, blue: 0, alpha: 1),
+            shapePaint: RadialGradient(innerColor: .white, outerColor: Color(red: 0.0, green: 0.8, blue: 1, alpha: 1)),
             size: Size(width: 16, height: 24))
         
         var blueprints = [player, playerShots]
@@ -40,7 +40,7 @@ extension SpriteAtlas {
                     // Tir
                     SpriteBlueprint(
                         shape: .round,
-                        shapePaint: Color<GLfloat>.white,
+                        shapePaint: RadialGradient(innerColor: .white, outerColor: Color(red: 0.9, green: 0, blue: 1, alpha: 1)),
                         size: Size(width: 16, height: 16))
                 ]
                 groups[group] = (sprite: groupBlueprints[0], shot: groupBlueprints[1])
