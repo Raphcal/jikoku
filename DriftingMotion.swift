@@ -27,7 +27,7 @@ class DriftingMotion : Motion {
         if alpha < 0.5 {
             speed = speed * 0.9
         }
-        else if alpha == 0 {
+        if alpha == 0 {
             sprite.destroy()
         }
     }
