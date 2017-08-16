@@ -104,7 +104,7 @@ extension Color : Paint {
 
 struct ShadowPaint : Paint, Hashable {
     
-    let amount: CGFloat = 8
+    let amount: CGFloat = 10
     let color = Color<GLfloat>(white: 0, alpha: 0.25)
     
     static private var _ciContext: CIContext?

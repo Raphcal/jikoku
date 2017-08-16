@@ -243,9 +243,9 @@
 			children = (
 				64EEA1981F31ACB50085DFD4 /* Enemy Motions */,
 				64EEA17D1F3063E00085DFD4 /* BaseMotion.swift */,
+				641CA8171F3D06D000EFA833 /* DriftingMotion.swift */,
 				64EB3CD21F265FA9002596BB /* EnemyMotion.swift */,
 				6410F99F1F21D69E005C2DDC /* PlayerMotion.swift */,
-				641CA8171F3D06D000EFA833 /* DriftingMotion.swift */,
 				647EFFD01F3DD40F006066E4 /* ShadowMotion.swift */,
 			);
 			name = Motion;
