@@ -18,7 +18,7 @@ struct SpriteBlueprint : Hashable, Equatable, Packable {
     var size: Size<GLfloat>
     
     var shadow: SpriteBlueprint {
-        return SpriteBlueprint(shape: shape, shapePaint: Color<GLfloat>(red: 0, green: 0, blue: 0, alpha: 0.2), size: size * 0.9)
+        return SpriteBlueprint(shape: shape, shapePaint: ShadowPaint(), size: size * 1.5)
     }
     
     init(shape: Shape? = nil, shapePaint: Paint? = nil, text: String? = nil, textColor: Color<GLfloat>? = nil, size: Size<GLfloat>) {

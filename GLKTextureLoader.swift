@@ -29,8 +29,7 @@ extension GLKTextureLoader {
                 
                 if let shape = blueprint.shape, let paint = blueprint.shapePaint {
                     context.saveGState()
-                    shape.clip(rectangle: rect, in: context)
-                    paint.paint(rectangle: rect, in: context)
+                    paint.paint(shape: shape, rectangle: rect, in: context)
                     context.restoreGState()
                 }
                 

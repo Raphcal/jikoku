@@ -11,7 +11,7 @@ import Melisse
 import GLKit
 
 protocol Paint {
-    func paint(rectangle: CGRect, in context: CGContext)
+    func paint(shape: Shape, rectangle: CGRect, in context: CGContext)
 }
 
 func ~=(lhs: Paint?, rhs: Paint?) -> Bool {
@@ -27,6 +27,9 @@ func ~=(lhs: Paint?, rhs: Paint?) -> Bool {
     else if let leftGradient = lhs as? RadialGradient, let rightGradient = rhs as? RadialGradient {
         return leftGradient == rightGradient
     }
+    else if let leftBlur = lhs as? ShadowPaint, let rightBlur = rhs as? ShadowPaint {
+        return leftBlur == rightBlur
+    }
     return false
 }
 
@@ -40,6 +43,9 @@ extension Paint {
         }
         else if let paint = self as? Color<GLfloat> {
             return paint.hashValue &* 71
+        }
+        else if let paint = self as? ShadowPaint {
+            return paint.hashValue &* 73
         }
         else {
             return 0
@@ -56,8 +62,10 @@ struct RadialGradient : Paint, Hashable {
             &+ outerColor.hashValue &* 137
     }
     
-    func paint(rectangle: CGRect, in context: CGContext) {
+    func paint(shape: Shape, rectangle: CGRect, in context: CGContext) {
         if let gradient = CGGradient(colorsSpace: nil, colors: [innerColor.cgColor, outerColor.cgColor] as CFArray, locations: [0, 1]) {
+            shape.addPath(in: rectangle, to: context)
+            context.clip()
             context.drawRadialGradient(
                 gradient,
                 startCenter: rectangle.center, startRadius: 0,
@@ -86,11 +94,52 @@ extension Color : Paint {
         }
     }
 
-    func paint(rectangle: CGRect, in context: CGContext) {
+    func paint(shape: Shape, rectangle: CGRect, in context: CGContext) {
+        shape.addPath(in: rectangle, to: context)
         context.setFillColor(self.cgColor)
-        context.fill(rectangle)
+        context.fillPath()
     }
 
+}
+
+struct ShadowPaint : Paint, Hashable {
+    
+    let amount: CGFloat = 8
+    let color = Color<GLfloat>(white: 0, alpha: 0.25)
+    
+    static private var _ciContext: CIContext?
+    static var ciContext: CIContext {
+        if let _ciContext = _ciContext {
+            return _ciContext
+        }
+        _ciContext = CIContext()
+        return _ciContext!
+    }
+    
+    var hashValue: Int {
+        return "shadow".hashValue
+    }
+    
+    func paint(shape: Shape, rectangle: CGRect, in context: CGContext) {
+        if let otherContext = CGContext(data: nil, width: Int(rectangle.size.width), height: Int(rectangle.size.width), bitsPerComponent: 8, bytesPerRow: 0, space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue) {
+            shape.addPath(in: CGRect(x: amount, y: amount, width: rectangle.size.width - amount * 2, height: rectangle.size.height - amount * 2), to: otherContext)
+            otherContext.setFillColor(color.cgColor)
+            otherContext.fillPath()
+
+            let image = otherContext.makeImage()!
+            let ciImage = CIImage(cgImage: image)
+            let filter = CIFilter(name: "CIGaussianBlur")!
+            filter.setValue(ciImage, forKey: kCIInputImageKey)
+            filter.setValue(NSNumber(value: Float(amount / 2)), forKey: "inputRadius")
+            let result = ShadowPaint.ciContext.createCGImage(filter.outputImage!, from: CGRect(x: 0, y: 0, width: rectangle.size.width, height: rectangle.size.height))!
+            context.draw(result, in: rectangle)
+        }
+    }
+    
+    static func ==(lhs: ShadowPaint, rhs: ShadowPaint) -> Bool {
+        return true
+    }
+    
 }
 
 extension CGRect {

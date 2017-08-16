@@ -19,7 +19,7 @@ class Shape : Equatable, Hashable {
         return 1
     }
     
-    open func clip(rectangle: CGRect, in context: CGContext) {
+    open func addPath(in rectangle: CGRect, to context: CGContext) {
         // Pas de traitement.
     }
     
@@ -40,9 +40,8 @@ fileprivate final class RoundShape : Shape {
         return "round".hashValue
     }
     
-    override func clip(rectangle: CGRect, in context: CGContext) {
+    override func addPath(in rectangle: CGRect, to context: CGContext) {
         context.addEllipse(in: rectangle)
-        context.clip()
     }
     
 }
@@ -53,7 +52,7 @@ fileprivate final class TriangularShape : Shape {
         return "triangular".hashValue
     }
     
-    override func clip(rectangle: CGRect, in context: CGContext) {
+    override func addPath(in rectangle: CGRect, to context: CGContext) {
         let origin = rectangle.origin
         let center = rectangle.center
         let size = rectangle.size
@@ -62,7 +61,6 @@ fileprivate final class TriangularShape : Shape {
         context.addLine(to: CGPoint(x: center.x, y: origin.y))
         context.addLine(to: CGPoint(x: origin.x + size.width, y: origin.y + size.height))
         context.closePath()
-        context.clip()
     }
     
 }
@@ -73,7 +71,7 @@ fileprivate final class DiamondShape : Shape {
         return "diamond".hashValue
     }
     
-    override func clip(rectangle: CGRect, in context: CGContext) {
+    override func addPath(in rectangle: CGRect, to context: CGContext) {
         let origin = rectangle.origin
         let center = rectangle.center
         let size = rectangle.size
@@ -83,7 +81,6 @@ fileprivate final class DiamondShape : Shape {
         context.addLine(to: CGPoint(x: center.x, y: origin.y + size.height))
         context.addLine(to: CGPoint(x: origin.x, y: center.y))
         context.closePath()
-        context.clip()
     }
     
 }
