@@ -105,7 +105,7 @@
 		647D7EA51F20D78A00721F76 /* ShotMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShotMotion.swift; sourceTree = "<group>"; };
 		647EFFD01F3DD40F006066E4 /* ShadowMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowMotion.swift; sourceTree = "<group>"; };
 		64846A321F1F3BF60053A926 /* GLKTextureLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GLKTextureLoader.swift; sourceTree = "<group>"; };
-		648DD0661F116EB9002A7398 /* Yamato.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yamato.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		648DD0661F116EB9002A7398 /* Jikoku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jikoku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		648DD0691F116EB9002A7398 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		648DD06E1F116EB9002A7398 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		648DD0701F116EB9002A7398 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -203,7 +203,7 @@
 		648DD0671F116EB9002A7398 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				648DD0661F116EB9002A7398 /* Yamato.app */,
+				648DD0661F116EB9002A7398 /* Jikoku.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -290,9 +290,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		648DD0651F116EB9002A7398 /* Yamato */ = {
+		648DD0651F116EB9002A7398 /* Jikoku */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 648DD0781F116EB9002A7398 /* Build configuration list for PBXNativeTarget "Yamato" */;
+			buildConfigurationList = 648DD0781F116EB9002A7398 /* Build configuration list for PBXNativeTarget "Jikoku" */;
 			buildPhases = (
 				648DD0621F116EB9002A7398 /* Sources */,
 				648DD0631F116EB9002A7398 /* Frameworks */,
@@ -304,9 +304,9 @@
 			dependencies = (
 				64D03B271F2897B0009A0212 /* PBXTargetDependency */,
 			);
-			name = Yamato;
+			name = Jikoku;
 			productName = Yamato;
-			productReference = 648DD0661F116EB9002A7398 /* Yamato.app */;
+			productReference = 648DD0661F116EB9002A7398 /* Jikoku.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -326,7 +326,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 648DD0611F116EB9002A7398 /* Build configuration list for PBXProject "Yamato" */;
+			buildConfigurationList = 648DD0611F116EB9002A7398 /* Build configuration list for PBXProject "Jikoku" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -345,7 +345,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				648DD0651F116EB9002A7398 /* Yamato */,
+				648DD0651F116EB9002A7398 /* Jikoku */,
 			);
 		};
 /* End PBXProject section */
@@ -591,7 +591,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		648DD0611F116EB9002A7398 /* Build configuration list for PBXProject "Yamato" */ = {
+		648DD0611F116EB9002A7398 /* Build configuration list for PBXProject "Jikoku" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				648DD0761F116EB9002A7398 /* Debug */,
@@ -600,7 +600,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		648DD0781F116EB9002A7398 /* Build configuration list for PBXNativeTarget "Yamato" */ = {
+		648DD0781F116EB9002A7398 /* Build configuration list for PBXNativeTarget "Jikoku" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				648DD0791F116EB9002A7398 /* Debug */,

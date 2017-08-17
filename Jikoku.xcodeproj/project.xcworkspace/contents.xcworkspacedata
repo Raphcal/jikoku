@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Yamato.xcodeproj">
+      location = "self:/Users/raphael/Sources/Bitbucket/yamato/Jikoku.xcodeproj">
    </FileRef>
 </Workspace>
