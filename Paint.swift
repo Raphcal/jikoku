@@ -153,13 +153,19 @@ struct ShadowPaint : Paint, Hashable {
 /// Utilisée pour afficher la lecture d'un mot.
 struct EmbossPaint : Paint, Hashable {
 
-    var color = Color<GLfloat>.white
-    var borderColor = Color<GLfloat>.black
-    var weight = 2
+    var color: Color<GLfloat>
+    var borderColor: Color<GLfloat>
+    var weight: Int
     
     var hashValue: Int {
         return color.hashValue &* 601
             &+ borderColor.hashValue &* 443
+    }
+    
+    init(color: Color<GLfloat> = .white, borderColor: Color<GLfloat> = .black, weight: Int = 2) {
+        self.color = color
+        self.borderColor = borderColor
+        self.weight = weight
     }
     
     func paint(shape: Shape, rectangle: CGRect, in context: CGContext) {

@@ -61,13 +61,13 @@ extension SpriteAtlas {
         
         let hiraganas = stride(from: "あ".utf16.first!, to: "ゟ".utf16.first! + 1, by: 1).map { (hiragana: UInt16) -> SpriteBlueprint in
             let character = Character(UnicodeScalar(hiragana)!)
-            return SpriteBlueprint(paintedShapes: [PaintedShape(shape: TextShape(text: String(character), font: hiraginoW6Font), paint: EmbossPaint())], size: Size(width: 24, height: 24))
+            return SpriteBlueprint(paintedShapes: [PaintedShape(shape: TextShape(text: String(character), font: hiraginoW6Font), paint: EmbossPaint(color: Color(hex: 0x7ED321)))], size: Size(width: 24, height: 24))
         }
         blueprints.append(contentsOf: hiraganas)
         
         let katakanas = stride(from: "ア".utf16.first!, to: "ヿ".utf16.first! + 1, by: 1).map { (katakana: UInt16) -> SpriteBlueprint in
             let character = Character(UnicodeScalar(katakana)!)
-            return SpriteBlueprint(paintedShapes: [PaintedShape(shape: TextShape(text: String(character), font: hiraginoW6Font), paint: EmbossPaint())], size: Size(width: 24, height: 24))
+            return SpriteBlueprint(paintedShapes: [PaintedShape(shape: TextShape(text: String(character), font: hiraginoW6Font), paint: EmbossPaint(color: Color(hex: 0xF382D9)))], size: Size(width: 24, height: 24))
         }
         blueprints.append(contentsOf: katakanas)
         
