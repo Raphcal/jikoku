@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6408291E1F46CF41009E8503 /* PaintedShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6408291D1F46CF41009E8503 /* PaintedShape.swift */; };
+		640829231F472488009E8503 /* AimedShootingStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640829221F472488009E8503 /* AimedShootingStyle.swift */; };
 		6410F9A01F21D69E005C2DDC /* PlayerMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6410F99F1F21D69E005C2DDC /* PlayerMotion.swift */; };
 		6419A4F31F3C76CA000B4A0B /* Paint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6419A4F21F3C76CA000B4A0B /* Paint.swift */; };
 		641CA8181F3D06D000EFA833 /* DriftingMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641CA8171F3D06D000EFA833 /* DriftingMotion.swift */; };
@@ -91,6 +92,7 @@
 
 /* Begin PBXFileReference section */
 		6408291D1F46CF41009E8503 /* PaintedShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaintedShape.swift; sourceTree = "<group>"; };
+		640829221F472488009E8503 /* AimedShootingStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimedShootingStyle.swift; sourceTree = "<group>"; };
 		6410F99F1F21D69E005C2DDC /* PlayerMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerMotion.swift; sourceTree = "<group>"; };
 		6419A4F21F3C76CA000B4A0B /* Paint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Paint.swift; sourceTree = "<group>"; };
 		641CA8171F3D06D000EFA833 /* DriftingMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriftingMotion.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 		64F4BE241F38ABC2006BFD60 /* Styles */ = {
 			isa = PBXGroup;
 			children = (
+				640829221F472488009E8503 /* AimedShootingStyle.swift */,
 				64F4BE281F38AD0A006BFD60 /* CircularShootingStyle.swift */,
 				64F4BE261F38ABD6006BFD60 /* StraightShootingStyle.swift */,
 			);
@@ -395,6 +398,7 @@
 				643FC8C21F1F6CEF00EA7727 /* SpriteType.swift in Sources */,
 				64BB38A11F2B4A7000CAB9FC /* Enumerable.swift in Sources */,
 				64BB38AB1F2B4BB700CAB9FC /* Formation.swift in Sources */,
+				640829231F472488009E8503 /* AimedShootingStyle.swift in Sources */,
 				64FCBCA61F25D39700536C57 /* Level.swift in Sources */,
 				64326ABD1F139E55007673E3 /* GameScene.swift in Sources */,
 				647D7EA01F20C8A600721F76 /* ShootingStyle.swift in Sources */,

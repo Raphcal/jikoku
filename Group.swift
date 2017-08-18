@@ -74,15 +74,15 @@ struct Group : Hashable {
                 baseAngle: 0,
                 baseAngleVariation: 0)
         } else {
-            shootingStyleDefinition = StraightShootingStyleDefinition(
+            shootingStyleDefinition = AimedShootingStyleDefinition(
                 shotAmount: 1,
                 shotAmountVariation: 0,
-                shotSpeed: 200,
+                shotSpeed: 150,
                 shootInterval: 1,
                 inversions: [],
                 inversionInterval: 0,
                 spriteDefinition: 1,
-                space: 0)
+                targetType: .player)
         }
         
         return Group(
