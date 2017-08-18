@@ -18,17 +18,20 @@ func ~=(lhs: Paint?, rhs: Paint?) -> Bool {
     if lhs == nil {
         return rhs == nil
     }
-    if let leftColor = lhs as? Color<GLfloat>, let rightColor = rhs as? Color<GLfloat> {
-        return leftColor == rightColor
+    if let lhs = lhs as? Color<GLfloat>, let rhs = rhs as? Color<GLfloat> {
+        return lhs == rhs
     }
-    else if let leftColor = lhs as? Color<GLubyte>, let rightColor = rhs as? Color<GLubyte> {
-        return leftColor == rightColor
+    else if let lhs = lhs as? Color<GLubyte>, let rhs = rhs as? Color<GLubyte> {
+        return lhs == rhs
     }
-    else if let leftGradient = lhs as? RadialGradient, let rightGradient = rhs as? RadialGradient {
-        return leftGradient == rightGradient
+    else if let lhs = lhs as? RadialGradient, let rhs = rhs as? RadialGradient {
+        return lhs == rhs
     }
-    else if let leftBlur = lhs as? ShadowPaint, let rightBlur = rhs as? ShadowPaint {
-        return leftBlur == rightBlur
+    else if let lhs = lhs as? ShadowPaint, let rhs = rhs as? ShadowPaint {
+        return lhs == rhs
+    }
+    else if let lhs = lhs as? EmbossPaint, let rhs = rhs as? EmbossPaint {
+        return lhs == rhs
     }
     return false
 }
@@ -53,6 +56,7 @@ extension Paint {
     }
 }
 
+/// Dessine la forme avec un dégradé radiale.
 struct RadialGradient : Paint, Hashable {
     var innerColor: Color<GLfloat>
     var outerColor: Color<GLfloat>
@@ -80,6 +84,7 @@ struct RadialGradient : Paint, Hashable {
     }
 }
 
+/// Dessine la forme de cette couleur.
 extension Color : Paint {
 
     var cgColor: CGColor {
@@ -102,6 +107,8 @@ extension Color : Paint {
 
 }
 
+/// Dessine la forme en noir translucide avec un flou gaussien.
+/// Utilisée pour dessiner les ombres.
 struct ShadowPaint : Paint, Hashable {
     
     let amount: CGFloat = 10
@@ -138,6 +145,41 @@ struct ShadowPaint : Paint, Hashable {
     
     static func ==(lhs: ShadowPaint, rhs: ShadowPaint) -> Bool {
         return true
+    }
+    
+}
+
+/// Dessine la forme avec une bordure noire avec relief.
+/// Utilisée pour afficher la lecture d'un mot.
+struct EmbossPaint : Paint, Hashable {
+
+    var color = Color<GLfloat>.white
+    var borderColor = Color<GLfloat>.black
+    var weight = 2
+    
+    var hashValue: Int {
+        return color.hashValue &* 601
+            &+ borderColor.hashValue &* 443
+    }
+    
+    func paint(shape: Shape, rectangle: CGRect, in context: CGContext) {
+        var rect = CGRect(x: Int(rectangle.origin.x) + weight / 2, y: Int(rectangle.origin.y) + 2, width: Int(rectangle.width) - weight, height: Int(rectangle.height) - weight)
+        
+        shape.addPath(in: rect, to: context)
+        context.setFillColor(borderColor.cgColor)
+        context.fillPath()
+        
+        rect.origin.y = rectangle.origin.y
+        shape.addPath(in: rect, to: context)
+        context.setStrokeColor(borderColor.cgColor)
+        context.setFillColor(color.cgColor)
+        context.setLineWidth(1)
+        context.drawPath(using: .fillStroke)
+    }
+    
+    static func ==(lhs: EmbossPaint, rhs: EmbossPaint) -> Bool {
+        return lhs.color == rhs.color
+            && lhs.borderColor == rhs.borderColor
     }
     
 }
