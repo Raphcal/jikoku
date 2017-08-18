@@ -35,7 +35,7 @@ enum ShapeSize : Enumerable {
         case .big:
             return 96
         case .bigger:
-            return 192
+            return 160
         }
     }
     
@@ -69,7 +69,7 @@ enum ShapeSize : Enumerable {
         case .big:
             return 50
         case .bigger:
-            return 200
+            return 150
         }
     }
     
