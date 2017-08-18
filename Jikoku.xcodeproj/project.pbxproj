@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6408291E1F46CF41009E8503 /* PaintedShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6408291D1F46CF41009E8503 /* PaintedShape.swift */; };
 		6410F9A01F21D69E005C2DDC /* PlayerMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6410F99F1F21D69E005C2DDC /* PlayerMotion.swift */; };
 		6419A4F31F3C76CA000B4A0B /* Paint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6419A4F21F3C76CA000B4A0B /* Paint.swift */; };
 		641CA8181F3D06D000EFA833 /* DriftingMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641CA8171F3D06D000EFA833 /* DriftingMotion.swift */; };
@@ -89,6 +90,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6408291D1F46CF41009E8503 /* PaintedShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaintedShape.swift; sourceTree = "<group>"; };
 		6410F99F1F21D69E005C2DDC /* PlayerMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerMotion.swift; sourceTree = "<group>"; };
 		6419A4F21F3C76CA000B4A0B /* Paint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Paint.swift; sourceTree = "<group>"; };
 		641CA8171F3D06D000EFA833 /* DriftingMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriftingMotion.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				64F4BE2A1F39A1AE006BFD60 /* PackMap.swift */,
 				64F4BE2E1F39DBD2006BFD60 /* Font.swift */,
 				6419A4F21F3C76CA000B4A0B /* Paint.swift */,
+				6408291D1F46CF41009E8503 /* PaintedShape.swift */,
 				641CA81A1F3D073600EFA833 /* Sprite.swift */,
 			);
 			name = Sprites;
@@ -402,6 +405,7 @@
 				64F4BE271F38ABD6006BFD60 /* StraightShootingStyle.swift in Sources */,
 				641CA8181F3D06D000EFA833 /* DriftingMotion.swift in Sources */,
 				6419A4F31F3C76CA000B4A0B /* Paint.swift in Sources */,
+				6408291E1F46CF41009E8503 /* PaintedShape.swift in Sources */,
 				64846A331F1F3BF60053A926 /* GLKTextureLoader.swift in Sources */,
 				6410F9A01F21D69E005C2DDC /* PlayerMotion.swift in Sources */,
 				64326AB51F1398AA007673E3 /* GameViewController.swift in Sources */,

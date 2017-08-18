@@ -11,21 +11,15 @@ import Melisse
 import GLKit
 
 struct SpriteBlueprint : Hashable, Equatable, Packable {
-    var shape: Shape?
-    var shapePaint: Paint?
-    var text: String?
-    var textColor: Color<GLfloat>?
+    var paintedShapes: [PaintedShape]
     var size: Size<GLfloat>
     
     var shadow: SpriteBlueprint {
-        return SpriteBlueprint(shape: shape, shapePaint: ShadowPaint(), size: size * 1.5)
+        return SpriteBlueprint(paintedShapes: [PaintedShape(shape: paintedShapes[0].shape, paint: ShadowPaint())], size: size * 1.5)
     }
     
-    init(shape: Shape? = nil, shapePaint: Paint? = nil, text: String? = nil, textColor: Color<GLfloat>? = nil, size: Size<GLfloat>) {
-        self.shape = shape
-        self.shapePaint = shapePaint
-        self.text = text
-        self.textColor = textColor
+    init(paintedShapes: [PaintedShape], size: Size<GLfloat>) {
+        self.paintedShapes = paintedShapes
         self.size = size
     }
     
@@ -34,18 +28,12 @@ struct SpriteBlueprint : Hashable, Equatable, Packable {
     }
     
     var hashValue: Int {
-        return (shape?.hashValue ?? 0) &* 37
-            &+ (shapePaint?.hashValue ?? 0) &* 43
-            &+ (text?.hashValue ?? 0) &* 79
-            &+ (textColor?.hashValue ?? 0) &* 131
+        return paintedShapes.hashValue &* 37
             &+ size.hashValue &* 181
     }
     
     static func ==(lhs: SpriteBlueprint, rhs: SpriteBlueprint) -> Bool {
-        return lhs.shape == rhs.shape
-            && lhs.shapePaint ~= rhs.shapePaint
-            && lhs.text == rhs.text
-            && lhs.textColor == rhs.textColor
+        return lhs.paintedShapes == rhs.paintedShapes
             && lhs.size == rhs.size
     }
     

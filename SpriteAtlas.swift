@@ -18,31 +18,31 @@ let fontDefinition = 3
 extension SpriteAtlas {
     
     convenience init?(level: inout Level) {
-        let player = SpriteBlueprint(
-            shape: .triangular,
-            shapePaint: Color<GLfloat>.black,
-            text: "私",
-            textColor: .white,
+        let hiraginoFont = UIFont(name: "Hiragino Sans", size: 10)
+        
+        let player = SpriteBlueprint(paintedShapes: [
+            PaintedShape(shape: .triangular, paint: Color<GLfloat>.black),
+            PaintedShape(shape: TextShape(text: "私", font: hiraginoFont), paint: Color<GLfloat>.white, rectangle: Rectangle(x: 0, y: 20, width: 48, height: 24))],
             size: Size(width: 48, height: 48))
-        let playerShots = SpriteBlueprint(
-            shape: .diamond,
-            shapePaint: RadialGradient(innerColor: .white, outerColor: Color(red: 0, green: 0.88, blue:1, alpha: 1)),
+        let playerShots = SpriteBlueprint(paintedShapes: [PaintedShape(shape: .diamond, paint: RadialGradient(innerColor: .white, outerColor: Color(red: 0, green: 0.88, blue:1, alpha: 1)))],
             size: Size(width: 16, height: 24))
         
         var blueprints = [player, player.shadow, playerShots]
         var groups = [Group : (sprite: SpriteBlueprint, shot: SpriteBlueprint)]()
         
+        
+        let red = Color<GLfloat>(red: 1, green: 0, blue: 0, alpha: 1)
+        
         for wave in level.waves {
             for group in wave.groups {
                 var groupBlueprints = [SpriteBlueprint]()
                 
+                let textSize = group.size.pixelSize * 2 / 3
+                
                 // Sprite
-                let sprite = SpriteBlueprint(
-                    shape: group.shape,
-                    shapePaint: Color<GLfloat>(red: 1, green: 0, blue: 0, alpha: 1),
-                    text: String(group.kanji.character),
-                    textColor: .white,
-                    size: Size(width: group.size.pixelSize, height: group.size.pixelSize))
+                let sprite = SpriteBlueprint(paintedShapes: [
+                    PaintedShape(shape: group.shape, paint: red),
+                    PaintedShape(shape: TextShape(text: String(group.kanji.character), font: hiraginoFont), paint: Color<GLfloat>.white, rectangle: Rectangle(x: (group.size.pixelSize - textSize) / 2, y: (group.size.pixelSize - textSize) / 2, width: textSize, height: textSize))], size: Size(width: group.size.pixelSize, height: group.size.pixelSize))
                 groupBlueprints.append(sprite)
                 
                 // Ombre
@@ -51,9 +51,7 @@ extension SpriteAtlas {
                 }
                 
                 // Tir
-                groupBlueprints.append(SpriteBlueprint(
-                    shape: .round,
-                    shapePaint: RadialGradient(innerColor: .white, outerColor: Color(red: 0.98, green: 0, blue: 1, alpha: 1)),
+                groupBlueprints.append(SpriteBlueprint(paintedShapes: [PaintedShape(shape: .round, paint: RadialGradient(innerColor: .white, outerColor: Color(red: 0.98, green: 0, blue: 1, alpha: 1)))],
                     size: Size(width: 16, height: 16)))
                 groups[group] = (sprite: sprite, shot: groupBlueprints.last!)
                 blueprints.append(contentsOf: groupBlueprints)
@@ -62,13 +60,13 @@ extension SpriteAtlas {
         
         let hiraganas = stride(from: "あ".utf16.first!, to: "ゟ".utf16.first! + 1, by: 1).map { (hiragana: UInt16) -> SpriteBlueprint in
             let character = Character(UnicodeScalar(hiragana)!)
-            return SpriteBlueprint(text: String(character), textColor: .black, size: Size(width: 24, height: 24))
+            return SpriteBlueprint(paintedShapes: [PaintedShape(shape: TextShape(text: String(character), font: hiraginoFont), paint: Color<GLfloat>.black)], size: Size(width: 24, height: 24))
         }
         blueprints.append(contentsOf: hiraganas)
         
         let katakanas = stride(from: "ア".utf16.first!, to: "ヿ".utf16.first! + 1, by: 1).map { (katakana: UInt16) -> SpriteBlueprint in
             let character = Character(UnicodeScalar(katakana)!)
-            return SpriteBlueprint(text: String(character), textColor: .black, size: Size(width: 24, height: 24))
+            return SpriteBlueprint(paintedShapes: [PaintedShape(shape: TextShape(text: String(character), font: hiraginoFont), paint: Color<GLfloat>.black)], size: Size(width: 24, height: 24))
         }
         blueprints.append(contentsOf: katakanas)
         

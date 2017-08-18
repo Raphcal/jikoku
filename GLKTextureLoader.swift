@@ -23,21 +23,10 @@ extension GLKTextureLoader {
             context.textMatrix = CGAffineTransform(scaleX: 1.0, y: -1.0)
         
             for (blueprint, origin) in packMap.locations {
-                let size = blueprint.size
-                
-                let rect = CGRect(x: origin.x, y: origin.y, width: Int(size.width), height: Int(size.height))
-                
-                if let shape = blueprint.shape, let paint = blueprint.shapePaint {
+                for paintedShape in blueprint.paintedShapes {
                     context.saveGState()
-                    paint.paint(shape: shape, rectangle: rect, in: context)
+                    paintedShape.paint.paint(shape: paintedShape.shape, rectangle: paintedShape.cgRect(origin: origin, size: blueprint.size), in: context)
                     context.restoreGState()
-                }
-                
-                if let text = blueprint.text {
-                    let font = UIFont.systemFont(ofSize: blueprint.shape != nil ? CGFloat(min(size.width, size.height) * 3/4) : CGFloat(min(size.width, size.height)))
-                    
-                    context.setFillColor(blueprint.textColor!.cgColor)
-                    context.fill(string: text, font: font, in: rect)
                 }
             }
         }
@@ -50,30 +39,6 @@ extension GLKTextureLoader {
         }
         
         throw TextureError.imageNotGenerated
-    }
-
-}
-
-extension CGContext {
-    
-    func fill(character: Character, font: UIFont, in rect: CGRect) {
-        fill(string: String(character), font: font, in: rect)
-    }
-
-    func fill(string: String, font: UIFont, in rect: CGRect) {
-        let lineText = NSMutableAttributedString(string: string)
-        lineText.addAttribute(kCTFontAttributeName as String, value: font, range: NSRange(location: 0, length: lineText.length))
-        lineText.addAttribute(kCTForegroundColorFromContextAttributeName as String, value: true, range: NSRange(location: 0, length: lineText.length))
-        
-        let lineToDraw = CTLineCreateWithAttributedString(lineText)
-        
-        textPosition = CGPoint()
-        let bounds = CTLineGetImageBounds(lineToDraw, self)
-        
-        setTextDrawingMode(.fill)
-        
-        textPosition = CGPoint(x: rect.origin.x + (rect.size.width - bounds.width) / 2 - bounds.origin.x, y: rect.origin.y + rect.size.height - (rect.size.height - bounds.height) / 2 + bounds.origin.y)
-        CTLineDraw(lineToDraw, self)
     }
 
 }
