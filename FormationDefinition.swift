@@ -30,10 +30,18 @@ class StationaryFormationDefinition : FormationDefinition {
     
     var creationPoints: [Point<GLfloat>] {
         if points.isEmpty {
-            let left = width / 2 + spacing
-            let right = View.instance.width - width / 2
-            points = stride(from: left, to: right, by: width + spacing).flatMap {
-                [Point(x: $0, y: -width / 2), Point(x: $0, y: -width / 2 - 20), Point(x: $0, y: -width / 2 - 40)]
+            if width >= View.instance.width / 2 {
+                points = [
+                    Point<GLfloat>(x: View.instance.width / 2, y: -width / 2),
+                    Point<GLfloat>(x: View.instance.width / 2, y: -width / 2 - 20),
+                    Point<GLfloat>(x: View.instance.width / 2, y: -width / 2 - 40),
+                ]
+            } else {
+                let left = width / 2 + spacing
+                let right = View.instance.width - width / 2
+                points = stride(from: left, to: right, by: width + spacing).flatMap {
+                    [Point(x: $0, y: -width / 2), Point(x: $0, y: -width / 2 - 20), Point(x: $0, y: -width / 2 - 40)]
+                }
             }
         }
         return [points.removeAtRandom()]
