@@ -30,7 +30,7 @@ class ShootingStyle {
         self.definition = definition
         self.spriteFactory = spriteFactory
 
-        self.shootInterval = definition.shootInterval
+        self.shootInterval = random(from: 0, to: definition.shootInterval)
         self.shotAmount = definition.shotAmount
         self.shotAmountVariation = definition.shotAmountVariation
         self.inversionInterval = definition.inversionInterval
