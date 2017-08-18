@@ -25,6 +25,9 @@ class StationaryEnemyMotion : EnemyMotion {
     
     override func load(_ sprite: Sprite) {
         targetY = -sprite.frame.y
+        if sprite.frame.width >= View.instance.width / 2 {
+            stationaryInterval *= 2
+        }
     }
     
     override func updateWith(_ timeSinceLastUpdate: TimeInterval, sprite: Sprite) {
