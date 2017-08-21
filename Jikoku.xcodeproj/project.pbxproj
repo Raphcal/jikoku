@@ -11,6 +11,7 @@
 		640829231F472488009E8503 /* AimedShootingStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640829221F472488009E8503 /* AimedShootingStyle.swift */; };
 		640829281F4ABA42009E8503 /* BossMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640829271F4ABA42009E8503 /* BossMotion.swift */; };
 		6408292F1F4B2009009E8503 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6408292E1F4B2009009E8503 /* Distance.swift */; };
+		640829331F4B2C39009E8503 /* LifeBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640829321F4B2C39009E8503 /* LifeBar.swift */; };
 		6410F9A01F21D69E005C2DDC /* PlayerMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6410F99F1F21D69E005C2DDC /* PlayerMotion.swift */; };
 		6419A4F31F3C76CA000B4A0B /* Paint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6419A4F21F3C76CA000B4A0B /* Paint.swift */; };
 		641CA8181F3D06D000EFA833 /* DriftingMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641CA8171F3D06D000EFA833 /* DriftingMotion.swift */; };
@@ -97,6 +98,7 @@
 		640829221F472488009E8503 /* AimedShootingStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimedShootingStyle.swift; sourceTree = "<group>"; };
 		640829271F4ABA42009E8503 /* BossMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BossMotion.swift; sourceTree = "<group>"; };
 		6408292E1F4B2009009E8503 /* Distance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
+		640829321F4B2C39009E8503 /* LifeBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifeBar.swift; sourceTree = "<group>"; };
 		6410F99F1F21D69E005C2DDC /* PlayerMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerMotion.swift; sourceTree = "<group>"; };
 		6419A4F21F3C76CA000B4A0B /* Paint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Paint.swift; sourceTree = "<group>"; };
 		641CA8171F3D06D000EFA833 /* DriftingMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriftingMotion.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				643CE9FF1F28A58700A2D4C6 /* CenteredSpriteHitbox.swift */,
 				6408292E1F4B2009009E8503 /* Distance.swift */,
 				64846A321F1F3BF60053A926 /* GLKTextureLoader.swift */,
+				640829321F4B2C39009E8503 /* LifeBar.swift */,
 				643FC8BF1F1F6C9600EA7727 /* SpriteAtlas.swift */,
 				64F4BE311F39E94D006BFD60 /* SpriteBlueprint.swift */,
 				643FC8C11F1F6CEF00EA7727 /* SpriteType.swift */,
@@ -430,6 +433,7 @@
 				64BB38A31F2B4A9A00CAB9FC /* Wave.swift in Sources */,
 				64BB38A71F2B4AEB00CAB9FC /* Shape.swift in Sources */,
 				647D7EA41F20CE6000721F76 /* ShootingStyleDefinition.swift in Sources */,
+				640829331F4B2C39009E8503 /* LifeBar.swift in Sources */,
 				641CA81B1F3D073600EFA833 /* Sprite.swift in Sources */,
 				64EEA19A1F31AD680085DFD4 /* FormationDefinition.swift in Sources */,
 				643FC8C01F1F6C9600EA7727 /* SpriteAtlas.swift in Sources */,
