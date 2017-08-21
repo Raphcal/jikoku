@@ -16,18 +16,18 @@ class SimpleBossMotion : StationaryEnemyMotion {
     
     override func load(_ sprite: Sprite) {
         self.stationaryInterval = 120
-        self.targetY = 90
+        self.targetY = 15
         self.shootingStyles = [
             CircularShootingStyleDefinition(
                 shotAmount: 24,
                 shotAmountVariation: 0,
                 shotSpeed: 100,
-                shootInterval: 0.2,
+                shootInterval: 0.5,
                 inversions: [.angle],
-                inversionInterval: 24,
+                inversionInterval: 12,
                 spriteDefinition: level!.bossShotDefinition!,
                 baseAngle: 0,
-                baseAngleVariation: GLKMathDegreesToRadians(20)).shootingStyle(spriteFactory: sprite.factory)
+                baseAngleVariation: GLKMathDegreesToRadians(10)).shootingStyle(spriteFactory: sprite.factory)
         ]
     }
     
