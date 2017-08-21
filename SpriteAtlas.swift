@@ -70,13 +70,13 @@ extension SpriteAtlas {
         let bossSprite = SpriteBlueprint(paintedShapes: [
             PaintedShape(shape: .round, paint: Color<GLfloat>(hex: 0xF6A623)),
             PaintedShape(
-                shape: TextShape(text: String("長"), font: hiraginoW6Font),
+                shape: TextShape(text: String("陽"), font: hiraginoW6Font),
                 paint: Color<GLfloat>.white,
                 rectangle: Rectangle(x: (bossSize - textSize) / 2, y: (bossSize - textSize) / 2, width: textSize, height: textSize))], size: Size(size: bossSize))
 
         bossBlueprints.append(bossSprite)
         bossBlueprints.append(bossSprite.shadow)
-        bossBlueprints.append(SpriteBlueprint(paintedShapes: [PaintedShape(shape: .diamond, paint: RadialGradient(innerColor: .white, outerColor: Color(hex: 0xFB00FF)))], size: Size(width: 8, height: 24)))
+        bossBlueprints.append(SpriteBlueprint(paintedShapes: [PaintedShape(shape: .diamond, paint: Color<GLubyte>(hex: 0xF6A623))], size: Size(width: 8, height: 24)))
         blueprints.append(contentsOf: bossBlueprints)
         
         // Polices d'écriture
