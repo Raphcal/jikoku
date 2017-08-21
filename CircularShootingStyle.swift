@@ -40,14 +40,14 @@ struct CircularShootingStyleDefinition : ShootingStyleDefinition {
 /// Tir un cercle de tirs
 class CircularShootingStyle : ShootingStyle {
     
-    var circularDefinition: CircularShootingStyleDefinition {
-        return self.definition as! CircularShootingStyleDefinition
-    }
-    
     var baseAngle: GLfloat
+    var baseAngleVariation: GLfloat
     
     override init(definition: ShootingStyleDefinition, spriteFactory: SpriteFactory) {
-        self.baseAngle = (definition as! CircularShootingStyleDefinition).baseAngle
+        let circularDefinition = (definition as! CircularShootingStyleDefinition)
+        self.baseAngle = circularDefinition.baseAngle
+        self.baseAngleVariation = circularDefinition.baseAngleVariation
+
         super.init(definition: definition, spriteFactory: spriteFactory)
     }
     
@@ -66,7 +66,7 @@ class CircularShootingStyle : ShootingStyle {
             
             let shot = spriteFactory.sprite(spriteDefinition)
             shot.frame.center = point
-            shot.motion = ShotMotion(speed: speed)
+            shot.motion = ShotMotion(angle: currentAngle - .pi / 2, speed: speed)
             shot.hitbox = CenteredSpriteHitbox(sprite: shot, size: Size(width: shot.frame.width * 0.6666, height: shot.frame.height * 0.6666))
             
             shots.append(shot)
@@ -74,7 +74,7 @@ class CircularShootingStyle : ShootingStyle {
             currentAngle += angleIncrement
         }
         
-        baseAngle += circularDefinition.baseAngleVariation
+        baseAngle += baseAngleVariation
         
         return shots
     }
@@ -83,7 +83,7 @@ class CircularShootingStyle : ShootingStyle {
         super.invert()
         
         if definition.inversions.contains(.angle) {
-            baseAngle = -baseAngle
+            baseAngleVariation = -baseAngleVariation
         }
     }
     
