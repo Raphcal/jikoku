@@ -28,6 +28,7 @@ class LevelManager {
     var interval: TimeInterval = 0
     
     var nextWave = 0
+    var bossHasArrived = false
     
     var sprites = [Sprite]()
     var breathInterval: TimeInterval = 0
@@ -83,7 +84,7 @@ class LevelManager {
         if noMoreEnemy && breathInterval > 0 {
             breathInterval -= timeSinceLastUpdate
         }
-        else if noMoreEnemy, let gameScene = gameScene {
+        else if noMoreEnemy && !bossHasArrived, let gameScene = gameScene {
             let boss = spriteFactory.sprite(level.bossDefinition!)
             
             var frame = boss.frame
@@ -97,6 +98,11 @@ class LevelManager {
             motion.load(boss)
             
             sprites.append(boss)
+            
+            bossHasArrived = true
+        }
+        else if noMoreEnemy && bossHasArrived {
+            // TODO: Fin du niveau
         }
     }
     
