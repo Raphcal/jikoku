@@ -97,9 +97,9 @@ extension SpriteAtlas {
         packMap.add(contentsOf: blueprints)
         
         var definitions: [SpriteDefinition] = [
-            SpriteDefinition(index: playerDefinition, type: .player, distance: .middle, blueprint: player, packMap: packMap),
-            SpriteDefinition(index: playerShadowDefinition, blueprint: player.shadow, packMap: packMap),
-            SpriteDefinition(index: playerShotDefinition, type: .friendlyShot, blueprint: playerShots, packMap: packMap),
+            SpriteDefinition(index: playerDefinition, type: .player, blueprint: player, packMap: packMap),
+            SpriteDefinition(index: playerShadowDefinition, distance: .shadow, blueprint: player.shadow, packMap: packMap),
+            SpriteDefinition(index: playerShotDefinition, type: .friendlyShot, distance: .shot, blueprint: playerShots, packMap: packMap),
             font(hiraganas: hiraganas, katakanas: katakanas, packMap: packMap)
         ]
         
@@ -110,16 +110,16 @@ extension SpriteAtlas {
                 let blueprints = groups[group]!
                 
                 group.spriteDefinition = definitions.count
-                definitions.append(SpriteDefinition(index: definitions.count, type: .enemy, distance: .middle, blueprint: blueprints.sprite, packMap: packMap))
+                definitions.append(SpriteDefinition(index: definitions.count, type: .enemy, blueprint: blueprints.sprite, packMap: packMap))
                 
                 if group.isFlying {
                     group.shadowDefinition = definitions.count
-                    definitions.append(SpriteDefinition(index: definitions.count, blueprint: blueprints.sprite.shadow, packMap: packMap))
+                    definitions.append(SpriteDefinition(index: definitions.count, distance: .shadow, blueprint: blueprints.sprite.shadow, packMap: packMap))
                 }
                 
                 if var shootingStyleDefinition = group.shootingStyleDefinition {
                     shootingStyleDefinition.spriteDefinition = definitions.count
-                    definitions.append(SpriteDefinition(index: definitions.count, type: .enemyShot, blueprint: blueprints.shot, packMap: packMap))
+                    definitions.append(SpriteDefinition(index: definitions.count, type: .enemyShot, distance: .shot, blueprint: blueprints.shot, packMap: packMap))
                     group.shootingStyleDefinition = shootingStyleDefinition
                 }
                 wave.groups[j] = group
@@ -128,13 +128,13 @@ extension SpriteAtlas {
         }
         
         level.bossDefinition = definitions.count
-        definitions.append(SpriteDefinition(index: definitions.count, type: .enemy, distance: .middle, blueprint: bossBlueprints[0], packMap: packMap))
+        definitions.append(SpriteDefinition(index: definitions.count, type: .enemy, blueprint: bossBlueprints[0], packMap: packMap))
         
         level.bossShadowDefinition = definitions.count
-        definitions.append(SpriteDefinition(index: definitions.count, blueprint: bossBlueprints[1], packMap: packMap))
+        definitions.append(SpriteDefinition(index: definitions.count, distance: .shadow, blueprint: bossBlueprints[1], packMap: packMap))
         
         level.bossShotDefinition = definitions.count
-        definitions.append(SpriteDefinition(index: definitions.count, type: .enemyShot, blueprint: bossBlueprints[2], packMap: packMap))
+        definitions.append(SpriteDefinition(index: definitions.count, type: .enemyShot, distance: .shot, blueprint: bossBlueprints[2], packMap: packMap))
         
         do {
             self.init(definitions: definitions, texture: try GLKTextureLoader.texture(with: packMap))
@@ -147,7 +147,7 @@ extension SpriteAtlas {
 }
 
 extension SpriteDefinition {
-    init(index: Int, type: SpriteType = SpriteType.decoration, distance: Distance = .behind, blueprint: SpriteBlueprint, packMap: PackMap<SpriteBlueprint>) {
+    init(index: Int, type: SpriteType = SpriteType.decoration, distance: Distance = .spaceship, blueprint: SpriteBlueprint, packMap: PackMap<SpriteBlueprint>) {
         self.index = index
         self.name = nil
         self.type = type
