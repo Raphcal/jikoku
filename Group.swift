@@ -66,7 +66,7 @@ struct Group : Hashable {
             shootingStyleDefinition = CircularShootingStyleDefinition(
                 shotAmount: 16,
                 shotAmountVariation: 0,
-                shotSpeed: 200,
+                shotSpeed: 50,
                 shootInterval: 0.5,
                 inversions: [],
                 inversionInterval: 0,
@@ -77,7 +77,7 @@ struct Group : Hashable {
             shootingStyleDefinition = AimedShootingStyleDefinition(
                 shotAmount: 1,
                 shotAmountVariation: 0,
-                shotSpeed: 150,
+                shotSpeed: 100,
                 shootInterval: 1,
                 inversions: [],
                 inversionInterval: 0,

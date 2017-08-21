@@ -27,7 +27,7 @@ class SimpleBossMotion : StationaryEnemyMotion {
                 inversionInterval: 12,
                 spriteDefinition: level!.bossShotDefinition!,
                 baseAngle: 0,
-                baseAngleVariation: GLKMathDegreesToRadians(15)).shootingStyle(spriteFactory: sprite.factory)
+                baseAngleVariation: GLKMathDegreesToRadians(5)).shootingStyle(spriteFactory: sprite.factory)
         ]
     }
     
