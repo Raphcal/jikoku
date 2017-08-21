@@ -42,7 +42,7 @@ class GameScene : Scene {
         var level = Level.random(with: Kanji.all)
         if let atlas = SpriteAtlas(level: &level) {
             self.atlas = atlas
-            spriteFactory = TranslucentSpriteFactory(spriteAtlas: atlas, pools: [ReferencePool(from: 0, to: 256), ReferencePool(from: 256, to: 512), ReferencePool(from: 512, to: 768)])
+            spriteFactory = TranslucentSpriteFactory(spriteAtlas: atlas, pools: [ReferencePool(from: 0, to: 256), ReferencePool(from: 256, to: 768), ReferencePool(from: 768, to: 1024)])
         } else {
             print("Atlas creation error")
             spriteFactory = TranslucentSpriteFactory()
