@@ -10,6 +10,9 @@ import Foundation
 
 /// Type de boss.
 enum Boss : Enumerable {
+    /// Boss simple qui tire sans bouger (pour les tests).
+    case simple
+    
     /// Constitué de 2 kanjis qui ont une lecture irrégulière (par exemple : 今 et 日 qui deviennent 今日). Ils se séparent et s'assemblent afin de changer de lecture et éviter les tirs.
     case irregularReading
     

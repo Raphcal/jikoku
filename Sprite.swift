@@ -19,6 +19,15 @@ extension Sprite {
         }
     }
     
+    var group: Group? {
+        get {
+            return objects["group"] as? Group
+        }
+        set {
+            objects["group"] = newValue
+        }
+    }
+    
     var translucentSpriteFactory: TranslucentSpriteFactory {
         return self.factory as! TranslucentSpriteFactory
     }

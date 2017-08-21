@@ -21,18 +21,19 @@ extension SpriteAtlas {
         let hiraginoW3Font = UIFont(name: "HiraginoSans-W3", size: 10)
         let hiraginoW6Font = UIFont(name: "HiraginoSans-W6", size: 10)
         
+        // Joueur
         let player = SpriteBlueprint(paintedShapes: [
             PaintedShape(shape: .triangular, paint: Color<GLfloat>(hex: 0x50E3C2)),
             PaintedShape(shape: TextShape(text: "私", font: hiraginoW3Font), paint: Color<GLfloat>.white, rectangle: Rectangle(x: 0, y: 20, width: 48, height: 24)),
             PaintedShape(shape: .round, paint: Color<GLfloat>(red: 1, green: 0, blue: 0, alpha: 0.5), rectangle: Rectangle(x: 20, y: 20, width: 8, height: 8))],
             size: Size(width: 48, height: 48))
-        let playerShots = SpriteBlueprint(paintedShapes: [PaintedShape(shape: .diamond, paint: RadialGradient(innerColor: .white, outerColor: Color(red: 0, green: 0.88, blue:1, alpha: 1)))],
+        let playerShots = SpriteBlueprint(paintedShapes: [PaintedShape(shape: .diamond, paint: RadialGradient(innerColor: .white, outerColor: Color(hex: 0x44B6DE)))],
             size: Size(width: 16, height: 24))
         
         var blueprints = [player, player.shadow, playerShots]
         var groups = [Group : (sprite: SpriteBlueprint, shot: SpriteBlueprint)]()
         
-        
+        // Vagues d'ennemis
         let red = Color<GLfloat>(red: 1, green: 0, blue: 0, alpha: 1)
         
         for wave in level.waves {
@@ -44,7 +45,7 @@ extension SpriteAtlas {
                 // Sprite
                 let sprite = SpriteBlueprint(paintedShapes: [
                     PaintedShape(shape: group.shape, paint: red),
-                    PaintedShape(shape: TextShape(text: String(group.kanji.character), font: hiraginoW3Font), paint: Color<GLfloat>.white, rectangle: Rectangle(x: (group.size.pixelSize - textSize) / 2, y: (group.size.pixelSize - textSize) / 2, width: textSize, height: textSize))], size: Size(width: group.size.pixelSize, height: group.size.pixelSize))
+                    PaintedShape(shape: TextShape(text: String(group.kanji.character), font: hiraginoW3Font), paint: Color<GLfloat>.white, rectangle: Rectangle(x: (group.size.pixelSize - textSize) / 2, y: (group.size.pixelSize - textSize) / 2, width: textSize, height: textSize))], size: Size(size: group.size.pixelSize))
                 groupBlueprints.append(sprite)
                 
                 // Ombre
@@ -53,13 +54,32 @@ extension SpriteAtlas {
                 }
                 
                 // Tir
-                groupBlueprints.append(SpriteBlueprint(paintedShapes: [PaintedShape(shape: .round, paint: RadialGradient(innerColor: .white, outerColor: Color(red: 0.98, green: 0, blue: 1, alpha: 1)))],
+                groupBlueprints.append(SpriteBlueprint(paintedShapes: [PaintedShape(shape: .round, paint: RadialGradient(innerColor: .white, outerColor: Color(hex: 0xFB00FF)))],
                     size: Size(width: 16, height: 16)))
                 groups[group] = (sprite: sprite, shot: groupBlueprints.last!)
                 blueprints.append(contentsOf: groupBlueprints)
             }
         }
         
+        // Boss
+        var bossBlueprints = [SpriteBlueprint]()
+        
+        let bossSize: GLfloat = 256
+        let textSize = bossSize * 2 / 3
+        
+        let bossSprite = SpriteBlueprint(paintedShapes: [
+            PaintedShape(shape: .round, paint: Color<GLfloat>(hex: 0xF6A623)),
+            PaintedShape(
+                shape: TextShape(text: String("長"), font: hiraginoW6Font),
+                paint: Color<GLfloat>.white,
+                rectangle: Rectangle(x: (bossSize - textSize) / 2, y: (bossSize - textSize) / 2, width: textSize, height: textSize))], size: Size(size: bossSize))
+
+        bossBlueprints.append(bossSprite)
+        bossBlueprints.append(bossSprite.shadow)
+        bossBlueprints.append(SpriteBlueprint(paintedShapes: [PaintedShape(shape: .diamond, paint: RadialGradient(innerColor: .white, outerColor: Color(hex: 0xFB00FF)))], size: Size(width: 8, height: 24)))
+        blueprints.append(contentsOf: bossBlueprints)
+        
+        // Polices d'écriture
         let hiraganas = stride(from: "あ".utf16.first!, to: "ゟ".utf16.first! + 1, by: 1).map { (hiragana: UInt16) -> SpriteBlueprint in
             let character = Character(UnicodeScalar(hiragana)!)
             return SpriteBlueprint(paintedShapes: [PaintedShape(shape: TextShape(text: String(character), font: hiraginoW6Font), paint: EmbossPaint(color: Color(hex: 0x7ED321)))], size: Size(width: 24, height: 24))
@@ -72,6 +92,7 @@ extension SpriteAtlas {
         }
         blueprints.append(contentsOf: katakanas)
         
+        // Création des définitions
         let packMap = PackMap<SpriteBlueprint>()
         packMap.add(contentsOf: blueprints)
         
@@ -105,6 +126,15 @@ extension SpriteAtlas {
             }
             level.waves[i] = wave
         }
+        
+        level.bossDefinition = definitions.count
+        definitions.append(SpriteDefinition(index: definitions.count, type: .enemy, distance: .middle, blueprint: bossBlueprints[0], packMap: packMap))
+        
+        level.bossShadowDefinition = definitions.count
+        definitions.append(SpriteDefinition(index: definitions.count, type: .enemy, distance: .middle, blueprint: bossBlueprints[1], packMap: packMap))
+        
+        level.bossShotDefinition = definitions.count
+        definitions.append(SpriteDefinition(index: definitions.count, type: .enemy, distance: .middle, blueprint: bossBlueprints[2], packMap: packMap))
         
         do {
             self.init(definitions: definitions, texture: try GLKTextureLoader.texture(with: packMap))

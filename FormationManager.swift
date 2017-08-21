@@ -52,7 +52,7 @@ class FormationManager {
                 for i in 0 ..< max {
                     let sprite = spriteFactory.sprite(group.spriteDefinition!)
                     sprite.frame.center = points[i]
-                    sprite.objects["group"] = group
+                    sprite.group = group
                     
                     let motion = group.formation.motion(lifePoints: lifePoints, gameScene: gameScene)
                     

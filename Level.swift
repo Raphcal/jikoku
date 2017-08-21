@@ -13,10 +13,17 @@ import GLKit
 struct Level {
     var waves: [Wave]
     var boss: Boss
+
+    var bossDefinition: Int?
+    var bossShadowDefinition: Int?
+    var bossShotDefinition: Int?
     
     static func random(with kanjis: [Kanji]) -> Level {
         return Level(
             waves: (0 ..< 10).map {_ in Wave.random(with: kanjis) },
-            boss: Boss.random)
+            boss: Boss.simple,
+            bossDefinition: nil,
+            bossShadowDefinition: nil,
+            bossShotDefinition: nil)
     }
 }
