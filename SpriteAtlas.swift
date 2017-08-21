@@ -131,10 +131,10 @@ extension SpriteAtlas {
         definitions.append(SpriteDefinition(index: definitions.count, type: .enemy, distance: .middle, blueprint: bossBlueprints[0], packMap: packMap))
         
         level.bossShadowDefinition = definitions.count
-        definitions.append(SpriteDefinition(index: definitions.count, type: .enemy, distance: .middle, blueprint: bossBlueprints[1], packMap: packMap))
+        definitions.append(SpriteDefinition(index: definitions.count, blueprint: bossBlueprints[1], packMap: packMap))
         
         level.bossShotDefinition = definitions.count
-        definitions.append(SpriteDefinition(index: definitions.count, type: .enemy, distance: .middle, blueprint: bossBlueprints[2], packMap: packMap))
+        definitions.append(SpriteDefinition(index: definitions.count, type: .enemyShot, blueprint: bossBlueprints[2], packMap: packMap))
         
         do {
             self.init(definitions: definitions, texture: try GLKTextureLoader.texture(with: packMap))
