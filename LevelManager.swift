@@ -28,7 +28,7 @@ class LevelManager {
     var interval: TimeInterval = 0
     
     var nextWave = 0
-    var bossHasArrived = false
+    var state = State.beforeBossArrival
     
     var sprites = [Sprite]()
     var breathInterval: TimeInterval = 0
@@ -83,34 +83,46 @@ class LevelManager {
     }
     
     fileprivate func updateBoss(with timeSinceLastUpdate: TimeInterval) {
-        let noMoreEnemy = self.enemyCount == 0
-        if noMoreEnemy && breathInterval > 0 {
+        switch state {
+        case .beforeBossArrival:
+            if enemyCount == 0 {
+                breathInterval = 2
+                state = .waitingForBoss
+            }
+        case .waitingForBoss:
             breathInterval -= timeSinceLastUpdate
+            if breathInterval <= 0 {
+                let boss = spriteFactory.sprite(level.bossDefinition!)
+                
+                var frame = boss.frame
+                frame.center.x = View.instance.width / 2
+                frame.bottom = -frame.height / 2
+                boss.frame = frame
+                
+                let motion = SimpleBossMotion(lifePoints: 500, gameScene: gameScene!)
+                motion.level = level
+                boss.motion = motion
+                motion.load(boss)
+                
+                sprites.append(boss)
+                
+                let lifeBar = LifeBar(plane: gameScene!.plane)
+                lifeBar.frame = Rectangle(left: 8, top: 24, width: View.instance.width - 16, height: 8)
+                motion.lifeBar = lifeBar
+
+                state = .bossHasArrived
+            }
+        case .bossHasArrived:
+            if enemyCount == 0 {
+                // TODO: Afficher une animation ?
+                state = .bossIsDead
+            }
+        case .bossIsDead: break
         }
-        else if noMoreEnemy && !bossHasArrived, let gameScene = gameScene {
-            let boss = spriteFactory.sprite(level.bossDefinition!)
-            
-            var frame = boss.frame
-            frame.center.x = View.instance.width / 2
-            frame.bottom = -frame.height / 2
-            boss.frame = frame
-            
-            let motion = SimpleBossMotion(lifePoints: 2000, gameScene: gameScene)
-            motion.level = level
-            boss.motion = motion
-            motion.load(boss)
-            
-            sprites.append(boss)
-            
-            let lifeBar = LifeBar(plane: gameScene.plane)
-            lifeBar.frame = Rectangle(left: 8, top: 24, width: View.instance.width - 16, height: 8)
-            motion.lifeBar = lifeBar
-            
-            bossHasArrived = true
-        }
-        else if noMoreEnemy && bossHasArrived {
-            // TODO: Fin du niveau
-        }
+    }
+    
+    enum State {
+        case beforeBossArrival, waitingForBoss, bossHasArrived, bossIsDead
     }
     
 }
