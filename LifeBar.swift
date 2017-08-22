@@ -10,6 +10,11 @@ import Foundation
 import Melisse
 import GLKit
 
+protocol HasLifePoints {
+    var lifePoints: Int { get }
+    var lifeBar: LifeBar? { get set }
+}
+
 class LifeBar {
     
     var frame = Rectangle<GLfloat>() {
@@ -36,32 +41,19 @@ class LifeBar {
     var front: ColoredQuadrilateral
     var background: ColoredQuadrilateral
     
-    fileprivate let referencePool: ReferencePool
-    
-    fileprivate let frontReference: Int
-    fileprivate let backgroundReference: Int
-    
-    init(referencePool: ReferencePool, vertexPointer: SurfaceArray<GLfloat>, colorPointer: SurfaceArray<GLubyte>) {
-        self.referencePool = referencePool
-        
-        self.backgroundReference = referencePool.next()
-        self.frontReference = referencePool.nextAfter(backgroundReference)
-        
-        self.front = ColoredQuadrilateral(vertexSurface: vertexPointer.surface(at: frontReference), colorSurface: colorPointer.surface(at: frontReference))
-        self.background = ColoredQuadrilateral(vertexSurface: vertexPointer.surface(at: frontReference), colorSurface: colorPointer.surface(at: frontReference))
-        
-        self.front.color = .red
+    init(plane: Plane) {
+        self.background = plane.coloredQuadrilateral()
         self.background.color = .black
+        
+        self.front = plane.coloredQuadrilateral()
+        self.front.color = .red
     }
     
     deinit {
-        front.color = nil
-        front.quadrilateral = nil
-        background.color = nil
-        background.quadrilateral = nil
-
-        referencePool.release(frontReference)
-        referencePool.release(backgroundReference)
+        self.front.color = nil
+        self.front.quadrilateral = nil
+        self.background.color = nil
+        self.background.quadrilateral = nil
     }
     
     fileprivate func update() {

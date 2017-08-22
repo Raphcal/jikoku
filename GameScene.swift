@@ -22,6 +22,7 @@ class GameScene : Scene {
     
     let atlas: SpriteAtlas
     let spriteFactory: TranslucentSpriteFactory
+    let plane = Plane(capacity: 8)
     let levelManager: LevelManager
     var player: Sprite
     var camera = Camera()
@@ -42,7 +43,7 @@ class GameScene : Scene {
         var level = Level.random(with: Kanji.all)
         if let atlas = SpriteAtlas(level: &level) {
             self.atlas = atlas
-            spriteFactory = TranslucentSpriteFactory(spriteAtlas: atlas, pools: ReferencePool.pools(capacities: [256, 256, 512, 256]))
+            spriteFactory = TranslucentSpriteFactory(spriteAtlas: atlas, pools: ReferencePool.pools(capacities: [256, 256, 512, 256, 8]))
         } else {
             print("Atlas creation error")
             spriteFactory = TranslucentSpriteFactory()
@@ -92,6 +93,7 @@ class GameScene : Scene {
     
     func draw() {
         spriteFactory.draw(at: camera.frame.topLeft)
+        plane.draw()
     }
     
     @objc func panGestureRecognized(by sender: UIPanGestureRecognizer) {

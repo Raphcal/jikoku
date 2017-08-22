@@ -99,6 +99,10 @@ class LevelManager {
             
             sprites.append(boss)
             
+            let lifeBar = LifeBar(plane: gameScene.plane)
+            lifeBar.frame = Rectangle(left: 8, top: 24, width: View.instance.width - 16, height: 8)
+            motion.lifeBar = lifeBar
+            
             bossHasArrived = true
         }
         else if noMoreEnemy && bossHasArrived {

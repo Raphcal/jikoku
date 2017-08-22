@@ -10,9 +10,20 @@ import Foundation
 import Melisse
 import GLKit
 
-class EnemyMotion : BaseMotion {
+class EnemyMotion : BaseMotion, HasLifePoints {
     
-    var lifePoints: Int
+    var lifePoints: Int {
+        didSet {
+            lifeBar?.value = lifePoints
+        }
+    }
+    var lifeBar: LifeBar? {
+        didSet {
+            lifeBar?.maximum = lifePoints
+            lifeBar?.value = lifePoints
+        }
+    }
+    
     var angle = GLfloat.pi / 2
     
     var shootingStyles = [ShootingStyle]()

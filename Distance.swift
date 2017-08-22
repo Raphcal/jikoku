@@ -10,5 +10,5 @@ import Foundation
 import Melisse
 
 enum Distance : Int, PoolIndex {
-    case ground, shadow, shot, spaceship
+    case ground, shadow, shot, spaceship, interface
 }
