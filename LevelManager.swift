@@ -47,6 +47,8 @@ class LevelManager {
     }
     
     func update(with timeSinceLastUpdate: TimeInterval) {
+        self.sprites = self.sprites.filter { !$0.isRemoved }
+        
         if self.nextWave < level.waves.count {
             self.updateWaves(with: timeSinceLastUpdate)
         } else {
@@ -58,6 +60,7 @@ class LevelManager {
         guard let formationManager = formationManager else {
             return
         }
+
         let noMoreEnemy = self.nonPersistentEnemyCount == 0
         if noMoreEnemy && breathInterval > 0 {
             breathInterval -= timeSinceLastUpdate
