@@ -12,22 +12,25 @@ import GLKit
 
 class LifeBar {
     
+    var frame = Rectangle<GLfloat>() {
+        didSet {
+            update()
+        }
+    }
+    
     var value = 0 {
         didSet {
-            progress = value / max(maximum, 1)
+            update()
         }
     }
     var maximum = 0 {
         didSet {
-            progress = value / max(maximum, 1)
+            update()
         }
     }
     
-    var progress = 0 {
-        didSet {
-            // TODO: Redimensionner la barre
-            
-        }
+    var progress: GLfloat {
+        return GLfloat(fence(0, value, maximum)) / max(GLfloat(maximum), 1)
     }
     
     var front: ColoredQuadrilateral
@@ -46,6 +49,9 @@ class LifeBar {
         
         self.front = ColoredQuadrilateral(vertexSurface: vertexPointer.surface(at: frontReference), colorSurface: colorPointer.surface(at: frontReference))
         self.background = ColoredQuadrilateral(vertexSurface: vertexPointer.surface(at: frontReference), colorSurface: colorPointer.surface(at: frontReference))
+        
+        self.front.color = .red
+        self.background.color = .black
     }
     
     deinit {
@@ -56,6 +62,11 @@ class LifeBar {
 
         referencePool.release(frontReference)
         referencePool.release(backgroundReference)
+    }
+    
+    fileprivate func update() {
+        background.quadrilateral = Quadrilateral(rectangle: frame)
+        front.quadrilateral = Quadrilateral(rectangle: Rectangle(left: frame.left, top: frame.top, width: frame.width * progress, height: frame.height))
     }
     
 }
