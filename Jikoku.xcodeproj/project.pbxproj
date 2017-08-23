@@ -12,6 +12,7 @@
 		640829281F4ABA42009E8503 /* BossMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640829271F4ABA42009E8503 /* BossMotion.swift */; };
 		6408292F1F4B2009009E8503 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6408292E1F4B2009009E8503 /* Distance.swift */; };
 		640829331F4B2C39009E8503 /* LifeBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640829321F4B2C39009E8503 /* LifeBar.swift */; };
+		640829391F4C3375009E8503 /* SVG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640829381F4C3375009E8503 /* SVG.swift */; };
 		6410F9A01F21D69E005C2DDC /* PlayerMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6410F99F1F21D69E005C2DDC /* PlayerMotion.swift */; };
 		6419A4F31F3C76CA000B4A0B /* Paint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6419A4F21F3C76CA000B4A0B /* Paint.swift */; };
 		641CA8181F3D06D000EFA833 /* DriftingMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641CA8171F3D06D000EFA833 /* DriftingMotion.swift */; };
@@ -41,6 +42,7 @@
 		64BB38AD1F2B4BCE00CAB9FC /* Boss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB38AC1F2B4BCE00CAB9FC /* Boss.swift */; };
 		64D03B251F289119009A0212 /* Melisse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64EB3CC91F264FF4002596BB /* Melisse.framework */; };
 		64D03B281F2897BD009A0212 /* Melisse.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 64EB3CC91F264FF4002596BB /* Melisse.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		64DA80231F4DBF5D000CAEFB /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DA80221F4DBF5D000CAEFB /* Background.swift */; };
 		64EB3CCE1F26502B002596BB /* LevelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EB3CCD1F26502B002596BB /* LevelManager.swift */; };
 		64EB3CD31F265FA9002596BB /* EnemyMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EB3CD21F265FA9002596BB /* EnemyMotion.swift */; };
 		64EEA17E1F3063E00085DFD4 /* BaseMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EEA17D1F3063E00085DFD4 /* BaseMotion.swift */; };
@@ -99,6 +101,7 @@
 		640829271F4ABA42009E8503 /* BossMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BossMotion.swift; sourceTree = "<group>"; };
 		6408292E1F4B2009009E8503 /* Distance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
 		640829321F4B2C39009E8503 /* LifeBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifeBar.swift; sourceTree = "<group>"; };
+		640829381F4C3375009E8503 /* SVG.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVG.swift; sourceTree = "<group>"; };
 		6410F99F1F21D69E005C2DDC /* PlayerMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerMotion.swift; sourceTree = "<group>"; };
 		6419A4F21F3C76CA000B4A0B /* Paint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Paint.swift; sourceTree = "<group>"; };
 		641CA8171F3D06D000EFA833 /* DriftingMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriftingMotion.swift; sourceTree = "<group>"; };
@@ -118,7 +121,7 @@
 		648DD0661F116EB9002A7398 /* Jikoku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jikoku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		648DD0691F116EB9002A7398 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		648DD06E1F116EB9002A7398 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		648DD0701F116EB9002A7398 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		648DD0701F116EB9002A7398 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Yamato/Assets.xcassets; sourceTree = "<group>"; };
 		648DD0731F116EB9002A7398 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		648DD0751F116EB9002A7398 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64BB386E1F29C91300CAB9FC /* Kanji.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Kanji.swift; sourceTree = "<group>"; };
@@ -130,6 +133,7 @@
 		64BB38AA1F2B4BB700CAB9FC /* Formation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formation.swift; sourceTree = "<group>"; };
 		64BB38AC1F2B4BCE00CAB9FC /* Boss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Boss.swift; sourceTree = "<group>"; };
 		64D03B231F289114009A0212 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		64DA80221F4DBF5D000CAEFB /* Background.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		64EB3CCD1F26502B002596BB /* LevelManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelManager.swift; sourceTree = "<group>"; };
 		64EB3CD21F265FA9002596BB /* EnemyMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyMotion.swift; sourceTree = "<group>"; };
 		64EEA17D1F3063E00085DFD4 /* BaseMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMotion.swift; sourceTree = "<group>"; };
@@ -180,6 +184,7 @@
 				6419A4F21F3C76CA000B4A0B /* Paint.swift */,
 				6408291D1F46CF41009E8503 /* PaintedShape.swift */,
 				641CA81A1F3D073600EFA833 /* Sprite.swift */,
+				640829381F4C3375009E8503 /* SVG.swift */,
 			);
 			name = Sprites;
 			sourceTree = "<group>";
@@ -204,9 +209,11 @@
 				64326ABB1F139E40007673E3 /* Scenes */,
 				647D7E9D1F20C83B00721F76 /* Shots */,
 				643FC8BE1F1F6C8900EA7727 /* Sprites */,
+				64DA80211F4DB5B8000CAEFB /* Backgrounds */,
 				64BB38A01F2B4A7000CAB9FC /* Enumerable.swift */,
 				64326AB41F1398AA007673E3 /* GameViewController.swift */,
 				648DD0681F116EB9002A7398 /* iOS */,
+				648DD0701F116EB9002A7398 /* Assets.xcassets */,
 				648DD0671F116EB9002A7398 /* Products */,
 				647D7E851F20970700721F76 /* Melisse.xcodeproj */,
 				64D03B221F289114009A0212 /* Frameworks */,
@@ -226,7 +233,6 @@
 			children = (
 				648DD0691F116EB9002A7398 /* AppDelegate.swift */,
 				648DD06D1F116EB9002A7398 /* Main.storyboard */,
-				648DD0701F116EB9002A7398 /* Assets.xcassets */,
 				648DD0721F116EB9002A7398 /* LaunchScreen.storyboard */,
 				648DD0751F116EB9002A7398 /* Info.plist */,
 			);
@@ -240,6 +246,14 @@
 				64D03B231F289114009A0212 /* AVFoundation.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		64DA80211F4DB5B8000CAEFB /* Backgrounds */ = {
+			isa = PBXGroup;
+			children = (
+				64DA80221F4DBF5D000CAEFB /* Background.swift */,
+			);
+			name = Backgrounds;
 			sourceTree = "<group>";
 		};
 		64EB3CC41F264FF4002596BB /* Products */ = {
@@ -411,6 +425,7 @@
 				640829231F472488009E8503 /* AimedShootingStyle.swift in Sources */,
 				64FCBCA61F25D39700536C57 /* Level.swift in Sources */,
 				64326ABD1F139E55007673E3 /* GameScene.swift in Sources */,
+				64DA80231F4DBF5D000CAEFB /* Background.swift in Sources */,
 				647D7EA01F20C8A600721F76 /* ShootingStyle.swift in Sources */,
 				64BB38A51F2B4ACF00CAB9FC /* Group.swift in Sources */,
 				64F4BE2B1F39A1AE006BFD60 /* PackMap.swift in Sources */,
@@ -427,6 +442,7 @@
 				64EEA17E1F3063E00085DFD4 /* BaseMotion.swift in Sources */,
 				640829281F4ABA42009E8503 /* BossMotion.swift in Sources */,
 				647C61E31F2B7C9100702AE5 /* ShotStyle.swift in Sources */,
+				640829391F4C3375009E8503 /* SVG.swift in Sources */,
 				647D7EA61F20D78A00721F76 /* ShotMotion.swift in Sources */,
 				64F4BE291F38AD0A006BFD60 /* CircularShootingStyle.swift in Sources */,
 				64BB38A91F2B4AFA00CAB9FC /* ShapeSize.swift in Sources */,

@@ -18,11 +18,12 @@ class GameScene : Scene {
 
     static var current: GameScene?
     
-    let backgroundColor = Color<GLfloat>(hex: 0xE4C9A0)
+    let backgroundColor = Color<GLfloat>(hex: 0xF4D6B2)
     
     let atlas: SpriteAtlas
     let spriteFactory: TranslucentSpriteFactory
     let plane = Plane(capacity: 8)
+    let background: Background
     let levelManager: LevelManager
     var player: Sprite
     var camera = Camera()
@@ -49,6 +50,8 @@ class GameScene : Scene {
             spriteFactory = TranslucentSpriteFactory()
             atlas = SpriteAtlas()
         }
+        
+        background = Background()
         
         camera.center(View.instance.width, height: View.instance.height)
         
@@ -77,6 +80,7 @@ class GameScene : Scene {
     func updateWith(_ timeSinceLastUpdate: TimeInterval) {
         let delta = isRunning ? timeSinceLastUpdate : timeSinceLastUpdate / 20
         
+        background.update(timeSinceLastUpdate: delta)
         levelManager.update(with: delta)
         spriteFactory.updateWith(delta)
         
@@ -92,6 +96,7 @@ class GameScene : Scene {
     }
     
     func draw() {
+        background.draw()
         spriteFactory.draw(at: camera.frame.topLeft)
         plane.draw()
     }
