@@ -18,6 +18,9 @@ class Background {
     var camera: Camera
     var speed: GLfloat = 100
     
+    fileprivate var motion: BackgroundMotion
+    var definitions: [Int] = []
+    
     init() {
         self.camera = Camera()
         camera.center(View.instance.width, height: View.instance.height)
@@ -44,11 +47,10 @@ class Background {
             self.factory = SpriteFactory()
         }
         
-        _ = factory.sprite(0, topLeft: Point(x: 0, y: 0))
-        _ = factory.sprite(1, topLeft: Point(x: 0, y: -160))
-        _ = factory.sprite(2, topLeft: Point(x: 0, y: -1024))
-        _ = factory.sprite(3, topLeft: Point(x: 0, y: -1800))
-        _ = factory.sprite(4, topLeft: Point(x: 0, y: -2024))
+        self.motion = BackgroundMotion()
+        motion.background = self
+        
+        nextBackgroundElement(margin: 0)
     }
     
     func update(timeSinceLastUpdate: TimeInterval) {
@@ -59,6 +61,36 @@ class Background {
     func draw() {
         factory.draw(at: camera.frame.topLeft)
     }
+    
+    func nextBackgroundElement(margin: GLfloat = 32) {
+        if definitions.isEmpty {
+            definitions = [0, 2, 3, 4]
+        }
+        
+        let sprite = factory.sprite(definitions.removeAtRandom())
+        sprite.motion = motion
+        
+        var frame = sprite.frame
+        frame.bottom = camera.frame.top - margin
+        frame.left = 0
+        sprite.frame = frame
+    }
+}
+
+fileprivate struct BackgroundMotion : Motion {
+    
+    var background: Background! = nil
+    
+    func updateWith(_ timeSinceLastUpdate: TimeInterval, sprite: Sprite) {
+        if sprite.objects["hasNext"] == nil && sprite.frame.top > background.camera.frame.top {
+            background.nextBackgroundElement(margin: random(from: 32, to: 64))
+            sprite.objects["hasNext"] = true
+        }
+        else if sprite.frame.top > background.camera.frame.bottom {
+            sprite.destroy()
+        }
+    }
+    
 }
 
 extension SpriteDefinition {
