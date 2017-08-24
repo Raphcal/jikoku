@@ -18,7 +18,6 @@ class Background {
     var camera: Camera
     var speed: GLfloat = 100
     
-    fileprivate var motion: BackgroundMotion
     var definitions: [Int] = []
     
     init() {
@@ -29,13 +28,14 @@ class Background {
             if let image = UIImage(named: "Texture") {
                 let texture = try GLKTextureLoader.texture(with: image.cgImage!, options: nil)
                 self.atlas = SpriteAtlas(definitions: [
-                    SpriteDefinition(index: 0, rectangle: Rectangle(x: 0, y: 0, width: 320, height: 320)),
-                    SpriteDefinition(index: 1, rectangle: Rectangle(x: 0, y: 320, width: 320, height: 480)),
-                    SpriteDefinition(index: 2, rectangle: Rectangle(x: 0, y: 800, width: 320, height: 160)),
-                    SpriteDefinition(index: 3, rectangle: Rectangle(x: 320, y: 0, width: 320, height: 640)),
-                    SpriteDefinition(index: 4, rectangle: Rectangle(x: 320, y: 640, width: 320, height: 224))
+                    SpriteDefinition(index: 0, rectangle: Rectangle(x: 0, y: 320, width: 320, height: 240), distance: .shadow),
+                    SpriteDefinition(index: 1, rectangle: Rectangle(x: 0, y: 560, width: 320, height: 240), distance: .shadow),
+                    SpriteDefinition(index: 2, rectangle: Rectangle(x: 0, y: 0, width: 320, height: 320)),
+                    SpriteDefinition(index: 3, rectangle: Rectangle(x: 0, y: 800, width: 320, height: 160)),
+                    SpriteDefinition(index: 4, rectangle: Rectangle(x: 320, y: 0, width: 320, height: 640)),
+                    SpriteDefinition(index: 5, rectangle: Rectangle(x: 320, y: 640, width: 320, height: 224))
                     ], texture: texture)
-                self.factory = SpriteFactory(spriteAtlas: atlas, pools: ReferencePool.pools(capacities: [16]))
+                self.factory = SpriteFactory(spriteAtlas: atlas, pools: ReferencePool.pools(capacities: [16, 16]))
             } else {
                 print("Texture non trouvée")
                 self.atlas = SpriteAtlas()
@@ -47,10 +47,8 @@ class Background {
             self.factory = SpriteFactory()
         }
         
-        self.motion = BackgroundMotion()
-        motion.background = self
-        
         nextBackgroundElement(margin: 0)
+        nextCloud(margin: -View.instance.height / 2)
     }
     
     func update(timeSinceLastUpdate: TimeInterval) {
@@ -62,13 +60,23 @@ class Background {
         factory.draw(at: camera.frame.topLeft)
     }
     
-    func nextBackgroundElement(margin: GLfloat = 32) {
+    func nextBackgroundElement(margin: GLfloat) {
         if definitions.isEmpty {
-            definitions = [0, 2, 3, 4]
+            definitions = [2, 3, 4, 5]
         }
         
         let sprite = factory.sprite(definitions.removeAtRandom())
-        sprite.motion = motion
+        sprite.motion = BackgroundMotion(background: self)
+        
+        var frame = sprite.frame
+        frame.bottom = camera.frame.top - margin
+        frame.left = 0
+        sprite.frame = frame
+    }
+    
+    func nextCloud(margin: GLfloat) {
+        let sprite = factory.sprite(random(2))
+        sprite.motion = CloudMotion(background: self)
         
         var frame = sprite.frame
         frame.bottom = camera.frame.top - margin
@@ -79,7 +87,7 @@ class Background {
 
 fileprivate struct BackgroundMotion : Motion {
     
-    var background: Background! = nil
+    let background: Background
     
     func updateWith(_ timeSinceLastUpdate: TimeInterval, sprite: Sprite) {
         if sprite.objects["hasNext"] == nil && sprite.frame.top > background.camera.frame.top {
@@ -93,14 +101,33 @@ fileprivate struct BackgroundMotion : Motion {
     
 }
 
+fileprivate struct CloudMotion : Motion {
+    
+    let background: Background
+    let parallax = GLfloat(0.5)
+    
+    func updateWith(_ timeSinceLastUpdate: TimeInterval, sprite: Sprite) {
+        sprite.frame.y -= background.speed * parallax * GLfloat(timeSinceLastUpdate)
+        
+        if sprite.objects["hasNext"] == nil && sprite.frame.top > background.camera.frame.top {
+            background.nextCloud(margin: random(from: View.instance.height / 2, to: View.instance.height * 2))
+            sprite.objects["hasNext"] = true
+        }
+        else if sprite.frame.top > background.camera.frame.bottom {
+            sprite.destroy()
+        }
+    }
+    
+}
+
 extension SpriteDefinition {
-    init(index: Int, rectangle: Rectangle<Int>) {
+    init(index: Int, rectangle: Rectangle<Int>, distance: Distance = .ground) {
         let scale = Int(UIScreen.main.scale)
         
         self.index = index
         self.name = nil
         self.type = SpriteType.decoration
-        self.distance = Distance.ground
+        self.distance = distance
         self.animations = [
             DefaultAnimationName.normal.name: AnimationDefinition(frames: [
                 AnimationFrame(frame: rectangle * scale, size: Size(width: GLfloat(rectangle.size.width), height: GLfloat(rectangle.size.height)))
