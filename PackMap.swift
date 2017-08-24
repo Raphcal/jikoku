@@ -25,7 +25,18 @@ class PackMap<Element> where Element : Packable {
     }
     
     init(elements: [Element] = []) {
-        add(contentsOf: elements)
+        pack(contentsOf: elements)
+    }
+    
+    func pack(contentsOf elements: [Element]) {
+        if !locations.isEmpty {
+            print("This PackMap already contains elements. Cannot pack multiple times.")
+            return
+        }
+        for element in elements.sorted(by: { $0.packSize.height > $1.packSize.height }) {
+            add(element)
+        }
+        rows = []
     }
     
     fileprivate func add(_ element: Element) {
@@ -63,14 +74,7 @@ class PackMap<Element> where Element : Packable {
         }
     }
     
-    func add(contentsOf elements: [Element]) {
-        for element in elements.sorted(by: { $0.packSize.height > $1.packSize.height }) {
-            add(element)
-        }
-        rows = []
-    }
-    
-    func grow() {
+    fileprivate func grow() {
         self.size = size * 2
     }
 

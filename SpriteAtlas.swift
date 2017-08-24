@@ -93,8 +93,7 @@ extension SpriteAtlas {
         blueprints.append(contentsOf: katakanas)
         
         // Création des définitions
-        let packMap = PackMap<SpriteBlueprint>()
-        packMap.add(contentsOf: blueprints)
+        let packMap = PackMap<SpriteBlueprint>(elements: blueprints)
         
         var definitions: [SpriteDefinition] = [
             SpriteDefinition(index: playerDefinition, type: .player, blueprint: player, packMap: packMap),
