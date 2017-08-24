@@ -67,6 +67,7 @@ class PackMap<Element> where Element : Packable {
         for element in elements.sorted(by: { $0.packSize.height > $1.packSize.height }) {
             add(element)
         }
+        rows = []
     }
     
     func grow() {
