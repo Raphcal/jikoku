@@ -33,6 +33,8 @@ class LevelManager {
     var sprites = [Sprite]()
     var breathInterval: TimeInterval = 0
     
+    var lastBossCenter = Point<GLfloat>()
+    
     var enemyCount: Int {
         return sprites.reduce(sprites.count, { $1.isRemoved ? $0 - 1 : $0 })
     }
@@ -114,8 +116,16 @@ class LevelManager {
             }
         case .bossHasArrived:
             if enemyCount == 0 {
-                // TODO: Afficher une animation ?
                 state = .bossIsDead
+                
+                // TODO: Afficher une animation avant la transition ?
+                let fade = ExplosiveFade()
+                fade.explosionCenter = lastBossCenter
+                
+                Director.instance!.nextScene = ResultScene()
+                Director.instance!.fade = fade
+            } else {
+                lastBossCenter = sprites[0].frame.center
             }
         case .bossIsDead: break
         }
