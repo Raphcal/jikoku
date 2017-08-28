@@ -27,7 +27,7 @@ extension SpriteAtlas {
             PaintedShape(shape: TextShape(text: "私", font: hiraginoW3Font), paint: Color<GLfloat>.white, rectangle: Rectangle(x: 0, y: 20, width: 48, height: 24)),
             PaintedShape(shape: .round, paint: Color<GLfloat>(red: 1, green: 0, blue: 0, alpha: 0.5), rectangle: Rectangle(x: 20, y: 20, width: 8, height: 8))],
             size: Size(width: 48, height: 48))
-        let playerShots = SpriteBlueprint(paintedShapes: [PaintedShape(shape: .diamond, paint: RadialGradient(innerColor: .white, outerColor: Color(hex: 0x44B6DE)))],
+        let playerShots = SpriteBlueprint(paintedShapes: [PaintedShape(shape: .roundedArrow, paint: RadialGradient(innerColor: .white, outerColor: Color(hex: 0x44B6DE)))],
             size: Size(width: 16, height: 24))
         
         var blueprints = [player, player.shadow, playerShots]
