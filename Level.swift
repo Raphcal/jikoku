@@ -18,12 +18,15 @@ struct Level {
     var bossShadowDefinition: Int?
     var bossShotDefinition: Int?
     
+    var weapons: [String]
+    
     static func random(with kanjis: [Kanji]) -> Level {
         return Level(
             waves: (0 ..< 10).map {_ in Wave.random(with: kanjis) },
             boss: Boss.simple,
             bossDefinition: nil,
             bossShadowDefinition: nil,
-            bossShotDefinition: nil)
+            bossShotDefinition: nil,
+            weapons: ["あ", "い", "う", "え", "お"])
     }
 }

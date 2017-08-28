@@ -52,3 +52,9 @@ class TextShape : Shape {
             && lhs.font == rhs.font
     }
 }
+
+extension String {
+    func shape(font: UIFont? = nil) -> TextShape {
+        return TextShape(text: self, font: font)
+    }
+}

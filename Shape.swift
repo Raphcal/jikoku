@@ -11,6 +11,7 @@ import UIKit
 import Melisse
 
 class Shape : Equatable, Hashable {
+    static let circle: Shape = CircleShape()
     static let round: Shape = RoundShape()
     static let triangular: Shape = TriangularShape()
     static let diamond: Shape = DiamondShape()
@@ -38,6 +39,9 @@ class Shape : Equatable, Hashable {
             return lhs == rhs
         }
         else if let lhs = lhs as? PathShape, let rhs = rhs as? PathShape {
+            return lhs == rhs
+        }
+        else if let lhs = lhs as? SVGPathShape, let rhs = rhs as? SVGPathShape {
             return lhs == rhs
         }
         return type(of: lhs) == type(of: rhs)

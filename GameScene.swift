@@ -61,6 +61,22 @@ class GameScene : Scene {
         levelManager.gameScene = self
         
         panGestureRecognizer.addTarget(self, action: #selector(GameScene.panGestureRecognized(by:)))
+        
+        let spacing = (View.instance.width - 16) / GLfloat(level.weapons.count)
+        for index in 0 ..< level.weapons.count {
+            let weapon = spriteFactory.sprite(weaponSelectorDefinition)
+            
+            weapon.animation = weapon.definition.animations[index.description]!.toAnimation()
+            if index == 0 {
+                weapon.animation.frameIndex = 1
+            }
+            
+            var frame = weapon.frame
+            frame.left = 8 + 26 + spacing * GLfloat(index)
+            frame.bottom = camera.frame.height - 8 - 26
+            frame.size = weapon.animation.frame.size
+            weapon.frame = frame
+        }
     }
     
     func load() {
