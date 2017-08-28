@@ -53,7 +53,7 @@ class StraightShootingStyle : ShootingStyle {
                                        y: sinf(angle) * definition.shotSpeed)
             let shot = spriteFactory.sprite(spriteDefinition)
             shot.frame.center = Point(x: left, y: point.y)
-            shot.motion = ShotMotion(angle: angle - .pi / 2, speed: speed)
+            shot.motion = ShotMotion(angle: angle, speed: speed)
             shot.hitbox = CenteredSpriteHitbox(sprite: shot, size: Size(width: shot.frame.width * 0.6666, height: shot.frame.height * 0.6666))
             
             shots.append(shot)

@@ -58,7 +58,7 @@ class AimedShootingStyle : ShootingStyle {
                                        y: sinf(angleToPlayer) * definition.shotSpeed)
             let shot = spriteFactory.sprite(spriteDefinition)
             shot.frame.center = point
-            shot.motion = ShotMotion(angle: angleToPlayer - .pi / 2, speed: speed)
+            shot.motion = ShotMotion(angle: angleToPlayer, speed: speed)
             shot.hitbox = CenteredSpriteHitbox(sprite: shot, size: Size(width: shot.frame.width * 0.6666, height: shot.frame.height * 0.6666))
             
             shots.append(shot)

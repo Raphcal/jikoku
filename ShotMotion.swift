@@ -14,6 +14,11 @@ struct ShotMotion : Motion {
     let angle: GLfloat
     let speed: Point<GLfloat>
     
+    init(angle: GLfloat, speed: Point<GLfloat>) {
+        self.angle = angle + .pi / 2
+        self.speed = speed
+    }
+    
     func updateWith(_ timeSinceLastUpdate: TimeInterval, sprite: Sprite) {
         sprite.frame.center += speed * GLfloat(timeSinceLastUpdate)
         
