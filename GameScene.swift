@@ -34,6 +34,8 @@ class GameScene : Scene {
     let panGestureRecognizer: UIPanGestureRecognizer
     var isPaning = false
     
+    var zones = [TouchSensitiveZone]()
+    
     private var isRunning: Bool {
         return isPaning || TouchController.instance.touches.count > 0
     }
@@ -62,7 +64,10 @@ class GameScene : Scene {
         
         panGestureRecognizer.addTarget(self, action: #selector(GameScene.panGestureRecognized(by:)))
         
-        let spacing = (View.instance.width - 16) / GLfloat(level.weapons.count)
+        var weapons = [Sprite]()
+        
+        let margin: GLfloat = 16
+        let spacing = (View.instance.width - margin - margin) / GLfloat(level.weapons.count)
         for index in 0 ..< level.weapons.count {
             let weapon = spriteFactory.sprite(weaponSelectorDefinition)
             
@@ -72,11 +77,23 @@ class GameScene : Scene {
             }
             
             var frame = weapon.frame
-            frame.left = 8 + 26 + spacing * GLfloat(index)
-            frame.bottom = camera.frame.height - 8 - 26
+            frame.left = margin + 26 + spacing * GLfloat(index)
+            frame.bottom = camera.frame.height - margin - 26
             frame.size = weapon.animation.frame.size
             weapon.frame = frame
+            
+            weapons.append(weapon)
+            
+            let zone = TouchSensitiveZone(hasFrame: weapon, touches: TouchController.instance.touches)
+            zone.selection = { _ in
+                for weapon in weapons {
+                    weapon.animation.frameIndex = 0
+                }
+                weapon.animation.frameIndex = 1
+            }
+            zones.append(zone)
         }
+        
     }
     
     func load() {
@@ -95,6 +112,10 @@ class GameScene : Scene {
     
     func updateWith(_ timeSinceLastUpdate: TimeInterval) {
         let delta = isRunning ? timeSinceLastUpdate : timeSinceLastUpdate / 20
+        
+        for zone in zones {
+            zone.update(with: TouchController.instance.touches)
+        }
         
         background.update(timeSinceLastUpdate: delta)
         levelManager.update(with: delta)

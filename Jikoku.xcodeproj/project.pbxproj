@@ -12,7 +12,6 @@
 		640829281F4ABA42009E8503 /* BossMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640829271F4ABA42009E8503 /* BossMotion.swift */; };
 		6408292F1F4B2009009E8503 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6408292E1F4B2009009E8503 /* Distance.swift */; };
 		640829331F4B2C39009E8503 /* LifeBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640829321F4B2C39009E8503 /* LifeBar.swift */; };
-		640829391F4C3375009E8503 /* SVG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640829381F4C3375009E8503 /* SVG.swift */; };
 		6410F9A01F21D69E005C2DDC /* PlayerMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6410F99F1F21D69E005C2DDC /* PlayerMotion.swift */; };
 		6419A4F31F3C76CA000B4A0B /* Paint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6419A4F21F3C76CA000B4A0B /* Paint.swift */; };
 		641CA8181F3D06D000EFA833 /* DriftingMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641CA8171F3D06D000EFA833 /* DriftingMotion.swift */; };
@@ -110,7 +109,6 @@
 		640829271F4ABA42009E8503 /* BossMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BossMotion.swift; sourceTree = "<group>"; };
 		6408292E1F4B2009009E8503 /* Distance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
 		640829321F4B2C39009E8503 /* LifeBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifeBar.swift; sourceTree = "<group>"; };
-		640829381F4C3375009E8503 /* SVG.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVG.swift; sourceTree = "<group>"; };
 		6410F99F1F21D69E005C2DDC /* PlayerMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerMotion.swift; sourceTree = "<group>"; };
 		6419A4F21F3C76CA000B4A0B /* Paint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Paint.swift; sourceTree = "<group>"; };
 		641CA8171F3D06D000EFA833 /* DriftingMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriftingMotion.swift; sourceTree = "<group>"; };
@@ -219,7 +217,6 @@
 				6408291D1F46CF41009E8503 /* PaintedShape.swift */,
 				64F4BE2E1F39DBD2006BFD60 /* Font.swift */,
 				641CA81A1F3D073600EFA833 /* Sprite.swift */,
-				640829381F4C3375009E8503 /* SVG.swift */,
 			);
 			name = Sprites;
 			sourceTree = "<group>";
@@ -486,7 +483,6 @@
 				64EEA17E1F3063E00085DFD4 /* BaseMotion.swift in Sources */,
 				640829281F4ABA42009E8503 /* BossMotion.swift in Sources */,
 				647C61E31F2B7C9100702AE5 /* ShotStyle.swift in Sources */,
-				640829391F4C3375009E8503 /* SVG.swift in Sources */,
 				647D7EA61F20D78A00721F76 /* ShotMotion.swift in Sources */,
 				64F4BE291F38AD0A006BFD60 /* CircularShootingStyle.swift in Sources */,
 				64BB38A91F2B4AFA00CAB9FC /* ShapeSize.swift in Sources */,
