@@ -35,6 +35,7 @@ class GameScene : Scene {
     var isPaning = false
     
     var zones = [TouchSensitiveZone]()
+    var currentShootingStyle: ShootingStyleDefinition
     
     private var isRunning: Bool {
         return isPaning || TouchController.instance.touches.count > 0
@@ -58,11 +59,6 @@ class GameScene : Scene {
         self.camera.center(View.instance.width, height: View.instance.height)
         
         self.player = GameScene.playerSprite(spriteFactory: spriteFactory, panGestureRecognizer: panGestureRecognizer, cameraFrame: camera.frame)
-        
-        self.levelManager = LevelManager(level: level, spriteFactory: spriteFactory)
-        self.levelManager.gameScene = self
-        
-        panGestureRecognizer.addTarget(self, action: #selector(GameScene.panGestureRecognized(by:)))
         
         let weaponDefinitions: [ShootingStyleDefinition] = [
             StraightShootingStyleDefinition(
@@ -102,7 +98,13 @@ class GameScene : Scene {
                 baseAngle: -.pi / 4,
                 baseAngleVariation: .pi / 24
             ),
-        ]
+            ]
+        self.currentShootingStyle = weaponDefinitions[0]
+        
+        self.levelManager = LevelManager(level: level, spriteFactory: spriteFactory)
+        self.levelManager.gameScene = self
+        
+        panGestureRecognizer.addTarget(self, action: #selector(GameScene.panGestureRecognized(by:)))
         
         var weapons = [Sprite]()
         
@@ -131,6 +133,8 @@ class GameScene : Scene {
                 }
                 weapon.animation.frameIndex = 1
                 
+                self.currentShootingStyle = weaponDefinitions[index]
+                
                 let playerMotion = self.player.motion as! PlayerMotion
                 playerMotion.shootingStyles = [weaponDefinitions[index].shootingStyle(spriteFactory: self.spriteFactory)]
             }
@@ -150,7 +154,9 @@ class GameScene : Scene {
     
     func reload() {
         player = GameScene.playerSprite(spriteFactory: spriteFactory, panGestureRecognizer: panGestureRecognizer, cameraFrame: camera.frame)
-        (player.motion as! PlayerMotion).makeInvicible(sprite: player)
+        let playerMotion = player.motion as! PlayerMotion
+        playerMotion.makeInvicible(sprite: player)
+        playerMotion.shootingStyles = [currentShootingStyle.shootingStyle(spriteFactory: self.spriteFactory)]
     }
     
     func updateWith(_ timeSinceLastUpdate: TimeInterval) {
