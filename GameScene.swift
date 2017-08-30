@@ -46,30 +46,70 @@ class GameScene : Scene {
         var level = Level.random(with: Kanji.all)
         if let atlas = SpriteAtlas(level: &level) {
             self.atlas = atlas
-            spriteFactory = TranslucentSpriteFactory(spriteAtlas: atlas, pools: ReferencePool.pools(capacities: [256, 256, 512, 256, 8]))
+            self.spriteFactory = TranslucentSpriteFactory(spriteAtlas: atlas, pools: ReferencePool.pools(capacities: [256, 256, 512, 256, 8]))
         } else {
             print("Atlas creation error")
-            spriteFactory = TranslucentSpriteFactory()
-            atlas = SpriteAtlas()
+            self.spriteFactory = TranslucentSpriteFactory()
+            self.atlas = SpriteAtlas()
         }
         
-        background = Background()
+        self.background = Background()
         
-        camera.center(View.instance.width, height: View.instance.height)
+        self.camera.center(View.instance.width, height: View.instance.height)
         
-        player = GameScene.playerSprite(spriteFactory: spriteFactory, panGestureRecognizer: panGestureRecognizer, cameraFrame: camera.frame)
+        self.player = GameScene.playerSprite(spriteFactory: spriteFactory, panGestureRecognizer: panGestureRecognizer, cameraFrame: camera.frame)
         
-        levelManager = LevelManager(level: level, spriteFactory: spriteFactory)
-        levelManager.gameScene = self
+        self.levelManager = LevelManager(level: level, spriteFactory: spriteFactory)
+        self.levelManager.gameScene = self
         
         panGestureRecognizer.addTarget(self, action: #selector(GameScene.panGestureRecognized(by:)))
+        
+        let weaponDefinitions: [ShootingStyleDefinition] = [
+            StraightShootingStyleDefinition(
+                shotAmount: 2,
+                shotSpeed: 500,
+                shootInterval: 0.1,
+                spriteDefinition: playerShotDefinition,
+                space: 32),
+            CircularShootingStyleDefinition(
+                shotAmount: 4,
+                shotSpeed: 500,
+                shootInterval: 0.1,
+                spriteDefinition: playerShotDefinition,
+                baseAngle: -3 * .pi / 24,
+                angleIncrement: .pi / 12
+            ),
+            StraightShootingStyleDefinition(
+                shotAmount: 1,
+                shotSpeed: 250,
+                shootInterval: 0.05,
+                spriteDefinition: playerShotDefinition,
+                space: 32),
+            AimedShootingStyleDefinition(
+                shotAmount: 4,
+                shotSpeed: 500,
+                shootInterval: 0.1,
+                spriteDefinition: playerShotDefinition,
+                targetType: .enemy
+            ),
+            CircularShootingStyleDefinition(
+                shotAmount: 4,
+                shotSpeed: 500,
+                shootInterval: 0.05,
+                inversions: [.angle],
+                inversionInterval: 8,
+                spriteDefinition: playerShotDefinition,
+                baseAngle: -.pi / 4,
+                baseAngleVariation: .pi / 24
+            ),
+        ]
         
         var weapons = [Sprite]()
         
         let margin: GLfloat = 16
         let spacing = (View.instance.width - margin - margin) / GLfloat(level.weapons.count)
         for index in 0 ..< level.weapons.count {
-            let weapon = spriteFactory.sprite(weaponSelectorDefinition)
+            let weapon = self.spriteFactory.sprite(weaponSelectorDefinition)
             
             weapon.animation = weapon.definition.animations[index.description]!.toAnimation()
             if index == 0 {
@@ -85,11 +125,14 @@ class GameScene : Scene {
             weapons.append(weapon)
             
             let zone = TouchSensitiveZone(hasFrame: weapon, touches: TouchController.instance.touches)
-            zone.selection = { _ in
+            zone.selection = { [unowned self] _ in
                 for weapon in weapons {
                     weapon.animation.frameIndex = 0
                 }
                 weapon.animation.frameIndex = 1
+                
+                let playerMotion = self.player.motion as! PlayerMotion
+                playerMotion.shootingStyles = [weaponDefinitions[index].shootingStyle(spriteFactory: self.spriteFactory)]
             }
             zones.append(zone)
         }

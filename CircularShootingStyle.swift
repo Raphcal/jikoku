@@ -31,6 +31,22 @@ struct CircularShootingStyleDefinition : ShootingStyleDefinition {
     /// Variation de l'angle de départ.
     var baseAngleVariation: GLfloat
     
+    /// Différence d'angle entre 2 tirs.
+    var angleIncrement: GLfloat?
+    
+    init(shotAmount: Int, shotAmountVariation: Int = 0, shotSpeed: GLfloat, shootInterval: TimeInterval, inversions: ShootingStyleInversion = [], inversionInterval: Int = 0, spriteDefinition: Int = 0, baseAngle: GLfloat = 0, baseAngleVariation: GLfloat = 0, angleIncrement: GLfloat? = nil) {
+        self.shotAmount = shotAmount
+        self.shotAmountVariation = shotAmountVariation
+        self.shotSpeed = shotSpeed
+        self.shootInterval = shootInterval
+        self.inversions = inversions
+        self.inversionInterval = inversionInterval
+        self.spriteDefinition = spriteDefinition
+        self.baseAngle = baseAngle
+        self.baseAngleVariation = baseAngleVariation
+        self.angleIncrement = angleIncrement
+    }
+    
     func shootingStyle(spriteFactory: SpriteFactory) -> ShootingStyle {
         return CircularShootingStyle(definition: self, spriteFactory: spriteFactory)
     }
@@ -39,6 +55,10 @@ struct CircularShootingStyleDefinition : ShootingStyleDefinition {
 
 /// Tir un cercle de tirs
 class CircularShootingStyle : ShootingStyle {
+    
+    var circularDefinition : CircularShootingStyleDefinition {
+        return definition as! CircularShootingStyleDefinition
+    }
     
     var baseAngle: GLfloat
     var baseAngleVariation: GLfloat
@@ -58,7 +78,7 @@ class CircularShootingStyle : ShootingStyle {
         spriteDefinition.type = type
         
         var currentAngle = angle + baseAngle
-        let angleIncrement = GLKMathDegreesToRadians(GLfloat(360 / shotAmount))
+        let angleIncrement = circularDefinition.angleIncrement ?? GLKMathDegreesToRadians(GLfloat(360 / shotAmount))
         
         for _ in 0 ..< shotAmount {
             let speed = Point<GLfloat>(x: cosf(currentAngle) * definition.shotSpeed,

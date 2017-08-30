@@ -27,6 +27,17 @@ struct AimedShootingStyleDefinition : ShootingStyleDefinition {
     
     var targetType: SpriteType
     
+    init(shotAmount: Int, shotAmountVariation: Int = 0, shotSpeed: GLfloat, shootInterval: TimeInterval, inversions: ShootingStyleInversion = [], inversionInterval: Int = 0, spriteDefinition: Int = 0, targetType: SpriteType) {
+        self.shotAmount = shotAmount
+        self.shotAmountVariation = shotAmountVariation
+        self.shotSpeed = shotSpeed
+        self.shootInterval = shootInterval
+        self.inversions = inversions
+        self.inversionInterval = inversionInterval
+        self.spriteDefinition = spriteDefinition
+        self.targetType = targetType
+    }
+    
     func shootingStyle(spriteFactory: SpriteFactory) -> ShootingStyle {
         return AimedShootingStyle(definition: self, spriteFactory: spriteFactory)
     }
@@ -47,9 +58,9 @@ class AimedShootingStyle : ShootingStyle {
         
         for _ in 0 ..< shotAmount {
             let angleToPlayer: GLfloat
-            if let players = spriteFactory.groups[aimedDefinition.targetType.group], !players.isEmpty {
-                let player = random(itemFrom: players)
-                angleToPlayer = player.frame.center.angleTo(point)
+            if let targets = spriteFactory.groups[aimedDefinition.targetType.group], !targets.isEmpty {
+                let target = random(itemFrom: targets)
+                angleToPlayer = target.frame.center.angleTo(point)
             } else {
                 angleToPlayer = angle
             }

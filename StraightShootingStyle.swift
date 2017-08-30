@@ -28,6 +28,17 @@ struct StraightShootingStyleDefinition : ShootingStyleDefinition {
     /// Espace entre chaque tir.
     var space: GLfloat
     
+    init(shotAmount: Int, shotAmountVariation: Int = 0, shotSpeed: GLfloat, shootInterval: TimeInterval, inversions: ShootingStyleInversion = [], inversionInterval: Int = 0, spriteDefinition: Int = 0, space: GLfloat) {
+        self.shotAmount = shotAmount
+        self.shotAmountVariation = shotAmountVariation
+        self.shotSpeed = shotSpeed
+        self.shootInterval = shootInterval
+        self.inversions = inversions
+        self.inversionInterval = inversionInterval
+        self.spriteDefinition = spriteDefinition
+        self.space = space
+    }
+    
     func shootingStyle(spriteFactory: SpriteFactory) -> ShootingStyle {
         return StraightShootingStyle(definition: self, spriteFactory: spriteFactory)
     }
