@@ -64,10 +64,10 @@ struct Group : Hashable {
         
         if size == .bigger {
             shootingStyleDefinition = CircularShootingStyleDefinition(
-                shotAmount: 16,
+                shotAmount: 18,
                 shotAmountVariation: 0,
                 shotSpeed: 50,
-                shootInterval: 0.5,
+                shootInterval: 2,
                 inversions: [],
                 inversionInterval: 0,
                 spriteDefinition: 2,
