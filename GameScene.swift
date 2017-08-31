@@ -35,7 +35,7 @@ class GameScene : Scene {
     var currentShootingStyle: ShootingStyleDefinition
     
     private var isRunning: Bool {
-        return TouchController.instance.touches.count > 0
+        return (player.motion as! PlayerMotion).panSensitiveZone.isPaning
     }
     
     init() {
