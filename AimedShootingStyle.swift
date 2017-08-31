@@ -50,6 +50,11 @@ class AimedShootingStyle : ShootingStyle {
         return definition as! AimedShootingStyleDefinition
     }
     
+    var targets: [Sprite] {
+        let targetType = aimedDefinition.targetType
+        return spriteFactory.groups[targetType.group]?.filter { $0.definition.type as! SpriteType == targetType } ?? []
+    }
+    
     override func shots(from point: Point<GLfloat>, angle: GLfloat, type: SpriteType) -> [Sprite] {
         var shots = [Sprite]()
         
@@ -57,19 +62,20 @@ class AimedShootingStyle : ShootingStyle {
         spriteDefinition.type = type
         
         for _ in 0 ..< shotAmount {
-            let angleToPlayer: GLfloat
-            if let targets = spriteFactory.groups[aimedDefinition.targetType.group], !targets.isEmpty {
+            let angleToTarget: GLfloat
+            let targets = self.targets
+            if !targets.isEmpty {
                 let target = random(itemFrom: targets)
-                angleToPlayer = target.frame.center.angleTo(point)
+                angleToTarget = target.frame.center.angleTo(point)
             } else {
-                angleToPlayer = angle
+                angleToTarget = angle
             }
             
-            let speed = Point<GLfloat>(x: cosf(angleToPlayer) * definition.shotSpeed,
-                                       y: sinf(angleToPlayer) * definition.shotSpeed)
+            let speed = Point<GLfloat>(x: cosf(angleToTarget) * definition.shotSpeed,
+                                       y: sinf(angleToTarget) * definition.shotSpeed)
             let shot = spriteFactory.sprite(spriteDefinition)
             shot.frame.center = point
-            shot.motion = ShotMotion(angle: angleToPlayer, speed: speed)
+            shot.motion = ShotMotion(angle: angleToTarget, speed: speed)
             shot.hitbox = CenteredSpriteHitbox(sprite: shot, size: Size(width: shot.frame.width * 0.6666, height: shot.frame.height * 0.6666))
             
             shots.append(shot)
