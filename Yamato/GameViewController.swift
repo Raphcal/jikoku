@@ -11,15 +11,13 @@ import Melisse
 
 class GameViewController : MelisseViewController {
     
-    @IBOutlet var panGesture: UIPanGestureRecognizer!
-    
     override func viewDidLoad() {
         View.instance.width = 320
         super.viewDidLoad()
     }
     
     override func initialScene() -> Scene {
-        return GameScene(panGestureRecognizer: panGesture)
+        return GameScene()
     }
     
 }

@@ -23,15 +23,10 @@
                         <gestureRecognizers/>
                         <connections>
                             <outlet property="delegate" destination="n5K-Be-NDr" id="Phx-w7-FYl"/>
-                            <outletCollection property="gestureRecognizers" destination="fg1-dA-cuo" appends="YES" id="2tj-hN-1Av"/>
                         </connections>
                     </glkView>
-                    <connections>
-                        <outlet property="panGesture" destination="fg1-dA-cuo" id="RbG-pe-fqT"/>
-                    </connections>
                 </glkViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l0U-yc-Wgk" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="fg1-dA-cuo"/>
             </objects>
             <point key="canvasLocation" x="2217" y="-125"/>
         </scene>

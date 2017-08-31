@@ -31,19 +31,14 @@ class GameScene : Scene {
     var lives = 3
     var reloadTimer: TimeInterval?
     
-    let panGestureRecognizer: UIPanGestureRecognizer
-    var isPaning = false
-    
     var zones = [TouchSensitiveZone]()
     var currentShootingStyle: ShootingStyleDefinition
     
     private var isRunning: Bool {
-        return isPaning || TouchController.instance.touches.count > 0
+        return TouchController.instance.touches.count > 0
     }
     
-    init(panGestureRecognizer: UIPanGestureRecognizer) {
-        self.panGestureRecognizer = panGestureRecognizer
-
+    init() {
         var level = Level.random(with: Kanji.all)
         if let atlas = SpriteAtlas(level: &level) {
             self.atlas = atlas
@@ -58,7 +53,7 @@ class GameScene : Scene {
         
         self.camera.center(View.instance.width, height: View.instance.height)
         
-        self.player = GameScene.playerSprite(spriteFactory: spriteFactory, panGestureRecognizer: panGestureRecognizer, cameraFrame: camera.frame)
+        self.player = GameScene.playerSprite(spriteFactory: spriteFactory, cameraFrame: camera.frame)
         
         let weaponDefinitions: [ShootingStyleDefinition] = [
             StraightShootingStyleDefinition(
@@ -103,8 +98,6 @@ class GameScene : Scene {
         
         self.levelManager = LevelManager(level: level, spriteFactory: spriteFactory)
         self.levelManager.gameScene = self
-        
-        panGestureRecognizer.addTarget(self, action: #selector(GameScene.panGestureRecognized(by:)))
         
         var weapons = [Sprite]()
         
@@ -153,7 +146,7 @@ class GameScene : Scene {
     }
     
     func reload() {
-        player = GameScene.playerSprite(spriteFactory: spriteFactory, panGestureRecognizer: panGestureRecognizer, cameraFrame: camera.frame)
+        player = GameScene.playerSprite(spriteFactory: spriteFactory, cameraFrame: camera.frame)
         let playerMotion = player.motion as! PlayerMotion
         playerMotion.makeInvicible(sprite: player)
         playerMotion.shootingStyles = [currentShootingStyle.shootingStyle(spriteFactory: self.spriteFactory)]
@@ -187,20 +180,9 @@ class GameScene : Scene {
         plane.draw()
     }
     
-    @objc func panGestureRecognized(by sender: UIPanGestureRecognizer) {
-        switch sender.state {
-        case .began:
-            isPaning = true
-        case .ended:
-            isPaning = false
-        default:
-            break
-        }
-    }
-    
-    private static func playerSprite(spriteFactory: SpriteFactory, panGestureRecognizer: UIPanGestureRecognizer, cameraFrame: Rectangle<GLfloat>) -> Sprite {
+    private static func playerSprite(spriteFactory: SpriteFactory, cameraFrame: Rectangle<GLfloat>) -> Sprite {
         let player = spriteFactory.sprite(playerDefinition, topLeft: Point(x: cameraFrame.width / 2 - spriteSize / 2, y: cameraFrame.height - spriteSize - 128))
-        let playerMotion = PlayerMotion(panGestureRecognizer: panGestureRecognizer, spriteFactory: spriteFactory)
+        let playerMotion = PlayerMotion(spriteFactory: spriteFactory)
         player.motion = playerMotion
         playerMotion.load(player)
         

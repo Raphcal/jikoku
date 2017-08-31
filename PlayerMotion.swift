@@ -14,8 +14,7 @@ fileprivate let maxSpeed: GLfloat = 500
 
 class PlayerMotion : BaseMotion {
     
-    let panGestureRecognizer: UIPanGestureRecognizer
-    let view: UIView?
+    let panSensitiveZone: PanSensitiveZone
     
     let spriteFactory: SpriteFactory
     
@@ -28,10 +27,10 @@ class PlayerMotion : BaseMotion {
     
     var invicibility: TimeInterval?
     
-    init(panGestureRecognizer: UIPanGestureRecognizer, spriteFactory: SpriteFactory) {
-        self.panGestureRecognizer = panGestureRecognizer
-        self.view = Director.instance?.viewController?.view
+    init(spriteFactory: SpriteFactory) {
         self.spriteFactory = spriteFactory
+        let view = View.instance
+        self.panSensitiveZone = PanSensitiveZone(frame: Rectangle(x: view.width / 2, y: (view.height - 84) / 2, width: view.width, height: view.height - 84), touches: TouchController.instance.touches)
         self.shootingStyles = [
             StraightShootingStyleDefinition(
                 shotAmount: 2,
@@ -43,8 +42,6 @@ class PlayerMotion : BaseMotion {
                 spriteDefinition: playerShotDefinition,
                 space: 32).shootingStyle(spriteFactory: spriteFactory)
         ]
-        
-        panGestureRecognizer.addTarget(self, action: #selector(PlayerMotion.panGestureRecognized(by:)))
     }
     
     func load(_ sprite: Sprite) {
@@ -52,8 +49,9 @@ class PlayerMotion : BaseMotion {
     }
     
     func updateWith(_ timeSinceLastUpdate: TimeInterval, sprite: Sprite) {
-        var move = translation - oldTranslation
-        oldTranslation = translation
+        panSensitiveZone.update(with: TouchController.instance.touches)
+        
+        var move = panSensitiveZone.translation
         
         let delta = GLfloat(timeSinceLastUpdate)
         move.x = move.x == 0 ? 0 : move.x / abs(move.x) * min(abs(move.x), delta * maxSpeed)
@@ -93,14 +91,6 @@ class PlayerMotion : BaseMotion {
     func makeInvicible(sprite: Sprite, during interval: TimeInterval = 3) {
         invicibility = interval
         sprite.setBlinkingWith(duration: interval)
-    }
-    
-    @objc func panGestureRecognized(by sender: UIPanGestureRecognizer) {
-        if sender.state == .began {
-            oldTranslation = Point()
-        }
-        let translation = sender.translation(in: self.view)
-        self.translation = Point(x: GLfloat(translation.x), y: GLfloat(translation.y))
     }
     
 }
