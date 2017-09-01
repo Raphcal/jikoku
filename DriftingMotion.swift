@@ -14,14 +14,16 @@ class DriftingMotion : Motion {
     
     var speed: Point<GLfloat>
     var alpha: GLfloat = 1
+    var color: Color<GLubyte>
     
     init(speed: Point<GLfloat>) {
         self.speed = speed
+        self.color = .white
     }
     
     func updateWith(_ timeSinceLastUpdate: TimeInterval, sprite: Sprite) {
         alpha = max(alpha - GLfloat(timeSinceLastUpdate), 0)
-        sprite.alpha = GLubyte(alpha * 255)
+        sprite.tint = color * alpha
         sprite.frame.center += speed * GLfloat(timeSinceLastUpdate)
         
         if alpha < 0.5 {
@@ -32,4 +34,8 @@ class DriftingMotion : Motion {
         }
     }
     
+}
+
+func *(lhs: Color<GLubyte>, rhs: GLfloat) -> Color<GLubyte> {
+    return Color(red: GLubyte(GLfloat(lhs.red) * rhs), green: GLubyte(GLfloat(lhs.green) * rhs), blue: GLubyte(GLfloat(lhs.blue) * rhs), alpha: GLubyte(GLfloat(lhs.alpha) * rhs))
 }

@@ -19,6 +19,15 @@ extension Sprite {
         }
     }
     
+    var tint: Color<GLubyte> {
+        get {
+            return translucentSpriteFactory.tint(of: self)
+        }
+        set {
+            translucentSpriteFactory.setTint(newValue, of: self)
+        }
+    }
+    
     var group: Group? {
         get {
             return objects["group"] as? Group

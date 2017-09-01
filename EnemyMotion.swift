@@ -89,10 +89,11 @@ class EnemyMotion : BaseMotion, HasLifePoints {
         text.alignment = .center
         
         for sprite in text.sprites {
-            sprite.motion = DriftingMotion(speed: speed)
+            var motion = DriftingMotion(speed: speed)
             if kana == sprite.definition.name {
-                spriteFactory.setTint(.red, of: sprite)
+                motion.color = .red
             }
+            sprite.motion = motion
         }
     }
     
