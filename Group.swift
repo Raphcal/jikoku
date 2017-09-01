@@ -25,7 +25,7 @@ struct Group : Hashable {
         return size == .bigger
     }
     
-    init(kanji: Kanji, count: Int, shape: Shape, size: ShapeSize, formation: Formation, isFlying: Bool = true, spriteDefinition: Int? = nil, shadowDefinition: Int? = nil, shootingStyleDefinition: ShootingStyleDefinition? = nil) {
+    init(kanji: Kanji, count: Int = 1, shape: Shape = .round, size: ShapeSize = .medium, formation: Formation = .none, isFlying: Bool = true, spriteDefinition: Int? = nil, shadowDefinition: Int? = nil, shootingStyleDefinition: ShootingStyleDefinition? = nil) {
         self.kanji = kanji
         self.count = count
         self.shape = shape

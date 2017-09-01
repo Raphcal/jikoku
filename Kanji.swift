@@ -15,14 +15,31 @@ struct Kanji : Enumerable, Hashable {
     var onyomis: [String]
     var tags: [String]
     
-    var readings: [String] {
-        var readings = kunyomis
-        readings.append(contentsOf: onyomis)
-        return readings
-    }
+    var readings: [String]
     
     var hashValue: Int {
         return character.hashValue
+    }
+    
+    init(character: Character, meanings: [String: [String]], kunyomis: [String] = [], onyomis: [String] = [], tags: [String] = []) {
+        self.character = character
+        self.meanings = meanings
+        self.kunyomis = kunyomis
+        self.onyomis = onyomis
+        self.tags = tags
+        
+        var readings = kunyomis
+        readings.append(contentsOf: onyomis)
+        self.readings = readings
+    }
+    
+    func firstReading(including kana: String) -> String? {
+        for reading in readings {
+            if reading.contains(kana) {
+                return reading
+            }
+        }
+        return nil
     }
     
     // 私一二三四五六七八九十百千万年月火水木金土曜日本元気白黒西北南東国小大人子男女母父中長高出入時行見午先後前生間上下今学校円外来山話読語書名川水雨半電聞食車何毎天右左友休早

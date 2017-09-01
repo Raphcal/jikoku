@@ -16,11 +16,14 @@ struct ShotMotion : Motion {
     let damage: Int
     let camera: Camera
     
+    let kana: String
+    
     init(angle: GLfloat, speed: Point<GLfloat>, damage: Int) {
         self.angle = angle + .pi / 2
         self.speed = speed
         self.damage = damage
         self.camera = GameScene.current!.camera
+        self.kana = GameScene.current!.currentKana
     }
     
     func updateWith(_ timeSinceLastUpdate: TimeInterval, sprite: Sprite) {

@@ -95,6 +95,7 @@ class LevelManager {
             breathInterval -= timeSinceLastUpdate
             if breathInterval <= 0 {
                 let boss = spriteFactory.sprite(level.bossDefinition!)
+                boss.group = Group(kanji: Kanji(character: "陽", meanings: ["fr" : ["soleil"], "en": ["sun"]], kunyomis: ["ひ"], onyomis: ["ヨウ"]))
                 
                 var frame = boss.frame
                 frame.center.x = View.instance.width / 2

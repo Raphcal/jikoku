@@ -10,6 +10,9 @@ import Foundation
 import Melisse
 
 enum Formation : Enumerable {
+    /// Pas de formation.
+    case none
+    
     /// Descend en ligne droite à vitesse constante.
     case vertical
     

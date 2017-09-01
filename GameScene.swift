@@ -33,6 +33,7 @@ class GameScene : Scene {
     
     var zones = [TouchSensitiveZone]()
     var currentShootingStyle: ShootingStyleDefinition
+    var currentKana: String
     
     private var isRunning: Bool {
         return (player.motion as! PlayerMotion).panSensitiveZone.isPaning
@@ -95,6 +96,7 @@ class GameScene : Scene {
             ),
             ]
         self.currentShootingStyle = weaponDefinitions[0]
+        self.currentKana = level.weapons[0]
         
         self.levelManager = LevelManager(level: level, spriteFactory: spriteFactory)
         self.levelManager.gameScene = self
@@ -127,6 +129,7 @@ class GameScene : Scene {
                 weapon.animation.frameIndex = 1
                 
                 self.currentShootingStyle = weaponDefinitions[index]
+                self.currentKana = level.weapons[index]
                 
                 let playerMotion = self.player.motion as! PlayerMotion
                 playerMotion.shootingStyles = [weaponDefinitions[index].shootingStyle(spriteFactory: self.spriteFactory)]
