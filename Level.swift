@@ -21,12 +21,20 @@ struct Level {
     var weapons: [String]
     
     static func random(with kanjis: [Kanji]) -> Level {
+        var kanas = [
+            "あ", "か", "さ", "た", "な", "は", "ま", "や", "ら", "わ",
+            "い", "き", "し", "ち", "に", "ひ", "み", "り",
+            "う", "く", "す", "つ", "ぬ", "ふ", "む", "ゆ", "る",
+            "え", "け", "せ", "て", "ね", "へ", "め", "れ",
+            "お", "こ", "そ", "と", "の", "ほ", "も", "よ", "ろ", "を",
+            "ん"]
+        
         return Level(
             waves: (0 ..< 10).map {_ in Wave.random(with: kanjis) },
             boss: Boss.simple,
             bossDefinition: nil,
             bossShadowDefinition: nil,
             bossShotDefinition: nil,
-            weapons: ["あ", "い", "う", "え", "お"])
+            weapons: (0 ..< 5).map { _ in kanas.removeAtRandom() })
     }
 }
