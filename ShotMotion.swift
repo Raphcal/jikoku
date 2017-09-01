@@ -13,10 +13,12 @@ struct ShotMotion : Motion {
     
     let angle: GLfloat
     let speed: Point<GLfloat>
+    let camera: Camera
     
     init(angle: GLfloat, speed: Point<GLfloat>) {
         self.angle = angle + .pi / 2
         self.speed = speed
+        self.camera = GameScene.current!.camera
     }
     
     func updateWith(_ timeSinceLastUpdate: TimeInterval, sprite: Sprite) {
@@ -24,7 +26,7 @@ struct ShotMotion : Motion {
         
         sprite.vertexSurface.setQuadWith(sprite.frame.rotate(angle, withPivot: sprite.frame.center))
         
-        GameScene.current!.camera.removeSpriteIfOutOfView(sprite)
+        camera.removeSpriteIfOutOfView(sprite)
     }
     
 }
