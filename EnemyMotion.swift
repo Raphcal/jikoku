@@ -67,10 +67,10 @@ class EnemyMotion : BaseMotion, HasLifePoints {
                 lifePoints -= shotMotion.damage * multiplier
                 
                 if lifePoints <= 0 && !sprite.isRemoved {
+                    sprite.destroy()
                     if reading == nil {
                         show(reading: random(itemFrom: group.kanji.readings), movingAlong: sprite, tint: shotMotion.kana)
                     }
-                    sprite.destroy()
                 }
             }
         }
@@ -89,8 +89,8 @@ class EnemyMotion : BaseMotion, HasLifePoints {
         text.alignment = .center
         
         for sprite in text.sprites {
-            var motion = DriftingMotion(speed: speed)
-            if kana == sprite.definition.name {
+            let motion = DriftingMotion(speed: speed)
+            if Int(kana.utf16.first! - "あ".utf16.first!) == sprite.animation.frameIndex {
                 motion.color = .red
             }
             sprite.motion = motion
