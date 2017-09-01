@@ -30,6 +30,9 @@ protocol ShootingStyleDefinition {
     /// Point d'origine des tirs
     var origin: ShotOrigin { get }
     
+    /// Dommages provoqués par chaque tir
+    var damage: Int { get set }
+    
     /// Nombre de tirs
     var shotAmount: Int { get }
     /// Augmentation ou diminution du nombre de tirs

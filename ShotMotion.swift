@@ -13,11 +13,13 @@ struct ShotMotion : Motion {
     
     let angle: GLfloat
     let speed: Point<GLfloat>
+    let damage: Int
     let camera: Camera
     
-    init(angle: GLfloat, speed: Point<GLfloat>) {
+    init(angle: GLfloat, speed: Point<GLfloat>, damage: Int) {
         self.angle = angle + .pi / 2
         self.speed = speed
+        self.damage = damage
         self.camera = GameScene.current!.camera
     }
     

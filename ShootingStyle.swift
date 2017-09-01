@@ -53,7 +53,7 @@ class ShootingStyle {
             }
             
             // Salve de tir
-            _ = shots(from: origin, angle: angle, type: sprite === GameScene.current?.player ? .friendlyShot : .enemyShot)
+            _ = shots(from: origin, angle: angle, type: sprite === GameScene.current?.player ? .friendlyShot : .enemyShot, damage: definition.damage)
             
             shotAmount += shotAmountVariation
             
@@ -69,7 +69,7 @@ class ShootingStyle {
     }
     
     /// Créé les sprites des tirs.
-    func shots(from point: Point<GLfloat>, angle: GLfloat, type: SpriteType) -> [Sprite] {
+    func shots(from point: Point<GLfloat>, angle: GLfloat, type: SpriteType, damage: Int) -> [Sprite] {
         return []
     }
     

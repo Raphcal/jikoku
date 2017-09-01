@@ -14,6 +14,8 @@ struct StraightShootingStyleDefinition : ShootingStyleDefinition {
     
     let origin = ShotOrigin.front
     
+    var damage: Int
+    
     var shotAmount: Int
     var shotAmountVariation: Int
     
@@ -28,7 +30,8 @@ struct StraightShootingStyleDefinition : ShootingStyleDefinition {
     /// Espace entre chaque tir.
     var space: GLfloat
     
-    init(shotAmount: Int, shotAmountVariation: Int = 0, shotSpeed: GLfloat, shootInterval: TimeInterval, inversions: ShootingStyleInversion = [], inversionInterval: Int = 0, spriteDefinition: Int = 0, space: GLfloat) {
+    init(damage: Int = 1, shotAmount: Int, shotAmountVariation: Int = 0, shotSpeed: GLfloat, shootInterval: TimeInterval, inversions: ShootingStyleInversion = [], inversionInterval: Int = 0, spriteDefinition: Int = 0, space: GLfloat) {
+        self.damage = damage
         self.shotAmount = shotAmount
         self.shotAmountVariation = shotAmountVariation
         self.shotSpeed = shotSpeed
@@ -52,7 +55,7 @@ class StraightShootingStyle : ShootingStyle {
         return self.definition as! StraightShootingStyleDefinition
     }
     
-    override func shots(from point: Point<GLfloat>, angle: GLfloat, type: SpriteType) -> [Sprite] {
+    override func shots(from point: Point<GLfloat>, angle: GLfloat, type: SpriteType, damage: Int) -> [Sprite] {
         var shots = [Sprite]()
         
         var spriteDefinition = spriteFactory.definitions[definition.spriteDefinition]
@@ -64,7 +67,7 @@ class StraightShootingStyle : ShootingStyle {
                                        y: sinf(angle) * definition.shotSpeed)
             let shot = spriteFactory.sprite(spriteDefinition)
             shot.frame.center = Point(x: left, y: point.y)
-            shot.motion = ShotMotion(angle: angle, speed: speed)
+            shot.motion = ShotMotion(angle: angle, speed: speed, damage: damage)
             shot.hitbox = CenteredSpriteHitbox(sprite: shot, size: Size(width: shot.frame.width * 0.6666, height: shot.frame.height * 0.6666))
             
             shots.append(shot)

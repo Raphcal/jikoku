@@ -14,6 +14,8 @@ struct AimedShootingStyleDefinition : ShootingStyleDefinition {
     
     let origin = ShotOrigin.front
     
+    var damage: Int
+    
     var shotAmount: Int
     var shotAmountVariation: Int
     
@@ -27,7 +29,8 @@ struct AimedShootingStyleDefinition : ShootingStyleDefinition {
     
     var targetType: SpriteType
     
-    init(shotAmount: Int, shotAmountVariation: Int = 0, shotSpeed: GLfloat, shootInterval: TimeInterval, inversions: ShootingStyleInversion = [], inversionInterval: Int = 0, spriteDefinition: Int = 0, targetType: SpriteType) {
+    init(damage: Int = 1, shotAmount: Int, shotAmountVariation: Int = 0, shotSpeed: GLfloat, shootInterval: TimeInterval, inversions: ShootingStyleInversion = [], inversionInterval: Int = 0, spriteDefinition: Int = 0, targetType: SpriteType) {
+        self.damage = damage
         self.shotAmount = shotAmount
         self.shotAmountVariation = shotAmountVariation
         self.shotSpeed = shotSpeed
@@ -55,7 +58,7 @@ class AimedShootingStyle : ShootingStyle {
         return spriteFactory.groups[targetType.group]?.filter { $0.definition.type as! SpriteType == targetType } ?? []
     }
     
-    override func shots(from point: Point<GLfloat>, angle: GLfloat, type: SpriteType) -> [Sprite] {
+    override func shots(from point: Point<GLfloat>, angle: GLfloat, type: SpriteType, damage: Int) -> [Sprite] {
         var shots = [Sprite]()
         
         var spriteDefinition = spriteFactory.definitions[definition.spriteDefinition]
@@ -75,7 +78,7 @@ class AimedShootingStyle : ShootingStyle {
                                        y: sinf(angleToTarget) * definition.shotSpeed)
             let shot = spriteFactory.sprite(spriteDefinition)
             shot.frame.center = point
-            shot.motion = ShotMotion(angle: angleToTarget, speed: speed)
+            shot.motion = ShotMotion(angle: angleToTarget, speed: speed, damage: damage)
             shot.hitbox = CenteredSpriteHitbox(sprite: shot, size: Size(width: shot.frame.width * 0.6666, height: shot.frame.height * 0.6666))
             
             shots.append(shot)

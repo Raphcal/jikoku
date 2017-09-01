@@ -51,7 +51,7 @@ class EnemyMotion : BaseMotion, HasLifePoints {
             if let type = other.type as? SpriteType, type == SpriteType.friendlyShot && other.collides(with: sprite) {
                 other.destroy()
                 // TODO: Gérer le cas où le tir fait parti de la lecture du kanji
-                lifePoints -= 1
+                lifePoints -= (other.motion as! ShotMotion).damage
                 if lifePoints <= 0 && !sprite.isRemoved {
                     sprite.destroy()
                     

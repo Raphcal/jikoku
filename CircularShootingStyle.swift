@@ -14,6 +14,8 @@ struct CircularShootingStyleDefinition : ShootingStyleDefinition {
     
     let origin = ShotOrigin.center
     
+    var damage: Int
+    
     var shotAmount: Int
     var shotAmountVariation: Int
     
@@ -34,7 +36,8 @@ struct CircularShootingStyleDefinition : ShootingStyleDefinition {
     /// Différence d'angle entre 2 tirs.
     var angleIncrement: GLfloat?
     
-    init(shotAmount: Int, shotAmountVariation: Int = 0, shotSpeed: GLfloat, shootInterval: TimeInterval, inversions: ShootingStyleInversion = [], inversionInterval: Int = 0, spriteDefinition: Int = 0, baseAngle: GLfloat = 0, baseAngleVariation: GLfloat = 0, angleIncrement: GLfloat? = nil) {
+    init(damage: Int = 1, shotAmount: Int, shotAmountVariation: Int = 0, shotSpeed: GLfloat, shootInterval: TimeInterval, inversions: ShootingStyleInversion = [], inversionInterval: Int = 0, spriteDefinition: Int = 0, baseAngle: GLfloat = 0, baseAngleVariation: GLfloat = 0, angleIncrement: GLfloat? = nil) {
+        self.damage = damage
         self.shotAmount = shotAmount
         self.shotAmountVariation = shotAmountVariation
         self.shotSpeed = shotSpeed
@@ -71,7 +74,7 @@ class CircularShootingStyle : ShootingStyle {
         super.init(definition: definition, spriteFactory: spriteFactory)
     }
     
-    override func shots(from point: Point<GLfloat>, angle: GLfloat, type: SpriteType) -> [Sprite] {
+    override func shots(from point: Point<GLfloat>, angle: GLfloat, type: SpriteType, damage: Int) -> [Sprite] {
         var shots = [Sprite]()
         
         var spriteDefinition = spriteFactory.definitions[definition.spriteDefinition]
@@ -86,7 +89,7 @@ class CircularShootingStyle : ShootingStyle {
             
             let shot = spriteFactory.sprite(spriteDefinition)
             shot.frame.center = point
-            shot.motion = ShotMotion(angle: currentAngle, speed: speed)
+            shot.motion = ShotMotion(angle: currentAngle, speed: speed, damage: damage)
             shot.hitbox = CenteredSpriteHitbox(sprite: shot, size: Size(width: shot.frame.width * 0.6666, height: shot.frame.height * 0.6666))
             
             shots.append(shot)
