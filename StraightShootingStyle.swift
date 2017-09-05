@@ -10,7 +10,7 @@ import Foundation
 import Melisse
 import GLKit
 
-struct StraightShootingStyleDefinition : ShootingStyleDefinition {
+struct StraightShootingStyleDefinition : BaseShootingStyleDefinition {
     
     let origin = ShotOrigin.front
     
@@ -30,7 +30,7 @@ struct StraightShootingStyleDefinition : ShootingStyleDefinition {
     /// Espace entre chaque tir.
     var space: GLfloat
     
-    init(damage: Int = 1, shotAmount: Int, shotAmountVariation: Int = 0, shotSpeed: GLfloat, shootInterval: TimeInterval, inversions: ShootingStyleInversion = [], inversionInterval: Int = 0, spriteDefinition: Int = 0, space: GLfloat) {
+    init(damage: Int = 1, shotAmount: Int, shotAmountVariation: Int = 0, shotSpeed: GLfloat = 500, shootInterval: TimeInterval = 0.1, inversions: ShootingStyleInversion = [], inversionInterval: Int = 0, spriteDefinition: Int = 0, space: GLfloat) {
         self.damage = damage
         self.shotAmount = shotAmount
         self.shotAmountVariation = shotAmountVariation
@@ -49,7 +49,7 @@ struct StraightShootingStyleDefinition : ShootingStyleDefinition {
 }
 
 /// Tir une rangé de tirs alignés horizontalement.
-class StraightShootingStyle : ShootingStyle {
+class StraightShootingStyle : BaseShootingStyle {
     
     var straightDefinition: StraightShootingStyleDefinition {
         return self.definition as! StraightShootingStyleDefinition

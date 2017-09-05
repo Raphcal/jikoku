@@ -10,7 +10,7 @@ import Foundation
 import Melisse
 import GLKit
 
-struct CircularShootingStyleDefinition : ShootingStyleDefinition {
+struct CircularShootingStyleDefinition : BaseShootingStyleDefinition {
     
     let origin = ShotOrigin.center
     
@@ -36,7 +36,7 @@ struct CircularShootingStyleDefinition : ShootingStyleDefinition {
     /// Différence d'angle entre 2 tirs.
     var angleIncrement: GLfloat?
     
-    init(damage: Int = 1, shotAmount: Int, shotAmountVariation: Int = 0, shotSpeed: GLfloat, shootInterval: TimeInterval, inversions: ShootingStyleInversion = [], inversionInterval: Int = 0, spriteDefinition: Int = 0, baseAngle: GLfloat = 0, baseAngleVariation: GLfloat = 0, angleIncrement: GLfloat? = nil) {
+    init(damage: Int = 1, shotAmount: Int, shotAmountVariation: Int = 0, shotSpeed: GLfloat = 500, shootInterval: TimeInterval = 0.1, inversions: ShootingStyleInversion = [], inversionInterval: Int = 0, spriteDefinition: Int = 0, baseAngle: GLfloat = 0, baseAngleVariation: GLfloat = 0, angleIncrement: GLfloat? = nil) {
         self.damage = damage
         self.shotAmount = shotAmount
         self.shotAmountVariation = shotAmountVariation
@@ -57,7 +57,7 @@ struct CircularShootingStyleDefinition : ShootingStyleDefinition {
 }
 
 /// Tir un cercle de tirs
-class CircularShootingStyle : ShootingStyle {
+class CircularShootingStyle : BaseShootingStyle {
     
     var circularDefinition : CircularShootingStyleDefinition {
         return definition as! CircularShootingStyleDefinition
@@ -66,7 +66,7 @@ class CircularShootingStyle : ShootingStyle {
     var baseAngle: GLfloat
     var baseAngleVariation: GLfloat
     
-    override init(definition: ShootingStyleDefinition, spriteFactory: SpriteFactory) {
+    override init(definition: BaseShootingStyleDefinition, spriteFactory: SpriteFactory) {
         let circularDefinition = (definition as! CircularShootingStyleDefinition)
         self.baseAngle = circularDefinition.baseAngle
         self.baseAngleVariation = circularDefinition.baseAngleVariation

@@ -27,6 +27,15 @@ enum ShotOrigin {
 
 protocol ShootingStyleDefinition {
 
+    /// Créé une instance de ShootingStyle à partir de cette définition.
+    /// - Parameter spriteFactory: Fabrique de sprites.
+    /// - Returns: Une nouvelle instance de ShootingStyle basée sur cette définition.
+    func shootingStyle(spriteFactory: SpriteFactory) -> ShootingStyle
+
+}
+
+protocol BaseShootingStyleDefinition : ShootingStyleDefinition {
+
     /// Point d'origine des tirs
     var origin: ShotOrigin { get }
     
@@ -50,10 +59,5 @@ protocol ShootingStyleDefinition {
     
     /// Numéro du sprite dans l'atlas
     var spriteDefinition: Int { get set }
-    
-    /// Créé une instance de ShootingStyle à partir de cette définition.
-    /// - Parameter spriteFactory: Fabrique de sprites.
-    /// - Returns: Une nouvelle instance de ShootingStyle basée sur cette définition.
-    func shootingStyle(spriteFactory: SpriteFactory) -> ShootingStyle
 
 }

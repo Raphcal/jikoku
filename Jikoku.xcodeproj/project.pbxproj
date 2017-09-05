@@ -48,6 +48,8 @@
 		64BB38AD1F2B4BCE00CAB9FC /* Boss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB38AC1F2B4BCE00CAB9FC /* Boss.swift */; };
 		64D03B251F289119009A0212 /* Melisse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64EB3CC91F264FF4002596BB /* Melisse.framework */; };
 		64D03B281F2897BD009A0212 /* Melisse.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 64EB3CC91F264FF4002596BB /* Melisse.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		64D731FC1F5DA28D00F2E7BD /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D731FB1F5DA28D00F2E7BD /* Weapon.swift */; };
+		64D731FE1F5DA2C100F2E7BD /* CompositeShootingStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D731FD1F5DA2C100F2E7BD /* CompositeShootingStyle.swift */; };
 		64DA80231F4DBF5D000CAEFB /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DA80221F4DBF5D000CAEFB /* Background.swift */; };
 		64DA802B1F4EC653000CAEFB /* ResultScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DA802A1F4EC653000CAEFB /* ResultScene.swift */; };
 		64DA802D1F4EC95F000CAEFB /* ExplosiveFade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DA802C1F4EC95F000CAEFB /* ExplosiveFade.swift */; };
@@ -147,6 +149,8 @@
 		64BB38AA1F2B4BB700CAB9FC /* Formation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formation.swift; sourceTree = "<group>"; };
 		64BB38AC1F2B4BCE00CAB9FC /* Boss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Boss.swift; sourceTree = "<group>"; };
 		64D03B231F289114009A0212 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		64D731FB1F5DA28D00F2E7BD /* Weapon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
+		64D731FD1F5DA2C100F2E7BD /* CompositeShootingStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompositeShootingStyle.swift; sourceTree = "<group>"; };
 		64DA80221F4DBF5D000CAEFB /* Background.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		64DA802A1F4EC653000CAEFB /* ResultScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultScene.swift; sourceTree = "<group>"; };
 		64DA802C1F4EC95F000CAEFB /* ExplosiveFade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExplosiveFade.swift; sourceTree = "<group>"; };
@@ -243,6 +247,7 @@
 				647D7E9D1F20C83B00721F76 /* Shots */,
 				643FC8BE1F1F6C8900EA7727 /* Sprites */,
 				64DA80211F4DB5B8000CAEFB /* Backgrounds */,
+				64D731F91F5DA27E00F2E7BD /* Weapons */,
 				64BB38A01F2B4A7000CAB9FC /* Enumerable.swift */,
 				64326AB41F1398AA007673E3 /* GameViewController.swift */,
 				648DD0681F116EB9002A7398 /* iOS */,
@@ -279,6 +284,14 @@
 				64D03B231F289114009A0212 /* AVFoundation.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		64D731F91F5DA27E00F2E7BD /* Weapons */ = {
+			isa = PBXGroup;
+			children = (
+				64D731FB1F5DA28D00F2E7BD /* Weapon.swift */,
+			);
+			name = Weapons;
 			sourceTree = "<group>";
 		};
 		64DA80211F4DB5B8000CAEFB /* Backgrounds */ = {
@@ -327,6 +340,7 @@
 				640829221F472488009E8503 /* AimedShootingStyle.swift */,
 				64F4BE281F38AD0A006BFD60 /* CircularShootingStyle.swift */,
 				64F4BE261F38ABD6006BFD60 /* StraightShootingStyle.swift */,
+				64D731FD1F5DA2C100F2E7BD /* CompositeShootingStyle.swift */,
 			);
 			name = Styles;
 			sourceTree = "<group>";
@@ -454,6 +468,7 @@
 				6408292F1F4B2009009E8503 /* Distance.swift in Sources */,
 				64BB38A11F2B4A7000CAB9FC /* Enumerable.swift in Sources */,
 				64BB38AB1F2B4BB700CAB9FC /* Formation.swift in Sources */,
+				64D731FE1F5DA2C100F2E7BD /* CompositeShootingStyle.swift in Sources */,
 				640829231F472488009E8503 /* AimedShootingStyle.swift in Sources */,
 				6424974F1F54655F004034C1 /* CircleShape.swift in Sources */,
 				642497471F542F62004034C1 /* DiamondShape.swift in Sources */,
@@ -496,6 +511,7 @@
 				648DD06A1F116EB9002A7398 /* AppDelegate.swift in Sources */,
 				64F4BE2F1F39DBD2006BFD60 /* Font.swift in Sources */,
 				64EB3CD31F265FA9002596BB /* EnemyMotion.swift in Sources */,
+				64D731FC1F5DA28D00F2E7BD /* Weapon.swift in Sources */,
 				64BB38AD1F2B4BCE00CAB9FC /* Boss.swift in Sources */,
 				64EEA1A01F321E480085DFD4 /* FormationManager.swift in Sources */,
 			);

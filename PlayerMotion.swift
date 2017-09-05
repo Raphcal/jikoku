@@ -21,7 +21,7 @@ class PlayerMotion : BaseMotion {
     var oldTranslation = Point<GLfloat>()
     var translation = Point<GLfloat>()
     
-    var shootingStyles: [ShootingStyle]
+    var shootingStyle: ShootingStyle = NoShootingStyle()
     
     let angle = -GLfloat.pi / 2
     
@@ -31,17 +31,6 @@ class PlayerMotion : BaseMotion {
         self.spriteFactory = spriteFactory
         let view = View.instance
         self.panSensitiveZone = PanSensitiveZone(frame: Rectangle(x: view.width / 2, y: (view.height - 84) / 2, width: view.width, height: view.height - 84), touches: TouchController.instance.touches)
-        self.shootingStyles = [
-            StraightShootingStyleDefinition(
-                shotAmount: 2,
-                shotAmountVariation: 0,
-                shotSpeed: 500,
-                shootInterval: 0.1,
-                inversions: [],
-                inversionInterval: 0,
-                spriteDefinition: playerShotDefinition,
-                space: 32).shootingStyle(spriteFactory: spriteFactory)
-        ]
     }
     
     func load(_ sprite: Sprite) {

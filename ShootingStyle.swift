@@ -14,10 +14,20 @@ extension Rectangle where Coordinate == GLfloat {
     }
 }
 
+protocol ShootingStyle {
+    func shoot(from sprite: Sprite, angle: GLfloat, since lastUpdate: TimeInterval)
+}
+
+struct NoShootingStyle : ShootingStyle {
+    func shoot(from sprite: Sprite, angle: GLfloat, since lastUpdate: TimeInterval) {
+        // Pas de tir.
+    }
+}
+
 /// Classe de base des styles de tir.
-class ShootingStyle {
+class BaseShootingStyle : ShootingStyle {
     
-    let definition: ShootingStyleDefinition
+    let definition: BaseShootingStyleDefinition
     let spriteFactory: SpriteFactory
     
     var shootInterval: TimeInterval
@@ -26,7 +36,7 @@ class ShootingStyle {
     
     var inversionInterval: Int = 0
     
-    init(definition: ShootingStyleDefinition, spriteFactory: SpriteFactory) {
+    init(definition: BaseShootingStyleDefinition, spriteFactory: SpriteFactory) {
         self.definition = definition
         self.spriteFactory = spriteFactory
 

@@ -26,7 +26,7 @@ class EnemyMotion : BaseMotion, HasLifePoints {
     
     var angle = GLfloat.pi / 2
     
-    var shootingStyles = [ShootingStyle]()
+    var shootingStyle: ShootingStyle = NoShootingStyle()
 
     let gameScene: GameScene
     let spriteFactory: TranslucentSpriteFactory

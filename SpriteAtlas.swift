@@ -133,7 +133,7 @@ extension SpriteAtlas {
                     definitions.append(SpriteDefinition(index: definitions.count, distance: .shadow, blueprint: blueprints.sprite.shadow, packMap: packMap))
                 }
                 
-                if var shootingStyleDefinition = group.shootingStyleDefinition {
+                if var shootingStyleDefinition = group.shootingStyleDefinition as? BaseShootingStyleDefinition {
                     shootingStyleDefinition.spriteDefinition = definitions.count
                     definitions.append(SpriteDefinition(index: definitions.count, type: .enemyShot, distance: .shot, blueprint: blueprints.shot, packMap: packMap))
                     group.shootingStyleDefinition = shootingStyleDefinition

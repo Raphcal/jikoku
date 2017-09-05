@@ -10,7 +10,7 @@ import Foundation
 import Melisse
 import GLKit
 
-struct AimedShootingStyleDefinition : ShootingStyleDefinition {
+struct AimedShootingStyleDefinition : BaseShootingStyleDefinition {
     
     let origin = ShotOrigin.front
     
@@ -29,7 +29,7 @@ struct AimedShootingStyleDefinition : ShootingStyleDefinition {
     
     var targetType: SpriteType
     
-    init(damage: Int = 1, shotAmount: Int, shotAmountVariation: Int = 0, shotSpeed: GLfloat, shootInterval: TimeInterval, inversions: ShootingStyleInversion = [], inversionInterval: Int = 0, spriteDefinition: Int = 0, targetType: SpriteType) {
+    init(damage: Int = 1, shotAmount: Int, shotAmountVariation: Int = 0, shotSpeed: GLfloat = 500, shootInterval: TimeInterval = 0.1, inversions: ShootingStyleInversion = [], inversionInterval: Int = 0, spriteDefinition: Int = 0, targetType: SpriteType) {
         self.damage = damage
         self.shotAmount = shotAmount
         self.shotAmountVariation = shotAmountVariation
@@ -47,7 +47,7 @@ struct AimedShootingStyleDefinition : ShootingStyleDefinition {
     
 }
 
-class AimedShootingStyle : ShootingStyle {
+class AimedShootingStyle : BaseShootingStyle {
     
     var aimedDefinition: AimedShootingStyleDefinition {
         return definition as! AimedShootingStyleDefinition

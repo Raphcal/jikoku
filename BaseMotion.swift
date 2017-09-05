@@ -11,13 +11,11 @@ import GLKit
 
 protocol BaseMotion : Motion {
     var angle: GLfloat { get }
-    var shootingStyles: [ShootingStyle] { get }
+    var shootingStyle: ShootingStyle { get }
 }
 
 extension BaseMotion {
     func shoot(from sprite: Sprite, since lastUpdate: TimeInterval) {
-        for shootingStyle in shootingStyles {
-            shootingStyle.shoot(from: sprite, angle: angle, since: lastUpdate)
-        }
+        shootingStyle.shoot(from: sprite, angle: angle, since: lastUpdate)
     }
 }

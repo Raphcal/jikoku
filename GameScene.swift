@@ -57,49 +57,21 @@ class GameScene : Scene {
         self.player = GameScene.playerSprite(spriteFactory: spriteFactory, cameraFrame: camera.frame)
         
         let weaponDefinitions: [ShootingStyleDefinition] = [
-            StraightShootingStyleDefinition(
-                shotAmount: 2,
-                shotSpeed: 500,
-                shootInterval: 0.1,
-                spriteDefinition: playerShotDefinition,
-                space: 32),
-            CircularShootingStyleDefinition(
-                shotAmount: 4,
-                shotSpeed: 500,
-                shootInterval: 0.1,
-                spriteDefinition: playerShotDefinition,
-                baseAngle: -3 * .pi / 24,
-                angleIncrement: .pi / 12
-            ),
-            StraightShootingStyleDefinition(
-                shotAmount: 1,
-                shotSpeed: 250,
-                shootInterval: 0.05,
-                spriteDefinition: playerShotDefinition,
-                space: 32),
-            AimedShootingStyleDefinition(
-                shotAmount: 4,
-                shotSpeed: 500,
-                shootInterval: 0.1,
-                spriteDefinition: playerShotDefinition,
-                targetType: .enemy
-            ),
-            CircularShootingStyleDefinition(
-                shotAmount: 4,
-                shotSpeed: 500,
-                shootInterval: 0.05,
-                inversions: [.angle],
-                inversionInterval: 8,
-                spriteDefinition: playerShotDefinition,
-                baseAngle: -.pi / 4,
-                baseAngleVariation: .pi / 24
-            ),
+            CompositeShootingStyleDefinition(definitions: [
+                StraightShootingStyleDefinition(shotAmount: 2, spriteDefinition: playerShotDefinition, space: 32),
+                StraightShootingStyleDefinition(damage: 2, shotAmount: 1, spriteDefinition: playerShotDefinition, space: 1)]),
+            CircularShootingStyleDefinition(shotAmount: 4, spriteDefinition: playerShotDefinition, baseAngle: -3 * .pi / 24, angleIncrement: .pi / 12),
+            StraightShootingStyleDefinition(shotAmount: 1, shotSpeed: 250, shootInterval: 0.05, spriteDefinition: playerShotDefinition, space: 32),
+            AimedShootingStyleDefinition(shotAmount: 4, spriteDefinition: playerShotDefinition, targetType: .enemy),
+            CircularShootingStyleDefinition(shotAmount: 4, shootInterval: 0.05, inversions: [.angle], inversionInterval: 8, spriteDefinition: playerShotDefinition, baseAngle: -.pi / 4, baseAngleVariation: .pi / 24),
             ]
         self.currentShootingStyle = weaponDefinitions[0]
         self.currentKana = level.weapons[0]
         
         self.levelManager = LevelManager(level: level, spriteFactory: spriteFactory)
         self.levelManager.gameScene = self
+        
+        (player.motion as! PlayerMotion).shootingStyle = currentShootingStyle.shootingStyle(spriteFactory: spriteFactory)
         
         var weapons = [Sprite]()
         
@@ -132,7 +104,7 @@ class GameScene : Scene {
                 self.currentKana = level.weapons[index]
                 
                 let playerMotion = self.player.motion as! PlayerMotion
-                playerMotion.shootingStyles = [weaponDefinitions[index].shootingStyle(spriteFactory: self.spriteFactory)]
+                playerMotion.shootingStyle = weaponDefinitions[index].shootingStyle(spriteFactory: self.spriteFactory)
             }
             zones.append(zone)
         }
@@ -152,7 +124,7 @@ class GameScene : Scene {
         player = GameScene.playerSprite(spriteFactory: spriteFactory, cameraFrame: camera.frame)
         let playerMotion = player.motion as! PlayerMotion
         playerMotion.makeInvicible(sprite: player)
-        playerMotion.shootingStyles = [currentShootingStyle.shootingStyle(spriteFactory: self.spriteFactory)]
+        playerMotion.shootingStyle = currentShootingStyle.shootingStyle(spriteFactory: self.spriteFactory)
     }
     
     func updateWith(_ timeSinceLastUpdate: TimeInterval) {
