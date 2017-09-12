@@ -25,12 +25,13 @@ struct StraightShootingStyleDefinition : BaseShootingStyleDefinition {
     var inversions: ShootingStyleInversion
     var inversionInterval: Int
     
+    var spriteBlueprint: SpriteBlueprint?
     var spriteDefinition: Int
     
     /// Espace entre chaque tir.
     var space: GLfloat
     
-    init(damage: Int = 1, shotAmount: Int, shotAmountVariation: Int = 0, shotSpeed: GLfloat = 500, shootInterval: TimeInterval = 0.1, inversions: ShootingStyleInversion = [], inversionInterval: Int = 0, spriteDefinition: Int = 0, space: GLfloat) {
+    init(damage: Int = 1, shotAmount: Int, shotAmountVariation: Int = 0, shotSpeed: GLfloat = 500, shootInterval: TimeInterval = 0.1, inversions: ShootingStyleInversion = [], inversionInterval: Int = 0, spriteBlueprint: SpriteBlueprint? = nil, spriteDefinition: Int = 0, space: GLfloat) {
         self.damage = damage
         self.shotAmount = shotAmount
         self.shotAmountVariation = shotAmountVariation
@@ -38,6 +39,7 @@ struct StraightShootingStyleDefinition : BaseShootingStyleDefinition {
         self.shootInterval = shootInterval
         self.inversions = inversions
         self.inversionInterval = inversionInterval
+        self.spriteBlueprint = spriteBlueprint
         self.spriteDefinition = spriteDefinition
         self.space = space
     }
