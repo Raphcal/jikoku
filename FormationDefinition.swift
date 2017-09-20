@@ -39,8 +39,13 @@ class StationaryFormationDefinition : FormationDefinition {
             } else {
                 let left = width / 2 + spacing
                 let right = View.instance.width - width / 2
-                points = stride(from: left, to: right, by: width + spacing).flatMap {
-                    [Point(x: $0, y: -width / 2), Point(x: $0, y: -width / 2 - 20), Point(x: $0, y: -width / 2 - 40)]
+                let y = -width / 2
+                points = stride(from: left, to: right, by: width + spacing).flatMap { x -> [Point<GLfloat>] in
+                    return [
+                        Point(x: x, y: y),
+                        Point(x: x, y: y - 20),
+                        Point(x: x, y: y - 40)
+                    ]
                 }
             }
         }
