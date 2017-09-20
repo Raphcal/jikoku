@@ -10,12 +10,12 @@ import Foundation
 
 protocol HasBlueprint : HasBlueprints {
     var blueprint: SpriteBlueprint { get }
-    var definitionIndex: Int? { get set }
+    var spriteDefinition: Int? { get set }
 }
 
 protocol HasBlueprints {
     var blueprints: [SpriteBlueprint] { get }
-    var definitionIndexes: [Int] { get set }
+    var spriteDefinitions: [Int] { get set }
 }
 
 extension HasBlueprint {
@@ -24,13 +24,13 @@ extension HasBlueprint {
     }
     var definitionIndex: Int? {
         get {
-            return !definitionIndexes.isEmpty ? definitionIndexes[0] : nil
+            return !spriteDefinitions.isEmpty ? spriteDefinitions[0] : nil
         }
         set {
             if let newValue = newValue {
-                definitionIndexes = [newValue]
+                spriteDefinitions = [newValue]
             } else {
-                definitionIndexes = []
+                spriteDefinitions = []
             }
         }
     }

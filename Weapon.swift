@@ -13,7 +13,6 @@ import GLKit
 protocol Weapon : HasBlueprints {
     var level: Int { get }
     var shootingStyleDefinitions: [ShootingStyleDefinition] { get }
-    var blueprints: [SpriteBlueprint] { get }
 
     func shootingStyle(factory: SpriteFactory) -> ShootingStyle
 }
@@ -28,9 +27,8 @@ struct PulseWeapon : Weapon {
     
     var level: Int
     var shootingStyleDefinitions: [ShootingStyleDefinition]
-    var definitionIndexes: [Int]
     
-    var blueprints: [SpriteBlueprint] = [
+    var blueprints = [
         SpriteBlueprint(paintedShapes: [
             PaintedShape(shape: .roundedArrow, paint: Color<GLubyte>(hex: 0x44B6DE))
             ], size: Size(width: 16, height: 24)),
@@ -38,12 +36,10 @@ struct PulseWeapon : Weapon {
             PaintedShape(shape: .powerWave, paint: Color<GLubyte>(hex: 0x44B6DE))
             ], size: Size(width: 16, height: 24))
     ]
-    
     var spriteDefinitions = [Int]()
     
     init(level: Int) {
         self.level = level
-        self.definitionIndexes = []
         
         switch level {
         default:
@@ -54,4 +50,63 @@ struct PulseWeapon : Weapon {
         }
     }
     
+}
+
+struct SpreadWeapon : Weapon {
+    
+    var level: Int
+    var shootingStyleDefinitions: [ShootingStyleDefinition]
+    
+    var blueprints = [
+        SpriteBlueprint(paintedShapes: [
+            PaintedShape(shape: .round, paint: Color<GLubyte>(hex: 0x44B6DE))
+            ], size: Size(size: 12))
+    ]
+    var spriteDefinitions = [Int]()
+    
+    init(level: Int) {
+        self.level = level
+
+        switch level {
+        default:
+            self.shootingStyleDefinitions = [CircularShootingStyleDefinition(shotAmount: 4, spriteDefinition: spriteDefinitions[0], baseAngle: -3 * .pi / 24, angleIncrement: .pi / 12)]
+        }
+    }
+}
+
+struct CrossWeapon : Weapon {
+    
+    var level: Int
+    var shootingStyleDefinitions: [ShootingStyleDefinition]
+
+    var blueprints = [
+        SpriteBlueprint(paintedShapes: [
+            PaintedShape(shape: .arrow, paint: Color<GLubyte>(hex: 0x44B6DE))
+            ], size: Size(width: 16, height: 24)),
+        SpriteBlueprint(paintedShapes: [
+            PaintedShape(shape: .arrow, paint: Color<GLubyte>(hex: 0x44B6DE))
+            ], size: Size(width: 24, height: 36))
+    ]
+    var spriteDefinitions = [Int]()
+    
+    init(level: Int) {
+        self.level = level
+        
+        switch level {
+        default:
+            self.shootingStyleDefinitions = [
+                CircularShootingStyleDefinition(shotAmount: 4, shootInterval: 0.05, inversions: [.angle], inversionInterval: 8, spriteDefinition: spriteDefinitions[0], baseAngle: -.pi / 4, baseAngleVariation: .pi / 24)
+            ]
+        }
+    }
+}
+
+// TODO: Implémenter le shooting-style laser/ray
+struct LaserWeapon : Weapon {
+    var level: Int
+
+    var shootingStyleDefinitions: [ShootingStyleDefinition]
+    
+    var blueprints: [SpriteBlueprint]
+    var spriteDefinitions = [Int]()
 }
