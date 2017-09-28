@@ -30,7 +30,7 @@ class PlayerMotion : BaseMotion {
     init(spriteFactory: SpriteFactory) {
         self.spriteFactory = spriteFactory
         let view = View.instance
-        self.panSensitiveZone = PanSensitiveZone(frame: Rectangle(x: view.width / 2, y: (view.height - 84) / 2, width: view.width, height: view.height - 84), touches: TouchController.instance.touches)
+        self.panSensitiveZone = PanSensitiveZone(frame: Rectangle(left: 0, top: 0, width: view.width, height: view.height - 84), touches: TouchController.instance.touches)
     }
     
     func load(_ sprite: Sprite) {
@@ -51,14 +51,14 @@ class PlayerMotion : BaseMotion {
         if frame.left < 0 {
             frame.left = 0
         }
-        else if frame.right > View.instance.width {
-            frame.right = View.instance.width
+        else if frame.right > panSensitiveZone.frame.width {
+            frame.right = panSensitiveZone.frame.width
         }
         if frame.top < 0 {
             frame.top = 0
         }
-        else if frame.bottom > View.instance.height {
-            frame.bottom = View.instance.height
+        else if frame.bottom > panSensitiveZone.frame.height {
+            frame.bottom = panSensitiveZone.frame.height
         }
         sprite.frame = frame
         
