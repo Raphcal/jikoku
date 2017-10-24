@@ -7,6 +7,7 @@
 //
 
 import Melisse
+import GLKit
 
 extension Rectangle where Coordinate == GLfloat {
     func point(at angle: GLfloat) -> Point<GLfloat> {

@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UIKit
 import Melisse
 
 class Shape : Equatable, Hashable {

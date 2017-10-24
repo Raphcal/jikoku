@@ -25,8 +25,14 @@ class Background {
         camera.center(View.instance.width, height: View.instance.height)
         
         do {
-            if let image = UIImage(named: "Texture") {
-                let texture = try GLKTextureLoader.texture(with: image.cgImage!, options: nil)
+            #if os(iOS)
+                let cgImage = UIImage(named: "Texture")?.cgImage
+            #elseif os(macOS)
+                let cgImage = NSImage(named: NSImage.Name("Texture"))?.cgImage(forProposedRect: nil, context: nil, hints: nil)
+            #endif
+            
+            if let cgImage = cgImage {
+                let texture = try GLKTextureLoader.texture(with: cgImage, options: nil)
                 self.atlas = SpriteAtlas(definitions: [
                     SpriteDefinition(index: 0, rectangle: Rectangle(x: 0, y: 320, width: 320, height: 240), distance: .shadow),
                     SpriteDefinition(index: 1, rectangle: Rectangle(x: 0, y: 560, width: 320, height: 240), distance: .shadow),

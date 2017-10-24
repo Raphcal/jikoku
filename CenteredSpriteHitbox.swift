@@ -6,6 +6,7 @@
 //  Copyright © 2017 Raphaël Calabro. All rights reserved.
 //
 
+import GLKit
 import Melisse
 
 struct CenteredSpriteHitbox : Hitbox {

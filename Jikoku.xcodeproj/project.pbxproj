@@ -24,6 +24,8 @@
 		6424974D1F542FD2004034C1 /* SVGPathShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6424974C1F542FD2004034C1 /* SVGPathShape.swift */; };
 		6424974F1F54655F004034C1 /* CircleShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6424974E1F54655E004034C1 /* CircleShape.swift */; };
 		6424BD2F1F6181EF0081F0A4 /* HasBlueprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6424BD2E1F6181EF0081F0A4 /* HasBlueprint.swift */; };
+		642621E61F974AB7006A9AD5 /* Shooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642621E51F974AB7006A9AD5 /* Shooter.swift */; };
+		64319FBE1F9F406800A140F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 648DD0701F116EB9002A7398 /* Assets.xcassets */; };
 		64326AB51F1398AA007673E3 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64326AB41F1398AA007673E3 /* GameViewController.swift */; };
 		64326ABD1F139E55007673E3 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64326ABC1F139E55007673E3 /* GameScene.swift */; };
 		643CEA001F28A58700A2D4C6 /* CenteredSpriteHitbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643CE9FF1F28A58700A2D4C6 /* CenteredSpriteHitbox.swift */; };
@@ -56,6 +58,66 @@
 		64DA802D1F4EC95F000CAEFB /* ExplosiveFade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DA802C1F4EC95F000CAEFB /* ExplosiveFade.swift */; };
 		64EB3CCE1F26502B002596BB /* LevelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EB3CCD1F26502B002596BB /* LevelManager.swift */; };
 		64EB3CD31F265FA9002596BB /* EnemyMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EB3CD21F265FA9002596BB /* EnemyMotion.swift */; };
+		64EE010F1F9A16B400297974 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EE010E1F9A16B400297974 /* AppDelegate.swift */; };
+		64EE01161F9A16B400297974 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64EE01141F9A16B400297974 /* Main.storyboard */; };
+		64EE01211F9A18CE00297974 /* Melisse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64EB3CCB1F264FF4002596BB /* Melisse.framework */; };
+		64EE01221F9A191300297974 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64326AB41F1398AA007673E3 /* GameViewController.swift */; };
+		64EE01231F9A192C00297974 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64326ABC1F139E55007673E3 /* GameScene.swift */; };
+		64EE01241F9A194F00297974 /* QuarterCircleEnemyMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EEA1961F31AC9C0085DFD4 /* QuarterCircleEnemyMotion.swift */; };
+		64EE01251F9A194F00297974 /* StationaryEnemyMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EEA1941F31AC760085DFD4 /* StationaryEnemyMotion.swift */; };
+		64EE01261F9A194F00297974 /* BaseMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EEA17D1F3063E00085DFD4 /* BaseMotion.swift */; };
+		64EE01271F9A194F00297974 /* BossMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640829271F4ABA42009E8503 /* BossMotion.swift */; };
+		64EE01281F9A194F00297974 /* DriftingMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641CA8171F3D06D000EFA833 /* DriftingMotion.swift */; };
+		64EE01291F9A194F00297974 /* EnemyMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EB3CD21F265FA9002596BB /* EnemyMotion.swift */; };
+		64EE012A1F9A194F00297974 /* PlayerMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6410F99F1F21D69E005C2DDC /* PlayerMotion.swift */; };
+		64EE012B1F9A194F00297974 /* ShadowMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647EFFD01F3DD40F006066E4 /* ShadowMotion.swift */; };
+		64EE012C1F9A194F00297974 /* Boss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB38AC1F2B4BCE00CAB9FC /* Boss.swift */; };
+		64EE012D1F9A194F00297974 /* Formation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB38AA1F2B4BB700CAB9FC /* Formation.swift */; };
+		64EE012E1F9A194F00297974 /* FormationDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EEA1991F31AD680085DFD4 /* FormationDefinition.swift */; };
+		64EE012F1F9A194F00297974 /* FormationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EEA19F1F321E480085DFD4 /* FormationManager.swift */; };
+		64EE01301F9A194F00297974 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB38A41F2B4ACF00CAB9FC /* Group.swift */; };
+		64EE01311F9A194F00297974 /* Kanji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB386E1F29C91300CAB9FC /* Kanji.swift */; };
+		64EE01321F9A194F00297974 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FCBCA51F25D39700536C57 /* Level.swift */; };
+		64EE01331F9A194F00297974 /* LevelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EB3CCD1F26502B002596BB /* LevelManager.swift */; };
+		64EE01341F9A194F00297974 /* ShapeSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB38A81F2B4AFA00CAB9FC /* ShapeSize.swift */; };
+		64EE01351F9A194F00297974 /* Wave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB38A21F2B4A9A00CAB9FC /* Wave.swift */; };
+		64EE01361F9A194F00297974 /* ResultScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DA802A1F4EC653000CAEFB /* ResultScene.swift */; };
+		64EE01371F9A194F00297974 /* ExplosiveFade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DA802C1F4EC95F000CAEFB /* ExplosiveFade.swift */; };
+		64EE01381F9A194F00297974 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB38A61F2B4AEB00CAB9FC /* Shape.swift */; };
+		64EE01391F9A194F00297974 /* CircleShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6424974E1F54655E004034C1 /* CircleShape.swift */; };
+		64EE013A1F9A194F00297974 /* DiamondShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642497461F542F62004034C1 /* DiamondShape.swift */; };
+		64EE013B1F9A194F00297974 /* PathShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6424974A1F542FA0004034C1 /* PathShape.swift */; };
+		64EE013C1F9A194F00297974 /* RoundShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642497421F542F09004034C1 /* RoundShape.swift */; };
+		64EE013D1F9A194F00297974 /* SVGPathShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6424974C1F542FD2004034C1 /* SVGPathShape.swift */; };
+		64EE013E1F9A194F00297974 /* TextShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642497481F542F7F004034C1 /* TextShape.swift */; };
+		64EE013F1F9A194F00297974 /* TriangularShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642497441F542F41004034C1 /* TriangularShape.swift */; };
+		64EE01401F9A194F00297974 /* AimedShootingStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640829221F472488009E8503 /* AimedShootingStyle.swift */; };
+		64EE01411F9A194F00297974 /* CircularShootingStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F4BE281F38AD0A006BFD60 /* CircularShootingStyle.swift */; };
+		64EE01421F9A194F00297974 /* StraightShootingStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F4BE261F38ABD6006BFD60 /* StraightShootingStyle.swift */; };
+		64EE01431F9A194F00297974 /* CompositeShootingStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D731FD1F5DA2C100F2E7BD /* CompositeShootingStyle.swift */; };
+		64EE01441F9A194F00297974 /* ShootingStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647D7E9F1F20C8A600721F76 /* ShootingStyle.swift */; };
+		64EE01451F9A194F00297974 /* ShootingStyleDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647D7EA31F20CE6000721F76 /* ShootingStyleDefinition.swift */; };
+		64EE01461F9A194F00297974 /* ShotMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647D7EA51F20D78A00721F76 /* ShotMotion.swift */; };
+		64EE01471F9A194F00297974 /* ShotStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647C61E21F2B7C9100702AE5 /* ShotStyle.swift */; };
+		64EE01481F9A194F00297974 /* CenteredSpriteHitbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643CE9FF1F28A58700A2D4C6 /* CenteredSpriteHitbox.swift */; };
+		64EE01491F9A194F00297974 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6408292E1F4B2009009E8503 /* Distance.swift */; };
+		64EE014A1F9A194F00297974 /* GLKTextureLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64846A321F1F3BF60053A926 /* GLKTextureLoader.swift */; };
+		64EE014B1F9A194F00297974 /* LifeBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640829321F4B2C39009E8503 /* LifeBar.swift */; };
+		64EE014C1F9A194F00297974 /* SpriteAtlas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643FC8BF1F1F6C9600EA7727 /* SpriteAtlas.swift */; };
+		64EE014D1F9A194F00297974 /* SpriteBlueprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F4BE311F39E94D006BFD60 /* SpriteBlueprint.swift */; };
+		64EE014E1F9A194F00297974 /* SpriteType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643FC8C11F1F6CEF00EA7727 /* SpriteType.swift */; };
+		64EE014F1F9A194F00297974 /* PackMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F4BE2A1F39A1AE006BFD60 /* PackMap.swift */; };
+		64EE01501F9A194F00297974 /* Paint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6419A4F21F3C76CA000B4A0B /* Paint.swift */; };
+		64EE01511F9A194F00297974 /* PaintedShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6408291D1F46CF41009E8503 /* PaintedShape.swift */; };
+		64EE01521F9A194F00297974 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F4BE2E1F39DBD2006BFD60 /* Font.swift */; };
+		64EE01531F9A194F00297974 /* Sprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641CA81A1F3D073600EFA833 /* Sprite.swift */; };
+		64EE01541F9A194F00297974 /* HasBlueprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6424BD2E1F6181EF0081F0A4 /* HasBlueprint.swift */; };
+		64EE01551F9A194F00297974 /* Shooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642621E51F974AB7006A9AD5 /* Shooter.swift */; };
+		64EE01561F9A194F00297974 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DA80221F4DBF5D000CAEFB /* Background.swift */; };
+		64EE01571F9A194F00297974 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D731FB1F5DA28D00F2E7BD /* Weapon.swift */; };
+		64EE01581F9A194F00297974 /* Enumerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB38A01F2B4A7000CAB9FC /* Enumerable.swift */; };
+		64EE015B1F9A1A2B00297974 /* iOSTextShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EE015A1F9A1A2B00297974 /* iOSTextShape.swift */; };
+		64EE015D1F9A1A7700297974 /* MacTextShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EE015C1F9A1A7700297974 /* MacTextShape.swift */; };
 		64EEA17E1F3063E00085DFD4 /* BaseMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EEA17D1F3063E00085DFD4 /* BaseMotion.swift */; };
 		64EEA1951F31AC760085DFD4 /* StationaryEnemyMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EEA1941F31AC760085DFD4 /* StationaryEnemyMotion.swift */; };
 		64EEA1971F31AC9C0085DFD4 /* QuarterCircleEnemyMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EEA1961F31AC9C0085DFD4 /* QuarterCircleEnemyMotion.swift */; };
@@ -91,6 +153,13 @@
 			remoteGlobalIDString = 6429FED01CE879000052ED4D;
 			remoteInfo = "Melisse-Mac";
 		};
+		64EE011D1F9A183000297974 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 647D7E851F20970700721F76 /* Melisse.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 6429FECF1CE879000052ED4D;
+			remoteInfo = "Melisse-Mac";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -124,6 +193,7 @@
 		6424974C1F542FD2004034C1 /* SVGPathShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVGPathShape.swift; sourceTree = "<group>"; };
 		6424974E1F54655E004034C1 /* CircleShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleShape.swift; sourceTree = "<group>"; };
 		6424BD2E1F6181EF0081F0A4 /* HasBlueprint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HasBlueprint.swift; sourceTree = "<group>"; };
+		642621E51F974AB7006A9AD5 /* Shooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shooter.swift; sourceTree = "<group>"; };
 		64326AB41F1398AA007673E3 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameViewController.swift; path = Yamato/GameViewController.swift; sourceTree = "<group>"; };
 		64326ABC1F139E55007673E3 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		643CE9FF1F28A58700A2D4C6 /* CenteredSpriteHitbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenteredSpriteHitbox.swift; sourceTree = "<group>"; };
@@ -158,6 +228,13 @@
 		64DA802C1F4EC95F000CAEFB /* ExplosiveFade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExplosiveFade.swift; sourceTree = "<group>"; };
 		64EB3CCD1F26502B002596BB /* LevelManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelManager.swift; sourceTree = "<group>"; };
 		64EB3CD21F265FA9002596BB /* EnemyMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyMotion.swift; sourceTree = "<group>"; };
+		64EE010C1F9A16B400297974 /* Jikoku Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Jikoku Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		64EE010E1F9A16B400297974 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		64EE01151F9A16B400297974 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		64EE01171F9A16B400297974 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		64EE01181F9A16B400297974 /* Jikoku_Mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Jikoku_Mac.entitlements; sourceTree = "<group>"; };
+		64EE015A1F9A1A2B00297974 /* iOSTextShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSTextShape.swift; sourceTree = "<group>"; };
+		64EE015C1F9A1A7700297974 /* MacTextShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacTextShape.swift; sourceTree = "<group>"; };
 		64EEA17D1F3063E00085DFD4 /* BaseMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMotion.swift; sourceTree = "<group>"; };
 		64EEA1941F31AC760085DFD4 /* StationaryEnemyMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationaryEnemyMotion.swift; sourceTree = "<group>"; };
 		64EEA1961F31AC9C0085DFD4 /* QuarterCircleEnemyMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuarterCircleEnemyMotion.swift; sourceTree = "<group>"; };
@@ -180,6 +257,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		64EE01091F9A16B400297974 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64EE01211F9A18CE00297974 /* Melisse.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -192,7 +277,7 @@
 				6424974A1F542FA0004034C1 /* PathShape.swift */,
 				642497421F542F09004034C1 /* RoundShape.swift */,
 				6424974C1F542FD2004034C1 /* SVGPathShape.swift */,
-				642497481F542F7F004034C1 /* TextShape.swift */,
+				64EE01591F9A1A1400297974 /* TextShape */,
 				642497441F542F41004034C1 /* TriangularShape.swift */,
 			);
 			name = Shapes;
@@ -224,6 +309,7 @@
 				64F4BE2E1F39DBD2006BFD60 /* Font.swift */,
 				641CA81A1F3D073600EFA833 /* Sprite.swift */,
 				6424BD2E1F6181EF0081F0A4 /* HasBlueprint.swift */,
+				642621E51F974AB7006A9AD5 /* Shooter.swift */,
 			);
 			name = Sprites;
 			sourceTree = "<group>";
@@ -255,6 +341,7 @@
 				64326AB41F1398AA007673E3 /* GameViewController.swift */,
 				648DD0681F116EB9002A7398 /* iOS */,
 				648DD0701F116EB9002A7398 /* Assets.xcassets */,
+				64EE010D1F9A16B400297974 /* Jikoku Mac */,
 				648DD0671F116EB9002A7398 /* Products */,
 				647D7E851F20970700721F76 /* Melisse.xcodeproj */,
 				64D03B221F289114009A0212 /* Frameworks */,
@@ -265,6 +352,7 @@
 			isa = PBXGroup;
 			children = (
 				648DD0661F116EB9002A7398 /* Jikoku.app */,
+				64EE010C1F9A16B400297974 /* Jikoku Mac.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -328,6 +416,27 @@
 			name = Motion;
 			sourceTree = "<group>";
 		};
+		64EE010D1F9A16B400297974 /* Jikoku Mac */ = {
+			isa = PBXGroup;
+			children = (
+				64EE010E1F9A16B400297974 /* AppDelegate.swift */,
+				64EE01141F9A16B400297974 /* Main.storyboard */,
+				64EE01171F9A16B400297974 /* Info.plist */,
+				64EE01181F9A16B400297974 /* Jikoku_Mac.entitlements */,
+			);
+			path = "Jikoku Mac";
+			sourceTree = "<group>";
+		};
+		64EE01591F9A1A1400297974 /* TextShape */ = {
+			isa = PBXGroup;
+			children = (
+				642497481F542F7F004034C1 /* TextShape.swift */,
+				64EE015A1F9A1A2B00297974 /* iOSTextShape.swift */,
+				64EE015C1F9A1A7700297974 /* MacTextShape.swift */,
+			);
+			name = TextShape;
+			sourceTree = "<group>";
+		};
 		64EEA1981F31ACB50085DFD4 /* Enemy Motions */ = {
 			isa = PBXGroup;
 			children = (
@@ -387,13 +496,31 @@
 			productReference = 648DD0661F116EB9002A7398 /* Jikoku.app */;
 			productType = "com.apple.product-type.application";
 		};
+		64EE010B1F9A16B400297974 /* Jikoku Mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 64EE011C1F9A16B400297974 /* Build configuration list for PBXNativeTarget "Jikoku Mac" */;
+			buildPhases = (
+				64EE01081F9A16B400297974 /* Sources */,
+				64EE01091F9A16B400297974 /* Frameworks */,
+				64EE010A1F9A16B400297974 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				64EE011E1F9A183000297974 /* PBXTargetDependency */,
+			);
+			name = "Jikoku Mac";
+			productName = "Jikoku Mac";
+			productReference = 64EE010C1F9A16B400297974 /* Jikoku Mac.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		648DD05E1F116EB9002A7398 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0830;
+				LastSwiftUpdateCheck = 0900;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Raphaël Calabro";
 				TargetAttributes = {
@@ -401,6 +528,11 @@
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = E6H8T594R7;
 						LastSwiftMigration = 0900;
+						ProvisioningStyle = Automatic;
+					};
+					64EE010B1F9A16B400297974 = {
+						CreatedOnToolsVersion = 9.0.1;
+						DevelopmentTeam = E6H8T594R7;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -425,6 +557,7 @@
 			projectRoot = "";
 			targets = (
 				648DD0651F116EB9002A7398 /* Jikoku */,
+				64EE010B1F9A16B400297974 /* Jikoku Mac */,
 			);
 		};
 /* End PBXProject section */
@@ -457,6 +590,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		64EE010A1F9A16B400297974 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64319FBE1F9F406800A140F3 /* Assets.xcassets in Resources */,
+				64EE01161F9A16B400297974 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -484,6 +626,7 @@
 				6424974D1F542FD2004034C1 /* SVGPathShape.swift in Sources */,
 				64DA802D1F4EC95F000CAEFB /* ExplosiveFade.swift in Sources */,
 				647D7EA01F20C8A600721F76 /* ShootingStyle.swift in Sources */,
+				642621E61F974AB7006A9AD5 /* Shooter.swift in Sources */,
 				64DA802B1F4EC653000CAEFB /* ResultScene.swift in Sources */,
 				64BB38A51F2B4ACF00CAB9FC /* Group.swift in Sources */,
 				64F4BE2B1F39A1AE006BFD60 /* PackMap.swift in Sources */,
@@ -516,9 +659,74 @@
 				648DD06A1F116EB9002A7398 /* AppDelegate.swift in Sources */,
 				64F4BE2F1F39DBD2006BFD60 /* Font.swift in Sources */,
 				64EB3CD31F265FA9002596BB /* EnemyMotion.swift in Sources */,
+				64EE015B1F9A1A2B00297974 /* iOSTextShape.swift in Sources */,
 				64D731FC1F5DA28D00F2E7BD /* Weapon.swift in Sources */,
 				64BB38AD1F2B4BCE00CAB9FC /* Boss.swift in Sources */,
 				64EEA1A01F321E480085DFD4 /* FormationManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64EE01081F9A16B400297974 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64EE013F1F9A194F00297974 /* TriangularShape.swift in Sources */,
+				64EE013A1F9A194F00297974 /* DiamondShape.swift in Sources */,
+				64EE01501F9A194F00297974 /* Paint.swift in Sources */,
+				64EE01371F9A194F00297974 /* ExplosiveFade.swift in Sources */,
+				64EE01431F9A194F00297974 /* CompositeShootingStyle.swift in Sources */,
+				64EE012E1F9A194F00297974 /* FormationDefinition.swift in Sources */,
+				64EE01491F9A194F00297974 /* Distance.swift in Sources */,
+				64EE01511F9A194F00297974 /* PaintedShape.swift in Sources */,
+				64EE01251F9A194F00297974 /* StationaryEnemyMotion.swift in Sources */,
+				64EE01291F9A194F00297974 /* EnemyMotion.swift in Sources */,
+				64EE01541F9A194F00297974 /* HasBlueprint.swift in Sources */,
+				64EE01301F9A194F00297974 /* Group.swift in Sources */,
+				64EE014F1F9A194F00297974 /* PackMap.swift in Sources */,
+				64EE013D1F9A194F00297974 /* SVGPathShape.swift in Sources */,
+				64EE014B1F9A194F00297974 /* LifeBar.swift in Sources */,
+				64EE01231F9A192C00297974 /* GameScene.swift in Sources */,
+				64EE012F1F9A194F00297974 /* FormationManager.swift in Sources */,
+				64EE013C1F9A194F00297974 /* RoundShape.swift in Sources */,
+				64EE01381F9A194F00297974 /* Shape.swift in Sources */,
+				64EE01271F9A194F00297974 /* BossMotion.swift in Sources */,
+				64EE01441F9A194F00297974 /* ShootingStyle.swift in Sources */,
+				64EE01411F9A194F00297974 /* CircularShootingStyle.swift in Sources */,
+				64EE01391F9A194F00297974 /* CircleShape.swift in Sources */,
+				64EE01561F9A194F00297974 /* Background.swift in Sources */,
+				64EE012A1F9A194F00297974 /* PlayerMotion.swift in Sources */,
+				64EE015D1F9A1A7700297974 /* MacTextShape.swift in Sources */,
+				64EE01401F9A194F00297974 /* AimedShootingStyle.swift in Sources */,
+				64EE013B1F9A194F00297974 /* PathShape.swift in Sources */,
+				64EE01581F9A194F00297974 /* Enumerable.swift in Sources */,
+				64EE01421F9A194F00297974 /* StraightShootingStyle.swift in Sources */,
+				64EE01221F9A191300297974 /* GameViewController.swift in Sources */,
+				64EE014C1F9A194F00297974 /* SpriteAtlas.swift in Sources */,
+				64EE01531F9A194F00297974 /* Sprite.swift in Sources */,
+				64EE01361F9A194F00297974 /* ResultScene.swift in Sources */,
+				64EE01471F9A194F00297974 /* ShotStyle.swift in Sources */,
+				64EE01281F9A194F00297974 /* DriftingMotion.swift in Sources */,
+				64EE01451F9A194F00297974 /* ShootingStyleDefinition.swift in Sources */,
+				64EE01551F9A194F00297974 /* Shooter.swift in Sources */,
+				64EE01521F9A194F00297974 /* Font.swift in Sources */,
+				64EE010F1F9A16B400297974 /* AppDelegate.swift in Sources */,
+				64EE01311F9A194F00297974 /* Kanji.swift in Sources */,
+				64EE01321F9A194F00297974 /* Level.swift in Sources */,
+				64EE012D1F9A194F00297974 /* Formation.swift in Sources */,
+				64EE013E1F9A194F00297974 /* TextShape.swift in Sources */,
+				64EE012C1F9A194F00297974 /* Boss.swift in Sources */,
+				64EE014D1F9A194F00297974 /* SpriteBlueprint.swift in Sources */,
+				64EE01261F9A194F00297974 /* BaseMotion.swift in Sources */,
+				64EE01241F9A194F00297974 /* QuarterCircleEnemyMotion.swift in Sources */,
+				64EE01461F9A194F00297974 /* ShotMotion.swift in Sources */,
+				64EE01331F9A194F00297974 /* LevelManager.swift in Sources */,
+				64EE014A1F9A194F00297974 /* GLKTextureLoader.swift in Sources */,
+				64EE01481F9A194F00297974 /* CenteredSpriteHitbox.swift in Sources */,
+				64EE01571F9A194F00297974 /* Weapon.swift in Sources */,
+				64EE014E1F9A194F00297974 /* SpriteType.swift in Sources */,
+				64EE01351F9A194F00297974 /* Wave.swift in Sources */,
+				64EE01341F9A194F00297974 /* ShapeSize.swift in Sources */,
+				64EE012B1F9A194F00297974 /* ShadowMotion.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -529,6 +737,11 @@
 			isa = PBXTargetDependency;
 			name = "Melisse-iOS";
 			targetProxy = 64D03B261F2897B0009A0212 /* PBXContainerItemProxy */;
+		};
+		64EE011E1F9A183000297974 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Melisse-Mac";
+			targetProxy = 64EE011D1F9A183000297974 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -547,6 +760,14 @@
 				648DD0731F116EB9002A7398 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		64EE01141F9A16B400297974 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				64EE01151F9A16B400297974 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -697,6 +918,50 @@
 			};
 			name = Release;
 		};
+		64EE01191F9A16B400297974 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "Jikoku Mac/Jikoku_Mac.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = E6H8T594R7;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Jikoku Mac/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = "fr.rca.Jikoku-Mac";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		64EE011A1F9A16B400297974 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "Jikoku Mac/Jikoku_Mac.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = E6H8T594R7;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Jikoku Mac/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = "fr.rca.Jikoku-Mac";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -714,6 +979,15 @@
 			buildConfigurations = (
 				648DD0791F116EB9002A7398 /* Debug */,
 				648DD07A1F116EB9002A7398 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		64EE011C1F9A16B400297974 /* Build configuration list for PBXNativeTarget "Jikoku Mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64EE01191F9A16B400297974 /* Debug */,
+				64EE011A1F9A16B400297974 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

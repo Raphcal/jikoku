@@ -87,6 +87,7 @@ struct RadialGradient : Paint, Hashable {
 /// Dessine la forme de cette couleur.
 extension Color : Paint {
 
+    #if os(iOS)
     var cgColor: CGColor {
         if red is GLfloat {
             return UIColor(red: CGFloat(red as! GLfloat), green: CGFloat(green as! GLfloat), blue: CGFloat(blue as! GLfloat), alpha: CGFloat(alpha as! GLfloat)).cgColor
@@ -98,6 +99,19 @@ extension Color : Paint {
             return UIColor.white.cgColor
         }
     }
+    #elseif os(macOS)
+    var cgColor: CGColor {
+        if red is GLfloat {
+            return NSColor(red: CGFloat(red as! GLfloat), green: CGFloat(green as! GLfloat), blue: CGFloat(blue as! GLfloat), alpha: CGFloat(alpha as! GLfloat)).cgColor
+        }
+        else if red is GLubyte {
+            return NSColor(red: CGFloat(red as! GLubyte) / 255, green: CGFloat(green as! GLubyte) / 255, blue: CGFloat(blue as! GLubyte) / 255, alpha: CGFloat(alpha as! GLubyte) / 255).cgColor
+        }
+        else {
+            return NSColor.white.cgColor
+        }
+    }
+    #endif
 
     func paint(shape: Shape, rectangle: CGRect, in context: CGContext) {
         shape.addPath(in: rectangle, to: context)

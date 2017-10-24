@@ -7,17 +7,33 @@
 //
 
 import Foundation
+import Melisse
+#if os(iOS)
 import UIKit
+#elseif os(macOS)
+import Cocoa
+#endif
 
 class TextShape : Shape {
     
     let text: String
+    #if os(iOS)
     let font: UIFont
     
     init(text: String = "", font: UIFont? = nil) {
         self.text = text
         self.font = font ?? UIFont.systemFont(ofSize: 12)
     }
+    #elseif os(macOS)
+    let font: NSFont
+    
+    init(text: String = "", font: NSFont? = nil) {
+        self.text = text
+        self.font = font ?? NSFont.systemFont(ofSize: 12)
+    }
+    #endif
+    
+    
     
     override var hashValue: Int {
         return "text \(text)".hashValue

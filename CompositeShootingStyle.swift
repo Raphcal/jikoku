@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import GLKit
 import Melisse
 
 struct CompositeShootingStyleDefinition : ShootingStyleDefinition {

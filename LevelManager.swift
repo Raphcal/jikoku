@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import GLKit
 import Melisse
 
 fileprivate let creationInterval: TimeInterval = 0.5

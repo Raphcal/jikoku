@@ -31,12 +31,18 @@ class GameScene : Scene {
     var lives = 3
     var reloadTimer: TimeInterval?
     
+    #if os(iOS)
     var zones = [TouchSensitiveZone]()
+    #endif
     var currentShootingStyle: ShootingStyleDefinition
     var currentKana: String
     
     private var isRunning: Bool {
+        #if os(iOS)
         return (player.motion as! PlayerMotion).panSensitiveZone.isPaning
+        #elseif os(macOS)
+        return true
+        #endif
     }
     
     init() {
@@ -93,6 +99,7 @@ class GameScene : Scene {
             
             weapons.append(weapon)
             
+            #if os(iOS)
             let zone = TouchSensitiveZone(hasFrame: weapon, touches: TouchController.instance.touches)
             zone.selection = { [unowned self] _ in
                 for weapon in weapons {
@@ -107,6 +114,7 @@ class GameScene : Scene {
                 playerMotion.shootingStyle = weaponDefinitions[index].shootingStyle(spriteFactory: self.spriteFactory)
             }
             zones.append(zone)
+            #endif
         }
         
     }
@@ -130,9 +138,11 @@ class GameScene : Scene {
     func updateWith(_ timeSinceLastUpdate: TimeInterval) {
         let delta = isRunning ? timeSinceLastUpdate : timeSinceLastUpdate / 20
         
+        #if os(iOS)
         for zone in zones {
             zone.update(with: TouchController.instance.touches)
         }
+        #endif
         
         background.update(timeSinceLastUpdate: delta)
         levelManager.update(with: delta)

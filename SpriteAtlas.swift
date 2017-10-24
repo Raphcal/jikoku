@@ -159,6 +159,10 @@ extension SpriteAtlas {
             return nil
         }
     }
+    
+    convenience init(hasBlueprints: [HasBlueprints]) {
+        self.init(definitions: [], texture: GLKTextureInfo())
+    }
 
 }
 

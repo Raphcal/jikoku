@@ -7,8 +7,8 @@
 //
 
 import Foundation
+import GLKit
 import Melisse
-import UIKit
 
 fileprivate let maxSpeed: GLfloat = 500
 
