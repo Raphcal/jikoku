@@ -33,13 +33,21 @@ class Background {
             
             if let cgImage = cgImage {
                 let texture = try GLKTextureLoader.texture(with: cgImage, options: nil)
+                let size640 = cgImage.width
+                let size800 = size640 * (800 / 640)
+                let size560 = size640 * (560 / 640)
+                let size320 = size640 / 2
+                let size240 = size640 * (240 / 640)
+                let size224 = size640 * (224 / 640)
+                let size160 = size640 * (160 / 640)
+                
                 self.atlas = SpriteAtlas(definitions: [
-                    SpriteDefinition(index: 0, rectangle: Rectangle(x: 0, y: 320, width: 320, height: 240), distance: .shadow),
-                    SpriteDefinition(index: 1, rectangle: Rectangle(x: 0, y: 560, width: 320, height: 240), distance: .shadow),
-                    SpriteDefinition(index: 2, rectangle: Rectangle(x: 0, y: 0, width: 320, height: 320)),
-                    SpriteDefinition(index: 3, rectangle: Rectangle(x: 0, y: 800, width: 320, height: 160)),
-                    SpriteDefinition(index: 4, rectangle: Rectangle(x: 320, y: 0, width: 320, height: 640)),
-                    SpriteDefinition(index: 5, rectangle: Rectangle(x: 320, y: 640, width: 320, height: 224))
+                    SpriteDefinition(index: 0, rectangle: Rectangle(x: 0, y: size320, width: size320, height: size240), distance: .shadow),
+                    SpriteDefinition(index: 1, rectangle: Rectangle(x: 0, y: size560, width: size320, height: size240), distance: .shadow),
+                    SpriteDefinition(index: 2, rectangle: Rectangle(x: 0, y: 0, width: size320, height: size320)),
+                    SpriteDefinition(index: 3, rectangle: Rectangle(x: 0, y: size800, width: size320, height: size160)),
+                    SpriteDefinition(index: 4, rectangle: Rectangle(x: size320, y: 0, width: size320, height: size640)),
+                    SpriteDefinition(index: 5, rectangle: Rectangle(x: size320, y: size640, width: size320, height: size224))
                     ], texture: texture)
                 self.factory = SpriteFactory(spriteAtlas: atlas, pools: ReferencePool.pools(capacities: [16, 16]))
             } else {
