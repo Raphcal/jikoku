@@ -29,7 +29,7 @@ class EnemyMotion : BaseMotion, HasLifePoints {
     var shootingStyle: ShootingStyle = NoShootingStyle()
 
     let gameScene: GameScene
-    let spriteFactory: TranslucentSpriteFactory
+    let spriteFactory: SpriteFactory
     
     var isDead = false
     

@@ -14,12 +14,33 @@ class ResultScene : Scene {
     
     var backgroundColor: Color<GLfloat> = .white
 
+    let restartZone: TouchSensitiveZone
+    let plane: Plane
+    
+    init() {
+        let rectangle = Rectangle<GLfloat>(left: 10, top: 10, width: 120, height: 60)
+        restartZone = TouchSensitiveZone(frame: rectangle, touches: TouchController.instance.touches)
+        
+        plane = Plane(capacity: 1)
+        var quad = plane.coloredQuadrilateral()
+        quad.quadrilateral = Quadrilateral(rectangle: rectangle)
+        quad.color = Color.green
+    }
+    
+    func load() {
+        restartZone.selection = restart
+    }
+    
     func updateWith(_ timeSinceLastUpdate: TimeInterval) {
-        // Pas de mise à jour
+        restartZone.update(with: TouchController.instance.touches)
     }
     
     func draw() {
-        // Pas d'affichage
+        plane.draw()
+    }
+    
+    func restart(_ sender: TouchSensitiveZone) {
+        Director.instance!.nextScene = GameScene()
     }
     
 }

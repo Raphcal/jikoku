@@ -16,7 +16,11 @@ class GameViewController : MelisseViewController {
     }
     
     override func initialScene() -> Scene {
-        return GameScene()
+        if let gameScene = GameScene() {
+            return gameScene
+        } else {
+            return EmptyScene()
+        }
     }
     
 }

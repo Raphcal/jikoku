@@ -21,7 +21,7 @@ class GameScene : Scene {
     let backgroundColor = Color<GLfloat>(hex: 0xF4D6B2)
     
     let atlas: SpriteAtlas
-    let spriteFactory: TranslucentSpriteFactory
+    let spriteFactory: SpriteFactory
     let plane = Plane(capacity: 8)
     let background: Background
     let levelManager: LevelManager
@@ -39,15 +39,14 @@ class GameScene : Scene {
         return (player.motion as! PlayerMotion).panSensitiveZone.isPaning
     }
     
-    init() {
+    init?() {
         var level = Level.random(with: Kanji.all)
         if let atlas = SpriteAtlas(level: &level) {
             self.atlas = atlas
             self.spriteFactory = TranslucentSpriteFactory(spriteAtlas: atlas, pools: ReferencePool.pools(capacities: [256, 256, 512, 256, 8]))
         } else {
             print("Atlas creation error")
-            self.spriteFactory = TranslucentSpriteFactory()
-            self.atlas = SpriteAtlas()
+            return nil
         }
         
         self.background = Background()

@@ -71,7 +71,9 @@ class LevelManager {
         else if noMoreEnemy && self.nextWave < level.waves.count {
             let wave = level.waves[self.nextWave]
             self.nextWave += 1
+            #if SHOW_WAVE_MANAGEMENT
             print("Vague n°\(self.nextWave)")
+            #endif
             
             formationManager.groups = wave.groups
             
@@ -81,7 +83,9 @@ class LevelManager {
         let sprites = formationManager.update(since: timeSinceLastUpdate)
         if !sprites.isEmpty {
             self.sprites.append(contentsOf: sprites)
+            #if SHOW_WAVE_MANAGEMENT
             print("\(sprites.count) nouveaux ennemis")
+            #endif
         }
     }
     
