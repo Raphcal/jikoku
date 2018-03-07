@@ -32,10 +32,29 @@ extension GLKTextureLoader {
         }
         
         if let image = imageContext.cgImage {
-            return try GLKTextureLoader.texture(with: image, options: [GLKTextureLoaderOriginBottomLeft: false])
+            #if os(iOS)
+                return try GLKTextureLoader.texture(with: image, options: [GLKTextureLoaderOriginBottomLeft: false])
+            #elseif os(macOS)
+                return try GLKTextureLoader.texture(withContentsOf: temporaryPNGUrl(with: image), options: [GLKTextureLoaderOriginBottomLeft: false])
+            #endif
         }
         
         throw TextureError.imageNotGenerated
+    }
+    
+    private static func temporaryPNGUrl(with image: CGImage) -> URL {
+        let directories = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)
+        let url = NSURL(fileURLWithPath: "\(directories[0])/out.png")
+        NSLog("URL : \(url)")
+        if let destination = CGImageDestinationCreateWithURL(url as CFURL, kUTTypePNG, 1, nil) {
+            CGImageDestinationAddImage(destination, image, nil)
+            if !CGImageDestinationFinalize(destination) {
+                NSLog("ERREUR")
+            }
+        } else {
+            NSLog("ERREUR DE CHEMIN")
+        }
+        return url as URL
     }
 
 }
