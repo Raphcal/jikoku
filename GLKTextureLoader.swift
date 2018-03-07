@@ -45,14 +45,13 @@ extension GLKTextureLoader {
     private static func temporaryPNGUrl(with image: CGImage) -> URL {
         let directories = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)
         let url = NSURL(fileURLWithPath: "\(directories[0])/out.png")
-        NSLog("URL : \(url)")
         if let destination = CGImageDestinationCreateWithURL(url as CFURL, kUTTypePNG, 1, nil) {
             CGImageDestinationAddImage(destination, image, nil)
             if !CGImageDestinationFinalize(destination) {
-                NSLog("ERREUR")
+                NSLog("Erreur lors de l'écriture un PNG à l'URL \(url)")
             }
         } else {
-            NSLog("ERREUR DE CHEMIN")
+            NSLog("URL \(url) invalide pour créer un PNG")
         }
         return url as URL
     }
