@@ -44,9 +44,9 @@ class SVGPathShape : Shape {
         var arguments: Int?
         var state = space
         
-        var index = path.characters.startIndex
-        while index < path.characters.endIndex {
-            let character = path.characters[index]
+        var index = path.startIndex
+        while index < path.endIndex {
+            let character = path[index]
             
             switch character {
             case closePathAlias: fallthrough
@@ -89,7 +89,7 @@ class SVGPathShape : Shape {
                 arguments = nil
             }
             
-            index = path.characters.index(after: index)
+            index = path.index(after: index)
         }
     }
     

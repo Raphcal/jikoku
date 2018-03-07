@@ -43,7 +43,7 @@ extension Array where Element == Wave {
         for wave in self {
             for group in wave.groups {
                 for reading in group.kanji.readings {
-                    for character in reading.characters {
+                    for character in reading {
                         set.insert(String(character))
                     }
                 }
