@@ -106,7 +106,6 @@
 		64EE014C1F9A194F00297974 /* SpriteAtlas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643FC8BF1F1F6C9600EA7727 /* SpriteAtlas.swift */; };
 		64EE014D1F9A194F00297974 /* SpriteBlueprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F4BE311F39E94D006BFD60 /* SpriteBlueprint.swift */; };
 		64EE014E1F9A194F00297974 /* SpriteType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643FC8C11F1F6CEF00EA7727 /* SpriteType.swift */; };
-		64EE014F1F9A194F00297974 /* PackMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F4BE2A1F39A1AE006BFD60 /* PackMap.swift */; };
 		64EE01501F9A194F00297974 /* Paint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6419A4F21F3C76CA000B4A0B /* Paint.swift */; };
 		64EE01511F9A194F00297974 /* PaintedShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6408291D1F46CF41009E8503 /* PaintedShape.swift */; };
 		64EE01521F9A194F00297974 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F4BE2E1F39DBD2006BFD60 /* Font.swift */; };
@@ -125,7 +124,6 @@
 		64EEA1A01F321E480085DFD4 /* FormationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EEA19F1F321E480085DFD4 /* FormationManager.swift */; };
 		64F4BE271F38ABD6006BFD60 /* StraightShootingStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F4BE261F38ABD6006BFD60 /* StraightShootingStyle.swift */; };
 		64F4BE291F38AD0A006BFD60 /* CircularShootingStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F4BE281F38AD0A006BFD60 /* CircularShootingStyle.swift */; };
-		64F4BE2B1F39A1AE006BFD60 /* PackMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F4BE2A1F39A1AE006BFD60 /* PackMap.swift */; };
 		64F4BE2F1F39DBD2006BFD60 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F4BE2E1F39DBD2006BFD60 /* Font.swift */; };
 		64F4BE321F39E94D006BFD60 /* SpriteBlueprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F4BE311F39E94D006BFD60 /* SpriteBlueprint.swift */; };
 		64FCBCA61F25D39700536C57 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FCBCA51F25D39700536C57 /* Level.swift */; };
@@ -242,7 +240,6 @@
 		64EEA19F1F321E480085DFD4 /* FormationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormationManager.swift; sourceTree = "<group>"; };
 		64F4BE261F38ABD6006BFD60 /* StraightShootingStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StraightShootingStyle.swift; sourceTree = "<group>"; };
 		64F4BE281F38AD0A006BFD60 /* CircularShootingStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularShootingStyle.swift; sourceTree = "<group>"; };
-		64F4BE2A1F39A1AE006BFD60 /* PackMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackMap.swift; sourceTree = "<group>"; };
 		64F4BE2E1F39DBD2006BFD60 /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		64F4BE311F39E94D006BFD60 /* SpriteBlueprint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpriteBlueprint.swift; sourceTree = "<group>"; };
 		64FCBCA51F25D39700536C57 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
@@ -303,7 +300,6 @@
 				643FC8BF1F1F6C9600EA7727 /* SpriteAtlas.swift */,
 				64F4BE311F39E94D006BFD60 /* SpriteBlueprint.swift */,
 				643FC8C11F1F6CEF00EA7727 /* SpriteType.swift */,
-				64F4BE2A1F39A1AE006BFD60 /* PackMap.swift */,
 				6419A4F21F3C76CA000B4A0B /* Paint.swift */,
 				6408291D1F46CF41009E8503 /* PaintedShape.swift */,
 				64F4BE2E1F39DBD2006BFD60 /* Font.swift */,
@@ -521,7 +517,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Raphaël Calabro";
 				TargetAttributes = {
 					648DD0651F116EB9002A7398 = {
@@ -629,7 +625,6 @@
 				642621E61F974AB7006A9AD5 /* Shooter.swift in Sources */,
 				64DA802B1F4EC653000CAEFB /* ResultScene.swift in Sources */,
 				64BB38A51F2B4ACF00CAB9FC /* Group.swift in Sources */,
-				64F4BE2B1F39A1AE006BFD60 /* PackMap.swift in Sources */,
 				64BB386F1F29C91300CAB9FC /* Kanji.swift in Sources */,
 				6424BD2F1F6181EF0081F0A4 /* HasBlueprint.swift in Sources */,
 				64EB3CCE1F26502B002596BB /* LevelManager.swift in Sources */,
@@ -682,7 +677,6 @@
 				64EE01291F9A194F00297974 /* EnemyMotion.swift in Sources */,
 				64EE01541F9A194F00297974 /* HasBlueprint.swift in Sources */,
 				64EE01301F9A194F00297974 /* Group.swift in Sources */,
-				64EE014F1F9A194F00297974 /* PackMap.swift in Sources */,
 				64EE013D1F9A194F00297974 /* SVGPathShape.swift in Sources */,
 				64EE014B1F9A194F00297974 /* LifeBar.swift in Sources */,
 				64EE01231F9A192C00297974 /* GameScene.swift in Sources */,
@@ -787,6 +781,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -794,6 +789,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -844,6 +840,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -851,6 +848,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -936,7 +934,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "fr.rca.Jikoku-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -958,7 +956,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "fr.rca.Jikoku-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

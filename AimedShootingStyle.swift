@@ -64,9 +64,9 @@ class AimedShootingStyle : BaseShootingStyle {
         var spriteDefinition = spriteFactory.definitions[definition.spriteDefinition]
         spriteDefinition.type = type
         
+        let targets = self.targets
         for _ in 0 ..< shotAmount {
             let angleToTarget: GLfloat
-            let targets = self.targets
             if !targets.isEmpty {
                 let target = random(itemFrom: targets)
                 angleToTarget = target.frame.center.angleTo(point)

@@ -150,7 +150,13 @@ class GameScene : Scene {
     
     func draw() {
         background.draw()
+        #if os(macOS)
+        glBlendFunc(GLenum(GL_SRC_ALPHA), GLenum(GL_ONE_MINUS_SRC_ALPHA))
+        #endif
         spriteFactory.draw(at: camera.frame.topLeft)
+        #if os(macOS)
+        glBlendFunc(GLenum(GL_ONE), GLenum(GL_ONE_MINUS_SRC_ALPHA))
+        #endif
         plane.draw()
     }
     
