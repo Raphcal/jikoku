@@ -81,7 +81,7 @@ class CircularShootingStyle : BaseShootingStyle {
         spriteDefinition.type = type
         
         var currentAngle = angle + baseAngle
-        let angleIncrement = circularDefinition.angleIncrement ?? GLKMathDegreesToRadians(GLfloat(360 / shotAmount))
+        let angleIncrement = circularDefinition.angleIncrement ?? GLfloat.pi * 2 / GLfloat(shotAmount)
         
         for _ in 0 ..< shotAmount {
             let speed = Point<GLfloat>(x: cosf(currentAngle) * definition.shotSpeed,
