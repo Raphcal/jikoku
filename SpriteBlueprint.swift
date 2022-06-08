@@ -1,6 +1,6 @@
 //
 //  SpriteBlueprint.swift
-//  Yamato
+//  Jikoku
 //
 //  Created by Raphaël Calabro on 08/08/2017.
 //  Copyright © 2017 Raphaël Calabro. All rights reserved.

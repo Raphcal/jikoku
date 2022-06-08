@@ -1,6 +1,6 @@
 //
 //  ShootingStyle.swift
-//  Yamato
+//  Jikoku
 //
 //  Created by Raphaël Calabro on 20/07/2017.
 //  Copyright © 2017 Raphaël Calabro. All rights reserved.
